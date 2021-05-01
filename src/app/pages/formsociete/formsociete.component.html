@@ -1,0 +1,33 @@
+<h1 class="ctil">Ajouter Votre Société</h1>
+<div class="box">
+<div class="p-fluid p-formgrid p-grid">
+  <div class="p-field p-col-12 p-md-6">
+    <label for="firstname">Nom de la Société</label>
+    <input id="firstname" type="text" pInputText>
+  </div>
+  <div class="p-field p-col-12 p-md-6">
+    <label for="lastname">Domaine</label>
+    <input id="lastname" type="text" pInputText width="50px">
+  </div>
+  <div class="p-field p-col-12">
+    <label for="address">Addresse</label>
+    <textarea id="address" type="text" rows="1" pInputTextarea></textarea>
+  </div>
+  <div class="p-field p-col-12 p-md-6">
+    <label for="city">Matricule fiscale
+    </label>
+    <input id="code" type="username" pInputText aria-describedby="username-help">
+    <small id="username-help">Veuillez insérer la matricule fiscale scanné pour vérifier votre société</small>
+  </div>
+  <div class="p-field p-col-12 p-md-3">
+    <label for="state">State</label>
+    <p-dropdown inputId="state" [options]="states" [(ngModel)]="selectedState" placeholder="Select" optionLabel="name"></p-dropdown>
+  </div>
+  <div class="p-field p-col-12 p-md-3">
+    <label for="zip">Zip</label>
+    <input id="zip" type="text" pInputText>
+  </div>
+</div>
+</div>
+
+<button class="big-button">Submit</button>
