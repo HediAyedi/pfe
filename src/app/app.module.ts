@@ -20,6 +20,8 @@ import {BreadcrumbModule} from 'primeng/breadcrumb';
 import {CardModule} from 'primeng/card';
 import { StepsModule } from 'primeng/steps';
 import { ToastModule } from 'primeng/toast';
+import { LoginComponent } from './parts/login/login.component';
+import { NavbarComponent } from './parts/navbar/navbar.component';
 
 // import {ConfirmDialogModule} from 'primeng/confirmdialog';
 // import {ConfirmationService} from 'primeng/api';
@@ -29,7 +31,9 @@ import { ToastModule } from 'primeng/toast';
     DraganddropComponent,
     DashboardComponent,
     CvComponent,
-    FormComponent
+    FormComponent,
+    LoginComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
