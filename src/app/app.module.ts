@@ -48,6 +48,8 @@ import {KeyFilterModule} from 'primeng/keyfilter';
 import { FormCandidatComponent } from './pages/form-candidat/form-candidat.component';
 import { TableDesCandidatsComponent } from './pages/table-des-candidats/table-des-candidats.component';
 import { SocieteCardsComponent } from './pages/societe-cards/societe-cards.component';
+import { CarouselSocieteComponent } from './parts/carousel-societe/carousel-societe.component';
+import {CarouselModule} from 'primeng/carousel';
 
 // import {ConfirmDialogModule} from 'primeng/confirmdialog';
 // import {ConfirmationService} from 'primeng/api';
@@ -64,7 +66,8 @@ import { SocieteCardsComponent } from './pages/societe-cards/societe-cards.compo
     FormsocieteComponent,
     FormCandidatComponent,
     TableDesCandidatsComponent,
-    SocieteCardsComponent
+    SocieteCardsComponent,
+    CarouselSocieteComponent
   ],
   imports: [
     BrowserModule,
@@ -104,7 +107,8 @@ import { SocieteCardsComponent } from './pages/societe-cards/societe-cards.compo
     DropdownModule,
     PasswordModule,
     InputMaskModule,
-    KeyFilterModule
+    KeyFilterModule,
+    CarouselModule
     // ConfirmDialogModule,
     // ConfirmationService
   ],
