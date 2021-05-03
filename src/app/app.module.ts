@@ -8,7 +8,6 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 import {DashboardComponent} from './admin/dashboard/dashboard.component';
 import {CvComponent} from './pages/cv/cv.component';
 import {FormComponent} from './pages/form/form.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {DropdownModule} from 'primeng/dropdown';
 import {FormsModule} from '@angular/forms';
 import {RadioButtonModule} from 'primeng/radiobutton';
@@ -70,7 +69,6 @@ import { SocieteCardsComponent } from './pages/societe-cards/societe-cards.compo
     BrowserModule,
     AppRoutingModule,
     DragDropModule,
-    NgbModule,
     BrowserAnimationsModule,
     ButtonModule,
     InputTextModule,

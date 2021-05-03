@@ -122,6 +122,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "pfe"
+    }
+  },
+  "defaultProject": "pfe",
+  "cli": {
+    "analytics": false
+  }
 }
