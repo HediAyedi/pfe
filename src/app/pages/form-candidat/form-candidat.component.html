@@ -1,0 +1,27 @@
+<p-toast></p-toast>
+
+<div class="all">
+  <h1 class="ctil">Rejoins nous </h1>
+  <form class="box">
+    <div class="p-fluid p-formgrid p-grid ">
+      <div class="p-field p-col-12 p-md-6 ">
+        <label for="nom">Nom & Prénom</label>
+        <input id="nom" type="text" pInputText [(ngModel)]="candidat.nom" name="nom" #nom="ngModel" required pTooltip="Taper Votre nom" tooltipPosition="top" tooltipEvent="focus" showDelay="1000" hideDelay="500">
+      </div>
+      <div class="p-field p-col-12 p-md-6">
+        <label for="email">Email</label>
+        <input id="email" type="text"  pInputText width="50px" [(ngModel)]="candidat.email" name="email" #email="ngModel" required pTooltip="Taper un email avec un bon format" tooltipPosition="right" tooltipEvent="focus" showDelay="1000" hideDelay="500">
+      </div>
+      <div class="p-field p-col-12">
+        <label for="mdp">Mot de passe</label>
+        <p-password id="mdp" type="text" rows="1" [(ngModel)]="candidat.mot_de_passe" name="mdp" #mdp="ngModel" required [toggleMask]="true" ></p-password>
+      </div>
+      <div class="p-field p-col-12">
+        <label for="mdp2">Mot de passe Confirmation</label>
+        <input id="mdp2" type="text" rows="1" pInputText [(ngModel)]="candidat.mot_de_passe_confirmation" name="mdp2" #mdp2="ngModel" required pTooltip="Taper un mot de passe exact comme le precedent" tooltipPosition="right" tooltipEvent="focus" showDelay="1000" hideDelay="500">
+      </div>
+    </div>
+  </form>
+
+  <button class="big-button" (click)="ajouter()" [disabled]="nom.invalid">Submit</button>
+</div>

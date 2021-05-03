@@ -1,0 +1,55 @@
+<p-toast></p-toast>
+
+<div class="card">
+  <p></p>
+  <p-table #dt [value]="candidats" [rows]="6" [paginator]="true" [globalFilterFields]="['nom','email']"
+           [(selection)]="selectedCandidat" [rowHover]="true" dataKey="id"
+           currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+    <ng-template pTemplate="caption">
+      <div class="p-d-flex p-ai-center p-jc-between">
+        <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search..." />
+                </span>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="nom">Nom & Prénom<p-sortIcon field="nom"></p-sortIcon></th>
+        <th pSortableColumn="email">Email<p-sortIcon field="email"></p-sortIcon></th>
+        <th>Valider</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-candidat>
+      <tr>
+
+        <td>{{candidat.nom}}</td>
+        <td>{{candidat.email}}</td>
+
+        <td>
+          <input type="button" pButton pRipple class="p-button-rounded p-mr-2" (click)="VerifierCandidat(candidat,candidat.id)" [style.background-color]="candidat.verifie == 1 ? '#1C2C54' : '#7CACDC' "  [value]="candidat.verifie == 1 ? 'verifié' : 'non vérifié' ">
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <div class="p-d-flex p-ai-center p-jc-between">
+        In total there are {{candidats.length }} candidats.
+      </div>
+    </ng-template>
+  </p-table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

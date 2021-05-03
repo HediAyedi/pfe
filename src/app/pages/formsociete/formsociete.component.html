@@ -1,33 +1,55 @@
+<p-toast></p-toast>
+
+<div class="all">
 <h1 class="ctil">Ajouter Votre Société</h1>
-<div class="box">
-<div class="p-fluid p-formgrid p-grid">
-  <div class="p-field p-col-12 p-md-6">
-    <label for="firstname">Nom de la Société</label>
-    <input id="firstname" type="text" pInputText>
+<form class="box">
+<div class="p-fluid p-formgrid p-grid ">
+  <div class="p-field p-col-12 p-md-6 ">
+    <label for="nom">Nom de la Société</label>
+    <input id="nom" type="text" pInputText [(ngModel)]="employeur.nom_entreprise" name="nom" #nom="ngModel" required pTooltip="Taper le nom de l'entreprise" tooltipPosition="top" tooltipEvent="focus" showDelay="1000" hideDelay="500">
+  </div>
+  <div class="p-field p-col-12 p-md-6 p-input-icon-right">
+    <label for="nomres">Nom de le respenable</label>
+    <input id="nomres" type="text" pInputText [(ngModel)]="employeur.nom" name="nomres" #nomres="ngModel" required pTooltip="Taper le nom de le responable" tooltipPosition="right" tooltipEvent="focus" showDelay="1000" hideDelay="500" >
   </div>
   <div class="p-field p-col-12 p-md-6">
-    <label for="lastname">Domaine</label>
-    <input id="lastname" type="text" pInputText width="50px">
+    <label for="email">Email</label>
+    <input id="email" type="text"  pInputText width="50px" [(ngModel)]="employeur.email" name="email" #email="ngModel" required pTooltip="Taper un email avec un bon format" tooltipPosition="right" tooltipEvent="focus" showDelay="1000" hideDelay="500">
   </div>
   <div class="p-field p-col-12">
-    <label for="address">Addresse</label>
-    <textarea id="address" type="text" rows="1" pInputTextarea></textarea>
+    <label for="mdp">Mot de passe</label>
+    <p-password id="mdp" type="text" rows="1" [(ngModel)]="employeur.mot_de_passe" name="mdp" #mdp="ngModel" required [toggleMask]="true" ></p-password>
   </div>
-  <div class="p-field p-col-12 p-md-6">
-    <label for="city">Matricule fiscale
-    </label>
-    <input id="code" type="username" pInputText aria-describedby="username-help">
-    <small id="username-help">Veuillez insérer la matricule fiscale scanné pour vérifier votre société</small>
+  <div class="p-field p-col-12">
+    <label for="mdp2">Mot de passe Confirmation</label>
+    <input id="mdp2" type="text" rows="1" pInputText [(ngModel)]="employeur.mot_de_passe_confirmation" name="mdp2" #mdp2="ngModel" required pTooltip="Taper un mot de passe exact comme le precedent" tooltipPosition="right" tooltipEvent="focus" showDelay="1000" hideDelay="500">
   </div>
-  <div class="p-field p-col-12 p-md-3">
-    <label for="state">State</label>
-    <p-dropdown inputId="state" [options]="states" [(ngModel)]="selectedState" placeholder="Select" optionLabel="name"></p-dropdown>
-  </div>
-  <div class="p-field p-col-12 p-md-3">
-    <label for="zip">Zip</label>
-    <input id="zip" type="text" pInputText>
-  </div>
-</div>
-</div>
 
-<button class="big-button">Submit</button>
+  <div class="p-field p-col-12 p-md-6">
+    <label for="code">Matricule fiscale
+    </label>
+    <input id="code" type="number" pInputText aria-describedby="username-help" [(ngModel)]="employeur.matricule" name="code" #code="ngModel" required pTooltip="La matricule doit être existante" tooltipPosition="right" tooltipEvent="focus" showDelay="1000" hideDelay="500">
+  </div>
+  <div class="p-field p-col-12 p-md-3">
+    <label for="site">site web</label>
+    <input id="site" type="text" rows="1" pInputText [(ngModel)]="employeur.site_web" name="site" #site="ngModel" required>
+  </div>
+  <div class="p-field p-col-12 p-md-3">
+    <label for="adresse">adresse</label>
+    <input id="adresse" type="text" pInputText [(ngModel)]="employeur.adresse" name="adresse" #adresse="ngModel" required>
+  </div>
+  <div class="p-field p-col-12 p-md-3">
+    <label for="telephone">telephone</label>
+    <input type="number" id="telephone" pInputText [(ngModel)]="employeur.telephone" name="telephone" #telephone="ngModel" required pTooltip="Le numero doit être composé de 8 chiffres" tooltipPosition="right" tooltipEvent="focus" showDelay="1000" hideDelay="500">
+    <!--<input id="telephone" type="number" pInputText min="71000000" [(ngModel)]="employeur.telephone" name="telephone" #telephone="ngModel" required pTooltip="Le numero doit être composé de 8 chiffres" tooltipPosition="right" tooltipEvent="focus" showDelay="1000" hideDelay="500">-->
+  </div>
+  <div class="p-field p-col-12 p-md-3">
+    <label for="desc">Description Entreprise</label>
+    <textarea id="desc" [rows]="1" [cols]="30" pInputTextarea autoResize="autoResize" [(ngModel)]="employeur.description_entreprise" name="desc" #desc="ngModel" required></textarea>
+    <!--<input id="desc" type="text" pInputText [(ngModel)]="employeur.description_entreprise" name="desc" #desc="ngModel" required>-->
+  </div>
+</div>
+</form>
+
+<button class="big-button" (click)="ajouter()" [disabled]="nom.invalid">Submit</button>
+</div>

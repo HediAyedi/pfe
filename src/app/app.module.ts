@@ -40,6 +40,13 @@ import {ConfirmationService, MessageService} from 'primeng/api';
 import {ProductService} from './pages/table-des-societe/productservice';
 import {TableModule} from 'primeng/table';
 import { FormsocieteComponent } from './pages/formsociete/formsociete.component';
+import {RippleModule} from 'primeng/ripple';
+import {TooltipModule} from 'primeng/tooltip';
+import {PasswordModule} from 'primeng/password';
+import {InputMaskModule} from 'primeng/inputmask';
+import {KeyFilterModule} from 'primeng/keyfilter';
+import { FormCandidatComponent } from './pages/form-candidat/form-candidat.component';
+import { TableDesCandidatsComponent } from './pages/table-des-candidats/table-des-candidats.component';
 
 // import {ConfirmDialogModule} from 'primeng/confirmdialog';
 // import {ConfirmationService} from 'primeng/api';
@@ -53,7 +60,9 @@ import { FormsocieteComponent } from './pages/formsociete/formsociete.component'
     LoginComponent,
     NavbarComponent,
     TableDesSocieteComponent,
-    FormsocieteComponent
+    FormsocieteComponent,
+    FormCandidatComponent,
+    TableDesCandidatsComponent
   ],
   imports: [
     BrowserModule,
@@ -82,13 +91,18 @@ import { FormsocieteComponent } from './pages/formsociete/formsociete.component'
     InputNumberModule,
     ConfirmDialogModule,
     InputTextareaModule,
+    RippleModule,
     DialogModule,
     CalendarModule,
     SliderModule,
     DialogModule,
     MultiSelectModule,
+    TooltipModule,
     ContextMenuModule,
     DropdownModule,
+    PasswordModule,
+    InputMaskModule,
+    KeyFilterModule
     // ConfirmDialogModule,
     // ConfirmationService
   ],

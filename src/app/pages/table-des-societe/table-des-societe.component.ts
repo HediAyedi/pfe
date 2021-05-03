@@ -18,6 +18,8 @@ import { Product } from './product';
 import { ProductService } from './productservice';
 import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
+import {Employeur} from '../../models/employeur';
+import {EmployeurServiceService} from '../../api/employeur-service.service';
 
 @Component({
   selector: 'app-table-des-societe',
@@ -42,11 +44,30 @@ export class TableDesSocieteComponent implements OnInit  {
 
   submitted: boolean;
 
-  constructor(private productService: ProductService, private messageService: MessageService, private confirmationService: ConfirmationService) { }
+  employeurs : Employeur[] = [];
+  employeur : Employeur ;
+  selectedEmployeur: Employeur[];
+  message : any ;
+  constructor(private productService: ProductService, private messageService: MessageService, private confirmationService: ConfirmationService,private employeurService: EmployeurServiceService)
+  { }
 
   ngOnInit() {
-    this.productService.getProducts().then(data => this.products = data);
+    this.findAll();
+    console.log(this.employeurs);
+
   }
+
+
+  public findAll(){
+    this.employeurService.getAll()
+      .subscribe(data => {
+        this.employeurs = data;
+      }, err => {
+        console.log(err);
+      });
+  }
+
+
 
   openNew() {
     this.product = {};
@@ -67,10 +88,40 @@ export class TableDesSocieteComponent implements OnInit  {
     });
   }
 
-  editProduct(product: Product) {
-    this.product = {...product};
-    this.productDialog = true;
+  VerifierEmployeur(employeur: Employeur, id: number) {
+    employeur.verifie=!employeur.verifie ;
+    console.log(employeur);
+
+    this.employeurService.update(employeur, id)
+      .subscribe(res => {
+        if (res.succes) {
+          this.message="modification effectué avec succés";
+
+
+        } else {
+          this.message="erreuuur";
+        }
+      }, err => {
+        this.message = 'not effected'
+      } ) ;
   }
+
+  ValiderEmployeur(employeur: Employeur, id: number) {
+    employeur.active=!employeur.active ;
+    this.employeurService.update(employeur, id)
+      .subscribe(res => {
+        if (res.succes) {
+          this.message="modification effectué avec succés";
+
+
+        } else {
+          this.message="erreuuur";
+        }
+      }, err => {
+        this.message = 'not effected'
+      } ) ;
+  }
+
 
   deleteProduct(product: Product) {
     this.confirmationService.confirm({
