@@ -47,6 +47,7 @@ import {InputMaskModule} from 'primeng/inputmask';
 import {KeyFilterModule} from 'primeng/keyfilter';
 import { FormCandidatComponent } from './pages/form-candidat/form-candidat.component';
 import { TableDesCandidatsComponent } from './pages/table-des-candidats/table-des-candidats.component';
+import { SocieteCardsComponent } from './pages/societe-cards/societe-cards.component';
 
 // import {ConfirmDialogModule} from 'primeng/confirmdialog';
 // import {ConfirmationService} from 'primeng/api';
@@ -62,7 +63,8 @@ import { TableDesCandidatsComponent } from './pages/table-des-candidats/table-de
     TableDesSocieteComponent,
     FormsocieteComponent,
     FormCandidatComponent,
-    TableDesCandidatsComponent
+    TableDesCandidatsComponent,
+    SocieteCardsComponent
   ],
   imports: [
     BrowserModule,

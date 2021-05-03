@@ -8,6 +8,7 @@ import {TableDesSocieteComponent} from './pages/table-des-societe/table-des-soci
 import {FormsocieteComponent} from './pages/formsociete/formsociete.component';
 import {FormCandidatComponent} from './pages/form-candidat/form-candidat.component';
 import {TableDesCandidatsComponent} from './pages/table-des-candidats/table-des-candidats.component';
+import {SocieteCardsComponent} from './pages/societe-cards/societe-cards.component';
 
 const routes: Routes = [
   {path: 'draganddrop', component: DraganddropComponent},
@@ -17,7 +18,9 @@ const routes: Routes = [
   {path: 'table', component: TableDesSocieteComponent},
   {path: 'societe', component: FormsocieteComponent},
   {path: 'candidat', component: FormCandidatComponent},
-  {path: 'table/candidats', component: TableDesCandidatsComponent}
+  {path: 'table/candidats', component: TableDesCandidatsComponent},
+  {path: 'cards/employeurs', component: SocieteCardsComponent}
+
 
 ];
 
