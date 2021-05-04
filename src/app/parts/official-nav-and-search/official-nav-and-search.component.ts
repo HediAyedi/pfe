@@ -17,6 +17,7 @@ export class OfficialNavAndSearchComponent implements OnInit {
       {
         label: 'Tous les offres',
         icon: 'las la-globe fa-lg',
+        routerLink: ['/offres'],
       },
       {
         label: 'Enreprise',

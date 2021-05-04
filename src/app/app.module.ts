@@ -52,6 +52,8 @@ import {CarouselModule} from 'primeng/carousel';
 import {MenubarModule} from 'primeng/menubar';
 import { OfficialNavAndSearchComponent } from './parts/official-nav-and-search/official-nav-and-search.component';
 import {SplitButtonModule} from 'primeng/splitbutton';
+import { OffresComponent } from './pages/offres/offres.component';
+import {DataViewModule} from 'primeng/dataview';
 
 // import {ConfirmDialogModule} from 'primeng/confirmdialog';
 // import {ConfirmationService} from 'primeng/api';
@@ -70,7 +72,8 @@ import {SplitButtonModule} from 'primeng/splitbutton';
     TableDesCandidatsComponent,
     SocieteCardsComponent,
     CarouselSocieteComponent,
-    OfficialNavAndSearchComponent
+    OfficialNavAndSearchComponent,
+    OffresComponent
   ],
   imports: [
     BrowserModule,
@@ -112,7 +115,8 @@ import {SplitButtonModule} from 'primeng/splitbutton';
     KeyFilterModule,
     CarouselModule,
     MenubarModule,
-    SplitButtonModule
+    SplitButtonModule,
+    DataViewModule
     // ConfirmDialogModule,
     // ConfirmationService
   ],
