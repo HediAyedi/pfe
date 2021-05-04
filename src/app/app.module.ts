@@ -35,7 +35,7 @@ import {SliderModule} from 'primeng/slider';
 import {MultiSelectModule} from 'primeng/multiselect';
 import {CalendarModule} from 'primeng/calendar';
 import {ContextMenuModule} from 'primeng/contextmenu';
-import {ConfirmationService, MessageService} from 'primeng/api';
+import {ConfirmationService, MenuItem, MessageService} from 'primeng/api';
 import {ProductService} from './pages/table-des-societe/productservice';
 import {TableModule} from 'primeng/table';
 import { FormsocieteComponent } from './pages/formsociete/formsociete.component';
@@ -49,6 +49,11 @@ import { TableDesCandidatsComponent } from './pages/table-des-candidats/table-de
 import { SocieteCardsComponent } from './pages/societe-cards/societe-cards.component';
 import { CarouselSocieteComponent } from './parts/carousel-societe/carousel-societe.component';
 import {CarouselModule} from 'primeng/carousel';
+import {MenubarModule} from 'primeng/menubar';
+import { OfficialNavAndSearchComponent } from './parts/official-nav-and-search/official-nav-and-search.component';
+import {SplitButtonModule} from 'primeng/splitbutton';
+import { OffresComponent } from './pages/offres/offres.component';
+import {DataViewModule} from 'primeng/dataview';
 
 // import {ConfirmDialogModule} from 'primeng/confirmdialog';
 // import {ConfirmationService} from 'primeng/api';
@@ -66,7 +71,9 @@ import {CarouselModule} from 'primeng/carousel';
     FormCandidatComponent,
     TableDesCandidatsComponent,
     SocieteCardsComponent,
-    CarouselSocieteComponent
+    CarouselSocieteComponent,
+    OfficialNavAndSearchComponent,
+    OffresComponent
   ],
   imports: [
     BrowserModule,
@@ -106,7 +113,10 @@ import {CarouselModule} from 'primeng/carousel';
     PasswordModule,
     InputMaskModule,
     KeyFilterModule,
-    CarouselModule
+    CarouselModule,
+    MenubarModule,
+    SplitButtonModule,
+    DataViewModule
     // ConfirmDialogModule,
     // ConfirmationService
   ],

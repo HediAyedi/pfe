@@ -10,6 +10,8 @@ import {FormCandidatComponent} from './pages/form-candidat/form-candidat.compone
 import {TableDesCandidatsComponent} from './pages/table-des-candidats/table-des-candidats.component';
 import {SocieteCardsComponent} from './pages/societe-cards/societe-cards.component';
 import {CarouselSocieteComponent} from './parts/carousel-societe/carousel-societe.component';
+import {OffresComponent} from './pages/offres/offres.component';
+import {NavbarComponent} from './parts/navbar/navbar.component';
 
 const routes: Routes = [
   {path: 'draganddrop', component: DraganddropComponent},
@@ -21,7 +23,10 @@ const routes: Routes = [
   {path: 'candidat', component: FormCandidatComponent},
   {path: 'table/candidats', component: TableDesCandidatsComponent},
   {path: 'cards/employeurs', component: SocieteCardsComponent},
-  {path: 'carousel', component: CarouselSocieteComponent}
+  {path: 'carousel', component: CarouselSocieteComponent},
+  {path: 'offres', component: OffresComponent},
+  {path: 'test', component: NavbarComponent}
+
 
 
 

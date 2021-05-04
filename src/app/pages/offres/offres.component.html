@@ -1,0 +1,54 @@
+<!--<div class="card">-->
+  <!--&lt;!&ndash;<p-dataView #dv [value]="offres" [paginator]="true" [rows]="9" filterBy="nom"&ndash;&gt;-->
+              <!--&lt;!&ndash;[sortField]="sortField" [sortOrder]="sortOrder" layout="grid">&ndash;&gt;-->
+  <!--<p-dataView>-->
+    <!--&lt;!&ndash;<ng-template pTemplate="header">&ndash;&gt;-->
+      <!--&lt;!&ndash;<div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between">&ndash;&gt;-->
+        <!--&lt;!&ndash;<p-dropdown [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Sort By Price" (onChange)="onSortChange($event)" styleClass="p-mb-2 p-mb-md-0"></p-dropdown>&ndash;&gt;-->
+        <!--&lt;!&ndash;<span class="p-input-icon-left p-mb-2 p-mb-md-0">&ndash;&gt;-->
+                  <!--&lt;!&ndash;<i class="pi pi-search"></i>&ndash;&gt;-->
+                  <!--&lt;!&ndash;<input type="search" pInputText placeholder="Search by Name" (input)="dv.filter($event.target.value)">&ndash;&gt;-->
+              <!--&lt;!&ndash;</span>&ndash;&gt;-->
+        <!--&lt;!&ndash;<p-dataViewLayoutOptions></p-dataViewLayoutOptions>&ndash;&gt;-->
+      <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--&lt;!&ndash;</ng-template>&ndash;&gt;-->
+    <!--<ng-template let-offre pTemplate="listItem">-->
+      <!--<div class="p-col-12">-->
+        <!--<div class="product-list-item">-->
+          <!--<div class="product-list-detail">-->
+            <!--<div class="product-name">{{offre.employeur_id}}</div>-->
+            <!--<div class="product-description">{{product.description_emploi}}</div>-->
+            <!--<i class="pi pi-tag product-category-icon"></i><span class="product-category">{{product.genre}}</span>-->
+          <!--</div>-->
+          <!--<div class="product-list-action">-->
+
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</ng-template>-->
+    <!--<ng-template let-product pTemplate="gridItem">-->
+      <!--<div class="p-col-12 p-md-4">-->
+        <!--<div class="product-grid-item card">-->
+          <!--<div class="product-grid-item-top">-->
+            <!--<div>-->
+              <!--<i class="pi pi-tag product-category-icon"></i>-->
+              <!--<span class="product-category">{{product.category}}</span>-->
+            <!--</div>-->
+            <!--<span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span>-->
+          <!--</div>-->
+          <!--<div class="product-grid-item-content">-->
+            <!--<div class="product-name">{{product.name}}</div>-->
+            <!--<div class="product-description">{{product.description}}</div>-->
+            <!--<p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating>-->
+          <!--</div>-->
+          <!--<div class="product-grid-item-bottom">-->
+            <!--<span class="product-price">${{product.price}}</span>-->
+            <!--<p-button icon="pi pi-shopping-cart" [disabled]="product.inventoryStatus === 'OUTOFSTOCK'"></p-button>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</ng-template>-->
+  <!--</p-dataView>-->
+<!--</div>-->
+
+
