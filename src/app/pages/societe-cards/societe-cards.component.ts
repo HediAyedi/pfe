@@ -26,7 +26,7 @@ export class SocieteCardsComponent implements OnInit {
   ngOnInit(): void {
     this.primengConfig.ripple = true;
     this.employeurs=JSON.parse(localStorage["employeursCache"] || "[]");
-    console.log("1" + this.employeurs);
+    
   }
 
   

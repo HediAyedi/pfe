@@ -16,16 +16,9 @@ export class NavbarComponent implements OnInit {
   constructor(private offreService: OffreService) { }
 
   ngOnInit(): void {
-    this.findAll();
+    this.offres=JSON.parse(localStorage["offresCache"] || "[]");
     console.log(this.offres);
   }
-  public findAll() {
-    this.offreService.getAll()
-      .subscribe(data => {
-        this.offres = data;
-      }, err => {
-        console.log(err);
-      });
-  }
+  
 
 }

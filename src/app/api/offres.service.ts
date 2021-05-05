@@ -4,6 +4,8 @@ import {Observable} from 'rxjs';
 import {Offre} from '../models/offre';
 import { Injectable } from '@angular/core';
 
+const CACHE_KEY= 'offresCache'; 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -12,8 +14,10 @@ export class OffreService {
   private url = environment.baseUrl;
   constructor(private httpClient: HttpClient) { }
 
-  public getAll(): Observable<Offre[]> {
-    return this.httpClient.get<Offre[]>(this.url + '/emplois');
+  public getAll() {
+    this.httpClient.get<Offre[]>(this.url + '/emplois').subscribe(next =>{
+      localStorage[CACHE_KEY]=JSON.stringify(next);
+    });
   }
 
   public save(offre: Offre): Observable<any>{

@@ -12,13 +12,18 @@
         <label for="email">Email</label>
         <input id="email" type="text"  pInputText width="50px" [(ngModel)]="candidat.email" name="email" #email="ngModel" required email pTooltip="Taper un email avec un bon format" tooltipPosition="right" tooltipEvent="focus" showDelay="1000" hideDelay="500">
       </div>
+
       <div class="p-field p-col-12 p-md-6">
-        <select id="civilite" width="50px" [(ngModel)]="candidat.civilite" name="civilite" #civilite="ngModel" required  tooltipPosition="right" tooltipEvent="focus" showDelay="1000" hideDelay="500">
+        <!-- <p-cascadeSelect [(ngModel)]="candidat.civilite" [options]="civilites" optionLabel="value" name="civilite1" #civilite1="ngModel" [style]="{'minWidth': '14rem'}" pTooltip="Choisissez une civilité" tooltipPosition="right" tooltipEvent="focus" showDelay="500" hideDelay="200"></p-cascadeSelect> -->
+        <div class="p-field p-col-12 p-md-3">
+          <p-dropdown [options]="civilites" [(ngModel)]="candidat.civilite" placeholder="Choisissez une civilité" name="secteur"  [style]="{'minWidth': '14rem'}"></p-dropdown>
+        </div>
+        <!-- <select id="civilite" width="50px" [(ngModel)]="candidat.civilite" name="civilite" #civilite="ngModel" required >
         <option value="" [hidden]="true" >Choisissez une civilité</option>
         <option value="M" >M</option>
         <option value="Mme" >Mme</option>
         <option value="Mlle" >Mlle</option>
-        </select>
+        </select> -->
       </div>
       <div class="p-field p-col-12">
         <label for="mdp">Mot de passe</label>

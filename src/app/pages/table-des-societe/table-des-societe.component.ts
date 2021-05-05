@@ -87,10 +87,9 @@ export class TableDesSocieteComponent implements OnInit  {
 
     this.employeurService.update(employeur, id)
       .subscribe(res => {
-        if (res.succes) {
+        if (!res.succes) {
           this.message="modification effectué avec succés";
-
-
+          localStorage.setItem("employeursCache",JSON.stringify(this.employeurs));
         } else {
           this.message="erreuuur";
         }
@@ -103,10 +102,9 @@ export class TableDesSocieteComponent implements OnInit  {
     employeur.active=!employeur.active ;
     this.employeurService.update(employeur, id)
       .subscribe(res => {
-        if (res.succes) {
+        if (!res.succes) {
           this.message="modification effectué avec succés";
-
-
+          localStorage.setItem("employeursCache",JSON.stringify(this.employeurs));
         } else {
           this.message="erreuuur";
         }
@@ -114,6 +112,10 @@ export class TableDesSocieteComponent implements OnInit  {
         this.message = 'not effected'
       } ) ;
   }
+
+
+  M
+
 
 
   deleteProduct(product: Product) {

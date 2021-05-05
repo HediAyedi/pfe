@@ -19,7 +19,7 @@ const routes: Routes = [
   {path: 'admin', component: DashboardComponent},
   {path: 'cv', component: CvComponent},
   {path: 'form', component: FormComponent},
-  {path: 'table', component: TableDesSocieteComponent},
+  {path: 'table/employeurs', component: TableDesSocieteComponent},
   {path: 'societe', component: FormsocieteComponent},
   {path: 'candidat', component: FormCandidatComponent},
   {path: 'table/candidats', component: TableDesCandidatsComponent},

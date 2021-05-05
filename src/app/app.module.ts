@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {DraganddropComponent} from './pages/draganddrop/draganddrop.component';
+
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {DashboardComponent} from './admin/dashboard/dashboard.component';
 import {CvComponent} from './pages/cv/cv.component';
@@ -21,7 +21,6 @@ import {StepsModule} from 'primeng/steps';
 import {ToastModule} from 'primeng/toast';
 import {LoginComponent} from './parts/login/login.component';
 import {NavbarComponent} from './parts/navbar/navbar.component';
-import {TableDesSocieteComponent} from './pages/table-des-societe/table-des-societe.component';
 import {ProgressBarModule} from 'primeng/progressbar';
 import {DialogModule} from 'primeng/dialog';
 import {HttpClientModule} from '@angular/common/http';
@@ -38,12 +37,18 @@ import {ContextMenuModule} from 'primeng/contextmenu';
 import {ConfirmationService, MenuItem, MessageService} from 'primeng/api';
 import {ProductService} from './pages/table-des-societe/productservice';
 import {TableModule} from 'primeng/table';
-import { FormsocieteComponent } from './pages/formsociete/formsociete.component';
+
 import {RippleModule} from 'primeng/ripple';
 import {TooltipModule} from 'primeng/tooltip';
 import {PasswordModule} from 'primeng/password';
 import {InputMaskModule} from 'primeng/inputmask';
 import {KeyFilterModule} from 'primeng/keyfilter';
+import {CascadeSelectModule} from 'primeng/cascadeselect';
+import {SplitButtonModule} from 'primeng/splitbutton';
+
+import {DraganddropComponent} from './pages/draganddrop/draganddrop.component';
+import {TableDesSocieteComponent} from './pages/table-des-societe/table-des-societe.component';
+import { FormsocieteComponent } from './pages/formsociete/formsociete.component';
 import { FormCandidatComponent } from './pages/form-candidat/form-candidat.component';
 import { TableDesCandidatsComponent } from './pages/table-des-candidats/table-des-candidats.component';
 import { SocieteCardsComponent } from './pages/societe-cards/societe-cards.component';
@@ -51,7 +56,7 @@ import { CarouselSocieteComponent } from './parts/carousel-societe/carousel-soci
 import {CarouselModule} from 'primeng/carousel';
 import {MenubarModule} from 'primeng/menubar';
 import { OfficialNavAndSearchComponent } from './parts/official-nav-and-search/official-nav-and-search.component';
-import {SplitButtonModule} from 'primeng/splitbutton';
+
 import { OffresComponent } from './pages/offres/offres.component';
 import {DataViewModule} from 'primeng/dataview';
 import { OffreComponent } from './pages/offres/offre/offre.component';
@@ -118,7 +123,8 @@ import { OffreComponent } from './pages/offres/offre/offre.component';
     CarouselModule,
     MenubarModule,
     SplitButtonModule,
-    DataViewModule
+    DataViewModule,
+    CascadeSelectModule,
     // ConfirmDialogModule,
     // ConfirmationService
   ],

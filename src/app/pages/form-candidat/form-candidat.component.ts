@@ -12,6 +12,7 @@ export class FormCandidatComponent implements OnInit {
 
   candidat: Candidat = new Candidat();
   message: any;
+  civilites=["M","Mme","Mlle"];
 
   constructor(private candidatService: CandidatService,
               private messageService: MessageService,
@@ -56,8 +57,8 @@ export class FormCandidatComponent implements OnInit {
     this.candidatService.save(this.candidat).subscribe(res => {
         if (!res.succes) {
           this.message = 'Ajout effectué avec succés attends La vérification de votre compte ';
+          this.candidatService.getAll();
           this.showSuccess();
-          
         }
       }, err => {
         this.message = err.error.message;

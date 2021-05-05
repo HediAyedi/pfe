@@ -3,6 +3,7 @@ import {LangueService} from './api/caching services/langue.service';
 import {SecteurActiviteService} from './api/caching services/secteur-activite.service';
 import { CandidatService } from './api/candidat.service';
 import { EmployeurServiceService } from './api/employeur-service.service';
+import { OffreService } from './api/offres.service';
 import { Langue } from './models/Langue';
 import { SecteurActivite } from './models/secteur-activite';
 
@@ -19,6 +20,7 @@ export class AppComponent {
     private secteurActiviteService: SecteurActiviteService,
     private employeurService: EmployeurServiceService,
     private candidatService: CandidatService,
+    private offreService: OffreService,
     ) { 
       this.findEmployeurs();
       this.findCandidats();
@@ -38,6 +40,9 @@ export class AppComponent {
   }
   public findCandidats() {
     this.candidatService.getAll();
+  }
+  public findOffres() {
+    this.offreService.getAll();
   }
   title = 'pfe';
 }
