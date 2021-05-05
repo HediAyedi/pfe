@@ -20,16 +20,26 @@ export class TableDesCandidatsComponent implements OnInit {
   constructor(private candidatService: CandidatService,
               private messageService: MessageService,
               private confirmationService: ConfirmationService,
-              private employeurService: EmployeurServiceService) {
+              ) {
   }
 
   ngOnInit(): void {
     this.candidats=JSON.parse(localStorage["candidatsCache"] || "[]");
-    console.log(this.candidats);
+    if(this.candidats.length==0){
+      this.findAll();
+    }
 
   }
 
   
+  public findAll() {
+    this.candidatService.getAll()
+      .subscribe(data => {
+        this.candidats = data;
+      }, err => {
+        console.log(err);
+      });
+  }
 
   VerifierCandidat(candidat: Candidat, id: number) {
     candidat.verifie = !candidat.verifie;

@@ -1,0 +1,20 @@
+export class Adresse {
+    id:number;
+    pays:string;
+    governat:string;
+    ville:string;
+    adresse:string;
+    code_postal:number;
+    employeur_id:number;
+    candidat_id:number;
+    constructor(){
+        this.id=null;
+        this.pays=null;
+        this.governat=null;
+        this.ville=null;
+        this.adresse=null;
+        this.code_postal=null;
+        this.employeur_id=null;
+        this.candidat_id=null;
+    }
+}

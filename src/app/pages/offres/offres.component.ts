@@ -25,9 +25,13 @@ export class OffresComponent implements OnInit {
               private offreService: OffreService) { }
 
   ngOnInit(): void {
-    this.offres=JSON.parse(localStorage["offresCache"] || "[]");
-    this.langues=JSON.parse(localStorage["languesCache"] || "[]");
     
+    this.offres=JSON.parse(localStorage["offresCache"] || "[]");
+    if(this.offres.length==0){
+      this.findAll();
+    }
+    this.langues=JSON.parse(localStorage["languesCache"] || "[]");
+    console.log(this.langues);
     this.primengConfig.ripple = true;
 
   }
@@ -46,6 +50,14 @@ export class OffresComponent implements OnInit {
   // }
 
 
-  
+  public findAll() {
+    this.offreService.getAll()
+      .subscribe(data => {
+        this.offres = data;
+        console.log(this.offres);
+      }, err => {
+        console.log(err);
+      });
+  }
 
 }

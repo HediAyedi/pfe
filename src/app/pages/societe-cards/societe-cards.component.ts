@@ -26,10 +26,21 @@ export class SocieteCardsComponent implements OnInit {
   ngOnInit(): void {
     this.primengConfig.ripple = true;
     this.employeurs=JSON.parse(localStorage["employeursCache"] || "[]");
+
+    if(this.employeurs.length==0){
+      this.findAll();
+    }
     
   }
 
-  
+  public findAll() {
+    this.employeurService.getAll()
+      .subscribe(data => {
+        this.employeurs = data;
+      }, err => {
+        console.log(err);
+      });
+  }
 
   display: boolean = false;
 

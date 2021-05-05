@@ -53,8 +53,9 @@ export class TableDesSocieteComponent implements OnInit  {
 
   ngOnInit() {
     this.employeurs=JSON.parse(localStorage["employeursCache"] || "[]");
-    console.log(this.employeurs);
-
+    if(this.employeurs.length==0){
+      this.findAll();
+    }
   }
 
 
@@ -114,7 +115,14 @@ export class TableDesSocieteComponent implements OnInit  {
   }
 
 
-  M
+  public findAll() {
+    this.employeurService.getAll()
+      .subscribe(data => {
+        this.employeurs = data;
+      }, err => {
+        console.log(err);
+      });
+  }
 
 
 

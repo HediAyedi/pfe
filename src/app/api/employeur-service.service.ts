@@ -12,10 +12,15 @@ const CACHE_KEY= 'employeursCache';
 export class EmployeurServiceService {
   private url = environment.baseUrl;
   constructor(private httpClient: HttpClient) { }
-  public getAll(){
+  
+  public getAllCache(){
     this.httpClient.get<Employeur[]>(this.url + '/employeurs').subscribe(next =>{
       localStorage[CACHE_KEY]=JSON.stringify(next);
     });
+  }
+
+  public getAll(): Observable<any>{
+    return this.httpClient.get<Employeur[]>(this.url + '/employeurs');
   }
 
   public save(employeur: Employeur): Observable<any>{

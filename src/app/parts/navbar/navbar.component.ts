@@ -17,8 +17,18 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.offres=JSON.parse(localStorage["offresCache"] || "[]");
+    if(this.offres.length==0){
+      this.findAll();
+    }
     console.log(this.offres);
   }
-  
+  public findAll() {
+    this.offreService.getAll()
+      .subscribe(data => {
+        this.offres = data;
+      }, err => {
+        console.log(err);
+      });
+  }
 
 }

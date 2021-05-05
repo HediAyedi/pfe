@@ -14,10 +14,15 @@ export class OffreService {
   private url = environment.baseUrl;
   constructor(private httpClient: HttpClient) { }
 
-  public getAll() {
+  public getAllCache() {
     this.httpClient.get<Offre[]>(this.url + '/emplois').subscribe(next =>{
       localStorage[CACHE_KEY]=JSON.stringify(next);
     });
+  }
+
+  public getAll(): Observable<any> {
+    
+    return this.httpClient.get<Offre[]>(this.url + '/emplois');
   }
 
   public save(offre: Offre): Observable<any>{

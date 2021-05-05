@@ -22,11 +22,12 @@ export class AppComponent {
     private candidatService: CandidatService,
     private offreService: OffreService,
     ) { 
+      this.findOffres();
       this.findEmployeurs();
       this.findCandidats();
       this.findLangues();
       this.findSecteurs();
-    
+      
   }
 
   public findLangues(){
@@ -36,13 +37,13 @@ export class AppComponent {
     this.secteurActiviteService.getAll();
   }
   public findEmployeurs(){
-    this.employeurService.getAll();
+    this.employeurService.getAllCache();
   }
   public findCandidats() {
-    this.candidatService.getAll();
+    this.candidatService.getAllCache();
   }
   public findOffres() {
-    this.offreService.getAll();
+    this.offreService.getAllCache();
   }
   title = 'pfe';
 }
