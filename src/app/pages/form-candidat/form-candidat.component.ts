@@ -22,26 +22,46 @@ export class FormCandidatComponent implements OnInit {
     this.primengConfig.ripple = true;
   }
 
+
+//
+//      IMAGE UPLOAD
+//
+  /* Variabe to store file data */
+  filedata=null;
+  /* File onchange event */
+  imageEvent(e){
+      this.filedata = e.target.files[0];
+      this.candidat.image=this.filedata;
+  }
+  myFormData = new FormData();
+  
+
+
+
   showSuccess() {
     this.messageService.add({severity: 'success', summary: 'Success', detail: this.message});
   }
 
-  showWarn() {
+  showWarn(err) {
     this.messageService.add({severity: 'warn', summary: 'Warn', detail: this.message});
+    if(err.error.errors.email){this.messageService.add({severity: 'warn', summary: 'Warn', detail: err.error.errors.email});}
+    if(err.error.errors.mot_de_passe){this.messageService.add({severity: 'warn', summary: 'Warn', detail: err.error.errors.mot_de_passe});}
+    if(err.error.errors.civilite){this.messageService.add({severity: 'warn', summary: 'Warn', detail: err.error.errors.civilite});}
   }
 
   ajouter() {
 
     console.log('candidat:', this.candidat);
+    console.log('Image:', this.filedata);
     this.candidatService.save(this.candidat).subscribe(res => {
         if (!res.succes) {
           this.message = 'Ajout effectué avec succés attends La vérification de votre compte ';
           this.showSuccess();
-          console.log(this.message);
+          
         }
       }, err => {
-        this.message = 'not effected';
-        this.showWarn();
+        this.message = err.error.message;
+        this.showWarn(err);
 
       }
     );

@@ -3,6 +3,7 @@ import {ConfirmationService, MessageService, PrimeNGConfig} from 'primeng/api';
 import {Employeur} from '../../models/employeur';
 import {ProductService} from '../table-des-societe/productservice';
 import {EmployeurServiceService} from '../../api/employeur-service.service';
+import { Offre } from 'src/app/models/offre';
 
 @Component({
   selector: 'app-societe-cards',
@@ -12,7 +13,8 @@ import {EmployeurServiceService} from '../../api/employeur-service.service';
 export class SocieteCardsComponent implements OnInit {
 
   employeurs: Employeur[] = [];
-  employeur: Employeur ;
+  employeur= new Employeur() ;
+  offres: Offre[]=[];
 
   constructor(private primengConfig: PrimeNGConfig,
               private productService: ProductService,
@@ -38,9 +40,14 @@ export class SocieteCardsComponent implements OnInit {
 
   display: boolean = false;
 
-  showDialog() {
+  showDialog(employeur:Employeur) {
+    
     this.display = true;
-  }
+    this.offres=employeur.emplois;
+
+   } 
+   
+    
 
 
 }

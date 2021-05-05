@@ -10,7 +10,15 @@
       </div>
       <div class="p-field p-col-12 p-md-6">
         <label for="email">Email</label>
-        <input id="email" type="text"  pInputText width="50px" [(ngModel)]="candidat.email" name="email" #email="ngModel" required pTooltip="Taper un email avec un bon format" tooltipPosition="right" tooltipEvent="focus" showDelay="1000" hideDelay="500">
+        <input id="email" type="text"  pInputText width="50px" [(ngModel)]="candidat.email" name="email" #email="ngModel" required email pTooltip="Taper un email avec un bon format" tooltipPosition="right" tooltipEvent="focus" showDelay="1000" hideDelay="500">
+      </div>
+      <div class="p-field p-col-12 p-md-6">
+        <select id="civilite" width="50px" [(ngModel)]="candidat.civilite" name="civilite" #civilite="ngModel" required  tooltipPosition="right" tooltipEvent="focus" showDelay="1000" hideDelay="500">
+        <option value="" [hidden]="true" >Choisissez une civilité</option>
+        <option value="M" >M</option>
+        <option value="Mme" >Mme</option>
+        <option value="Mlle" >Mlle</option>
+        </select>
       </div>
       <div class="p-field p-col-12">
         <label for="mdp">Mot de passe</label>
@@ -18,10 +26,11 @@
       </div>
       <div class="p-field p-col-12">
         <label for="mdp2">Mot de passe Confirmation</label>
-        <input id="mdp2" type="text" rows="1" pInputText [(ngModel)]="candidat.mot_de_passe_confirmation" name="mdp2" #mdp2="ngModel" required pTooltip="Taper un mot de passe exact comme le precedent" tooltipPosition="right" tooltipEvent="focus" showDelay="1000" hideDelay="500">
+        <input id="mdp2" type="password" rows="1" pInputText [(ngModel)]="candidat.mot_de_passe_confirmation" name="mdp2" pattern="mdp" #mdp2="ngModel" required pTooltip="Taper un mot de passe exact comme le precedent" tooltipPosition="right" tooltipEvent="focus" showDelay="1000" hideDelay="500">
       </div>
+      
     </div>
   </form>
 
-  <button class="big-button" (click)="ajouter()" [disabled]="nom.invalid">Submit</button>
+  <button class="big-button" (click)="ajouter()" [disabled]="nom.invalid || email.invalid">Submit</button>
 </div>

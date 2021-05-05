@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Candidat} from '../../models/candidat';
-import {Offres} from '../../models/offres';
-import {OffresService} from '../../api/offres.service';
+import {Offre} from '../../models/offre';
+import {OffreService} from '../../api/offres.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,10 +10,10 @@ import {OffresService} from '../../api/offres.service';
 })
 export class NavbarComponent implements OnInit {
 
-  offres: Offres[] = [];
-  offre: Offres;
+  offres: Offre[] = [];
+  offre: Offre;
 
-  constructor(private offreService: OffresService) { }
+  constructor(private offreService: OffreService) { }
 
   ngOnInit(): void {
     this.findAll();

@@ -5,7 +5,8 @@
 }
 
 .flex-container {
+  margin-top: 3%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
 }

@@ -1,21 +1,26 @@
 import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Offres} from '../models/offres';
+import {Offre} from '../models/offre';
+import { Injectable } from '@angular/core';
 
-export class OffresService {
+@Injectable({
+  providedIn: 'root'
+})
+
+export class OffreService {
   private url = environment.baseUrl;
   constructor(private httpClient: HttpClient) { }
 
-  public getAll(): Observable<Offres[]> {
-    return this.httpClient.get<Offres[]>(this.url + '/emplois');
+  public getAll(): Observable<Offre[]> {
+    return this.httpClient.get<Offre[]>(this.url + '/emplois');
   }
 
-  public save(offre: Offres): Observable<any>{
+  public save(offre: Offre): Observable<any>{
     return this.httpClient.post(this.url + '/emploi', offre);
   }
 
-  public update(offre: Offres, id: number): Observable<any>{
+  public update(offre: Offre, id: number): Observable<any>{
     return this.httpClient.put(this.url + '/emploi/' + id, offre);
   }
 

@@ -52,3 +52,43 @@
 <!--</div>-->
 
 
+<div class="card">
+  <p></p>
+  <p-table #dt [value]="offres" [rows]="6" [paginator]="true" [globalFilterFields]="['exigence','genre','niveau_education','experience']"
+           [(selection)]="selectedOffre" [rowHover]="true" dataKey="id"
+           currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+    <ng-template pTemplate="caption">
+      <div class="p-d-flex p-ai-center p-jc-between">
+  <span class="p-input-icon-left">
+              <i class="pi pi-search"></i>
+              <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search..." />
+          </span>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="genre">Genre <p-sortIcon field="genre"></p-sortIcon></th>
+        <th pSortableColumn="exigence">Exigences<p-sortIcon field="exigence"></p-sortIcon></th>
+        <th pSortableColumn="niveau_education">Niveau éducation<p-sortIcon field="niveau_education"></p-sortIcon></th>
+        <th pSortableColumn="experience">Experience<p-sortIcon field="experience"></p-sortIcon></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-emploi>
+      <tr>
+
+        <td>{{emploi.genre}}</td>
+        <td>{{emploi.exigence_emploi}}</td>
+        <td>{{emploi.niveau_education}}</td>
+        <td>{{emploi.experience}}</td>
+
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <div class="p-d-flex p-ai-center p-jc-between">
+        In total there are {{offres.length }} offres d'emploi.
+      </div>
+    </ng-template>
+  </p-table>
+</div>
+
+

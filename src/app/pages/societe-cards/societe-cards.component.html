@@ -5,14 +5,14 @@
     <img alt="Card" src="https://m.media-amazon.com/images/I/51nX7PBmzIL._SS500_.jpg" width="150px">
   </ng-template>
   <p>{{i.description_entreprise}}</p>
-  <ng-template pTemplate="footer">
-    <p-dialog header="Les Offres" [(visible)]="display" [maximizable]="true" >
+  <ng-template pTemplate="footer"  >
+    <p-dialog header="Les Offres" [(visible)]="display"  [maximizable]="true" >
 
 
       <div class="card">
         <p></p>
-        <p-table #dt [value]="employeurs" [rows]="6" [paginator]="true" [globalFilterFields]="['nom','nom_entreprise','matricule','telephone']"
-                 [(selection)]="selectedEmployeur" [rowHover]="true" dataKey="id"
+        <p-table #dt [value]="offres" [rows]="6" [paginator]="true" [globalFilterFields]="['exigence','genre','niveau_education','experience']"
+                 [(selection)]="selectedOffre" [rowHover]="true" dataKey="id"
                  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
           <ng-template pTemplate="caption">
             <div class="p-d-flex p-ai-center p-jc-between">
@@ -24,25 +24,25 @@
           </ng-template>
           <ng-template pTemplate="header">
             <tr>
-              <th pSortableColumn="nom_entreprise">Nom de l'entreprise <p-sortIcon field="nom_entreprise"></p-sortIcon></th>
-              <th pSortableColumn="nom">Nom de responsable<p-sortIcon field="nom"></p-sortIcon></th>
-              <th pSortableColumn="matricule">matricule<p-sortIcon field="matricule"></p-sortIcon></th>
-              <th pSortableColumn="telephone">telephone<p-sortIcon field="telephone"></p-sortIcon></th>
+              <th pSortableColumn="genre">Genre <p-sortIcon field="genre"></p-sortIcon></th>
+              <th pSortableColumn="exigence">Exigences<p-sortIcon field="exigence"></p-sortIcon></th>
+              <th pSortableColumn="niveau_education">Niveau éducation<p-sortIcon field="niveau_education"></p-sortIcon></th>
+              <th pSortableColumn="experience">Experience<p-sortIcon field="experience"></p-sortIcon></th>
             </tr>
           </ng-template>
-          <ng-template pTemplate="body" let-employeur>
+          <ng-template pTemplate="body" let-emploi>
             <tr>
-
-              <td>{{employeur.nom_entreprise}}</td>
-              <td>{{employeur.nom}}</td>
-              <td>{{employeur.matricule}}</td>
-              <td>{{employeur.telephone}}</td>
-
+      
+              <td>{{emploi.genre}}</td>
+              <td>{{emploi.exigence_emploi}}</td>
+              <td>{{emploi.niveau_education}}</td>
+              <td>{{emploi.experience}}</td>
+      
             </tr>
           </ng-template>
           <ng-template pTemplate="summary">
             <div class="p-d-flex p-ai-center p-jc-between">
-              In total there are {{employeurs.length }} Employeurs.
+              In total there are {{offres.length }} offres d'emploi.
             </div>
           </ng-template>
         </p-table>
@@ -50,26 +50,9 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </p-dialog>
 
-    <p-button type="button" (click)="showDialog()" label="Voir Offres" icon="pi pi-eye"></p-button>
-    <!--<p-button label="Voir Offres" icon="pi pi-eye"></p-button>-->
+    <p-button type="button" (click)="showDialog(i)" label="Voir Offres" icon="pi pi-eye"></p-button>
   </ng-template>
 </p-card>
 </div>

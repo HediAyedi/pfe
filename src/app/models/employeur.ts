@@ -1,3 +1,5 @@
+import { Offre } from "./offre";
+
 export class Employeur {
   id: number;
   nom: string;
@@ -13,6 +15,8 @@ export class Employeur {
   logo: string;
   verifie: boolean;
   active: boolean;
+  secteur_id: number;
+  emplois: Offre[];
 
 
   constructor() {
@@ -27,9 +31,11 @@ export class Employeur {
     this.matricule = '';
     this.site_web = '';
     this.telephone = null;
-    this.logo = '';
-    this.verifie = false ;
-    this.active= true ;
+    this.logo = null;
+    this.verifie = false;
+    this.active = true;
+    this.secteur_id = null;
+    this.emplois=[];
 
   }
 
