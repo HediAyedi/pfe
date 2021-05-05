@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {LangueService} from './api/caching services/langue.service';
 import {SecteurActiviteService} from './api/caching services/secteur-activite.service';
+import { CandidatService } from './api/candidat.service';
+import { EmployeurServiceService } from './api/employeur-service.service';
 import { Langue } from './models/Langue';
 import { SecteurActivite } from './models/secteur-activite';
 
@@ -12,9 +14,17 @@ import { SecteurActivite } from './models/secteur-activite';
 export class AppComponent {
   langues: Langue[]=[];
   secteurs:SecteurActivite[];
-  constructor(private langueService: LangueService,private secteurActiviteService: SecteurActiviteService) { 
-    this.findLangues();
-    this.findSecteurs();
+  constructor(
+    private langueService: LangueService,
+    private secteurActiviteService: SecteurActiviteService,
+    private employeurService: EmployeurServiceService,
+    private candidatService: CandidatService,
+    ) { 
+      this.findEmployeurs();
+      this.findCandidats();
+      this.findLangues();
+      this.findSecteurs();
+    
   }
 
   public findLangues(){
@@ -22,6 +32,12 @@ export class AppComponent {
   }
   public findSecteurs(){
     this.secteurActiviteService.getAll();
+  }
+  public findEmployeurs(){
+    this.employeurService.getAll();
+  }
+  public findCandidats() {
+    this.candidatService.getAll();
   }
   title = 'pfe';
 }

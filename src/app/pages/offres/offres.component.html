@@ -54,7 +54,7 @@
 
 <div class="card">
   <p></p>
-  <p-table #dt [value]="offres" [rows]="6" [paginator]="true" [globalFilterFields]="['exigence','genre','niveau_education','experience']"
+  <p-table #dt [value]="offres" [rows]="6" [paginator]="true" [globalFilterFields]="['exigence_emploi','genre','niveau_education','experience']"
            [(selection)]="selectedOffre" [rowHover]="true" dataKey="id"
            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
     <ng-template pTemplate="caption">
@@ -68,9 +68,10 @@
     <ng-template pTemplate="header">
       <tr>
         <th pSortableColumn="genre">Genre <p-sortIcon field="genre"></p-sortIcon></th>
-        <th pSortableColumn="exigence">Exigences<p-sortIcon field="exigence"></p-sortIcon></th>
+        <th pSortableColumn="exigence_emploi">Exigences<p-sortIcon field="exigence_emploi"></p-sortIcon></th>
         <th pSortableColumn="niveau_education">Niveau éducation<p-sortIcon field="niveau_education"></p-sortIcon></th>
         <th pSortableColumn="experience">Experience<p-sortIcon field="experience"></p-sortIcon></th>
+        <th pSortableColumn="created_at" >Date de création<p-sortIcon field="created_at"></p-sortIcon></th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-emploi>
@@ -80,6 +81,7 @@
         <td>{{emploi.exigence_emploi}}</td>
         <td>{{emploi.niveau_education}}</td>
         <td>{{emploi.experience}}</td>
+        <td>{{emploi.created_at |date:'MMM-dd hh:mm:ss' }}</td>
 
       </tr>
     </ng-template>

@@ -17,7 +17,8 @@ export class Employeur {
   active: boolean;
   secteur_id: number;
   emplois: Offre[];
-
+  created_at:any;
+  updated_at:any;
 
   constructor() {
     this.id = null;

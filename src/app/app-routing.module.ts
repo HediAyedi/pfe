@@ -11,6 +11,7 @@ import {TableDesCandidatsComponent} from './pages/table-des-candidats/table-des-
 import {SocieteCardsComponent} from './pages/societe-cards/societe-cards.component';
 import {CarouselSocieteComponent} from './parts/carousel-societe/carousel-societe.component';
 import {OffresComponent} from './pages/offres/offres.component';
+import { OffreComponent } from './pages/offres/offre/offre.component';
 import {NavbarComponent} from './parts/navbar/navbar.component';
 
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path: 'cards/employeurs', component: SocieteCardsComponent},
   {path: 'carousel', component: CarouselSocieteComponent},
   {path: 'offres', component: OffresComponent},
+  {path: 'offre/:offre_id', component: OffreComponent},
   {path: 'test', component: NavbarComponent}
 
 

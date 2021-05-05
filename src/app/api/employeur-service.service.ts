@@ -4,14 +4,18 @@ import {Observable} from 'rxjs';
 import {Employeur} from '../models/employeur';
 import {environment} from '../../environments/environment';
 
+const CACHE_KEY= 'employeursCache'; 
+
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeurServiceService {
   private url = environment.baseUrl;
   constructor(private httpClient: HttpClient) { }
-  public getAll(): Observable<Employeur[]> {
-    return this.httpClient.get<Employeur[]>(this.url + '/employeurs');
+  public getAll(){
+    this.httpClient.get<Employeur[]>(this.url + '/employeurs').subscribe(next =>{
+      localStorage[CACHE_KEY]=JSON.stringify(next);
+    });
   }
 
   public save(employeur: Employeur): Observable<any>{

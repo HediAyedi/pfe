@@ -54,6 +54,7 @@ import { OfficialNavAndSearchComponent } from './parts/official-nav-and-search/o
 import {SplitButtonModule} from 'primeng/splitbutton';
 import { OffresComponent } from './pages/offres/offres.component';
 import {DataViewModule} from 'primeng/dataview';
+import { OffreComponent } from './pages/offres/offre/offre.component';
 
 // import {ConfirmDialogModule} from 'primeng/confirmdialog';
 // import {ConfirmationService} from 'primeng/api';
@@ -73,7 +74,8 @@ import {DataViewModule} from 'primeng/dataview';
     SocieteCardsComponent,
     CarouselSocieteComponent,
     OfficialNavAndSearchComponent,
-    OffresComponent
+    OffresComponent,
+    OffreComponent
   ],
   imports: [
     BrowserModule,
@@ -120,7 +122,8 @@ import {DataViewModule} from 'primeng/dataview';
     // ConfirmDialogModule,
     // ConfirmationService
   ],
-  providers: [ProductService, MessageService, ConfirmationService],
+  providers: [
+    ProductService, MessageService, ConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

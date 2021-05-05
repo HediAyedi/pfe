@@ -4,6 +4,7 @@ import {Employeur} from '../../models/employeur';
 import {ProductService} from '../table-des-societe/productservice';
 import {EmployeurServiceService} from '../../api/employeur-service.service';
 import { Offre } from 'src/app/models/offre';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-societe-cards',
@@ -17,26 +18,18 @@ export class SocieteCardsComponent implements OnInit {
   offres: Offre[]=[];
 
   constructor(private primengConfig: PrimeNGConfig,
-              private productService: ProductService,
+              private router:Router,
               private messageService: MessageService,
               private confirmationService: ConfirmationService,
               private employeurService: EmployeurServiceService) { }
 
   ngOnInit(): void {
     this.primengConfig.ripple = true;
-    this.findAll();
+    this.employeurs=JSON.parse(localStorage["employeursCache"] || "[]");
     console.log("1" + this.employeurs);
   }
 
-  public findAll(){
-    this.employeurService.getAll()
-      .subscribe(data => {
-        this.employeurs = data;
-        console.log("2 : " + this.employeurs[1].nom);
-      }, err => {
-        console.log(err);
-      });
-  }
+  
 
   display: boolean = false;
 
@@ -46,6 +39,10 @@ export class SocieteCardsComponent implements OnInit {
     this.offres=employeur.emplois;
 
    } 
+   route(id){
+     console.log(id);
+     this.router.navigate(['/offre',id]);
+   }
    
     
 

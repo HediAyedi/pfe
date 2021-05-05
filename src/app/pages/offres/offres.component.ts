@@ -31,6 +31,7 @@ export class OffresComponent implements OnInit {
     this.primengConfig.ripple = true;
 
   }
+  
   // onSortChange(event) {
   //   const value = event.value;
   //

@@ -24,19 +24,12 @@ export class TableDesCandidatsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.findAll();
+    this.candidats=JSON.parse(localStorage["candidatsCache"] || "[]");
     console.log(this.candidats);
 
   }
 
-  public findAll() {
-    this.candidatService.getAll()
-      .subscribe(data => {
-        this.candidats = data;
-      }, err => {
-        console.log(err);
-      });
-  }
+  
 
   VerifierCandidat(candidat: Candidat, id: number) {
     candidat.verifie = !candidat.verifie;

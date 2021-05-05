@@ -4,6 +4,8 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Candidat} from '../models/candidat';
 
+const CACHE_KEY= 'candidatsCache'; 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,8 +13,11 @@ export class CandidatService {
   private url = environment.baseUrl;
   constructor(private httpClient: HttpClient) { }
 
-  public getAll(): Observable<Candidat[]> {
-    return this.httpClient.get<Candidat[]>(this.url + '/candidats');
+  
+  public getAll(){
+    this.httpClient.get<Candidat[]>(this.url + '/candidats').subscribe(next =>{
+      localStorage[CACHE_KEY]=JSON.stringify(next);
+    });
   }
 
   public save(candidat: Candidat): Observable<any>{

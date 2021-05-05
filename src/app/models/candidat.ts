@@ -11,6 +11,8 @@ export class Candidat {
   date_naissance: Date;
   verifie: boolean;
   active: boolean;
+  created_at:any;
+  updated_at:any;
 
 
   constructor() {

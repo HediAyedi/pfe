@@ -41,17 +41,9 @@ export class CarouselSocieteComponent implements OnInit {
 
   ngOnInit(): void {
     this.primengConfig.ripple = true;
-    this.findAll();
+    this.employeurs=JSON.parse(localStorage["employeursCache"] || "[]");
     console.log("1" + this.employeurs);
   }
-  public findAll(){
-    this.employeurService.getAll()
-      .subscribe(data => {
-        this.employeurs = data;
-        console.log("2 : " + this.employeurs[1].nom);
-      }, err => {
-        console.log(err);
-      });
-  }
+  
 
 }

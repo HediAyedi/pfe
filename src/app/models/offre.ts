@@ -11,6 +11,8 @@ export class Offre {
     employeur_id: number;
     emploiTypes: TypeOffre[];
     langues: Langue[];
+    created_at:any;
+    updated_at:any;
 
     constructor() {
         this.id = null;
