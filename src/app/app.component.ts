@@ -21,13 +21,11 @@ export class AppComponent {
     private employeurService: EmployeurServiceService,
     private candidatService: CandidatService,
     private offreService: OffreService,
-    ) { 
-      this.findOffres();
-      this.findEmployeurs();
-      this.findCandidats();
+    ) {
+
       this.findLangues();
       this.findSecteurs();
-      
+
   }
 
   public findLangues(){
@@ -36,14 +34,14 @@ export class AppComponent {
   public findSecteurs(){
     this.secteurActiviteService.getAll();
   }
-  public findEmployeurs(){
-    this.employeurService.getAllCache();
-  }
-  public findCandidats() {
-    this.candidatService.getAllCache();
-  }
-  public findOffres() {
-    this.offreService.getAllCache();
-  }
+  // public findEmployeurs(){
+  //   this.employeurService.getAllCache();
+  // }
+  // public findCandidats() {
+  //   this.candidatService.getAllCache();
+  // }
+  // public findOffres() {
+  //   this.offreService.getAllCache();
+  // }
   title = 'pfe';
 }

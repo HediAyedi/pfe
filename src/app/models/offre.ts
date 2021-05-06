@@ -9,8 +9,8 @@ export class Offre {
     exigence_emploi: string;
     active: boolean;
     employeur_id: number;
-    emploiTypes: TypeOffre[];
-    langues: Langue[];
+    emploiTypes: any;
+    langues: any;
     created_at:any;
     updated_at:any;
 

@@ -4,6 +4,7 @@ import {Employeur} from '../../models/employeur';
 import {MessageService, PrimeNGConfig} from 'primeng/api';
 import {showRuleCrashWarning} from 'tslint/lib/error';
 import { SecteurActivite } from 'src/app/models/secteur-activite';
+import { SecteurActiviteService } from 'src/app/api/caching services/secteur-activite.service';
 
 @Component({
   selector: 'app-formsociete',
@@ -20,17 +21,20 @@ export class FormsocieteComponent implements OnInit {
   secteurs: SecteurActivite[]=[];
   secteur= new SecteurActivite();
   constructor(private employeurService: EmployeurServiceService,
+              private secteurActiviteService: SecteurActiviteService,
               private messageService: MessageService,
               private primengConfig: PrimeNGConfig) {
-                this.secteurs=JSON.parse(localStorage["secteursCache"] || "[]");
+                
                 console.log(this.secteurs);
   }
 
   ngOnInit(): void {
     this.primengConfig.ripple = true;
+    this.secteurs=JSON.parse(localStorage["secteursCache"] || "[]");
     
 
   }
+
   showSuccess() {
     this.messageService.add({severity:'success', summary: 'Success', detail: this.message});
   }

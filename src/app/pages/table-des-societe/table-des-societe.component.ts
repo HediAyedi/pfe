@@ -55,6 +55,7 @@ export class TableDesSocieteComponent implements OnInit  {
     this.employeurs=JSON.parse(localStorage["employeursCache"] || "[]");
     if(this.employeurs.length==0){
       this.findAll();
+      this.employeurService.getAllCache();
     }
   }
 
@@ -91,6 +92,7 @@ export class TableDesSocieteComponent implements OnInit  {
         if (!res.succes) {
           this.message="modification effectué avec succés";
           localStorage.setItem("employeursCache",JSON.stringify(this.employeurs));
+          // this.employeurService.getAllCache();
         } else {
           this.message="erreuuur";
         }
@@ -106,6 +108,7 @@ export class TableDesSocieteComponent implements OnInit  {
         if (!res.succes) {
           this.message="modification effectué avec succés";
           localStorage.setItem("employeursCache",JSON.stringify(this.employeurs));
+          // this.employeurService.getAllCache();
         } else {
           this.message="erreuuur";
         }

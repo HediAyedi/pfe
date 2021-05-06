@@ -29,6 +29,7 @@ export class OffresComponent implements OnInit {
     this.offres=JSON.parse(localStorage["offresCache"] || "[]");
     if(this.offres.length==0){
       this.findAll();
+      this.offreService.getAllCache();
     }
     this.langues=JSON.parse(localStorage["languesCache"] || "[]");
     console.log(this.langues);

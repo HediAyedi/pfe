@@ -27,6 +27,7 @@ export class TableDesCandidatsComponent implements OnInit {
     this.candidats=JSON.parse(localStorage["candidatsCache"] || "[]");
     if(this.candidats.length==0){
       this.findAll();
+      this.candidatService.getAllCache();
     }
 
   }

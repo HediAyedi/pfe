@@ -29,6 +29,7 @@ export class SocieteCardsComponent implements OnInit {
 
     if(this.employeurs.length==0){
       this.findAll();
+      this.employeurService.getAllCache();
     }
     
   }

@@ -45,8 +45,9 @@ export class CarouselSocieteComponent implements OnInit {
 
     if(this.employeurs.length==0){
       this.findAll();
+      this.employeurService.getAllCache();
     }
-    
+
     console.log("1" + this.employeurs);
   }
 
