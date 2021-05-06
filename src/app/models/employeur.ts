@@ -1,3 +1,4 @@
+import { Adresse } from "./adresse";
 import { Offre } from "./offre";
 
 export class Employeur {
@@ -6,7 +7,7 @@ export class Employeur {
   mot_de_passe: string;
   mot_de_passe_confirmation: string;
   email: string;
-  adresse: string;
+  adresse: Adresse;
   nom_entreprise: string;
   description_entreprise: string;
   matricule: string;
@@ -25,7 +26,7 @@ export class Employeur {
     this.nom = '';
     this.mot_de_passe = '';
     this.mot_de_passe_confirmation = '';
-    this.adresse = '';
+    this.adresse = new Adresse();
     this.email = '';
     this.nom_entreprise = '';
     this.description_entreprise = '';

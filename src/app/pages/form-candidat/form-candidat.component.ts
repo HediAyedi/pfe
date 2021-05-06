@@ -55,7 +55,7 @@ export class FormCandidatComponent implements OnInit {
     console.log('candidat:', this.candidat);
     console.log('Image:', this.filedata);
     this.candidatService.save(this.candidat).subscribe(res => {
-        if (!res.succes) {
+        if (res.candidat) {
           this.message = 'Ajout effectué avec succés attends La vérification de votre compte ';
           this.candidatService.getAllCache();
           this.showSuccess();

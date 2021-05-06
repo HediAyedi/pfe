@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {EmployeurServiceService} from '../../api/employeur-service.service';
+import { SecteurActiviteService } from 'src/app/api/caching services/secteur-activite.service';
+import {AdresseService} from '../../api/adresse.service';
 import {Employeur} from '../../models/employeur';
+import {Adresse} from '../../models/adresse';
 import {MessageService, PrimeNGConfig} from 'primeng/api';
 import {showRuleCrashWarning} from 'tslint/lib/error';
 import { SecteurActivite } from 'src/app/models/secteur-activite';
-import { SecteurActiviteService } from 'src/app/api/caching services/secteur-activite.service';
+
 
 @Component({
   selector: 'app-formsociete',
@@ -19,9 +22,11 @@ export class FormsocieteComponent implements OnInit {
   employeur: Employeur = new Employeur();
   message: any ;
   secteurs: SecteurActivite[]=[];
+  adresse: Adresse= new Adresse();
   secteur= new SecteurActivite();
   constructor(private employeurService: EmployeurServiceService,
               private secteurActiviteService: SecteurActiviteService,
+              private adresseService: AdresseService,
               private messageService: MessageService,
               private primengConfig: PrimeNGConfig) {
                 
@@ -47,14 +52,28 @@ export class FormsocieteComponent implements OnInit {
   }
   ajouter() {
 
-    console.log('emplyeur:', this.employeur);
+    console.log('EmployeuR:', this.employeur);
     this.employeur.secteur_id=this.secteur.id;
+    this.adresse=this.employeur.adresse;
+    console.log("ADRESSE: ",this.adresse);
     this.employeurService.save(this.employeur).subscribe(res => {
-        if (!res.succes) {
+        if (res.employeur) {
           this.message = 'Ajout effectué avec succés attends La vérification de votre compte ';
           this.employeurService.getAllCache();
           this.showSuccess();
-          console.log(this.message);
+          console.log(res.employeur.id);
+          this.adresse.employeur_id=res.employeur.id;
+          this.adresseService.save(this.adresse).subscribe(res => {
+            console.log(res)
+            if (res.adresse) {
+              this.message = 'Ajout effectué avec succés attends La vérification de votre compte ';
+              this.showSuccess();
+            }
+          }, err => {
+            this.message ="not affected";
+            console.log(this.message);
+          }
+        );
         }
       }, err => {
         this.message = err.error.message;

@@ -9,10 +9,10 @@ export class Adresse {
     candidat_id:number;
     constructor(){
         this.id=null;
-        this.pays=null;
-        this.governat=null;
-        this.ville=null;
-        this.adresse=null;
+        this.pays='';
+        this.governat='';
+        this.ville='';
+        this.adresse='';
         this.code_postal=null;
         this.employeur_id=null;
         this.candidat_id=null;
