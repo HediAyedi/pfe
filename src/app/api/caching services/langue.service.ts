@@ -16,7 +16,7 @@ export class LangueService {
   private url = environment.baseUrl;
   constructor(private httpClient: HttpClient) { }
 
-  public getAll(){
+  public async getAll(){
     this.httpClient.get<Langue[]>(this.url + '/langues').subscribe(next =>{
       localStorage[CACHE_KEY]=JSON.stringify(next);
     });

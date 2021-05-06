@@ -48,9 +48,9 @@ export class TableDesCandidatsComponent implements OnInit {
 
     this.candidatService.update(candidat, id)
       .subscribe(res => {
-        if (res.succes) {
+        if (res.id) {
           this.message = "modification effectué avec succés";
-
+          localStorage.setItem("candidatsCache",JSON.stringify(this.candidats));
 
         } else {
           this.message = "erreuuur";

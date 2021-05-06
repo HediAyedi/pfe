@@ -61,7 +61,8 @@ export class FormsocieteComponent implements OnInit {
           this.message = 'Ajout effectué avec succés attends La vérification de votre compte ';
           this.employeurService.getAllCache();
           this.showSuccess();
-          console.log(res.employeur.id);
+
+          // ajout adresse 
           this.adresse.employeur_id=res.employeur.id;
           this.adresseService.save(this.adresse).subscribe(res => {
             console.log(res)
