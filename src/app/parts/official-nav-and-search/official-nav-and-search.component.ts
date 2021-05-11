@@ -152,7 +152,8 @@ export class OfficialNavAndSearchComponent implements OnInit {
       },
       {
         label: 'Blog',
-        icon: 'las la-blog fa-lg'
+        icon: 'las la-blog fa-lg',
+        routerLink: ['/blog/home']
       }
     ];
     this.boutton = [
