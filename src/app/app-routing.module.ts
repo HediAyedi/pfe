@@ -13,6 +13,8 @@ import {CarouselSocieteComponent} from './parts/carousel-societe/carousel-societ
 import {OffresComponent} from './pages/offres/offres.component';
 import { OffreComponent } from './pages/offres/offre/offre.component';
 import {NavbarComponent} from './parts/navbar/navbar.component';
+import {ContactComponent} from './parts/contact/contact.component';
+import {BlogFormComponent} from './pages/blog-form/blog-form.component';
 
 const routes: Routes = [
   {path: 'draganddrop', component: DraganddropComponent},
@@ -27,7 +29,10 @@ const routes: Routes = [
   {path: 'carousel', component: CarouselSocieteComponent},
   {path: 'offres', component: OffresComponent},
   {path: 'offre/:offre_id', component: OffreComponent},
-  {path: 'test', component: NavbarComponent}
+  {path: 'test', component: NavbarComponent},
+  {path: 'contact-us', component: ContactComponent},
+  {path: 'blog/form', component: BlogFormComponent}
+
 
 
 

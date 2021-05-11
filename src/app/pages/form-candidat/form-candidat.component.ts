@@ -10,32 +10,32 @@ import {MessageService, PrimeNGConfig} from 'primeng/api';
 })
 export class FormCandidatComponent implements OnInit {
 
-  candidat: Candidat = new Candidat();
-  message: any;
-  civilites=["M","Mme","Mlle"];
-
   constructor(private candidatService: CandidatService,
               private messageService: MessageService,
               private primengConfig: PrimeNGConfig) {
   }
 
-  ngOnInit(): void {
-    this.primengConfig.ripple = true;
-  }
+  candidat: Candidat = new Candidat();
+  message: any;
+  civilites = ['M', 'Mme', 'Mlle'];
 
 
 //
 //      IMAGE UPLOAD
 //
   /* Variabe to store file data */
-  filedata=null;
+  filedata = null;
+  myFormData = new FormData();
+
+  ngOnInit(): void {
+    this.primengConfig.ripple = true;
+  }
   /* File onchange event */
   imageEvent(e){
       this.filedata = e.target.files[0];
-      this.candidat.image=this.filedata;
+      this.candidat.image = this.filedata;
   }
-  myFormData = new FormData();
-  
+
 
 
 
@@ -45,9 +45,9 @@ export class FormCandidatComponent implements OnInit {
 
   showWarn(err) {
     this.messageService.add({severity: 'warn', summary: 'Warn', detail: this.message});
-    if(err.error.errors.email){this.messageService.add({severity: 'warn', summary: 'Warn', detail: err.error.errors.email});}
-    if(err.error.errors.mot_de_passe){this.messageService.add({severity: 'warn', summary: 'Warn', detail: err.error.errors.mot_de_passe});}
-    if(err.error.errors.civilite){this.messageService.add({severity: 'warn', summary: 'Warn', detail: err.error.errors.civilite});}
+    if (err.error.errors.email){this.messageService.add({severity: 'warn', summary: 'Warn', detail: err.error.errors.email}); }
+    if (err.error.errors.mot_de_passe){this.messageService.add({severity: 'warn', summary: 'Warn', detail: err.error.errors.mot_de_passe}); }
+    if (err.error.errors.civilite){this.messageService.add({severity: 'warn', summary: 'Warn', detail: err.error.errors.civilite}); }
   }
 
   ajouter() {

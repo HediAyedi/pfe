@@ -60,7 +60,9 @@ import { OfficialNavAndSearchComponent } from './parts/official-nav-and-search/o
 import { OffresComponent } from './pages/offres/offres.component';
 import {DataViewModule} from 'primeng/dataview';
 import { OffreComponent } from './pages/offres/offre/offre.component';
-
+import { ContactComponent } from './parts/contact/contact.component';
+import {BlogHomeComponent} from './pages/blog-home/blog-home.component';
+import { BlogFormComponent } from './pages/blog-form/blog-form.component';
 // import {ConfirmDialogModule} from 'primeng/confirmdialog';
 // import {ConfirmationService} from 'primeng/api';
 @NgModule({
@@ -80,7 +82,10 @@ import { OffreComponent } from './pages/offres/offre/offre.component';
     CarouselSocieteComponent,
     OfficialNavAndSearchComponent,
     OffresComponent,
-    OffreComponent
+    OffreComponent,
+    ContactComponent,
+    BlogHomeComponent,
+    BlogFormComponent
   ],
   imports: [
     BrowserModule,
