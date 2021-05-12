@@ -19,7 +19,6 @@ import {BreadcrumbModule} from 'primeng/breadcrumb';
 import {CardModule} from 'primeng/card';
 import {StepsModule} from 'primeng/steps';
 import {ToastModule} from 'primeng/toast';
-import {LoginComponent} from './parts/login/login.component';
 import {NavbarComponent} from './parts/navbar/navbar.component';
 import {ProgressBarModule} from 'primeng/progressbar';
 import {DialogModule} from 'primeng/dialog';
@@ -55,14 +54,23 @@ import { SocieteCardsComponent } from './pages/societe-cards/societe-cards.compo
 import { CarouselSocieteComponent } from './parts/carousel-societe/carousel-societe.component';
 import {CarouselModule} from 'primeng/carousel';
 import {MenubarModule} from 'primeng/menubar';
+import { TabMenuModule } from 'primeng/tabmenu';
+import {OverlayPanelModule} from 'primeng/overlaypanel';
 import { OfficialNavAndSearchComponent } from './parts/official-nav-and-search/official-nav-and-search.component';
 
 import { OffresComponent } from './pages/offres/offres.component';
 import {DataViewModule} from 'primeng/dataview';
 import { OffreComponent } from './pages/offres/offre/offre.component';
+import { LoginEmployeurComponent } from './parts/logins/login-employeur/login-employeur.component';
+import { LoginCandidatComponent } from './parts/logins/login-candidat/login-candidat.component';
+import { AdminComponent } from './admin/admin.component';
 import { ContactComponent } from './parts/contact/contact.component';
 import {BlogHomeComponent} from './pages/blog-home/blog-home.component';
 import { BlogFormComponent } from './pages/blog-form/blog-form.component';
+import { HomeComponent } from './pages/employeur/home/home.component';
+import { ProfileEmployeurComponent } from './pages/employeur/profile-employeur/profile-employeur.component';
+import { OffresEmployeurComponent } from './pages/employeur/offres-employeur/offres-employeur.component';
+
 // import {ConfirmDialogModule} from 'primeng/confirmdialog';
 // import {ConfirmationService} from 'primeng/api';
 @NgModule({
@@ -72,7 +80,6 @@ import { BlogFormComponent } from './pages/blog-form/blog-form.component';
     DashboardComponent,
     CvComponent,
     FormComponent,
-    LoginComponent,
     NavbarComponent,
     TableDesSocieteComponent,
     FormsocieteComponent,
@@ -83,9 +90,16 @@ import { BlogFormComponent } from './pages/blog-form/blog-form.component';
     OfficialNavAndSearchComponent,
     OffresComponent,
     OffreComponent,
+    LoginEmployeurComponent,
+    LoginCandidatComponent,
+    AdminComponent,
     ContactComponent,
+    BlogFormComponent,
     BlogHomeComponent,
-    BlogFormComponent
+    HomeComponent,
+    ProfileEmployeurComponent,
+    OffresEmployeurComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -129,6 +143,8 @@ import { BlogFormComponent } from './pages/blog-form/blog-form.component';
     MenubarModule,
     SplitButtonModule,
     DataViewModule,
+    TabMenuModule,
+    OverlayPanelModule,
     CascadeSelectModule,
     // ConfirmDialogModule,
     // ConfirmationService

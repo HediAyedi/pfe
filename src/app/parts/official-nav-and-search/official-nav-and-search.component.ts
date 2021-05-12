@@ -9,6 +9,7 @@ import {MenuItem} from 'primeng/api';
 export class OfficialNavAndSearchComponent implements OnInit {
   items: MenuItem[];
   boutton: MenuItem[];
+  show: boolean;
 
   constructor() { }
 
@@ -152,37 +153,37 @@ export class OfficialNavAndSearchComponent implements OnInit {
       },
       {
         label: 'Blog',
-        icon: 'las la-blog fa-lg',
-        routerLink: ['/blog/home']
+        icon: 'las la-blog fa-lg'
       }
     ];
     this.boutton = [
       {
-        label: 'Candidat', icon: 'las la-graduation-cap fa-lg'
+        label: 'Candidat', icon: 'las la-graduation-cap fa-lg',
+        routerLink: ['/loginCandidat'],
       },
       {
-        label: 'Employeur',  icon: 'las la-user-tie fa-lg'
+        label: 'Employeur',  icon: 'las la-user-tie fa-lg',
+        routerLink: ['/loginEmployeur'],
       },
       {separator: true},
-      {separator: true},
+      {
+        label: 'Pas de Compte : S\'inscrire', icon: 'pi pi-info'
+      },
 
       {separator: true},
       {
-        label: 'Pas de Compte : Signup', icon: 'pi pi-info'
-      },
-
-      {separator: true},
-      {
-        label: 'Signup us candidat', icon: 'las la-graduation-cap fa-lg'  ,
+        label: 'S\'inscrire en tant qu\'un candidat', icon: 'las la-graduation-cap fa-lg'  ,
         routerLink: ['/candidat'],
       },
-      {separator: true},
       {
-        label: 'Signup us Employeur', icon: 'las la-user-tie fa-lg'  ,
-        routerLink: ['/societe'],
+        label: 'S\'inscrire en tant qu\'un employeur', icon: 'las la-user-tie fa-lg'  ,
+        routerLink: ['/employeur'],
       },
 
     ];
+  }
+  showLogin(){
+    this.show=!this.show;
   }
 }
 

@@ -50,7 +50,7 @@ export class SocieteCardsComponent implements OnInit {
     this.display = true;
     this.offres=employeur.emplois;
 
-   } 
+   }
    route(id){
      console.log(id);
      this.router.navigate(['/offre',id]);

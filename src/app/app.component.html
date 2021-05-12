@@ -1,3 +1,7 @@
-
-<app-official-nav-and-search></app-official-nav-and-search>
-<router-outlet></router-outlet>
+<div *ngIf="isAdmin(), else user">
+  <app-admin></app-admin>
+</div>
+<ng-template #user>
+  <app-official-nav-and-search></app-official-nav-and-search>
+  <router-outlet></router-outlet>
+</ng-template>
