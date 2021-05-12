@@ -106,7 +106,7 @@ Ajouter une description
         <td pEditableColumn>
           <p-cellEditor>
             <ng-template pTemplate="input">
-              <input pInputText type="text" [(ngModel)]="blog.logo" >
+              <input pInputText type="text" [(ngModel)]="blog.logo" required>
             </ng-template>
             <ng-template pTemplate="output">
               {{blog.logo}}
@@ -128,9 +128,9 @@ Ajouter une description
           <!--<button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow icon="pi pi-times" (click)="onRowEditCancel(blog, ri)" class="p-button-rounded p-button-text p-button-danger"></button>-->
 
         <td>
-          <input type="button" icon="pi pi-pencil" pButton pRipple class="p-button-rounded p-mr-2" style="background-color: darkseagreen" (click)="onRowEditSave(blog,blog.id)" >
+          <input type="button" pButton pRipple class="p-button-rounded" style="background-color: darkseagreen" (click)="onRowEditSave(blog,blog.id)" >
         </td>
-        <td><input type="button" icon="pi pi-trash" pButton pRipple class="p-button-rounded " style="background-color: darkred;" (click)="delete(blog.id)" icon="pi pi-check"></td>
+        <td><input type="button" pButton pRipple class="p-button-rounded " style="background-color: darkred;" (click)="delete(blog.id)" icon="pi pi-check"></td>
 
       </tr>
     </ng-template>

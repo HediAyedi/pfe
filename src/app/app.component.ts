@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import {LangueService} from './api/caching services/langue.service';
 import {SecteurActiviteService} from './api/caching services/secteur-activite.service';
 import { CandidatService } from './api/candidat.service';
@@ -22,7 +21,6 @@ export class AppComponent {
     private employeurService: EmployeurServiceService,
     private candidatService: CandidatService,
     private offreService: OffreService,
-    private router: Router,
     ) {
 
       this.findLangues();
@@ -46,8 +44,4 @@ export class AppComponent {
   //   this.offreService.getAllCache();
   // }
   title = 'pfe';
-
-  isAdmin() {
-    return this.router.url.includes("/admin");
-}
 }

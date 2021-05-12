@@ -13,42 +13,30 @@ import {CarouselSocieteComponent} from './parts/carousel-societe/carousel-societ
 import {OffresComponent} from './pages/offres/offres.component';
 import { OffreComponent } from './pages/offres/offre/offre.component';
 import {NavbarComponent} from './parts/navbar/navbar.component';
-import { LoginEmployeurComponent } from './parts/logins/login-employeur/login-employeur.component';
-import { LoginCandidatComponent } from './parts/logins/login-candidat/login-candidat.component';
-import { BlogFormComponent } from './pages/blog-form/blog-form.component';
-import { BlogHomeComponent } from './pages/blog-home/blog-home.component';
-import { ContactComponent } from './parts/contact/contact.component';
+import {ContactComponent} from './parts/contact/contact.component';
+import {BlogFormComponent} from './pages/blog-form/blog-form.component';
+import {BlogHomeComponent} from './pages/blog-home/blog-home.component';
 
 const routes: Routes = [
-
-  {path: 'test', component: NavbarComponent},
   {path: 'draganddrop', component: DraganddropComponent},
-
-
   {path: 'admin', component: DashboardComponent},
   {path: 'cv', component: CvComponent},
   {path: 'form', component: FormComponent},
-
-  {path: 'employeur', component: FormsocieteComponent},
+  {path: 'table/employeurs', component: TableDesSocieteComponent},
+  {path: 'societe', component: FormsocieteComponent},
   {path: 'candidat', component: FormCandidatComponent},
-
-  {path: 'admin/table/employeurs', component: TableDesSocieteComponent},
-  {path: 'admin/table/candidats', component: TableDesCandidatsComponent},
-  {path: 'admin/blog/form', component: BlogFormComponent},
-  {path: 'admin/blog/home', component: BlogHomeComponent},
-
+  {path: 'table/candidats', component: TableDesCandidatsComponent},
   {path: 'cards/employeurs', component: SocieteCardsComponent},
   {path: 'carousel', component: CarouselSocieteComponent},
-
   {path: 'offres', component: OffresComponent},
   {path: 'offre/:offre_id', component: OffreComponent},
-  
-
-  {path: 'loginEmployeur', component: LoginEmployeurComponent},
-  {path: 'loginCandidat', component: LoginCandidatComponent},
-
-
+  {path: 'test', component: NavbarComponent},
   {path: 'contact-us', component: ContactComponent},
+  {path: 'blog/form', component: BlogFormComponent},
+  {path: 'blog/home', component: BlogHomeComponent}
+
+
+
 
 
 

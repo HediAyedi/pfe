@@ -24,11 +24,6 @@ export class CandidatService {
     return this.httpClient.get<Candidat[]>(this.url + '/candidats');
   }
 
-
-  public logIn(candidat: Candidat): Observable<any>{
-    return this.httpClient.post(this.url + '/loginCandidat', candidat);
-  }
-
   public save(candidat: Candidat): Observable<any>{
     return this.httpClient.post(this.url + '/registerCandidat', candidat);
   }
