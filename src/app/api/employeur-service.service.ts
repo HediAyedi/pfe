@@ -23,6 +23,10 @@ export class EmployeurServiceService {
     return this.httpClient.get<Employeur[]>(this.url + '/employeurs');
   }
 
+  public logIn(employeur: Employeur): Observable<any>{
+    return this.httpClient.post(this.url + '/loginEmployeur', employeur);
+  }
+
   public save(employeur: Employeur): Observable<any>{
     return this.httpClient.post(this.url + '/registerEmployeur', employeur);
   }

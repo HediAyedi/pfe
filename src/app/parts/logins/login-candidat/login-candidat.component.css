@@ -12,6 +12,7 @@ body {
 }
 
 a {
+  text-align: center;
   color: #92badd;
   display:inline-block;
   text-decoration: none;
@@ -63,6 +64,9 @@ h2 {
   text-align: center;
   -webkit-border-radius: 0 0 10px 10px;
   border-radius: 0 0 10px 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 
