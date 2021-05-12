@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { EmployeurServiceService } from 'src/app/api/employeur-service.service';
 import { Employeur } from 'src/app/models/employeur';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-login-employeur',
@@ -12,7 +12,7 @@ export class LoginEmployeurComponent implements OnInit {
 
   constructor(
     private employeurService: EmployeurServiceService,
-    private router: Router
+    private router: Router,
     ) { }
 
     employeur: Employeur = new Employeur();
@@ -27,9 +27,11 @@ export class LoginEmployeurComponent implements OnInit {
         const CACHE_KEY= 'candidatsCache'; 
         localStorage.setItem("employeur",JSON.stringify(res.employeur));
         localStorage.setItem("token",res.token);
-        if(this.router.url.includes("loginCandidat")){
-          this.router.navigate(['/offres']);
-        }
+        // if(this.router.url.includes("loginCandidat")){
+        //   this.router.navigate(['/offres']);
+        // }
+        this.router.navigate(['employeur/home']);
+
       }
     }
       );

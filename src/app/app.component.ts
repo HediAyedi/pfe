@@ -50,4 +50,8 @@ export class AppComponent {
   isAdmin() {
     return this.router.url.includes("/admin");
 }
+
+  isEmployeur() {
+    return this.router.url.includes("/employeur");
+  }
 }

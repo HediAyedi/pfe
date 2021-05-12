@@ -23,7 +23,7 @@ export class OfficialNavAndSearchComponent implements OnInit {
       {
         label: 'Enreprise',
         icon: 'las la-industry fa-lg',
-        routerLink: ['/cards/employeurs'],
+        routerLink: ['/cardsEmployeurs'],
 
       },
       {
@@ -153,7 +153,9 @@ export class OfficialNavAndSearchComponent implements OnInit {
       },
       {
         label: 'Blog',
-        icon: 'las la-blog fa-lg'
+        icon: 'las la-blog fa-lg',
+        routerLink: ['/blog'],
+
       }
     ];
     this.boutton = [
@@ -173,11 +175,11 @@ export class OfficialNavAndSearchComponent implements OnInit {
       {separator: true},
       {
         label: 'S\'inscrire en tant qu\'un candidat', icon: 'las la-graduation-cap fa-lg'  ,
-        routerLink: ['/candidat'],
+        routerLink: ['/SignUpCandidat'],
       },
       {
         label: 'S\'inscrire en tant qu\'un employeur', icon: 'las la-user-tie fa-lg'  ,
-        routerLink: ['/employeur'],
+        routerLink: ['/SignUpEmployeur'],
       },
 
     ];

@@ -70,6 +70,7 @@ import { BlogFormComponent } from './pages/blog-form/blog-form.component';
 import { HomeComponent } from './pages/employeur/home/home.component';
 import { ProfileEmployeurComponent } from './pages/employeur/profile-employeur/profile-employeur.component';
 import { OffresEmployeurComponent } from './pages/employeur/offres-employeur/offres-employeur.component';
+import { WelcomeComponent } from './pages/employeur/welcome/welcome.component';
 
 // import {ConfirmDialogModule} from 'primeng/confirmdialog';
 // import {ConfirmationService} from 'primeng/api';
@@ -99,6 +100,7 @@ import { OffresEmployeurComponent } from './pages/employeur/offres-employeur/off
     HomeComponent,
     ProfileEmployeurComponent,
     OffresEmployeurComponent,
+    WelcomeComponent,
 
   ],
   imports: [

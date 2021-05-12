@@ -18,6 +18,9 @@ import { LoginCandidatComponent } from './parts/logins/login-candidat/login-cand
 import { BlogFormComponent } from './pages/blog-form/blog-form.component';
 import { BlogHomeComponent } from './pages/blog-home/blog-home.component';
 import { ContactComponent } from './parts/contact/contact.component';
+import {HomeComponent} from './pages/employeur/home/home.component';
+import {OffresEmployeurComponent} from './pages/employeur/offres-employeur/offres-employeur.component';
+import {ProfileEmployeurComponent} from './pages/employeur/profile-employeur/profile-employeur.component';
 
 const routes: Routes = [
 
@@ -29,26 +32,31 @@ const routes: Routes = [
   {path: 'cv', component: CvComponent},
   {path: 'form', component: FormComponent},
 
-  {path: 'employeur', component: FormsocieteComponent},
-  {path: 'candidat', component: FormCandidatComponent},
+  {path: 'SignUpEmployeur', component: FormsocieteComponent},
+  {path: 'SignUpCandidat', component: FormCandidatComponent},
 
-  {path: 'admin/table/employeurs', component: TableDesSocieteComponent},
+  {path: 'admin/tableEmployeurs', component: TableDesSocieteComponent},
   {path: 'admin/table/candidats', component: TableDesCandidatsComponent},
   {path: 'admin/blog/form', component: BlogFormComponent},
   {path: 'admin/blog/home', component: BlogHomeComponent},
 
-  {path: 'cards/employeurs', component: SocieteCardsComponent},
+  {path: 'cardsEmployeurs', component: SocieteCardsComponent},
   {path: 'carousel', component: CarouselSocieteComponent},
 
   {path: 'offres', component: OffresComponent},
   {path: 'offre/:offre_id', component: OffreComponent},
-  
+
 
   {path: 'loginEmployeur', component: LoginEmployeurComponent},
   {path: 'loginCandidat', component: LoginCandidatComponent},
 
+  {path: 'employeur/home', component: HomeComponent},
+  {path: 'employeur/offres', component: OffresEmployeurComponent},
+  {path: 'employeur/profil', component: ProfileEmployeurComponent},
+
 
   {path: 'contact-us', component: ContactComponent},
+  {path: 'blog', component: BlogHomeComponent},
 
 
 
