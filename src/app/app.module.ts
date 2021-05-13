@@ -71,6 +71,11 @@ import { HomeComponent } from './pages/employeur/home/home.component';
 import { ProfileEmployeurComponent } from './pages/employeur/profile-employeur/profile-employeur.component';
 import { OffresEmployeurComponent } from './pages/employeur/offres-employeur/offres-employeur.component';
 import { WelcomeComponent } from './pages/employeur/welcome/welcome.component';
+import { TestsComponent } from './admin/tests/tests.component';
+import { QuestionsComponent } from './admin/questions/questions.component';
+import { TestComponent } from './admin/test/test.component';
+import { QuestionComponent } from './admin/question/question.component';
+import { ReponsesComponent } from './admin/reponses/reponses.component';
 
 // import {ConfirmDialogModule} from 'primeng/confirmdialog';
 // import {ConfirmationService} from 'primeng/api';
@@ -101,6 +106,11 @@ import { WelcomeComponent } from './pages/employeur/welcome/welcome.component';
     ProfileEmployeurComponent,
     OffresEmployeurComponent,
     WelcomeComponent,
+    TestsComponent,
+    QuestionsComponent,
+    TestComponent,
+    QuestionComponent,
+    ReponsesComponent,
 
   ],
   imports: [
