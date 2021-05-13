@@ -1,1 +1,86 @@
-<p>profile-employeur works!</p>
+
+<p-toast></p-toast>
+
+<div class="all">
+  <h1 class="ctil">Modifier Votre Société</h1>
+  <form class="box">
+    <div class="p-fluid p-formgrid p-grid ">
+      <div class="p-field p-col-12 p-md-6 ">
+        <label for="nom">Nom de la Société</label>
+        <input id="nom" type="text" pInputText [(ngModel)]="employeur.nom_entreprise" name="nom" #nom="ngModel" required pTooltip="Taper le nom de l'entreprise" tooltipPosition="top" tooltipEvent="focus" showDelay="1000" hideDelay="500">
+      </div>
+      <div class="p-field p-col-12 p-md-6 p-input-icon-right">
+        <label for="nomres">Nom de le respenable</label>
+        <input id="nomres" type="text" pInputText [(ngModel)]="employeur.nom" name="nomres" #nomres="ngModel" required pTooltip="Taper le nom de le responable" tooltipPosition="right" tooltipEvent="focus" showDelay="1000" hideDelay="500" >
+      </div>
+      <div class="p-field p-col-12 p-md-6">
+        <label for="email">Email</label>
+        <input id="email" type="text"  pInputText width="50px" [(ngModel)]="employeur.email" name="email" #email="ngModel" required pTooltip="Taper un email avec un bon format" tooltipPosition="right" tooltipEvent="focus" showDelay="1000" hideDelay="500">
+      </div>
+      <div class="p-field p-col-12">
+        <label for="mdp">Mot de passe</label>
+        <p-password id="mdp" type="text" rows="1" [(ngModel)]="employeur.mot_de_passe" name="mdp" #mdp="ngModel" required [toggleMask]="true" ></p-password>
+      </div>
+      <!--<div class="p-field p-col-12">-->
+        <!--<label for="mdp2">Mot de passe Confirmation</label>-->
+        <!--<input id="mdp2" type="text" rows="1" pInputText [(ngModel)]="employeur.mot_de_passe_confirmation" name="mdp2" #mdp2="ngModel" required pTooltip="Taper un mot de passe exact comme le precedent" tooltipPosition="right" tooltipEvent="focus" showDelay="1000" hideDelay="500">-->
+      <!--</div>-->
+
+      <div class="p-field p-col-12">
+        <label for="logo">Logo</label>
+        <input id="logo" type="text" rows="1" pInputText [(ngModel)]="employeur.logo" name="logo" #logo="ngModel" required pTooltip="Taper le url de img" tooltipPosition="right" tooltipEvent="focus" showDelay="1000" hideDelay="500">
+      </div>
+
+
+      <div class="p-field p-col-12 p-md-6">
+        <label for="code">Matricule fiscale
+        </label>
+        <input id="code" type="text" pInputText aria-describedby="username-help" [(ngModel)]="employeur.matricule" name="code" #code="ngModel" required pTooltip="La matricule doit être existante" tooltipPosition="right" tooltipEvent="focus" showDelay="1000" hideDelay="500">
+      </div>
+      <div class="p-field p-col-12 p-md-3">
+        <label for="site">site web</label>
+        <input id="site" type="text" rows="1" pInputText [(ngModel)]="employeur.site_web" name="site" #site="ngModel" required>
+      </div>
+      <div class="p-field p-col-12 p-md-3">
+        <label for="telephone">telephone</label>
+        <input type="number" id="telephone" pInputText [(ngModel)]="employeur.telephone" name="telephone" #telephone="ngModel" required pTooltip="Le numero doit être composé de 8 chiffres" tooltipPosition="right" tooltipEvent="focus" showDelay="1000" hideDelay="500">
+        <!--<input id="telephone" type="number" pInputText min="71000000" [(ngModel)]="employeur.telephone" name="telephone" #telephone="ngModel" required pTooltip="Le numero doit être composé de 8 chiffres" tooltipPosition="right" tooltipEvent="focus" showDelay="1000" hideDelay="500">-->
+      </div>
+      <div class="p-field p-col-12 p-md-3">
+
+        <label for="desc">Description Entreprise</label>
+        <textarea id="desc" [rows]="3" [cols]="30" pInputTextarea autoResize="autoResize" [(ngModel)]="employeur.description_entreprise" name="desc" #desc="ngModel" required></textarea>
+        <!--<input id="desc" type="text" pInputText [(ngModel)]="employeur.description_entreprise" name="desc" #desc="ngModel" required>-->
+      </div>
+
+      <div class="p-field p-col-12 p-md-3">
+        <p-dropdown [options]="secteurs" [(ngModel)]="employeur.secteur_id" placeholder="Choisissez un secteur d'activités" id="secteur" name="secteur" optionLabel="secteur"[style]="{'minWidth': '14rem'}"></p-dropdown>
+      </div>
+
+      <!--<div class="p-field p-col-12 p-md-3">-->
+        <!--<label for="pays">Pays</label>-->
+        <!--<input id="pays" type="text" rows="1" pInputText [(ngModel)]="employeur.adresse.pays" name="pays" #pays="ngModel" required>-->
+      <!--</div>-->
+      <!--<div class="p-field p-col-12 p-md-3">-->
+        <!--<label for="governat">Governat</label>-->
+        <!--<input id="governat" type="text" pInputText [(ngModel)]="employeur.adresse.governat" name="governat" #governat="ngModel" required>-->
+      <!--</div>-->
+      <!--<div class="p-field p-col-12 p-md-3">-->
+        <!--<label for="ville">Ville</label>-->
+        <!--<input id="ville" type="text" rows="1" pInputText [(ngModel)]="employeur.adresse.ville" name="ville" #ville="ngModel" required>-->
+      <!--</div>-->
+
+      <!--<div class="p-field p-col-12 p-md-3">-->
+        <!--<label for="adresse">Adresse</label>-->
+        <!--<input id="adresse" type="text" pInputText [(ngModel)]="employeur.adresse.adresse" name="adresse" #adresse="ngModel" required>-->
+      <!--</div>-->
+
+      <!--<div class="p-field p-col-12 p-md-3">-->
+        <!--<label for="code_postal">Code postal</label>-->
+        <!--<input id="code_postal" type="number" pInputText [(ngModel)]="employeur.adresse.code_postal" name="code_postal" #code_postal="ngModel" required>-->
+      <!--</div>-->
+    </div>
+  </form>
+
+  <button class="big-button"  (click)="Modifier(employeur, employeur.id)" [disabled]="nom.invalid">Modifier</button>
+</div>

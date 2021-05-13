@@ -25,6 +25,12 @@
     <input id="mdp2" type="text" rows="1" pInputText [(ngModel)]="employeur.mot_de_passe_confirmation" name="mdp2" #mdp2="ngModel" required pTooltip="Taper un mot de passe exact comme le precedent" tooltipPosition="right" tooltipEvent="focus" showDelay="1000" hideDelay="500">
   </div>
 
+  <div class="p-field p-col-12">
+    <label for="logo">Logo</label>
+    <input id="logo" type="text" rows="1" pInputText [(ngModel)]="employeur.logo" name="logo" #logo="ngModel" required pTooltip="Taper le url de img" tooltipPosition="right" tooltipEvent="focus" showDelay="1000" hideDelay="500">
+  </div>
+
+
   <div class="p-field p-col-12 p-md-6">
     <label for="code">Matricule fiscale
     </label>
