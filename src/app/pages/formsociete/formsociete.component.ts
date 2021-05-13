@@ -49,6 +49,9 @@ export class FormsocieteComponent implements OnInit {
     if(err.error.errors.mot_de_passe){this.messageService.add({severity: 'warn', summary: 'Warn', detail: err.error.errors.mot_de_passe});}
     if(err.error.errors.matricule){this.messageService.add({severity: 'warn', summary: 'Warn', detail: err.error.errors.matricule});}
     if(err.error.errors.site_web){this.messageService.add({severity: 'warn', summary: 'Warn', detail: err.error.errors.site_web});}
+    if(err.error.errors.telephone){this.messageService.add({severity: 'warn', summary: 'Warn', detail: err.error.errors.telephone});}
+    if(err.error.errors.secteur_id){this.messageService.add({severity: 'warn', summary: 'Warn', detail: err.error.errors.secteur_id});}
+    if(err.error.errors.description_entreprise){this.messageService.add({severity: 'warn', summary: 'Warn', detail: err.error.errors.description_entreprise});}
   }
   ajouter() {
 
@@ -66,10 +69,6 @@ export class FormsocieteComponent implements OnInit {
           this.adresse.employeur_id=res.employeur.id;
           this.adresseService.save(this.adresse).subscribe(res => {
             console.log(res)
-            if (res.adresse) {
-              this.message = 'Ajout effectué avec succés attends La vérification de votre compte ';
-              this.showSuccess();
-            }
           }, err => {
             this.message ="not affected";
             console.log(this.message);

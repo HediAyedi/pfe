@@ -68,6 +68,7 @@ header{
   padding: 1rem 1.5rem;
   box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
   position: fixed;
+  background-color: #ffffff;
   left: 345px;
   width: calc(100% - 345px);
   top: 0;

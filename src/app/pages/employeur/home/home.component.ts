@@ -8,13 +8,14 @@ import {Employeur} from '../../../models/employeur';
 })
 export class HomeComponent implements OnInit {
 
-  employeur : any;
+  employeur =new Employeur();
 
   constructor() { }
 
   ngOnInit(): void {
     this.employeur = JSON.parse( localStorage.getItem('employeur'));
     console.log(this.employeur);
+    console.log(localStorage.getItem('employeur'));
     console.log(this.employeur.id);
 
   }

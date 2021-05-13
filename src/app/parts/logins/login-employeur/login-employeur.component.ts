@@ -24,7 +24,6 @@ export class LoginEmployeurComponent implements OnInit {
     this.employeurService.logIn(this.employeur).subscribe(res => {
       if (res.employeur) {
         console.log(res.employeur);
-        const CACHE_KEY= 'candidatsCache'; 
         localStorage.setItem("employeur",JSON.stringify(res.employeur));
         localStorage.setItem("token",res.token);
         // if(this.router.url.includes("loginCandidat")){
