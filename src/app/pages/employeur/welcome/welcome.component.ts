@@ -116,10 +116,14 @@ console.log('offre:', this.offre);
     
     this.offreService.save(this.offre).subscribe(
       (res) => {
-        if (res.offre) {
+        console.log(res);
+        if (res) {
           this.message = 'Ajout effectué avec succés';
           this.showSuccess();
-          this.offre=new Offre();
+          this.offreService.getAllCache();
+          // localStorage.setItem('offresCache',JSON.stringify(this.offre));
+          this.employeurService.getAllCache();
+          this.offre = new Offre();
         }
       },
       (err) => {

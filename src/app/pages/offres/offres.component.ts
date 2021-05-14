@@ -17,26 +17,26 @@ export class OffresComponent implements OnInit {
 
   sortOrder: number;
 
-  offres: Offre[]=[];
-  selectedOffre=new Offre();
+  offres: Offre[] = [];
+  selectedOffre = new Offre();
 
   sortField: string;
   constructor(private primengConfig: PrimeNGConfig,
               private offreService: OffreService) { }
 
   ngOnInit(): void {
-    
-    this.offres=JSON.parse(localStorage["offresCache"] || "[]");
-    if(this.offres.length==0){
+
+    this.offres = JSON.parse(localStorage.offresCache || '[]');
+    if (this.offres.length === 0){
       this.findAll();
       this.offreService.getAllCache();
     }
-    this.langues=JSON.parse(localStorage["languesCache"] || "[]");
+    this.langues = JSON.parse(localStorage.languesCache || '[]');
     console.log(this.langues);
     this.primengConfig.ripple = true;
 
   }
-  
+
   // onSortChange(event) {
   //   const value = event.value;
   //
