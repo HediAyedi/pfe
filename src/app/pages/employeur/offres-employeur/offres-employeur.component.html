@@ -1,1 +1,82 @@
-<p>offres-employeur works!</p>
+<div class="card">
+  <p></p>
+  <p-table #dt [value]="offres" [rows]="6" [paginator]="true" editMode="row" [globalFilterFields]="['exigence_emploi','genre','niveau_education','experience']"
+           [(selection)]="selectedOffre" [rowHover]="true" dataKey="id"
+           currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+    <ng-template pTemplate="caption">
+      <div class="p-d-flex p-ai-center p-jc-between">
+  <span class="p-input-icon-left">
+              <i class="pi pi-search"></i>
+              <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search..." />
+          </span>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="genre">Genre <p-sortIcon field="genre"></p-sortIcon></th>
+        <th pSortableColumn="exigence_emploi">Exigences<p-sortIcon field="exigence_emploi"></p-sortIcon></th>
+        <th pSortableColumn="niveau_education">Niveau éducation<p-sortIcon field="niveau_education"></p-sortIcon></th>
+        <th>Modifier</th>
+        <th>Supprimer</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-offre>
+      <!--<tr>-->
+
+        <!--<td>{{emploi.genre}}</td>-->
+        <!--<td>{{emploi.exigence_emploi}}</td>-->
+        <!--<td>{{emploi.niveau_education}}</td>-->
+        <!--<td>{{emploi.experience}}</td>-->
+        <!--<td>{{emploi.created_at |date:'MMM-dd hh:mm:ss' }}</td>-->
+
+      <!--</tr>-->
+      <tr [pEditableRow]="offre">
+        <td pEditableColumn>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input pInputText type="text" [(ngModel)]="offre.genre">
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{offre.genre}}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td pEditableColumn>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input pInputText type="text" [(ngModel)]="offre.exigence_emploi" >
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{offre.exigence_emploi}}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td pEditableColumn>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input pInputText type="text" [(ngModel)]="offre.niveau_education" required>
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{offre.niveau_education}}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <!--<button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-pencil" (click)="onRowEditInit(blog)" class="p-button-rounded p-button-text"></button>-->
+        <!--<button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi-check" (click)="onRowEditSave(blog, blog.id)" class="p-button-rounded p-button-text p-button-success p-mr-2"></button>-->
+        <!--<button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow icon="pi pi-times" (click)="onRowEditCancel(blog, ri)" class="p-button-rounded p-button-text p-button-danger"></button>-->
+
+        <td>
+          <input type="button" icon="pi pi-pencil" pButton pRipple class="p-button-rounded p-mr-2" style="background-color: darkseagreen" (click)="onRowEditSave(offre,offre.id)" >
+        </td>
+        <td><input type="button" icon="pi pi-trash" pButton pRipple class="p-button-rounded " style="background-color: darkred;" (click)="delete(offre.id)" icon="pi pi-check"></td>
+
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <div class="p-d-flex p-ai-center p-jc-between">
+        In total there are {{offres.length }} offres d'emploi.
+      </div>
+    </ng-template>
+  </p-table>
+</div>
+
