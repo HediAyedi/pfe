@@ -78,18 +78,21 @@ export class ProfileEmployeurComponent implements OnInit {
   Modifier(employeur: Employeur, id: number ){
     this.employeurService.update(employeur, id).
     subscribe(res => {
-      if (res.succes) {
+      if (!res.succes) {
         this.message = 'modification effectué avec succés';
         this.employeurService.getAllCache();
+        localStorage.setItem('employeur',JSON.stringify(this.employeur));
         this.showSuccess();
+        location.reload()
         // this.employeurService.getAllCache();
       } else {
         this.message = 'erreuuur';
+
         this.showSuccess();
       }
     }, err => {
       this.message = 'not effected';
-      this.showWarn(err);
+      console.log(err);
     } ) ;
 
   }
