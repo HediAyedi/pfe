@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EmployeurServiceService } from 'src/app/api/employeur-service.service';
+import { EmployeurService } from 'src/app/api/employeur.service';
 import { Employeur } from 'src/app/models/employeur';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
@@ -11,7 +11,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 export class LoginEmployeurComponent implements OnInit {
 
   constructor(
-    private employeurService: EmployeurServiceService,
+    private employeurService: EmployeurService,
     private router: Router,
     ) { }
 

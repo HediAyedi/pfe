@@ -9,7 +9,7 @@ const CACHE_KEY= 'employeursCache';
 @Injectable({
   providedIn: 'root'
 })
-export class EmployeurServiceService {
+export class EmployeurService {
   private url = environment.baseUrl;
   constructor(private httpClient: HttpClient) { }
   

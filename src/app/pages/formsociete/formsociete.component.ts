@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {EmployeurServiceService} from '../../api/employeur-service.service';
+import {EmployeurService} from '../../api/employeur.service';
 import { SecteurActiviteService } from 'src/app/api/caching services/secteur-activite.service';
 import {AdresseService} from '../../api/adresse.service';
 import {Employeur} from '../../models/employeur';
@@ -24,7 +24,7 @@ export class FormsocieteComponent implements OnInit {
   secteurs: SecteurActivite[]=[];
   adresse: Adresse= new Adresse();
   secteur= new SecteurActivite();
-  constructor(private employeurService: EmployeurServiceService,
+  constructor(private employeurService: EmployeurService,
               private secteurActiviteService: SecteurActiviteService,
               private adresseService: AdresseService,
               private messageService: MessageService,

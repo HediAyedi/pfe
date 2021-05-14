@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ConfirmationService, MessageService, PrimeNGConfig} from 'primeng/api';
 import {Employeur} from '../../models/employeur';
 import {ProductService} from '../table-des-societe/productservice';
-import {EmployeurServiceService} from '../../api/employeur-service.service';
+import {EmployeurService} from '../../api/employeur.service';
 import { Offre } from 'src/app/models/offre';
 import { Router } from '@angular/router';
 
@@ -21,7 +21,7 @@ export class SocieteCardsComponent implements OnInit {
               private router:Router,
               private messageService: MessageService,
               private confirmationService: ConfirmationService,
-              private employeurService: EmployeurServiceService) { }
+              private employeurService: EmployeurService) { }
 
   ngOnInit(): void {
     this.primengConfig.ripple = true;

@@ -33,13 +33,18 @@
       </div>
 
       <div class="p-field p-col-12 p-md-6">
-        <label for="emploiTypes">Type d'Emploi</label>
-        <input id="emploiTypes" type="text"  pInputText width="50px" [(ngModel)]="offre.emploiTypes" name="emploiTypes" #emploiTypes="ngModel" required pTooltip="Taper le type d'emploi" tooltipPosition="right" tooltipEvent="focus" showDelay="1000" hideDelay="500">
+        <label for="emploiTypes">Domaine</label>
+        <input id="emploiTypes" type="text"  pInputText width="50px" [(ngModel)]="offre.domaine" name="emploiTypes" #emploiTypes="ngModel" required pTooltip="Taper le type d'emploi" tooltipPosition="right" tooltipEvent="focus" showDelay="1000" hideDelay="500">
+      </div>
+
+      <div class="p-field p-col-12 p-md-6">
+        <label for="type_offre">Types d'emploi</label>
+        <p-multiSelect id="type_offre" [options]="offre_types" [(ngModel)]="selected_types" name="type_offre" defaultLabel="Selectioner les types d'offres voulu" optionLabel="emploi_type" display="chip"></p-multiSelect>
       </div>
 
       <div class="p-field p-col-12 p-md-6">
         <label for="langue">Langues Exigées</label>
-        <p-multiSelect id="langue" [options]="langue" [(ngModel)]="langue.langue" name="langue" defaultLabel="Selectioner les langues voulu" optionLabel="langue" display="chip"></p-multiSelect>
+        <p-multiSelect id="langue" [options]="langues" [(ngModel)]="selected_langues" name="langue" defaultLabel="Selectioner les langues voulu" optionLabel="langue" display="chip"></p-multiSelect>
       </div>
 
 

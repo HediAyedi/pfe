@@ -6,6 +6,7 @@ export class Offre {
     experience: string;
     niveau_education: string;
     description_emploi: string;
+    domaine: any;
     exigence_emploi: string;
     active: boolean;
     employeur_id: number;
@@ -20,8 +21,9 @@ export class Offre {
         this.experience = '';
         this.niveau_education = '';
         this.description_emploi = '';
+        this.domaine = null;
         this.exigence_emploi = '';
-        this.active = null;
+        this.active = true;
         this.employeur_id = null;
         this.emploiTypes = [];
         this.langues = [];

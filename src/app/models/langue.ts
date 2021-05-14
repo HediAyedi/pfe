@@ -1,7 +1,7 @@
 export class Langue {
-    langue:string;
-    constructor() {
-        this.langue = '';
-    
-      }
+  id: number;
+  langue: string;
+  constructor() {
+    this.langue = '';
+  }
 }

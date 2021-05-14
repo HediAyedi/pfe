@@ -19,7 +19,7 @@ import { ProductService } from './productservice';
 import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
 import {Employeur} from '../../models/employeur';
-import {EmployeurServiceService} from '../../api/employeur-service.service';
+import {EmployeurService} from '../../api/employeur.service';
 
 @Component({
   selector: 'app-table-des-societe',
@@ -48,7 +48,7 @@ export class TableDesSocieteComponent implements OnInit  {
   employeur : Employeur ;
   selectedEmployeur: Employeur[];
   message : any ;
-  constructor(private productService: ProductService, private messageService: MessageService, private confirmationService: ConfirmationService,private employeurService: EmployeurServiceService)
+  constructor(private productService: ProductService, private messageService: MessageService, private confirmationService: ConfirmationService,private employeurService: EmployeurService)
   { }
 
   ngOnInit() {

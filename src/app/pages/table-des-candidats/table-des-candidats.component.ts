@@ -3,7 +3,7 @@ import {Employeur} from '../../models/employeur';
 import {Candidat} from '../../models/candidat';
 import {ProductService} from '../table-des-societe/productservice';
 import {ConfirmationService, MessageService} from 'primeng/api';
-import {EmployeurServiceService} from '../../api/employeur-service.service';
+import {EmployeurService} from '../../api/employeur.service';
 import {CandidatService} from '../../api/candidat.service';
 
 @Component({

@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 import {LangueService} from './api/caching services/langue.service';
 import {SecteurActiviteService} from './api/caching services/secteur-activite.service';
 import { CandidatService } from './api/candidat.service';
-import { EmployeurServiceService } from './api/employeur-service.service';
-import { OffreService } from './api/offres.service';
+import { EmployeurService } from './api/employeur.service';
+import { TypeOffreService } from './api/caching services/type-offre.service';
 import { Langue } from './models/Langue';
 import { SecteurActivite } from './models/secteur-activite';
 
@@ -19,14 +19,15 @@ export class AppComponent {
   constructor(
     private langueService: LangueService,
     private secteurActiviteService: SecteurActiviteService,
-    private employeurService: EmployeurServiceService,
+    private employeurService: EmployeurService,
     private candidatService: CandidatService,
-    private offreService: OffreService,
+    private type_offreService: TypeOffreService,
     private router: Router,
     ) {
 
       this.findLangues();
       this.findSecteurs();
+      this.findTypeOffres();
 
   }
 
@@ -35,6 +36,9 @@ export class AppComponent {
   }
   public findSecteurs(){
     this.secteurActiviteService.getAll();
+  }
+  public findTypeOffres(){
+    this.type_offreService.getAll();
   }
   // public findEmployeurs(){
   //   this.employeurService.getAllCache();
