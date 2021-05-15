@@ -53,6 +53,7 @@ const routes: Routes = [
 
   {path: 'employeur/home', component: HomeComponent},
   {path: 'employeur/offres', component: OffresEmployeurComponent},
+  {path: 'employeur/offreCandidat/:offre_id', component: DraganddropComponent},
   {path: 'employeur/profil', component: ProfileEmployeurComponent},
   {path: 'employeur/welcome', component: WelcomeComponent},
 

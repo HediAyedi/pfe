@@ -18,6 +18,8 @@
         <th pSortableColumn="niveau_education">Niveau éducation<p-sortIcon field="niveau_education"></p-sortIcon></th>
         <th>Modifier</th>
         <th>Supprimer</th>
+        <th>view</th>
+
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-offre>
@@ -69,6 +71,9 @@
           <input type="button" icon="pi pi-pencil" pButton pRipple class="p-button-rounded p-mr-2" style="background-color: darkseagreen" (click)="onRowEditSave(offre,offre.id)" >
         </td>
         <td><input type="button" icon="pi pi-trash" pButton pRipple class="p-button-rounded " style="background-color: darkred;" (click)="delete(offre.id)" icon="pi pi-check"></td>
+
+
+        <td><input type="button" icon="pi pi-trash" pButton pRipple class="p-button-rounded " style="background-color: #0bb5f4;" (click)="route(offre.id)" icon="pi pi-eye"></td>
 
       </tr>
     </ng-template>
