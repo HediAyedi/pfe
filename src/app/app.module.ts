@@ -78,6 +78,7 @@ import { QuestionComponent } from './admin/question/question.component';
 import { ReponsesComponent } from './admin/reponses/reponses.component';
 import {FieldsetModule} from 'primeng/fieldset';
 import {SplitterModule} from 'primeng/splitter';
+import { QuizzComponent } from './quizz/quizz.component';
 
 // import {ConfirmDialogModule} from 'primeng/confirmdialog';
 // import {ConfirmationService} from 'primeng/api';
@@ -113,6 +114,7 @@ import {SplitterModule} from 'primeng/splitter';
     TestComponent,
     QuestionComponent,
     ReponsesComponent,
+    QuizzComponent,
 
   ],
   imports: [
