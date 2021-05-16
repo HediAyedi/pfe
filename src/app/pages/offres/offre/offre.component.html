@@ -1,12 +1,23 @@
-<p-fieldset style="width: 250em" legend="About us :" [toggleable]="true" [transitionOptions]="'10ms'">
-  Enreprise description
+<ng-container *ngFor="let i of offres">
+<p-fieldset legend="About us :" [toggleable]="true" [transitionOptions]="'10ms'" *ngIf="i.id == idRoute " >
+  <span > Enreprise description: {{i.description_emploi}} </span>
+  {{i.id}}
+  <!--<span *ngIf="i.id === idRoute">{{i.description_emploi}} </span>-->
 </p-fieldset>
+</ng-container>
 
+<ng-container *ngFor="let i of offres">
 
-<p-fieldset style="width: 250em" legend="Details :" [toggleable]="true" [transitionOptions]="'10ms'">
+<p-fieldset legend="Details :" [toggleable]="true" [transitionOptions]="'10ms'" *ngIf="i.id == idRoute ">
   <p-splitter [style]="{'height': '300px'}">
     <ng-template pTemplate>
-      <span style="text-transform: uppercase ; font-style: oblique ; font-family: 'Noto Sans JP', sans-serif ; font-weight: bold;text-decoration: underline">  Détails de l'annonce : </span>
+      <span style="text-transform: uppercase ; font-style: oblique ; font-family: 'Noto Sans JP', sans-serif ; font-weight: bold;text-decoration: underline">  Détails de l'annonce :<br>
+      </span> <br>
+      <ul>
+        <li>    <p> <span style="font-weight: bolder; list-style-type: none"> niveau d'éducation : </span>{{i.niveau_education}}  </p></li>
+        <li>      <p> <span style="font-weight: bolder; list-style-type: none"> experience : </span>{{i.experience}}  </p></li>
+
+      </ul>
     </ng-template>
     <ng-template pTemplate>
       <span style="text-transform: uppercase ; font-style: oblique ; font-family: 'Noto Sans JP', sans-serif ; font-weight: bold;text-decoration: underline">  Description de l'annonce : </span>
@@ -14,6 +25,7 @@
   </p-splitter>
 </p-fieldset>
 
+</ng-container>
 
 <!--<br><br>-->
 
