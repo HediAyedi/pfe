@@ -22,6 +22,7 @@ import {HomeComponent} from './pages/employeur/home/home.component';
 import {OffresEmployeurComponent} from './pages/employeur/offres-employeur/offres-employeur.component';
 import {ProfileEmployeurComponent} from './pages/employeur/profile-employeur/profile-employeur.component';
 import {WelcomeComponent} from './pages/employeur/welcome/welcome.component';
+import {QuizzComponent} from './quizz/quizz.component';
 
 const routes: Routes = [
 
@@ -53,6 +54,7 @@ const routes: Routes = [
 
   {path: 'employeur/home', component: HomeComponent},
   {path: 'employeur/offres', component: OffresEmployeurComponent},
+  {path: 'employeur/offreCandidat/:offre_id', component: DraganddropComponent},
   {path: 'employeur/profil', component: ProfileEmployeurComponent},
   {path: 'employeur/welcome', component: WelcomeComponent},
 
@@ -60,6 +62,7 @@ const routes: Routes = [
   {path: 'contact-us', component: ContactComponent},
   {path: 'blog', component: BlogHomeComponent},
 
+  {path: 'quizz', component: QuizzComponent},
 
 
 ];

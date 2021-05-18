@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Employeur} from '../../../models/employeur';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,7 @@ export class HomeComponent implements OnInit {
 
   employeur =new Employeur();
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.employeur = JSON.parse( localStorage.getItem('employeur'));
@@ -18,6 +19,12 @@ export class HomeComponent implements OnInit {
     console.log(localStorage.getItem('employeur'));
     console.log(this.employeur.id);
 
+  }
+
+  signOut(){
+    localStorage.removeItem('employeur');
+    localStorage.removeItem('token');
+    this.router.navigate(['/offres']);
   }
 
 }

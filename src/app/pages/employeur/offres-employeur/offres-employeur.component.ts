@@ -24,13 +24,15 @@ export class OffresEmployeurComponent implements OnInit {
   selectedOffre = new Offre();
   employeur= new Employeur() ;
   offre = new Offre();
-
+  message : any;
   sortField: string;
   message: string;
 
   constructor(private primengConfig: PrimeNGConfig,
               private offreService: OffreService,
               private messageService: MessageService,
+              private employeurService: EmployeurService,
+              private router: Router,
   ) {
   }
 
@@ -79,19 +81,21 @@ export class OffresEmployeurComponent implements OnInit {
       .subscribe(res => {
         if (!res.succes) {
           this.message="modification effectué avec succés";
+          localStorage.removeItem('employeursCache');
           // this.employeurService.getAllCache();
         } else {
           this.message="erreuuur";
+
         }
       }, err => {
-        this.message = 'not effected'
+        this.message = 'not effected';
       } ) ;
   }
 
-  // route(id) {
-  //   console.log(id);
-  //   this.router.navigate(['/offre', id]);
-  // }
+  route(id) {
+    console.log(id);
+    this.router.navigate(['/employeur/offreCandidat', id]);
+  }
 
   delete(id:number){
     this.offreService.delete(id).subscribe(res => {
@@ -103,9 +107,12 @@ export class OffresEmployeurComponent implements OnInit {
         // localStorage.setItem('employeur',JSON.stringify(this.employeur));
 
         this.findAll();
+        localStorage.removeItem('employeursCache');
+
       } else {
         this.message="erreuuur";
         this.findAll();
+        localStorage.removeItem('employeursCache');
 
       }
     }, err => {
