@@ -26,6 +26,7 @@ export class OffresEmployeurComponent implements OnInit {
   offre = new Offre();
 
   sortField: string;
+  message: string;
 
   constructor(private primengConfig: PrimeNGConfig,
               private offreService: OffreService,
@@ -43,6 +44,9 @@ export class OffresEmployeurComponent implements OnInit {
     // console.log(this.langues);
     this.primengConfig.ripple = true;
     this.employeur = JSON.parse(localStorage.getItem("employeur"));
+
+    // // Getting offres from Employeur cached in localstorage
+    // this.offres=this.employeur.emplois;
     console.log("traaaaaaaaaaaa : " + this.employeur.id);
 
 
@@ -93,6 +97,11 @@ export class OffresEmployeurComponent implements OnInit {
     this.offreService.delete(id).subscribe(res => {
       if (!res.succes) {
         this.message="suppression effectué avec succés";
+
+        // // Deleting the offres from cache
+        // this.employeur.emplois=this.offres;
+        // localStorage.setItem('employeur',JSON.stringify(this.employeur));
+
         this.findAll();
       } else {
         this.message="erreuuur";

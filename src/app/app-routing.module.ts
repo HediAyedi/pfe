@@ -37,7 +37,7 @@ const routes: Routes = [
   {path: 'SignUpCandidat', component: FormCandidatComponent},
 
   {path: 'admin/tableEmployeurs', component: TableDesSocieteComponent},
-  {path: 'admin/table/candidats', component: TableDesCandidatsComponent},
+  {path: 'admin/tableCandidats', component: TableDesCandidatsComponent},
   {path: 'admin/blog/form', component: BlogFormComponent},
   {path: 'admin/blog/home', component: BlogHomeComponent},
 

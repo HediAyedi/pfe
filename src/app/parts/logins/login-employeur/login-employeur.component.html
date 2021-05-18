@@ -1,25 +1,29 @@
+<p-toast></p-toast>
 <div class="wrapper fadeInDown">
-    <div id="formContent">
-      <!-- Tabs Titles -->
-      <h2 class="active"> Connexion employeur </h2>
-      <!-- Icon -->
-      <div class="fadeIn first">
-        <i class="pi pi-user"></i>
-      </div>
-  
-      <!-- Login Form -->
-      <form>
-        <input type="text" id="email" class="fadeIn third" name="email" [(ngModel)]="employeur.email"  #email="ngModel" placeholder="email">
-        <input type="text" id="mot_de_passe" class="fadeIn third" name="mot_de_passe" [(ngModel)]="employeur.mot_de_passe"  #mot_de_passe="ngModel" placeholder="mot depasse">
-
-        <input type="submit" (click)="logIn()" class="fadeIn fourth" value="Se connecter">
-      </form>
-  
-      <!-- Remind Passowrd -->
-      <div id="formFooter">
-        <a class="underlineHover" routerLink='/employeur'>S'inscrire</a>
-        <a class="underlineHover" href="#">Mot de passe oublié?</a>
-      </div>
-  
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <h2 class="active"> Connexion employeur </h2>
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <i class="pi pi-user"></i>
     </div>
+
+    <!-- Login Form -->
+    <form>
+      <input type="text" id="email" class="fadeIn third" name="email" [(ngModel)]="employeur.email" #email="ngModel"
+        placeholder="email">
+      <input type="text" id="mot_de_passe" class="fadeIn third" name="mot_de_passe" [(ngModel)]="employeur.mot_de_passe"
+        #mot_de_passe="ngModel" placeholder="mot depasse">
+
+      <input type="submit" (click)="logIn()" class="fadeIn fourth" value="Se connecter">
+      <div>{{message}}</div>
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" routerLink='/employeur'>S'inscrire</a>
+      <a class="underlineHover" href="#">Mot de passe oublié?</a>
+    </div>
+
   </div>
+</div>

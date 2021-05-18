@@ -121,7 +121,8 @@ console.log('offre:', this.offre);
           this.message = 'Ajout effectué avec succés';
           this.showSuccess();
           this.offreService.getAllCache();
-          // localStorage.setItem('offresCache',JSON.stringify(this.offre));
+          this.employeur.emplois.push(res);
+          localStorage.setItem('employeur',JSON.stringify(this.employeur));
           this.employeurService.getAllCache();
           this.offre = new Offre();
         }
