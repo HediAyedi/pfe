@@ -11,7 +11,7 @@
     <p-dialog header="Les Offres" [(visible)]="display"  [maximizable]="true" >
 
 
-      <div class="card">
+      <div class="card" >
         <p></p>
         <p-table #dt [value]="offres" [rows]="6" [paginator]="true" [globalFilterFields]="['exigence_emploi','genre','niveau_education','experience']"
                  [(selection)]="selectedOffre" [rowHover]="true" dataKey="id"

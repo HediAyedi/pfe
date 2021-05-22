@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
 
   employeur =new Employeur();
 
-  constructor(private router: Router) { }
+  constructor(public router: Router) { }
 
   ngOnInit(): void {
     this.employeur = JSON.parse( localStorage.getItem('employeur'));

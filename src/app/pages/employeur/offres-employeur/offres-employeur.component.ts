@@ -24,7 +24,6 @@ export class OffresEmployeurComponent implements OnInit {
   selectedOffre = new Offre();
   employeur= new Employeur() ;
   offre = new Offre();
-  message : any;
   sortField: string;
   message: string;
 
@@ -48,8 +47,7 @@ export class OffresEmployeurComponent implements OnInit {
     this.employeur = JSON.parse(localStorage.getItem("employeur"));
 
     // // Getting offres from Employeur cached in localstorage
-    // this.offres=this.employeur.emplois;
-    console.log("traaaaaaaaaaaa : " + this.employeur.id);
+    console.log("traaaaaaaaaaaa : " + this.employeur.emplois);
 
 
   }

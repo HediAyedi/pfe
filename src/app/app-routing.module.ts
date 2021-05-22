@@ -23,6 +23,8 @@ import {OffresEmployeurComponent} from './pages/employeur/offres-employeur/offre
 import {ProfileEmployeurComponent} from './pages/employeur/profile-employeur/profile-employeur.component';
 import {WelcomeComponent} from './pages/employeur/welcome/welcome.component';
 import {QuizzComponent} from './quizz/quizz.component';
+import { TestsComponent } from './admin/tests/tests.component';
+import { TestComponent } from './admin/test/test.component';
 
 const routes: Routes = [
 
@@ -30,7 +32,7 @@ const routes: Routes = [
   {path: 'draganddrop', component: DraganddropComponent},
 
 
-  {path: 'admin', component: DashboardComponent},
+  {path: 'admin/dashboard', component: DashboardComponent},
   {path: 'cv', component: CvComponent},
   {path: 'form', component: FormComponent},
 
@@ -41,6 +43,8 @@ const routes: Routes = [
   {path: 'admin/tableCandidats', component: TableDesCandidatsComponent},
   {path: 'admin/blog/form', component: BlogFormComponent},
   {path: 'admin/blog/home', component: BlogHomeComponent},
+  {path: 'admin/tests/home', component: TestsComponent},
+  {path: 'admin/test/form', component: TestComponent},
 
   {path: 'cardsEmployeurs', component: SocieteCardsComponent},
   {path: 'carousel', component: CarouselSocieteComponent},

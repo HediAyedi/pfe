@@ -36,6 +36,7 @@ import {ContextMenuModule} from 'primeng/contextmenu';
 import {ConfirmationService, MenuItem, MessageService} from 'primeng/api';
 import {ProductService} from './pages/table-des-societe/productservice';
 import {TableModule} from 'primeng/table';
+import {SidebarModule} from 'primeng/sidebar';
 
 import {RippleModule} from 'primeng/ripple';
 import {TooltipModule} from 'primeng/tooltip';
@@ -44,6 +45,7 @@ import {InputMaskModule} from 'primeng/inputmask';
 import {KeyFilterModule} from 'primeng/keyfilter';
 import {CascadeSelectModule} from 'primeng/cascadeselect';
 import {SplitButtonModule} from 'primeng/splitbutton';
+import {InputSwitchModule} from 'primeng/inputswitch';
 
 import {DraganddropComponent} from './pages/draganddrop/draganddrop.component';
 import {TableDesSocieteComponent} from './pages/table-des-societe/table-des-societe.component';
@@ -164,6 +166,8 @@ import { QuizzComponent } from './quizz/quizz.component';
     TabMenuModule,
     OverlayPanelModule,
     CascadeSelectModule,
+    SidebarModule,
+    InputSwitchModule,
     // ConfirmDialogModule,
     // ConfirmationService
   ],

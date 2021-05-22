@@ -1,12 +1,12 @@
 <div class="sidebar">
   <div class="sidebar-brand">
-    <a href="http://localhost:4200"><h2><span class="las la-chess"></span>KamJobs</h2></a>
+    <h2 (click)="router.navigate(['/offres'])" style="cursor: pointer;"><span class="las la-chess"></span>KamJobs</h2>
   </div>
   <div class="sidebar-menu">
     <ul>
-      <li><a class="active" [routerLink]="['/employeur/profil']"><span class="las la-igloo"></span><span>Profile</span></a></li>
-      <li><a [routerLink]="['/employeur/offres']"><span class="las la-users"></span><span>Offres</span></a></li>
-      <li><a [routerLink]="['/employeur/welcome']"><span class="las la-clipboard-list"></span><span>Projects</span></a></li>
+      <li><a  [routerLink]="['/employeur/profil']"   routerLinkActive="active"><span class="las la-igloo"></span><span>Gestion Profile</span></a></li>
+      <li><a [routerLink]="['/employeur/offres']"  routerLinkActive="active"><span class="las la-users"></span><span>Gestion Offres</span></a></li>
+      <li><a [routerLink]="['/employeur/welcome']" routerLinkActive="active"><span class="las la-clipboard-list"></span><span>Ajout offre</span></a></li>
       <!--<li><a href=""><span class="las la-shipping-fast"></span><span>Orders</span></a></li>-->
     </ul>
   </div>

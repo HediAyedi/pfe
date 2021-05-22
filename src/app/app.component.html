@@ -1,9 +1,11 @@
-<div *ngIf="isAdmin() , employeur">
+<div *ngIf="isAdmin() , else employeur">
   <app-admin></app-admin>
 </div>
-<div #employeur *ngIf="isEmployeur() , else user">
-  <app-home></app-home>
-</div>
+  <ng-template #employeur>
+    <ng-container *ngIf="isEmployeur() , else user">
+      <app-home></app-home>
+    </ng-container>
+</ng-template>
 <ng-template #user>
   <app-official-nav-and-search></app-official-nav-and-search>
   <router-outlet></router-outlet>
