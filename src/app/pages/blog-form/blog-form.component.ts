@@ -62,14 +62,9 @@ export class BlogFormComponent implements OnInit {
     // console.log('blog:', this.blog);
     // console.log('Image:', this.filedata);
     this.blogService.save(this.blog).subscribe(res => {
-        if (res.blog) {
-          this.message = 'Ajout effectué avec succés ';
-          this.showSuccess();
+        
           this.findAll();
-        }else  {
-          this.findAll();
-
-        }
+          this.display=true;
       }, err => {
         this.message = err.error.message;
         this.findAll();
