@@ -50,6 +50,7 @@ const routes: Routes = [
   {path: 'carousel', component: CarouselSocieteComponent},
 
   {path: 'offres', component: OffresComponent},
+  {path: '', component: OffresComponent},
   {path: 'offre/:offre_id', component: OffreComponent},
 
 

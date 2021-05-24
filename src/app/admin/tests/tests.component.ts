@@ -29,7 +29,7 @@ export class TestsComponent implements OnInit {
   display: boolean = false;
   display2: boolean = false;
   questionModifDisplay: boolean = false;
-  testModifDisplay: boolean = false;
+  testModifDisplay: boolean = true;
   modif_question = new Question();
 
   constructor(
@@ -100,6 +100,7 @@ export class TestsComponent implements OnInit {
       (err) => {
         console.log(err);
         this.findAllTests();
+        this.display = false;
 
       }
     );
@@ -110,12 +111,13 @@ export class TestsComponent implements OnInit {
 //GESTION TEST DIALOG
   showDialog(test: Test) {
     this.display = true;
+    this.testModifDisplay = false;
     this.questions = test.questions;
     this.test_id = test.id;
     this.reponses = test.reponses;
   }
 
-  //AJOUT TEST
+  //AJOUT TEST DIALOG
   showDialog2() {
     this.display2 = true;
   }

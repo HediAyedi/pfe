@@ -4,15 +4,12 @@
 
     <ng-template pTemplate="footer">
 
-
-
-      <p-dialog header="Gestion questions" [(visible)]="display">
+      <p-dialog header="Gestion questions " [(visible)]="display">
 
         <!-- Form for modifying a test -->
         <p-dialog header="Modifier test" [(visible)]="testModifDisplay">
           <div style="width:50vw;">
-            <input type="text" pInputText value="{{test.domaine}}" [(ngModel)]="test.domaine"
-              placeholder="question" />
+            <input type="text" pInputText value="{{test.domaine}}" [(ngModel)]="test.domaine" placeholder="test" />
 
             <button pButton pRipple type="button" (click)="modifierTest(test)" icon="pi pi-check"
               pTooltip="modifier question" class="p-button-rounded p-button-text"> </button>
@@ -108,26 +105,44 @@
       <p-button type="button" (click)="showDialog(test)" label="gestion des questions" icon="pi pi-eye"></p-button>
 
     </ng-template>
+
+  </p-card>
+
+</div>
+
+
+
+
+
+<div >
+  <p-card header="Ajout test" styleClass="p-card-shadow p m-2 " >
+
+    <ng-template pTemplate="footer">
+      <p-dialog header="Ajout test" [(visible)]="display2">
+        <div style="width:40w;">
+          <form>
+      
+            <input id="test" type="text" pInputText [(ngModel)]="test.domaine" name="test" placeholder="test sujet"
+              >
+            <button pButton pRipple type="button" (click)="ajouterTest()" icon="pi pi-plus" pTooltip="ajouter"
+              class="p-button-rounded p-button-text"></button>
+          </form>
+        </div>
+      </p-dialog>
+    
+      <button pButton pRipple type="button" (click)="testAddDialog()" label="Ajout Test" icon="pi pi-plus"
+      class="p-button-raised p-button-text "></button>
+
+    </ng-template>
+
   </p-card>
 </div>
+
 <div>
-
-
   <!-- Dialog Form for Adding a test-->
 
   <!-- Not working bbecause it doesn't bind -->
 
-  <p-dialog header="Ajout test" [(visible)]="display2">
-    <div style="width:40w;">
-      <form>
-        <input type="text" id="test" pInputText [(ngModel)]="ajout_test.domaine" value="{{ajout_test.domaine}}"
-          name="test" #test="ngModel" placeholder="test sujet" />
-        <button pButton pRipple type="button" (click)="ajouterTest()" icon="pi pi-plus" pTooltip="ajouter"
-          class="p-button-rounded p-button-text"></button>
-      </form>
-    </div>
-  </p-dialog>
+  
 
-  <button pButton pRipple type="button" (click)="showDialog2()" label="Ajout Test" icon="pi pi-plus"
-    class="p-button-raised p-button-text "></button>
 </div>
