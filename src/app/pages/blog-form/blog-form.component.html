@@ -63,8 +63,8 @@
               <small class="p-error" *ngIf="(logo.dirty && logo.invalid)">logo is required.</small>
             </div>
             <div class="p-field">
-              <label for="description">Age</label>
-              <input #description="ngModel" id="description" name="description" type="text" required pInputText
+              <label for="description">Contenu</label>
+              <input #description="ngModel" id="description" name="description" type="text" required pInputText [rows]="3" [cols]="30"
                 [(ngModel)]="blog.description" [ngClass]="(description.dirty && description.invalid)">
               <small class="p-error" *ngIf="(description.dirty && description.invalid)">description is required.</small>
             </div>
