@@ -21,6 +21,10 @@ export class BlogFormComponent implements OnInit {
   message: any;
   blog2: Blog[];
   first = 0;
+  displayPosition = false;
+
+  position: string;
+
 
   rows = 10;
 
@@ -43,6 +47,12 @@ export class BlogFormComponent implements OnInit {
     this.findAll();
 
   }
+
+  showPositionDialog(position: string) {
+    this.position = position;
+    this.displayPosition = true;
+  }
+
   showSuccess() {
     this.messageService.add({severity: 'success', summary: 'Success', detail: this.message});
   }
@@ -126,5 +136,6 @@ this.blogService.update(blog, id)
 
     } ) ;
   };
+
   }
 

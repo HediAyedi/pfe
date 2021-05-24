@@ -1,96 +1,100 @@
-<!--<div class="card">-->
-  <!--&lt;!&ndash;<p-dataView #dv [value]="offres" [paginator]="true" [rows]="9" filterBy="nom"&ndash;&gt;-->
-              <!--&lt;!&ndash;[sortField]="sortField" [sortOrder]="sortOrder" layout="grid">&ndash;&gt;-->
-  <!--<p-dataView>-->
-    <!--&lt;!&ndash;<ng-template pTemplate="header">&ndash;&gt;-->
-      <!--&lt;!&ndash;<div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between">&ndash;&gt;-->
-        <!--&lt;!&ndash;<p-dropdown [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Sort By Price" (onChange)="onSortChange($event)" styleClass="p-mb-2 p-mb-md-0"></p-dropdown>&ndash;&gt;-->
-        <!--&lt;!&ndash;<span class="p-input-icon-left p-mb-2 p-mb-md-0">&ndash;&gt;-->
-                  <!--&lt;!&ndash;<i class="pi pi-search"></i>&ndash;&gt;-->
-                  <!--&lt;!&ndash;<input type="search" pInputText placeholder="Search by Name" (input)="dv.filter($event.target.value)">&ndash;&gt;-->
-              <!--&lt;!&ndash;</span>&ndash;&gt;-->
-        <!--&lt;!&ndash;<p-dataViewLayoutOptions></p-dataViewLayoutOptions>&ndash;&gt;-->
-      <!--&lt;!&ndash;</div>&ndash;&gt;-->
-    <!--&lt;!&ndash;</ng-template>&ndash;&gt;-->
-    <!--<ng-template let-offre pTemplate="listItem">-->
-      <!--<div class="p-col-12">-->
-        <!--<div class="product-list-item">-->
-          <!--<div class="product-list-detail">-->
-            <!--<div class="product-name">{{offre.employeur_id}}</div>-->
-            <!--<div class="product-description">{{product.description_emploi}}</div>-->
-            <!--<i class="pi pi-tag product-category-icon"></i><span class="product-category">{{product.genre}}</span>-->
-          <!--</div>-->
-          <!--<div class="product-list-action">-->
 
-          <!--</div>-->
-        <!--</div>-->
+<!--<div class="card">-->
+  <!--<p></p>-->
+  <!--<p-table #dt [value]="offres" [rows]="6" [paginator]="true" [globalFilterFields]="['exigence_emploi','genre','niveau_education','experience']"-->
+           <!--[(selection)]="selectedOffre" [rowHover]="true" dataKey="id"-->
+           <!--currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">-->
+    <!--<ng-template pTemplate="caption">-->
+      <!--<div class="p-d-flex p-ai-center p-jc-between">-->
+  <!--<span class="p-input-icon-left">-->
+              <!--<i class="pi pi-search"></i>-->
+              <!--<input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search..." />-->
+          <!--</span>-->
       <!--</div>-->
     <!--</ng-template>-->
-    <!--<ng-template let-product pTemplate="gridItem">-->
-      <!--<div class="p-col-12 p-md-4">-->
-        <!--<div class="product-grid-item card">-->
-          <!--<div class="product-grid-item-top">-->
-            <!--<div>-->
-              <!--<i class="pi pi-tag product-category-icon"></i>-->
-              <!--<span class="product-category">{{product.category}}</span>-->
-            <!--</div>-->
-            <!--<span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span>-->
-          <!--</div>-->
-          <!--<div class="product-grid-item-content">-->
-            <!--<div class="product-name">{{product.name}}</div>-->
-            <!--<div class="product-description">{{product.description}}</div>-->
-            <!--<p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating>-->
-          <!--</div>-->
-          <!--<div class="product-grid-item-bottom">-->
-            <!--<span class="product-price">${{product.price}}</span>-->
-            <!--<p-button icon="pi pi-shopping-cart" [disabled]="product.inventoryStatus === 'OUTOFSTOCK'"></p-button>-->
-          <!--</div>-->
-        <!--</div>-->
+    <!--<ng-template pTemplate="header">-->
+      <!--<tr>-->
+        <!--<th pSortableColumn="genre">Genre <p-sortIcon field="genre"></p-sortIcon></th>-->
+        <!--<th pSortableColumn="exigence_emploi">Exigences<p-sortIcon field="exigence_emploi"></p-sortIcon></th>-->
+        <!--<th pSortableColumn="niveau_education">Niveau éducation<p-sortIcon field="niveau_education"></p-sortIcon></th>-->
+        <!--<th pSortableColumn="experience">Experience<p-sortIcon field="experience"></p-sortIcon></th>-->
+        <!--<th pSortableColumn="created_at" >Date de création<p-sortIcon field="created_at"></p-sortIcon></th>-->
+      <!--</tr>-->
+    <!--</ng-template>-->
+    <!--<ng-template pTemplate="body" let-emploi>-->
+      <!--<tr>-->
+
+        <!--<td>{{emploi.genre}}</td>-->
+        <!--<td>{{emploi.exigence_emploi}}</td>-->
+        <!--<td>{{emploi.niveau_education}}</td>-->
+        <!--<td>{{emploi.experience}}</td>-->
+        <!--<td>{{emploi.created_at |date:'yy-MMM-dd' }}</td>-->
+
+      <!--</tr>-->
+    <!--</ng-template>-->
+    <!--<ng-template pTemplate="summary">-->
+      <!--<div class="p-d-flex p-ai-center p-jc-between">-->
+        <!--In total there are {{offres.length }} offres d'emploi.-->
       <!--</div>-->
     <!--</ng-template>-->
-  <!--</p-dataView>-->
+  <!--</p-table>-->
 <!--</div>-->
 
 
+<!--<br><br><br><br><br>-->
+<!--<h1>TATATATTATATATATATAT</h1>-->
+<!--<br><br><br><br><br>-->
+
 <div class="card">
-  <p></p>
-  <p-table #dt [value]="offres" [rows]="6" [paginator]="true" [globalFilterFields]="['exigence_emploi','genre','niveau_education','experience']"
-           [(selection)]="selectedOffre" [rowHover]="true" dataKey="id"
-           currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
-    <ng-template pTemplate="caption">
-      <div class="p-d-flex p-ai-center p-jc-between">
-  <span class="p-input-icon-left">
-              <i class="pi pi-search"></i>
-              <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search..." />
-          </span>
-      </div>
-    </ng-template>
+  <p-dataView #dv [value]="offres" [paginator]="true" [rows]="9" filterBy="description_emploi" layout="grid">
+    <!--[sortField]="sortField" [sortOrder]="sortOrder"-->
     <ng-template pTemplate="header">
-      <tr>
-        <th pSortableColumn="genre">Genre <p-sortIcon field="genre"></p-sortIcon></th>
-        <th pSortableColumn="exigence_emploi">Exigences<p-sortIcon field="exigence_emploi"></p-sortIcon></th>
-        <th pSortableColumn="niveau_education">Niveau éducation<p-sortIcon field="niveau_education"></p-sortIcon></th>
-        <th pSortableColumn="experience">Experience<p-sortIcon field="experience"></p-sortIcon></th>
-        <th pSortableColumn="created_at" >Date de création<p-sortIcon field="created_at"></p-sortIcon></th>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-emploi>
-      <tr>
-
-        <td>{{emploi.genre}}</td>
-        <td>{{emploi.exigence_emploi}}</td>
-        <td>{{emploi.niveau_education}}</td>
-        <td>{{emploi.experience}}</td>
-        <td>{{emploi.created_at |date:'yy-MMM-dd' }}</td>
-
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="summary">
-      <div class="p-d-flex p-ai-center p-jc-between">
-        In total there are {{offres.length }} offres d'emploi.
+      <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between">
+        <!--<p-dropdown [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Sort By Price" (onChange)="onSortChange($event)" styleClass="p-mb-2 p-mb-md-0"></p-dropdown>-->
+        <span class="p-input-icon-left p-mb-2 p-mb-md-0" >
+                  <i class="pi pi-search"></i>
+                  <input type="search" pInputText placeholder="Search by Name" (input)="dv.filter($event.target.value)">
+              </span>
+        <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
       </div>
     </ng-template>
-  </p-table>
-</div>
-
-
+    <ng-template let-offre pTemplate="listItem">
+      <div class="p-col-12">
+        <div class="product-list-item">
+          <div class="product-list-detail">
+            <div class="product-name">{{offre.genre}}</div>
+            <div class="product-description">{{offre.exigence_emploi}}</div>
+            <!--<p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating>-->
+            <i class="pi pi-tag product-category-icon"></i><span class="product-category">{{offre.description_emploi}}</span>
+          </div>
+          <!--<div class="product-list-action">-->
+            <!--<span class="product-price">${{product.price}}</span>-->
+            <!--<p-button icon="pi pi-shopping-cart" label="Add to Cart" [disabled]="product.inventoryStatus === 'OUTOFSTOCK'"></p-button>-->
+            <!--<span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span>-->
+          <!--</div>-->
+        </div>
+      </div>
+    </ng-template>
+    <ng-template let-offre pTemplate="gridItem">
+      <div class="p-col-12 p-md-4">
+        <div class="product-grid-item card">
+          <div class="product-grid-item-top">
+            <div>
+              <i class="pi pi-tag product-category-icon"></i>
+              <span class="product-category">{{offre.genre }}</span>
+            </div>
+            <!--<span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{offre.exigence_emploi}}</span>-->
+          </div>
+          <div class="product-grid-item-content">
+            <div class="product-name">{{offre.niveau_education}}</div>
+            <div class="product-description">{{offre.description_emploi}}</div>
+            <!--<p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating>-->
+          </div>
+          <div class="product-grid-item-bottom">
+            <!--<span class="product-price">${{product.price}}</span>-->
+            <!--<p-button icon="pi pi-shopping-cart" [disabled]="product.inventoryStatus === 'OUTOFSTOCK'"></p-button>-->
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </p-dataView>

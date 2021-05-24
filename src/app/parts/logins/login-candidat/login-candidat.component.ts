@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CandidatService } from 'src/app/api/candidat.service';
 import { Candidat } from 'src/app/models/candidat';
+import {Router} from '@angular/router';
+import {PrimeNGConfig} from 'primeng/api';
 
 @Component({
   selector: 'app-login-candidat',
@@ -13,10 +15,15 @@ export class LoginCandidatComponent implements OnInit {
 
   constructor(
     private candidatService: CandidatService,
+    private primengConfig: PrimeNGConfig,
+    private router: Router,
+
 
   ) { }
 
   ngOnInit(): void {
+    this.primengConfig.ripple = true;
+
   }
 
   logIn() {
@@ -25,6 +32,7 @@ export class LoginCandidatComponent implements OnInit {
         console.log(res.candidat);
         localStorage.setItem("candidat",JSON.stringify(res.candidat));
         localStorage.setItem("token",res.token);
+        this.router.navigate(['offres']);
       }
     }
       );
