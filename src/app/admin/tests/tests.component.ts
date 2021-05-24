@@ -118,7 +118,7 @@ export class TestsComponent implements OnInit {
   }
 
   //AJOUT TEST DIALOG
-  showDialog2() {
+  testAddDialog() {
     this.display2 = true;
   }
 
@@ -131,9 +131,7 @@ export class TestsComponent implements OnInit {
     this.testModifDisplay = true;
   }
 
-
   // GESTION REPONSES 
-
   public findReponses() {
     this.reponseService.getAll().subscribe(
       (data) => {

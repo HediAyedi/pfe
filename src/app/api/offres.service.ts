@@ -25,6 +25,11 @@ export class OffreService {
     return this.httpClient.get<Offre[]>(this.url + '/emplois');
   }
 
+  public get(id: number): Observable<any>{
+    return this.httpClient.get<Offre>(this.url + '/emploi/' + id);
+  }
+
+
   public save(offre: Offre): Observable<any>{
     return this.httpClient.post(this.url + '/emploi', offre);
   }
