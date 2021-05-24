@@ -104,8 +104,7 @@ export class WelcomeComponent implements OnInit {
   Ajouter() {
     
     this.offre.employeur_id=this.employeur.id;
-
-
+    this.offre.domaine= this.selected_secteur.secteur
     // adding offre types to the offer
 
     this.selected_langues.forEach(function (langue) {
