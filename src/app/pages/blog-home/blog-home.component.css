@@ -85,3 +85,9 @@ footer .social-media p{
     margin-top: -20px;
   }
 }
+
+.suite{
+  font-size: x-small;
+  color: blue;
+  cursor: pointer;
+}
