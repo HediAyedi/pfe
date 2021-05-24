@@ -1,3 +1,5 @@
+<p-sidebar [(visible)]="display">
+
 <div class="sidebar">
   <div class="sidebar-brand">
     <h2 (click)="router.navigate(['/offres'])" style="cursor: pointer;"><span class="las la-chess"></span>KamJobs</h2>
@@ -11,13 +13,16 @@
     </ul>
   </div>
 </div>
+</p-sidebar>
+
+
+
 <div class="main-content">
   <header>
-    <h2>
-      <label>
+    <h2 (click)="display = true">
+      <label for="">
         <span class="las la-bars"></span>
       </label>
-      Dashboard
     </h2>
 
     <div class="search-wrapper">

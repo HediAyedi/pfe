@@ -10,6 +10,7 @@ import {Router} from '@angular/router';
 export class HomeComponent implements OnInit {
 
   employeur =new Employeur();
+  display=false;
 
   constructor(public router: Router) { }
 

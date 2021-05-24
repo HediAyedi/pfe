@@ -11,6 +11,7 @@ import {Langue} from '../../../models/langue';
 import {LangueService} from '../../../api/caching services/langue.service';
 import {OffreService} from '../../../api/offres.service';
 import { TypeOffre } from 'src/app/models/type-offre';
+import {SelectItem} from 'primeng/api';
 
 @Component({
   selector: 'app-welcome',
@@ -34,20 +35,28 @@ export class WelcomeComponent implements OnInit {
   
   offre_types: TypeOffre[]=[];
   selected_types: TypeOffre[]=[];
+  selected_secteur: SecteurActivite;
+
+  items: SelectItem[];
+
+  genres = ['indifférent', 'Femme', 'Homme'];
+  experiences = ['1ans ', '3 ans', '5 ans', '10 ans'];
+  niveau_education = ['Baccaulauréat', 'License', 'Mastére', 'Ingénieur'];
+
   constructor(private employeurService: EmployeurService,
               private secteurActiviteService: SecteurActiviteService,
               private adresseService: AdresseService,
               private messageService: MessageService,
               private primengConfig: PrimeNGConfig,
               private langueService: LangueService,
-              private offreService: OffreService) { 
+              private offreService: OffreService) {
 
-                
+    }
 
-              }
 
   ngOnInit(): void {
     this.primengConfig.ripple = true;
+
 
     //Tableau des secteurs from cache
     this.secteurs = JSON.parse(localStorage.secteursCache || '[]');
@@ -60,7 +69,7 @@ export class WelcomeComponent implements OnInit {
 
 
     //Tableau des langues from cache
-    this.langues=JSON.parse(localStorage["languesCache"] || "[]");
+    this.langues=JSON.parse(localStorage.languesCache || '[]');
     console.log("Les :",this.langues);
 
     //Getting the logged in user from cache

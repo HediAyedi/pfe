@@ -5,24 +5,49 @@
   <h1 class="ctil">Ajouter un Offre</h1>
   <form class="box">
     <div class="p-fluid p-formgrid p-grid ">
-      <div class="p-field p-col-12 p-md-6 ">
+      <!--<div class="p-field p-col-12 p-md-6 ">-->
+        <!--<label for="genre">Genre d'offre</label>-->
+        <!--<input id="genre" type="text" pInputText [(ngModel)]="offre.genre" name="genre" #genre="ngModel" required pTooltip="Taper le genre d'emploi" tooltipPosition="top" tooltipEvent="focus" showDelay="1000" hideDelay="500">-->
+      <!--</div>-->
+      <div class="p-field p-col-12 p-md-6">
         <label for="genre">Genre d'offre</label>
-        <input id="genre" type="text" pInputText [(ngModel)]="offre.genre" name="genre" #genre="ngModel" required pTooltip="Taper le genre d'emploi" tooltipPosition="top" tooltipEvent="focus" showDelay="1000" hideDelay="500">
+        <div class="p-field p-col-12 p-md-3">
+          <p-dropdown [options]="genres" [(ngModel)]="offre.genre" placeholder="Choisissez le genre d'employé" name="genre" id="genre"  [style]="{'minWidth': '14rem'}"></p-dropdown>
+        </div>
       </div>
+
       <div class="p-field p-col-12 p-md-6 ">
         <label for="nom_emploi">Nom d'offre</label>
         <input id="nom_emploi" type="text" pInputText [(ngModel)]="offre.nom_emploi" name="nom_emploi" #genre="ngModel" required pTooltip="Taper le nom d'emploi" tooltipPosition="top" tooltipEvent="focus" showDelay="1000" hideDelay="500">
       </div>
 
-      <div class="p-field p-col-12 p-md-6 p-input-icon-right">
-        <label for="experience">Experience exigé</label>
-        <input id="experience" type="text" pInputText [(ngModel)]="offre.experience" name="experience" #experience="ngModel" required pTooltip="Taper l'experience voulu" tooltipPosition="right" tooltipEvent="focus" showDelay="1000" hideDelay="500" >
+      <!--<div class="p-field p-col-12 p-md-6 p-input-icon-right">-->
+        <!--<label for="experience">Experience exigé</label>-->
+        <!--<input id="experience" type="text" pInputText [(ngModel)]="offre.experience" name="experience" #experience="ngModel" required pTooltip="Taper l'experience voulu" tooltipPosition="right" tooltipEvent="focus" showDelay="1000" hideDelay="500" >-->
+      <!--</div>-->
+
+      <div class="p-field p-col-12 p-md-6">
+        <label for="genre">Experience exigé</label>
+        <div class="p-field p-col-12 p-md-3">
+          <p-dropdown id="experience"  [options]="experiences" [(ngModel)]="offre.experience" placeholder="Choisissez l'expérience " name="experience" [style]="{'minWidth': '14rem'}"></p-dropdown>
+        </div>
       </div>
+
+
+      <!--<div class="p-field p-col-12 p-md-6">-->
+        <!--<label for="niveau_education">Niveau Education</label>-->
+        <!--<input id="niveau_education" type="text"  pInputText width="50px" [(ngModel)]="offre.niveau_education" name="niveau_education" #niveau_education="ngModel" required pTooltip="Taper le niveau d'éducation voulu" tooltipPosition="right" tooltipEvent="focus" showDelay="1000" hideDelay="500">-->
+      <!--</div>-->
+
 
       <div class="p-field p-col-12 p-md-6">
         <label for="niveau_education">Niveau Education</label>
-        <input id="niveau_education" type="text"  pInputText width="50px" [(ngModel)]="offre.niveau_education" name="niveau_education" #niveau_education="ngModel" required pTooltip="Taper le niveau d'éducation voulu" tooltipPosition="right" tooltipEvent="focus" showDelay="1000" hideDelay="500">
+        <div class="p-field p-col-12 p-md-3">
+          <p-dropdown id="niveau_education"  [options]="niveau_education" [(ngModel)]="offre.niveau_education" placeholder="Choisissez le niveau d'education" name="niveau_education" [style]="{'minWidth': '14rem'}"></p-dropdown>
+        </div>
       </div>
+
+
 
       <div class="p-field p-col-12 p-md-3">
         <label for="description_emploi">Description Emploi</label>
@@ -36,10 +61,21 @@
         <!--<input id="desc" type="text" pInputText [(ngModel)]="employeur.description_entreprise" name="desc" #desc="ngModel" required>-->
       </div>
 
-      <div class="p-field p-col-12 p-md-6">
-        <label for="emploiTypes">Domaine</label>
-        <input id="emploiTypes" type="text"  pInputText width="50px" [(ngModel)]="offre.domaine" name="emploiTypes" #emploiTypes="ngModel" required pTooltip="Taper le type d'emploi" tooltipPosition="right" tooltipEvent="focus" showDelay="1000" hideDelay="500">
+      <div class="p-field p-col-12 p-md-3">
+        <label for="secteur">Domaine</label>
+        <p-dropdown id="secteur" [options]="secteurs" [(ngModel)]="offre.domaine" placeholder="Choisissez un secteur d'activités" name="secteur" optionLabel="secteur"[style]="{'minWidth': '14rem'}"></p-dropdown>
       </div>
+
+      <!--<div class="p-field p-col-12 p-md-6">-->
+        <!--<label for="secteur">Domaine</label>-->
+        <!--<div class="p-field p-col-12 p-md-3">-->
+          <!--<p-dropdown id="secteur"  [options]="secteurs" [(ngModel)]="offre.domaine" placeholder="Choisissez un secteur d'activités" name="secteur" [style]="{'minWidth': '14rem'}"></p-dropdown>-->
+        <!--</div>-->
+      <!--</div>-->
+
+
+        <!--<input id="emploiTypes" type="text"  pInputText width="50px" [(ngModel)]="offre.domaine" name="emploiTypes" #emploiTypes="ngModel" required pTooltip="Taper le type d'emploi" tooltipPosition="right" tooltipEvent="focus" showDelay="1000" hideDelay="500">-->
+
 
       <div class="p-field p-col-12 p-md-6">
         <label for="type_offre">Types d'emploi</label>
