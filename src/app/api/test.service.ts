@@ -24,6 +24,10 @@ export class TestService {
     return this.httpClient.get<Test[]>(this.url + '/tests');
   }
 
+  public get(id: number): Observable<any>{
+    return this.httpClient.get<Test>(this.url + '/test/' + id);
+  }
+
 
   public save(test: Test): Observable<any>{
     return this.httpClient.post(this.url + '/test', test);

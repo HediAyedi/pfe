@@ -19,6 +19,7 @@ export class BlogFormComponent implements OnInit {
 
   blog: Blog = new Blog();
   message: any;
+  display=false
   blog2: Blog[];
   first = 0;
   displayPosition = false;

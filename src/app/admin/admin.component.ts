@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class AdminComponent implements OnInit {
 
   constructor(public router: Router) { }
+  display=false;
   ngOnInit(): void {
   }
 

@@ -24,7 +24,6 @@ import {ProfileEmployeurComponent} from './pages/employeur/profile-employeur/pro
 import {WelcomeComponent} from './pages/employeur/welcome/welcome.component';
 import {QuizzComponent} from './quizz/quizz.component';
 import { TestsComponent } from './admin/tests/tests.component';
-import { TestComponent } from './admin/test/test.component';
 
 const routes: Routes = [
 
@@ -44,7 +43,6 @@ const routes: Routes = [
   {path: 'admin/blog/form', component: BlogFormComponent},
   {path: 'admin/blog/home', component: BlogHomeComponent},
   {path: 'admin/tests/home', component: TestsComponent},
-  {path: 'admin/test/form', component: TestComponent},
 
   {path: 'cardsEmployeurs', component: SocieteCardsComponent},
   {path: 'carousel', component: CarouselSocieteComponent},

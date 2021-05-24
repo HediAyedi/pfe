@@ -23,9 +23,7 @@
     background-color: #00A4E5;
     z-index: 100;
   }
-  .main-content{
-    margin-left: 345px;
-  }
+  
   
   .sidebar-brand {
     height: 90px;
@@ -70,8 +68,7 @@
     box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
     background-color: white;
     position: fixed;
-    left: 345px;
-    width: calc(100% - 345px);
+    width: 100%;
     top: 0;
     z-index: 100;
   }

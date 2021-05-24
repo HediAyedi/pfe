@@ -76,9 +76,6 @@ import { OffresEmployeurComponent } from './pages/employeur/offres-employeur/off
 import { WelcomeComponent } from './pages/employeur/welcome/welcome.component';
 import { TestsComponent } from './admin/tests/tests.component';
 import { QuestionsComponent } from './admin/questions/questions.component';
-import { TestComponent } from './admin/test/test.component';
-import { QuestionComponent } from './admin/question/question.component';
-import { ReponsesComponent } from './admin/reponses/reponses.component';
 import { QuizzComponent } from './quizz/quizz.component';
 
 // import {ConfirmDialogModule} from 'primeng/confirmdialog';
@@ -112,9 +109,6 @@ import { QuizzComponent } from './quizz/quizz.component';
     WelcomeComponent,
     TestsComponent,
     QuestionsComponent,
-    TestComponent,
-    QuestionComponent,
-    ReponsesComponent,
     QuizzComponent,
   ],
   imports: [

@@ -18,16 +18,20 @@ export class OffreComponent implements OnInit {
 
   ngOnInit(): void {
     this.idRoute = this.route.snapshot.paramMap.get('offre_id');
-    console.log('activated route : ' + this.idRoute);
-    // this.offres = JSON.parse(localStorage.getItem("employeursCache"));
-    // console.log("Offres : " + this.offres.id);
     this.findAll();
+    this.findOffre()
 
     // this.offre = this.offres.filter(
     //     off => off.id === this.idRoute
     //   ) ;
 
 
+  }
+
+  public findOffre(){
+    this.offreService.get(this.idRoute).subscribe(data=>{
+      this.offre=data;
+    })
   }
 
   public findAll() {

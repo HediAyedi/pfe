@@ -1,5 +1,4 @@
-import { TypeOffre } from './type-offre';
-import { Langue } from './Langue';
+import { Employeur } from './employeur';
 export class Offre {
     id: number;
     genre: string;
@@ -8,8 +7,10 @@ export class Offre {
     description_emploi: string;
     domaine: any;
     exigence_emploi: string;
+    nom_emploi: string;
     active: boolean;
     employeur_id: number;
+    employeur: Employeur;
     emploiTypes: any;
     langues: any;
     created_at:any;

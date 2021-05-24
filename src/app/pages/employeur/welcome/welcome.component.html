@@ -9,6 +9,10 @@
         <label for="genre">Genre d'offre</label>
         <input id="genre" type="text" pInputText [(ngModel)]="offre.genre" name="genre" #genre="ngModel" required pTooltip="Taper le genre d'emploi" tooltipPosition="top" tooltipEvent="focus" showDelay="1000" hideDelay="500">
       </div>
+      <div class="p-field p-col-12 p-md-6 ">
+        <label for="nom_emploi">Nom d'offre</label>
+        <input id="nom_emploi" type="text" pInputText [(ngModel)]="offre.nom_emploi" name="nom_emploi" #genre="ngModel" required pTooltip="Taper le nom d'emploi" tooltipPosition="top" tooltipEvent="focus" showDelay="1000" hideDelay="500">
+      </div>
 
       <div class="p-field p-col-12 p-md-6 p-input-icon-right">
         <label for="experience">Experience exigé</label>
