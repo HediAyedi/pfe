@@ -34,78 +34,11 @@
 
     <!--</div>-->
 
-<<<<<<< HEAD
-
-<!--<p-button (click)="showPositionDialog('bottom')" icon="pi pi-arrow-up" label="Bottom" styleClass="p-button-warning"></p-button>-->
-
-<!--<p-dialog header="Godfather I" [(visible)]="displayPosition" [position]="position" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"-->
-          <!--[draggable]="false" [resizable]="false">-->
-  <!--<form class="box">-->
-    <!--<div class="stepsdemo-content">-->
-      <!--<p-card>-->
-        <!--<ng-template pTemplate="title">-->
-          <!--Ajouter une description-->
-        <!--</ng-template>-->
-              <!--<ng-template pTemplate="subtitle">-->
-                <!--Taper les données-->
-              <!--</ng-template>-->
-              <!--<ng-template pTemplate="content">-->
-                <!--<div class="p-fluid">-->
-                  <!--<div class="p-field">-->
-                    <!--<label for="titre">Titre</label>-->
-                    <!--<input #titre="ngModel" name="titre" id="titre" type="text" required pInputText [(ngModel)]="blog.titre" [ngClass]="{'ng-dirty': (titre.dirty && titre.invalid)}">-->
-                    <!--<small *ngIf="(titre.dirty && titre.invalid)" class="p-error">titre is required.</small>-->
-                  <!--</div>-->
-                  <!--<div class="p-field">-->
-                    <!--<label for="logo">logo</label>-->
-                    <!--<input #logo="ngModel" id="logo" name="logo"  type="text" required pInputText [(ngModel)]="blog.logo" [ngClass]="{'ng-dirty':(logo.dirty && logo.invalid)}">-->
-                    <!--<small class="p-error" *ngIf="(logo.dirty && logo.invalid)">logo is required.</small>-->
-                  <!--</div>-->
-                  <!--<div class="p-field">-->
-                    <!--<label for="description">Age</label>-->
-                    <!--<input #description="ngModel" id="description" name="description"  type="text" required pInputText [(ngModel)]="blog.description" [ngClass]="(description.dirty && description.invalid)">-->
-                    <!--<small class="p-error" *ngIf="(description.dirty && description.invalid)">description is required.</small>-->
-                  <!--</div>-->
-                <!--</div>-->
-              <!--</ng-template>-->
-              <!--<ng-template pTemplate="footer">-->
-                <!--<div class="p-grid p-nogutter p-justify-end">-->
-                  <!--<p-button label="Ajouter" (onClick)="ajouter()" icon="pi pi-angle-right" iconPos="right"></p-button>-->
-                <!--</div>-->
-              <!--</ng-template>-->
-            <!--</p-card>-->
-          <!--</div>-->
-
-
-
-        <!--</form>-->
-
-
-
-    <!--</p-dialog>-->
-<form class="box">
-  <div class="stepsdemo-content">
-    <p-card>
-      <ng-template pTemplate="title">
-        Ajouter une description
-
-      </ng-template>
-      <ng-template pTemplate="subtitle">
-        Taper les données
-      </ng-template>
-      <ng-template pTemplate="content">
-        <div class="p-fluid">
-          <div class="p-field">
-            <label for="titre">Titre</label>
-            <input #titre="ngModel" name="titre" id="titre" type="text" required pInputText [(ngModel)]="blog.titre" [ngClass]="{'ng-dirty': (titre.dirty && titre.invalid)}">
-            <small *ngIf="(titre.dirty && titre.invalid)" class="p-error">titre is required.</small>
-=======
       
 <div >
   <p-card  >
-
     <ng-template pTemplate="content">
-      <p-dialog header="Ajout test" [modal]="true" [draggable]="false" [(visible)]="display">
+      <p-dialog header="Ajout blog" [modal]="true" [draggable]="false" [(visible)]="display">
 
         <ng-template pTemplate="title">
           Ajouter une description
@@ -130,47 +63,25 @@
             </div>
             <div class="p-field">
               <label for="description">Contenu</label>
-              <input #description="ngModel" id="description" name="description" type="text" required pInputText [rows]="3" [cols]="30"
+              <input #description="ngModel" id="description" name="description" type="text" required pInputText [rows]="5" [cols]="30"
                 [(ngModel)]="blog.description" [ngClass]="(description.dirty && description.invalid)">
               <small class="p-error" *ngIf="(description.dirty && description.invalid)">description is required.</small>
             </div>
->>>>>>> 415672040a2ecd0421d69e76cd650b279b367509
           </div>
-          <div class="p-field">
-            <label for="logo">logo</label>
-            <input #logo="ngModel" id="logo" name="logo"  type="text" required pInputText [(ngModel)]="blog.logo" [ngClass]="{'ng-dirty':(logo.dirty && logo.invalid)}">
-            <small class="p-error" *ngIf="(logo.dirty && logo.invalid)">logo is required.</small>
+        </ng-template>
+        <ng-template pTemplate="footer">
+          <div class="p-grid p-nogutter p-justify-end">
+            <p-button label="Ajouter" (onClick)="ajouter()" icon="pi pi-angle-right" iconPos="right"></p-button>
           </div>
-<<<<<<< HEAD
-          <div class="p-field">
-            <label for="description">Age</label>
-            <input #description="ngModel" id="description" name="description"  type="text" required pInputText [(ngModel)]="blog.description" [ngClass]="(description.dirty && description.invalid)">
-            <small class="p-error" *ngIf="(description.dirty && description.invalid)">description is required.</small>
-          </div>
-        </div>
-      </ng-template>
-      <ng-template pTemplate="footer">
-        <div class="p-grid p-nogutter p-justify-end">
-          <p-button label="Ajouter" (onClick)="ajouter()" icon="pi pi-angle-right" iconPos="right"></p-button>
-        </div>
-      </ng-template>
-    </p-card>
-  </div>
-
-
-
-</form>
-=======
         </ng-template>
       </p-dialog>
     
-      <button pButton pRipple type="button" (click)="display=true" label="Ajout Test" icon="pi pi-plus"
+      <button pButton pRipple type="button" (click)="display=true" label="Ajout Blog" icon="pi pi-plus"
       class="p-button-raised p-button-text "></button>
     </ng-template>
 
   </p-card>
 </div>
->>>>>>> 415672040a2ecd0421d69e76cd650b279b367509
 
 
 <div class="card">
