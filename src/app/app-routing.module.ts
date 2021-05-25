@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import {DraganddropComponent} from './pages/draganddrop/draganddrop.component';
 import {DashboardComponent} from './admin/dashboard/dashboard.component';
 import {CvComponent} from './pages/cv/cv.component';
-import {FormComponent} from './pages/form/form.component';
 import {TableDesSocieteComponent} from './pages/table-des-societe/table-des-societe.component';
 import {FormsocieteComponent} from './pages/formsociete/formsociete.component';
 import {FormCandidatComponent} from './pages/form-candidat/form-candidat.component';
@@ -33,7 +32,6 @@ const routes: Routes = [
 
   {path: 'admin/dashboard', component: DashboardComponent},
   {path: 'cv', component: CvComponent},
-  {path: 'form', component: FormComponent},
 
   {path: 'SignUpEmployeur', component: FormsocieteComponent},
   {path: 'SignUpCandidat', component: FormCandidatComponent},

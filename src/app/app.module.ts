@@ -52,7 +52,6 @@ import { ProductService } from './pages/table-des-societe/productservice';
 import { NavbarComponent } from './parts/navbar/navbar.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { CvComponent } from './pages/cv/cv.component';
-import { FormComponent } from './pages/form/form.component';
 import { DraganddropComponent } from './pages/draganddrop/draganddrop.component';
 import { TableDesSocieteComponent } from './pages/table-des-societe/table-des-societe.component';
 import { FormsocieteComponent } from './pages/formsociete/formsociete.component';
@@ -77,6 +76,10 @@ import { WelcomeComponent } from './pages/employeur/welcome/welcome.component';
 import { TestsComponent } from './admin/tests/tests.component';
 import { QuestionsComponent } from './admin/questions/questions.component';
 import { QuizzComponent } from './quizz/quizz.component';
+import { GestionCvComponent } from './pages/gestion-cv/gestion-cv.component';
+import { GestionExperienceComponent } from './pages/gestion-cv/gestion-experience/gestion-experience.component';
+import { GestionPersonalInfoComponent } from './pages/gestion-cv/gestion-personal-info/gestion-personal-info.component';
+import { GestionProfessionalInfoComponent } from './pages/gestion-cv/gestion-professional-info/gestion-professional-info.component';
 
 // import {ConfirmDialogModule} from 'primeng/confirmdialog';
 // import {ConfirmationService} from 'primeng/api';
@@ -86,7 +89,6 @@ import { QuizzComponent } from './quizz/quizz.component';
     DraganddropComponent,
     DashboardComponent,
     CvComponent,
-    FormComponent,
     NavbarComponent,
     TableDesSocieteComponent,
     FormsocieteComponent,
@@ -110,6 +112,10 @@ import { QuizzComponent } from './quizz/quizz.component';
     TestsComponent,
     QuestionsComponent,
     QuizzComponent,
+    GestionCvComponent,
+    GestionExperienceComponent,
+    GestionPersonalInfoComponent,
+    GestionProfessionalInfoComponent,
   ],
   imports: [
     BrowserModule,

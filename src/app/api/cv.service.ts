@@ -1,0 +1,13 @@
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class CvService {
+
+constructor() { }
+
+public getAllCache(){
+  return "yup works"
+}
+}
