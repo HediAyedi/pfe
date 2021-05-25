@@ -46,26 +46,26 @@
 <!--<br><br><br><br><br>-->
 
 <div class="card">
-  <p-dataView #dv [value]="offres" [paginator]="true" [rows]="9" filterBy="description_emploi" layout="grid">
+  <p-dataView #dv [value]="offres" [paginator]="true" [rows]="9" filterBy="nom_emploi" layout="grid">
     <!--[sortField]="sortField" [sortOrder]="sortOrder"-->
     <ng-template pTemplate="header">
       <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between">
         <!--<p-dropdown [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Sort By Price" (onChange)="onSortChange($event)" styleClass="p-mb-2 p-mb-md-0"></p-dropdown>-->
         <span class="p-input-icon-left p-mb-2 p-mb-md-0" >
-                  <i class="pi pi-search"></i>
-                  <input type="search" pInputText placeholder="Search by Name" (input)="dv.filter($event.target.value)">
+                  <i class="pi pi-search iconsearch" ></i>
+                  <input type="search" pInputText placeholder="  Chercher par Nom" (input)="dv.filter($event.target.value)" class="btnsearch">
               </span>
-        <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+        <p-dataViewLayoutOptions class="boxes"></p-dataViewLayoutOptions>
       </div>
     </ng-template>
     <ng-template let-offre pTemplate="listItem">
       <div class="p-col-12">
         <div class="product-list-item">
           <div class="product-list-detail">
-            <div class="product-name">{{offre.genre}}</div>
-            <div class="product-description">{{offre.exigence_emploi}}</div>
+            <div class="product-name" style="cursor:pointer;" (click)="route(offre.id)">{{offre.nom_emploi}}</div>
+            <div class="product-description">{{offre.exigence_emploi | slice:0:250}} ... </div>
             <!--<p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating>-->
-            <i class="pi pi-tag product-category-icon"></i><span class="product-category">{{offre.description_emploi}}</span>
+            <i class="pi pi-reply product-category-icon"></i><span class="product-category">{{offre.description_emploi | slice:0:250}} ...</span>
           </div>
           <!--<div class="product-list-action">-->
             <!--<span class="product-price">${{product.price}}</span>-->
@@ -77,22 +77,31 @@
     </ng-template>
     <ng-template let-offre pTemplate="gridItem">
       <div class="p-col-12 p-md-4">
-        <div class="product-grid-item card">
-          <div class="product-grid-item-top">
-            <div>
-              <i class="pi pi-tag product-category-icon"></i>
-              <span class="product-category">{{offre.genre }}</span>
+        <div class="product-grid-item card" >
+          <!--<div style="background-color: red ; height: 100px ; width: 80px">-->
+            <!--aaaa-->
+            <!--&lt;!&ndash;<img src="{{offre.employeur.logo}}" alt="" class="image_left" width="40px" height="40px">&ndash;&gt;-->
+          <!--</div>-->
+          <div class="product-grid-item-top" style="display: flex">
+            <div style="width: 180px ; height: 180px ; margin-bottom: 20px ;display: flex;flex-wrap: nowrap">
+              <!--<span class="product-category">{{offre.genre }}</span>-->
+              <img src="{{offre.employeur.logo}}" alt="" class="image_left" width="120px" height="120px " style=";border-radius: 50%"> <span style="font-weight: bolder;padding-left: 50px;
+    padding-top: 40%;">{{offre.nom_emploi}}</span>
+
+              <span style="color: #1D2231; font-style: italic;font-family: 'Lato', sans-serif ; font-weight: bold; padding-left: 250%">{{offre.employeur.nom_entreprise}}</span>
+              <span style="padding-left: 400px"><button pButton pRipple type="button" icon="pi pi-eye" (click)="route(offre.id)" class="p-button-rounded p-button-info"></button></span>
             </div>
             <!--<span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{offre.exigence_emploi}}</span>-->
-          </div>
+          <!--</div>-->
           <div class="product-grid-item-content">
-            <div class="product-name">{{offre.niveau_education}}</div>
-            <div class="product-description">{{offre.description_emploi}}</div>
+            <div class="product-description" style="padding-top: 110px">{{offre.description_emploi | slice:0:250}} ...
+
+            </div>
             <!--<p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating>-->
           </div>
-          <div class="product-grid-item-bottom">
-            <!--<span class="product-price">${{product.price}}</span>-->
-            <!--<p-button icon="pi pi-shopping-cart" [disabled]="product.inventoryStatus === 'OUTOFSTOCK'"></p-button>-->
+          <!--<div class="product-grid-item-bottom">-->
+            <!--&lt;!&ndash;<span class="product-price">${{product.price}}</span>&ndash;&gt;-->
+            <!--&lt;!&ndash;<p-button icon="pi pi-shopping-cart" [disabled]="product.inventoryStatus === 'OUTOFSTOCK'"></p-button>&ndash;&gt;-->
           </div>
         </div>
       </div>
