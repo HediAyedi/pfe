@@ -4,6 +4,7 @@ import {ProductService} from '../table-des-societe/productservice';
 import {OffreService} from '../../api/offres.service';
 import {Offre} from '../../models/offre';
 import { Langue } from 'src/app/models/Langue';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-offres',
@@ -22,7 +23,9 @@ export class OffresComponent implements OnInit {
 
   sortField: string;
   constructor(private primengConfig: PrimeNGConfig,
-              private offreService: OffreService) { }
+              private offreService: OffreService,
+              private router:Router,
+  ) { }
 
   ngOnInit(): void {
 
@@ -60,5 +63,8 @@ export class OffresComponent implements OnInit {
         console.log(err);
       });
   }
-
+  route(id){
+    console.log(id);
+    this.router.navigate(['/offre',id]);
+  }
 }
