@@ -1,17 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , ViewEncapsulation} from '@angular/core';
 import { MenuItem, MessageService } from 'primeng/api';
-import { Subscription } from 'rxjs';
 import { TestService } from "../../api/test.service"
 
 @Component({
   selector: 'app-gestion-cv',
   templateUrl: './gestion-cv.component.html',
   styleUrls: ['./gestion-cv.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class GestionCvComponent implements OnInit {
-  items: MenuItem[];
 
-  subscription: Subscription;
+  items: MenuItem[];
+  activeIndex: number = 1;
 
   constructor(
     public messageService: MessageService,
@@ -21,20 +21,16 @@ export class GestionCvComponent implements OnInit {
   ngOnInit(): void {
     this.items = [
       {
-        label: 'Personal',
+        label: 'Personal info',
         routerLink: 'personal',
       },
       {
-        label: 'Seat',
-        routerLink: 'seat',
+        label: 'Professional info',
+        routerLink: 'professional',
       },
       {
-        label: 'Payment',
-        routerLink: 'payment',
-      },
-      {
-        label: 'Confirmation',
-        routerLink: 'confirmation',
+        label: 'Experiences',
+        routerLink: 'experiences',
       },
     ];
     

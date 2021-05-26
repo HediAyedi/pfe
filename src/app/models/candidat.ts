@@ -7,13 +7,14 @@ export class Candidat {
   civilite: string;
   motivation: string;
   telephone: number;
+  cv:any;
   image: any;
   date_naissance: Date;
+
   verifie: boolean;
   active: boolean;
   created_at:any;
   updated_at:any;
-
 
   constructor() {
     this.id = null;
@@ -26,6 +27,7 @@ export class Candidat {
     this.telephone = null;
     this.image = null;
     this.date_naissance = null;
+
     this.verifie = true;
     this.active = true;
 

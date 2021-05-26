@@ -65,7 +65,7 @@ export class WelcomeComponent implements OnInit {
 
     //Tableau des types offres from cache
     this.offre_types = JSON.parse(localStorage.type_offresCache || '[]');
-    console.log("Les secteurs:",this.offre_types);
+    console.log("Les offres:",this.offre_types);
 
 
     //Tableau des langues from cache

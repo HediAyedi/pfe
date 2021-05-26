@@ -80,6 +80,7 @@ import { GestionCvComponent } from './pages/gestion-cv/gestion-cv.component';
 import { GestionExperienceComponent } from './pages/gestion-cv/gestion-experience/gestion-experience.component';
 import { GestionPersonalInfoComponent } from './pages/gestion-cv/gestion-personal-info/gestion-personal-info.component';
 import { GestionProfessionalInfoComponent } from './pages/gestion-cv/gestion-professional-info/gestion-professional-info.component';
+import { HomeCandidatComponent } from './pages/candidat/home-candidat/home-candidat.component';
 
 // import {ConfirmDialogModule} from 'primeng/confirmdialog';
 // import {ConfirmationService} from 'primeng/api';
@@ -116,6 +117,7 @@ import { GestionProfessionalInfoComponent } from './pages/gestion-cv/gestion-pro
     GestionExperienceComponent,
     GestionPersonalInfoComponent,
     GestionProfessionalInfoComponent,
+    HomeCandidatComponent,
   ],
   imports: [
     BrowserModule,
