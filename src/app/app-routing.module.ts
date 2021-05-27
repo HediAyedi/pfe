@@ -35,8 +35,58 @@ import { ProfileEmployeurComponent } from './pages/employeur/profile-employeur/p
 import { WelcomeComponent } from './pages/employeur/welcome/welcome.component';
 import { QuizzComponent } from './quizz/quizz.component';
 import { TestsComponent } from './admin/tests/tests.component';
+import {DraganddropTESTComponent} from './parts/draganddrop-test/draganddrop-test.component';
+import {HomeWebComponent} from './pages/home-web/home-web.component';
 
 const routes: Routes = [
+<<<<<<< HEAD
+
+
+  {path: '', component: HomeWebComponent},
+
+  {path: 'test', component: NavbarComponent},
+  {path: 'test2', component: DraganddropTESTComponent},
+  {path: 'draganddrop', component: DraganddropComponent},
+
+
+  {path: 'admin/dashboard', component: DashboardComponent},
+  {path: 'cv', component: CvComponent},
+  {path: 'form', component: FormComponent},
+
+  {path: 'SignUpEmployeur', component: FormsocieteComponent},
+  {path: 'SignUpCandidat', component: FormCandidatComponent},
+
+  {path: 'admin/tableEmployeurs', component: TableDesSocieteComponent},
+  {path: 'admin/tableCandidats', component: TableDesCandidatsComponent},
+  {path: 'admin/blog/form', component: BlogFormComponent},
+  {path: 'admin/blog/home', component: BlogHomeComponent},
+  {path: 'admin/tests/home', component: TestsComponent},
+
+  {path: 'cardsEmployeurs', component: SocieteCardsComponent},
+  {path: 'carousel', component: CarouselSocieteComponent},
+
+  {path: 'offres', component: OffresComponent},
+  {path: '', component: OffresComponent},
+  {path: 'offre/:offre_id', component: OffreComponent},
+
+
+  {path: 'loginEmployeur', component: LoginEmployeurComponent},
+  {path: 'loginCandidat', component: LoginCandidatComponent},
+
+  {path: 'employeur/home', component: HomeComponent},
+  {path: 'employeur/offres', component: OffresEmployeurComponent},
+  {path: 'employeur/offreCandidat/:offre_id', component: DraganddropComponent},
+  {path: 'employeur/profil', component: ProfileEmployeurComponent},
+  {path: 'employeur/welcome', component: WelcomeComponent},
+
+
+  {path: 'contact-us', component: ContactComponent},
+  {path: 'blog', component: BlogHomeComponent},
+
+  {path: 'quizz', component: QuizzComponent},
+
+
+=======
   { path: 'test', component: NavbarComponent },
   { path: 'draganddrop', component: DraganddropComponent },
 
@@ -86,6 +136,7 @@ const routes: Routes = [
   { path: 'blog', component: BlogHomeComponent },
 
   { path: 'quizz', component: QuizzComponent },
+>>>>>>> 219b1c6183d4e89fd1f6dcc466776ce354070726
 ];
 
 @NgModule({

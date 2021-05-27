@@ -18,6 +18,7 @@ import { SecteurActivite } from './models/secteur-activite';
 export class AppComponent {
   langues: Langue[]=[];
   secteurs:SecteurActivite[];
+
   constructor(
     private langueService: LangueService,
     private secteurActiviteService: SecteurActiviteService,
