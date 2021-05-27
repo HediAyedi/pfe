@@ -7,6 +7,11 @@ export class Cv {
     salaire: number;
     nbre_annee: number;
     candidat_id: number;
+    competences:[];
+    domaines:[];
+    emploi_types:[];
+    langues:[];
+    experiences:[];
     created_at:any;
     updated_at:any;
   

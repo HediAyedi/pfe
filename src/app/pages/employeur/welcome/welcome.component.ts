@@ -50,7 +50,6 @@ export class WelcomeComponent implements OnInit {
               private primengConfig: PrimeNGConfig,
               private langueService: LangueService,
               private offreService: OffreService) {
-
     }
 
 

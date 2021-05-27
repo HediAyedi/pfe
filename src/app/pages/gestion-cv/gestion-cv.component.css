@@ -46,7 +46,7 @@
 }
 
 .c {
-  margin-top: 10vh;
+  margin-top: 5vh;
   width: 60vw;
 }
 
@@ -57,6 +57,7 @@
 }
 
 .p-justify-between {
+  margin-top: 20px;
   display: flex;
   justify-content:space-between;
 }

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CvService } from 'src/app/api/cv.service';
 import { Candidat } from 'src/app/models/candidat';
 import { Cv } from 'src/app/models/cv';
-import { CvService } from '../../../api/cv.service';
 
 @Component({
   selector: 'app-home-candidat',

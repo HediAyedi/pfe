@@ -30,7 +30,6 @@ export class GestionPersonalInfoComponent implements OnInit {
   }
 
   nextPage() {
-    console.log(this.cv_id);
       this.candidatservice.update(this.candidat, this.candidat.id).subscribe(res=>{
         this.router.navigate(['gestion-cv/professional',this.cv_id]);
         localStorage.setItem("candidat",JSON.stringify(this.candidat));

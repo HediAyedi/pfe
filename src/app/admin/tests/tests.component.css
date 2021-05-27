@@ -30,6 +30,32 @@
     word-wrap: break-word;
     
 }
+@media (max-width: 1111px) {
+  .reponse{
+    padding: 5px;
+    margin: 5px;
+    width: 70%;
+    word-wrap: break-word;
+  }
+}
+
+@media (max-width: 740px) {
+  .reponse{
+    padding: 5px;
+    margin: 5px;
+    width: 60%;
+    word-wrap: break-word;
+  }
+}
+
+@media (max-width: 556px) {
+  .reponse{
+    padding: 5px;
+    margin: 5px;
+    width: 55%;
+    word-wrap: break-word;
+  }
+}
 
 .success {
   background-color: rgba(0, 228, 0, 0.850);

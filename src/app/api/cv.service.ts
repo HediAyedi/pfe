@@ -24,7 +24,7 @@ export class CvService {
       return this.httpClient.get<Cv[]>(this.url + '/cvs');
     }
   
-    public get(id: number): Observable<any>{
+    public get(id: any): Observable<any>{
       return this.httpClient.get<Cv>(this.url + '/cv/' + id);
     }
   
@@ -33,7 +33,7 @@ export class CvService {
       return this.httpClient.post(this.url + '/cv', cv);
     }
   
-    public update(cv: Cv, id: number): Observable<any>{
+    public update(cv: Cv, id: any): Observable<any>{
       return this.httpClient.put(this.url + '/cv/' + id, cv);
     }
   
