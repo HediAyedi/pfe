@@ -5,6 +5,8 @@ import {SecteurActiviteService} from './api/caching services/secteur-activite.se
 import { CandidatService } from './api/candidat.service';
 import { EmployeurService } from './api/employeur.service';
 import { TypeOffreService } from './api/caching services/type-offre.service';
+import { DomaineService } from './api/caching services/domaine.service';
+import { CompetenceService } from './api/caching services/competence.service';
 import { Langue } from './models/Langue';
 import { SecteurActivite } from './models/secteur-activite';
 
@@ -22,24 +24,33 @@ export class AppComponent {
     private secteurActiviteService: SecteurActiviteService,
     private employeurService: EmployeurService,
     private candidatService: CandidatService,
+    private domaineService: DomaineService,
+    private competenceService: CompetenceService,
     private type_offreService: TypeOffreService,
     private router: Router,
     ) {
 
+      this.findDomaines();
+      this.findCompetences();
       this.findLangues();
       this.findSecteurs();
       this.findTypeOffres();
-
   }
 
   public findLangues(){
-    this.langueService.getAll();
+    this.langueService.getAllCache();
   }
   public findSecteurs(){
-    this.secteurActiviteService.getAll();
+    this.secteurActiviteService.getAllCache();
+  }
+  public findDomaines(){
+    this.domaineService.getAllCache();
+  }
+  public findCompetences(){
+    this.competenceService.getAllCache();
   }
   public findTypeOffres(){
-    this.type_offreService.getAll();
+    this.type_offreService.getAllCache();
   }
   // public findEmployeurs(){
   //   this.employeurService.getAllCache();

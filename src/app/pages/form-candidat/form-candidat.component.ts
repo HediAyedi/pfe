@@ -80,7 +80,6 @@ export class FormCandidatComponent implements OnInit {
         if (res.candidat) {
           this.message =
             'Ajout effectué avec succés attends La vérification de votre compte ';
-          this.candidatService.getAllCache();
           localStorage.setItem('candidat', JSON.stringify(res.candidat));
           localStorage.setItem('token', res.token);
 

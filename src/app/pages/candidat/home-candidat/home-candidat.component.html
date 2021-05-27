@@ -1,0 +1,9 @@
+<div  *ngIf="!candidat.cv , else modify">
+
+    <button (click)="ajoutCV()">ajouter CV</button>
+
+</div>
+
+<ng-template #modify>
+        <button (click)="router.navigate(['gestion-cv/personal',candidat.cv.id])">Modifier CV</button>
+</ng-template>

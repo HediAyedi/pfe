@@ -9,7 +9,7 @@ import {BlogService} from '../../api/blog.service';
 })
 export class BlogHomeComponent implements OnInit {
 
-  blog: Blog[];
+  blogs: Blog[]=[];
 
   constructor(private blogService: BlogService) { }
 
@@ -19,7 +19,7 @@ export class BlogHomeComponent implements OnInit {
   public findAll() {
     this.blogService.getAll()
       .subscribe(data => {
-        this.blog = data;
+        this.blogs = data;
       }, err => {
         console.log(err);
       });

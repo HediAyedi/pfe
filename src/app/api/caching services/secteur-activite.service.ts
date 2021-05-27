@@ -17,7 +17,7 @@ export class SecteurActiviteService {
   private url = environment.baseUrl;
   constructor(private httpClient: HttpClient) { }
 
-  public async getAll() {
+  public async getAllCache() {
     this.httpClient.get<SecteurActivite[]>(this.url + '/secteur_activites').subscribe(next =>{
       localStorage[CACHE_KEY]=JSON.stringify(next);
     });
