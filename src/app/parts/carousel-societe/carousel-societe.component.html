@@ -11,17 +11,14 @@
 
 <p-carousel [value]="employeurs" styleClass="custom-carousel" [numVisible]="3" [numScroll]="1" [circular]="true"
             [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
-  <ng-template pTemplate="header">
-    <h5>Top Sociétés</h5>
-  </ng-template>
   <ng-template let-employeur pTemplate="item">
     <div class="product-item">
       <div class="product-item-content">
         <div class="p-mb-3">
-          <img alt="Card" src="https://m.media-amazon.com/images/I/51nX7PBmzIL._SS500_.jpg" width="150px">
+          <img alt="Card" src={{employeur.logo}} width="150px" height="100px">
         </div>
         <div>
-          <h4 class="p-mb-1">{{employeur.nom}}</h4>
+          <h4 class="p-mb-1">{{employeur.nom_entreprise}}</h4>
           <h6 class="p-mt-0 p-mb-3">{{employeur.site_web}}</h6>
         </div>
       </div>

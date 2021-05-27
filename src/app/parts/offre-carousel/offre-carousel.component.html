@@ -1,0 +1,16 @@
+<p-carousel [value]="offres" styleClass="custom-carousel" [numVisible]="3" [numScroll]="1" [circular]="true"
+            [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
+  <ng-template let-offre pTemplate="item">
+    <div class="product-item">
+      <div class="product-item-content">
+        <div class="p-mb-3">
+          <img alt="Card" src={{offre.employeur.logo}} width="150px" height="100px">
+        </div>
+        <div>
+          <h4 class="p-mb-1">{{offre.nom_emploi}}</h4>
+          <h6 class="p-mt-0 p-mb-3">{{offre.domaine}}</h6>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</p-carousel>

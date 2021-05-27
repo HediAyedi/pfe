@@ -1,0 +1,135 @@
+
+<div class="wrapper">
+  <img class="img1" src="../../../assets/leaf3.png" data-depth="-1.5">
+
+  <!--<div class="nav">-->
+    <!--<div class="logo">Clean Juice-->
+    <!--</div>-->
+    <!--<div class="menu-links">-->
+      <!--<ul>-->
+        <!--<li>locations</li>-->
+        <!--<li>our menu</li>-->
+        <!--<li>our story</li>-->
+        <!--<li>meet our team</li>-->
+        <!--<li>own a clean juice</li>-->
+        <!--<li>contact us</li>-->
+      <!--</ul>-->
+    <!--</div>-->
+
+    <!--<div class="search">-->
+      <!--<i class="fa fa-search"></i>-->
+    <!--</div>-->
+
+    <!--<div class="account">my account</div>-->
+
+    <!--<div class="cart">-->
+      <!--<i class="fa fa-shopping-cart"></i>-->
+    <!--</div>-->
+  <!--</div>-->
+
+  <div class="content">
+    <div class="tagline">Find your dream Job</div>
+
+    <div class="pages">
+      <span>24</span>/24 state
+    </div>
+
+    <div class="title" #title>kamjobs</div>
+
+    <div (click)="route()" class="more">
+      <a>Show all the offres</a>
+    </div>
+
+    <div class="desc">
+      <p>
+        Your <span>Career </span>life <br>
+        starts here with us
+      </p>
+      <p>
+        Kamjobs is a website which is
+        facilate the hunt job process
+        for you .
+      </p>
+    </div>
+  </div>
+
+  <div class="juice">
+    <img src="../../../assets/man.png">
+  </div>
+
+  <!--<a (click)="route()" style="z-index: 100">blal ze alzr, azk</a>-->
+  <!--<div class="arrows">-->
+    <!--<button class="prev"><i class="fa fa-chevron-left"></i></button>-->
+    <!--<button class="next"><i class="fa fa-chevron-right"></i></button>-->
+  <!--</div>-->
+
+
+</div>
+
+
+<div class="leaves">
+  <ul id="scene">
+    <li class="layer">
+      <img src="../../../assets/leaf1.png" data-depth="-.1">
+    </li>
+    <li class="layer">
+      <img src="../../../assets/leaf2.png" data-depth="-.3">
+    </li>
+    <!--<li class="layer">-->
+      <!--<img src="../../../assets/leaf3.png" data-depth="-1.5">-->
+    <!--</li>-->
+    <!--<li class="layer">-->
+      <!--<img src="../../../assets/leaf4.png" data-depth=".1">-->
+    <!--</li>-->
+    <!--<li class="layer">-->
+    <!--<img src="./images/leaf05.png" data-depth=".3">-->
+    <!--</li>-->
+  </ul>
+</div>
+
+
+<img class="img2" src="../../../assets/leaf4.png" data-depth=".1">
+
+
+
+
+
+
+
+<div class="text1">
+  POV Canidadat
+</div>
+<div class="main-banner" id="top">
+  <video oncanplay="this.play()" onloadedmetadata="this.muted = true" [loop]="true" id="bg-video">
+    <source src="../../../assets/meet-jenny-whiteboard-explainer-hedi.mp4" type="video/mp4" />
+  </video>
+
+</div>
+
+<div class="text1">
+  POV Employeur
+</div>
+
+<div class="main-banner" id="top">
+   <video oncanplay="this.play()" onloadedmetadata="this.muted = true" [loop]="true" id="bg-video">
+   <source src="../../../assets/change-management.mp4" type="video/mp4" />
+   </video>
+</div>
+
+
+
+<div class="text1">
+  Our top Companies
+</div>
+
+<app-carousel-societe></app-carousel-societe>
+
+
+<div class="text1">
+  Our Latest offres
+</div>
+
+<app-offre-carousel></app-offre-carousel>
+
+
+<app-contact></app-contact>

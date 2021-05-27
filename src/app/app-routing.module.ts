@@ -24,10 +24,16 @@ import {ProfileEmployeurComponent} from './pages/employeur/profile-employeur/pro
 import {WelcomeComponent} from './pages/employeur/welcome/welcome.component';
 import {QuizzComponent} from './quizz/quizz.component';
 import { TestsComponent } from './admin/tests/tests.component';
+import {DraganddropTESTComponent} from './parts/draganddrop-test/draganddrop-test.component';
+import {HomeWebComponent} from './pages/home-web/home-web.component';
 
 const routes: Routes = [
 
+
+  {path: '', component: HomeWebComponent},
+
   {path: 'test', component: NavbarComponent},
+  {path: 'test2', component: DraganddropTESTComponent},
   {path: 'draganddrop', component: DraganddropComponent},
 
 

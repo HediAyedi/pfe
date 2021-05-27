@@ -77,6 +77,10 @@ import { WelcomeComponent } from './pages/employeur/welcome/welcome.component';
 import { TestsComponent } from './admin/tests/tests.component';
 import { QuestionsComponent } from './admin/questions/questions.component';
 import { QuizzComponent } from './quizz/quizz.component';
+import { DraganddropTESTComponent } from './parts/draganddrop-test/draganddrop-test.component';
+import {PanelModule} from 'primeng/panel';
+import { HomeWebComponent } from './pages/home-web/home-web.component';
+import { OffreCarouselComponent } from './parts/offre-carousel/offre-carousel.component';
 
 // import {ConfirmDialogModule} from 'primeng/confirmdialog';
 // import {ConfirmationService} from 'primeng/api';
@@ -110,6 +114,9 @@ import { QuizzComponent } from './quizz/quizz.component';
     TestsComponent,
     QuestionsComponent,
     QuizzComponent,
+    DraganddropTESTComponent,
+    HomeWebComponent,
+    OffreCarouselComponent,
   ],
   imports: [
     BrowserModule,
@@ -159,6 +166,7 @@ import { QuizzComponent } from './quizz/quizz.component';
     CascadeSelectModule,
     SidebarModule,
     InputSwitchModule,
+    PanelModule
     // ConfirmDialogModule,
     // ConfirmationService
   ],
