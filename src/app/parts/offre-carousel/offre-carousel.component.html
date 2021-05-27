@@ -1,7 +1,7 @@
 <p-carousel [value]="offres" styleClass="custom-carousel" [numVisible]="3" [numScroll]="1" [circular]="true"
             [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
   <ng-template let-offre pTemplate="item">
-    <div class="product-item">
+    <div (click)="route(offre.id)" class="product-item">
       <div class="product-item-content">
         <div class="p-mb-3">
           <img alt="Card" src={{offre.employeur.logo}} width="150px" height="100px">
