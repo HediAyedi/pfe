@@ -76,18 +76,15 @@ import { WelcomeComponent } from './pages/employeur/welcome/welcome.component';
 import { TestsComponent } from './admin/tests/tests.component';
 import { QuestionsComponent } from './admin/questions/questions.component';
 import { QuizzComponent } from './quizz/quizz.component';
-<<<<<<< HEAD
 import { DraganddropTESTComponent } from './parts/draganddrop-test/draganddrop-test.component';
 import {PanelModule} from 'primeng/panel';
 import { HomeWebComponent } from './pages/home-web/home-web.component';
 import { OffreCarouselComponent } from './parts/offre-carousel/offre-carousel.component';
-=======
 import { GestionCvComponent } from './pages/gestion-cv/gestion-cv.component';
 import { GestionExperienceComponent } from './pages/gestion-cv/gestion-experience/gestion-experience.component';
 import { GestionPersonalInfoComponent } from './pages/gestion-cv/gestion-personal-info/gestion-personal-info.component';
 import { GestionProfessionalInfoComponent } from './pages/gestion-cv/gestion-professional-info/gestion-professional-info.component';
 import { HomeCandidatComponent } from './pages/candidat/home-candidat/home-candidat.component';
->>>>>>> 219b1c6183d4e89fd1f6dcc466776ce354070726
 
 // import {ConfirmDialogModule} from 'primeng/confirmdialog';
 // import {ConfirmationService} from 'primeng/api';
@@ -120,17 +117,14 @@ import { HomeCandidatComponent } from './pages/candidat/home-candidat/home-candi
     TestsComponent,
     QuestionsComponent,
     QuizzComponent,
-<<<<<<< HEAD
     DraganddropTESTComponent,
     HomeWebComponent,
     OffreCarouselComponent,
-=======
     GestionCvComponent,
     GestionExperienceComponent,
     GestionPersonalInfoComponent,
     GestionProfessionalInfoComponent,
     HomeCandidatComponent,
->>>>>>> 219b1c6183d4e89fd1f6dcc466776ce354070726
   ],
   imports: [
     BrowserModule,
