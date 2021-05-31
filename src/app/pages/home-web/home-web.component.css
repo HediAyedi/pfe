@@ -83,9 +83,18 @@ ul{
 }
 
 .more {
-  flex: 1;
+  position: absolute;
+  top: 550px;
+  left: 280px;
+  animation-name: examplemore;
+  animation-duration: 3s;
+  animation-delay: -2s;
+  animation-timing-function: linear;
 }
-
+@keyframes examplemore {
+  0%{top: 0px;}
+  100%{top: 550px;}
+}
 .more a {
   text-decoration: none;
   font-size: 20px;
@@ -93,10 +102,15 @@ ul{
   background: #000;
   padding: 10px 30px;
   border-radius: 10px;
+  cursor: pointer;
+}
+.more a:hover{
+  padding:20px 50px;
 }
 
 .desc {
   flex: 0 0 32%;
+  margin-left: 660px;
 }
 .desc p:nth-child(1){
   font-size: 30px;
