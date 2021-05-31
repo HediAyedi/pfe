@@ -49,13 +49,22 @@ export class TestsComponent implements OnInit {
     }
   }
 
-  // GESTION TESTS 
 
+
+
+// GESTION TESTS 
   public findAllTests() {
     this.testService.getAll().subscribe(
       (data) => {
         this.tests = data;
         localStorage.setItem('testsCache', JSON.stringify(data));
+        if(this.test_id){
+          this.tests.forEach(item=> {
+            if(item.id == this.test_id) {
+              item.selected=true
+            }
+          })
+        }
       },
       (err) => {
         console.log(err);
@@ -68,7 +77,9 @@ export class TestsComponent implements OnInit {
     this.testService.save(this.test).subscribe(
       (data) => {
         console.log('Test added', data);
-        this.findAllTests();
+        data.selected=true;
+        this.tests.push(data)
+        this.testService.getAllCache();
         this.display2=false;
         this.showDialog(data)
       },
@@ -84,7 +95,14 @@ export class TestsComponent implements OnInit {
     this.testService.update(test, test.id).subscribe(
       (data) => {
         console.log('Test edited', data);
-        this.findAllTests();
+
+        //modification de test au niveau de frontend 
+        this.tests.forEach(item=> {
+          if(item.id == test.id) {
+            item = data
+            item.selected=true
+          }
+        })
         this.testModifDisplay=false;
       },
       (err) => {
@@ -131,7 +149,9 @@ export class TestsComponent implements OnInit {
     this.testModifDisplay = true;
   }
 
-  // GESTION REPONSES 
+
+
+// GESTION REPONSES 
   public findReponses() {
     this.reponseService.getAll().subscribe(
       (data) => {
@@ -206,7 +226,7 @@ export class TestsComponent implements OnInit {
 
 
 
-  // GESTION QUESTIONS
+// GESTION QUESTIONS
 
   public findQuestions(test_id) {
     this.questionService.getAll().subscribe(

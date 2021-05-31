@@ -25,7 +25,7 @@ export class OffreService {
     return this.httpClient.get<Offre[]>(this.url + '/emplois');
   }
 
-  public get(id: number): Observable<any>{
+  public get(id: any): Observable<any>{
     return this.httpClient.get<Offre>(this.url + '/emploi/' + id);
   }
 

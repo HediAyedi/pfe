@@ -3,6 +3,10 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+registerLocaleData(localeFr, 'fr');
+
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
@@ -45,9 +49,9 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { FieldsetModule } from 'primeng/fieldset';
 import { SplitterModule } from 'primeng/splitter';
 import { DataViewModule } from 'primeng/dataview';
+import {ChartModule} from 'primeng/chart';
 
 import { ConfirmationService, MenuItem, MessageService } from 'primeng/api';
-import { ProductService } from './pages/table-des-societe/productservice';
 
 import { NavbarComponent } from './parts/navbar/navbar.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
@@ -74,7 +78,6 @@ import { ProfileEmployeurComponent } from './pages/employeur/profile-employeur/p
 import { OffresEmployeurComponent } from './pages/employeur/offres-employeur/offres-employeur.component';
 import { WelcomeComponent } from './pages/employeur/welcome/welcome.component';
 import { TestsComponent } from './admin/tests/tests.component';
-import { QuestionsComponent } from './admin/questions/questions.component';
 import { QuizzComponent } from './quizz/quizz.component';
 import { DraganddropTESTComponent } from './parts/draganddrop-test/draganddrop-test.component';
 import {PanelModule} from 'primeng/panel';
@@ -115,7 +118,6 @@ import { HomeCandidatComponent } from './pages/candidat/home-candidat/home-candi
     OffresEmployeurComponent,
     WelcomeComponent,
     TestsComponent,
-    QuestionsComponent,
     QuizzComponent,
     DraganddropTESTComponent,
     HomeWebComponent,
@@ -174,11 +176,12 @@ import { HomeCandidatComponent } from './pages/candidat/home-candidat/home-candi
     CascadeSelectModule,
     SidebarModule,
     InputSwitchModule,
-    PanelModule
+    PanelModule,
+    ChartModule
     // ConfirmDialogModule,
     // ConfirmationService
   ],
-  providers: [ProductService, MessageService, ConfirmationService],
+  providers: [MessageService, ConfirmationService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

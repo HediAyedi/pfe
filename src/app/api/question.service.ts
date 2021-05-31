@@ -20,7 +20,11 @@ export class QuestionService {
     return this.httpClient.get<Question[]>(this.url + '/questions');
   }
 
-  public get(id: number): Observable<any>{
+  public getAllByID(id): Observable<any>{
+    return this.httpClient.get<Question[]>(this.url + '/questions/'+id);
+  }
+
+  public get(id: any): Observable<any>{
     return this.httpClient.get<Question>(this.url + '/question/' + id);
   }
 

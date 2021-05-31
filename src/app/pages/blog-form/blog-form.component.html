@@ -1,6 +1,3 @@
-<p-toast></p-toast>
-
-
 <!--<div class="p-fluid p-formgrid p-grid ">-->
 <!--<div class="p-field p-col-12 p-md-6 ">-->
 <!--<label for="nom">Nom & Prénom</label>-->
@@ -234,14 +231,17 @@
 <!--</div>-->
 
 
-<div>
-  <p-card>
-    <ng-template pTemplate="content">
-      <p-dialog header="Ajout blog" [modal]="true" [draggable]="false" [(visible)]="display">
 
+<div class="flex-container">
+
+  <div class="card-single">
+
+    <div>
+      <p-dialog header="Ajout blog" [modal]="true" [draggable]="false" [(visible)]="display">
+    
         <ng-template pTemplate="title">
           Ajouter une description
-
+    
         </ng-template>
         <ng-template pTemplate="subtitle">
           Taper les données
@@ -263,12 +263,12 @@
               </div>
               <div class="p-field">
                 <label for="description">Contenu</label>
-                
-                <textarea  id="description" name="description" required pInputTextarea
-                [rows]="6" [cols]="30" [(ngModel)]="blog.description" #description="ngModel"
+    
+                <textarea id="description" name="description" required pInputTextarea [rows]="6" [cols]="30"
+                  [(ngModel)]="blog.description" #description="ngModel"
                   [ngClass]="(description.dirty && description.invalid)"></textarea>
-
-
+    
+    
                 <small class="p-error" *ngIf="(description.dirty && description.invalid)">Contenu is
                   required.</small>
               </div>
@@ -280,75 +280,71 @@
             <p-button label="Ajouter" (onClick)="ajouter()" icon="pi pi-angle-right" iconPos="right"></p-button>
           </div>
         </ng-template>
-
+    
       </p-dialog>
-
+    
       <button pButton pRipple type="button" (click)="display=true" label="Ajout Blog" icon="pi pi-plus"
         class="p-button-raised p-button-text "></button>
-    </ng-template>
+    </div>
+    
+    <p-table [value]="blog2" dataKey="id" editMode="row" [paginator]="true" [rows]="rows" [showCurrentPageReport]="true"
+      [(first)]="first" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [rowsPerPageOptions]="[2,5,15]">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>titre</th>
+          <th>logo</th>
+          <th>description</th>
+          <th>Modifier</th>
+          <th>Supprimer</th>
 
-  </p-card>
-</div>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-blog let-editing="editing" let-ri="id">
+        <tr [pEditableRow]="blog">
+          <td pEditableColumn>
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="blog.titre">
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{blog.titre}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td pEditableColumn>
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="blog.logo">
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{blog.logo | slice:0:18}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td pEditableColumn>
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="blog.description" required>
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{blog.description | slice:0:8}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <!--<button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-pencil" (click)="onRowEditInit(blog)" class="p-button-rounded p-button-text"></button>-->
+          <!--<button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi-check" (click)="onRowEditSave(blog, blog.id)" class="p-button-rounded p-button-text p-button-success p-mr-2"></button>-->
+          <!--<button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow icon="pi pi-times" (click)="onRowEditCancel(blog, ri)" class="p-button-rounded p-button-text p-button-danger"></button>-->
 
+          <td>
+            <input type="button" icon="pi pi-pencil" pButton pRipple class="p-button-rounded p-mr-2"
+              style="background-color: darkseagreen" (click)="onRowEditSave(blog,blog.id)">
+          </td>
+          <td><input type="button" icon="pi pi-trash" pButton pRipple class="p-button-rounded "
+              style="background-color: darkred;" (click)="delete(blog.id)" icon="pi pi-check"></td>
 
-<div class="card">
-  <p-table [value]="blog2" dataKey="id" editMode="row" [paginator]="true" [rows]="rows" [showCurrentPageReport]="true"
-    [(first)]="first" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-    [rowsPerPageOptions]="[2,5,15]">
-    <ng-template pTemplate="header">
-      <tr>
-        <th>titre</th>
-        <th>logo</th>
-        <th>description</th>
-        <th>Modifier</th>
-        <th>Supprimer</th>
-
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-blog let-editing="editing" let-ri="id">
-      <tr [pEditableRow]="blog">
-        <td pEditableColumn>
-          <p-cellEditor>
-            <ng-template pTemplate="input">
-              <input pInputText type="text" [(ngModel)]="blog.titre">
-            </ng-template>
-            <ng-template pTemplate="output">
-              {{blog.titre}}
-            </ng-template>
-          </p-cellEditor>
-        </td>
-        <td pEditableColumn>
-          <p-cellEditor>
-            <ng-template pTemplate="input">
-              <input pInputText type="text" [(ngModel)]="blog.logo">
-            </ng-template>
-            <ng-template pTemplate="output">
-              {{blog.logo | slice:0:18}}
-            </ng-template>
-          </p-cellEditor>
-        </td>
-        <td pEditableColumn>
-          <p-cellEditor>
-            <ng-template pTemplate="input">
-              <input pInputText type="text" [(ngModel)]="blog.description" required>
-            </ng-template>
-            <ng-template pTemplate="output">
-              {{blog.description | slice:0:8}}
-            </ng-template>
-          </p-cellEditor>
-        </td>
-        <!--<button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-pencil" (click)="onRowEditInit(blog)" class="p-button-rounded p-button-text"></button>-->
-        <!--<button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi-check" (click)="onRowEditSave(blog, blog.id)" class="p-button-rounded p-button-text p-button-success p-mr-2"></button>-->
-        <!--<button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow icon="pi pi-times" (click)="onRowEditCancel(blog, ri)" class="p-button-rounded p-button-text p-button-danger"></button>-->
-
-        <td>
-          <input type="button" icon="pi pi-pencil" pButton pRipple class="p-button-rounded p-mr-2"
-            style="background-color: darkseagreen" (click)="onRowEditSave(blog,blog.id)">
-        </td>
-        <td><input type="button" icon="pi pi-trash" pButton pRipple class="p-button-rounded "
-            style="background-color: darkred;" (click)="delete(blog.id)" icon="pi pi-check"></td>
-
-      </tr>
-    </ng-template>
-  </p-table>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
 </div>

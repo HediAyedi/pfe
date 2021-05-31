@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 interface Quizz{
   question: string;
-  answer: { option: string, correct: boolean } [];
+  reponses: { reponse: string, correct: boolean } [];
 }
 
 @Injectable({
@@ -12,92 +12,92 @@ export class QuizzService {
   quizzes: Quizz[] = [
     {
       question: 'What\'s the capital of Somalia',
-      answer: [
-        { option: 'Nairobi', correct: false },
-        { option: 'Asmara', correct: false },
-        { option: 'Mogadishu', correct: true },
-        { option: 'Addis Ababa', correct: false },
+      reponses: [
+        { reponse: 'Nairobi', correct: false },
+        { reponse: 'Asmara', correct: false },
+        { reponse: 'Mogadishu', correct: true },
+        { reponse: 'Addis Ababa', correct: false },
       ]
     },
     {
       question: 'What\'s the capital of Mexico',
-      answer: [
-        { option: 'Guadalajara City', correct: false },
-        { option: 'Puebla City', correct: false },
-        { option: 'Mexico City', correct: true },
-        { option: 'Cancún', correct: false },
+      reponses: [
+        { reponse: 'Guadalajara City', correct: false },
+        { reponse: 'Puebla City', correct: false },
+        { reponse: 'Mexico City', correct: true },
+        { reponse: 'Cancún', correct: false },
       ]
     },
     {
       question: 'What\'s the capital of the UK',
-      answer: [
-        { option: 'London', correct: true },
-        { option: 'Asmara', correct: false },
-        { option: 'Paris', correct: false },
-        { option: 'Berlin', correct: false }
+      reponses: [
+        { reponse: 'London', correct: true },
+        { reponse: 'Asmara', correct: false },
+        { reponse: 'Paris', correct: false },
+        { reponse: 'Berlin', correct: false }
       ]
     },
     {
       question: 'What\'s the capital of the USA',
-      answer: [
-        { option: 'Los Angeles', correct: false },
-        { option: 'New York', correct: false },
-        { option: 'Washington DC', correct: true },
-        { option: 'Boston', correct: false }
+      reponses: [
+        { reponse: 'Los Angeles', correct: false },
+        { reponse: 'New York', correct: false },
+        { reponse: 'Washington DC', correct: true },
+        { reponse: 'Boston', correct: false }
       ]
     },
     {
       question: 'What\'s the capital of the UAE',
-      answer: [
-        { option: 'Dubai', correct: false },
-        { option: 'Abu Dhabi', correct: true },
-        { option: 'Doha', correct: false },
-        { option: 'Riyadh', correct: false }
+      reponses: [
+        { reponse: 'Dubai', correct: false },
+        { reponse: 'Abu Dhabi', correct: true },
+        { reponse: 'Doha', correct: false },
+        { reponse: 'Riyadh', correct: false }
       ]
     },
     {
       question: 'What\'s the capital of Japan',
-      answer: [
-        { option: 'Osaka', correct: false },
-        { option: 'Seoul', correct: false },
-        { option: 'Tokyo', correct: true },
-        { option: 'Pyongyang', correct: false }
+      reponses: [
+        { reponse: 'Osaka', correct: false },
+        { reponse: 'Seoul', correct: false },
+        { reponse: 'Tokyo', correct: true },
+        { reponse: 'Pyongyang', correct: false }
       ]
     },
     {
       question: 'What\'s the capital of South Africa',
-      answer: [
-        { option: 'Maputo', correct: false },
-        { option: 'Johannesburg', correct: false },
-        { option: 'Pretoria', correct: true },
-        { option: 'Cape Town', correct: false }
+      reponses: [
+        { reponse: 'Maputo', correct: false },
+        { reponse: 'Johannesburg', correct: false },
+        { reponse: 'Pretoria', correct: true },
+        { reponse: 'Cape Town', correct: false }
       ]
     },
     {
       question: 'What\'s the capital of Brazil',
-      answer: [
-        { option: 'Buenos Aires', correct: false },
-        { option: 'Sao Paulo', correct: false },
-        { option: 'Brasília', correct: true },
-        { option: 'Rio de Janeiro', correct: false },
+      reponses: [
+        { reponse: 'Buenos Aires', correct: false },
+        { reponse: 'Sao Paulo', correct: false },
+        { reponse: 'Brasília', correct: true },
+        { reponse: 'Rio de Janeiro', correct: false },
       ]
     },
     {
       question: 'What\'s the capital of Jamaica',
-      answer: [
-        { option: 'Brasília', correct: false },
-        { option: 'Portmore ', correct: false },
-        { option: 'Asunción', correct: true },
-        { option: 'Saint Catherine ', correct: false }
+      reponses: [
+        { reponse: 'Brasília', correct: false },
+        { reponse: 'Portmore ', correct: false },
+        { reponse: 'Asunción', correct: true },
+        { reponse: 'Saint Catherine ', correct: false }
       ]
     },
     {
       question: 'What\'s the capital of Cuba',
-      answer: [
-        { option: 'Montevideo', correct: false },
-        { option: 'Santa Clara', correct: false },
-        { option: 'Havana', correct: true },
-        { option: 'Camagüey', correct: false }
+      reponses: [
+        { reponse: 'Montevideo', correct: false },
+        { reponse: 'Santa Clara', correct: false },
+        { reponse: 'Havana', correct: true },
+        { reponse: 'Camagüey', correct: false }
       ]
     }
   ];

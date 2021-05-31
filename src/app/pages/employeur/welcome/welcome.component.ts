@@ -41,7 +41,7 @@ export class WelcomeComponent implements OnInit {
 
   genres = ['indifférent', 'Femme', 'Homme'];
   experiences = ['1ans ', '3 ans', '5 ans', '10 ans'];
-  niveau_education = ['Baccaulauréat', 'License', 'Mastére', 'Ingénieur'];
+  niveau_education = ['Baccaulauréat', 'Bac +3', 'Bac +5', 'Ingénieur'];
 
   constructor(private employeurService: EmployeurService,
               private secteurActiviteService: SecteurActiviteService,

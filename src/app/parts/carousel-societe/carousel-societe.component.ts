@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Employeur} from '../../models/employeur';
 import {ConfirmationService, MessageService, PrimeNGConfig} from 'primeng/api';
-import {ProductService} from '../../pages/table-des-societe/productservice';
 import {EmployeurService} from '../../api/employeur.service';
 
 @Component({
@@ -15,7 +14,6 @@ export class CarouselSocieteComponent implements OnInit {
   responsiveOptions;
 
   constructor(private primengConfig: PrimeNGConfig,
-              private productService: ProductService,
               private messageService: MessageService,
               private confirmationService: ConfirmationService,
               private employeurService: EmployeurService) {

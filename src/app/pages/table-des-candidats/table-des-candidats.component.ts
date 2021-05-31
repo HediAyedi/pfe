@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Employeur} from '../../models/employeur';
 import {Candidat} from '../../models/candidat';
-import {ProductService} from '../table-des-societe/productservice';
 import {ConfirmationService, MessageService} from 'primeng/api';
 import {EmployeurService} from '../../api/employeur.service';
 import {CandidatService} from '../../api/candidat.service';

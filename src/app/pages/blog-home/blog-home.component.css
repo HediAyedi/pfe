@@ -87,7 +87,33 @@ footer .social-media p{
 }
 
 .suite{
-  font-size: x-small;
+  font-size:small;
   color: blue;
   cursor: pointer;
+}
+
+
+
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 2rem;
+  margin-top: 1rem;
+}
+
+.card-single {
+  background: rgba(255, 255, 255, 0.74);
+  backdrop-filter: blur(80px);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 30px;
+  padding: 2rem;
+  border-radius: 30px;
+}
+
+.flex-container {
+  width: 80vvw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:space-evenly;
 }

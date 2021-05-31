@@ -1,15 +1,21 @@
-<section class="articles" >
+<div class="flex-container">
 
-  <div class="article" *ngFor="let blog of blogs" >
-    <div class="left">
-      <img src="{{blog.logo}}" alt="">
-    </div>
-    <div class="right">
-      <p class="date"> posted at : {{blog.created_at | date: 'dd/MM/yyyy'}}</p>
-      <h1>{{blog.titre}}</h1>
-      <p class="description" style="white-space: pre-wrap" >{{blog.description | slice:0:280}}... <br> <span class="suite">voir la suite</span></p>
-      <!--<p class="auteur">Julie Lablonde</p>-->
-    </div>
+  <div class="card-single">
+    <section class="articles">
+
+      <div class="article" *ngFor="let blog of blogs">
+        <div class="left">
+          <img src="{{blog.logo}}" alt="">
+        </div>
+        <div class="right">
+          
+          <h1>{{blog.titre}}</h1>
+          <p class="description" style="white-space: pre-wrap">{{blog.description | slice:0:500}}... <br></p>
+          <p class="date"> posted at : {{blog.created_at | date: 'dd/MM/yyyy'}}</p>
+          <p class="suite">voir la suite</p>
+        </div>
+      </div>
+
+    </section>
   </div>
-
-</section>
+</div>

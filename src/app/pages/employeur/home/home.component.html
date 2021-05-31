@@ -2,7 +2,11 @@
 
 <div class="sidebar">
   <div class="sidebar-brand">
-    <h2 (click)="router.navigate(['/offres'])" style="cursor: pointer;"><span class="las la-chess"></span>KamJobs</h2>
+    <h2 (click)="router.navigate(['/offres'])" class="kamjobs">KamJobs</h2>
+  </div>
+  <div class="p-justify-right">
+    <button pButton pRipple type="button" (click)="display = false"
+          icon="pi pi-times" class="p-button-rounded p-button-danger p-button-text "></button>
   </div>
   <div class="sidebar-menu">
     <ul>
@@ -24,11 +28,6 @@
         <span class="las la-bars"></span>
       </label>
     </h2>
-
-    <div class="search-wrapper">
-      <span class="las la-search"></span>
-      <input type="search" placeholder="Search Here !">
-    </div>
 
     <div class="user-wrapper">
       <img (click)="signOut()" src="{{employeur.logo}}" width="40px" height="40px">

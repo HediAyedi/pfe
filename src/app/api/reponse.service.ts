@@ -19,7 +19,7 @@ export class ReponseService {
     return this.httpClient.get<Reponse[]>(this.url + '/reponses');
   }
 
-  public get(id: number): Observable<any>{
+  public get(id: any): Observable<any>{
     return this.httpClient.get<Reponse>(this.url + '/reponse/' + id);
   }
 

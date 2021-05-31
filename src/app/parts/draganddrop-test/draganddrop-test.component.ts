@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {Product} from '../../pages/table-des-societe/product';
-import {ProductService} from '../../pages/table-des-societe/productservice';
 import {Candidat} from '../../models/candidat';
 import {CandidatService} from '../../api/candidat.service';
 
@@ -31,7 +29,7 @@ export class DraganddropTESTComponent implements OnInit {
 
 
   constructor(private candidatService: CandidatService,
-              private productService: ProductService) { }
+              ) { }
 
   ngOnInit() {
     this.selectedProducts = [];

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {PrimeNGConfig, SelectItem} from 'primeng/api';
-import {ProductService} from '../table-des-societe/productservice';
 import {OffreService} from '../../api/offres.service';
 import {Offre} from '../../models/offre';
 import { Langue } from 'src/app/models/Langue';

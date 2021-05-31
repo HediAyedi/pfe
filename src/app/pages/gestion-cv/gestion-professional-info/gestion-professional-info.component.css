@@ -1,0 +1,9 @@
+@media (max-width: 484px) {
+    .label {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 69px;
+      }
+      
+}

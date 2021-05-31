@@ -1,6 +1,6 @@
 export class Reponse {
   id: number;
-  nom: string;
+  reponse: string;
   question_id: number;
   correct: boolean;
   selected: boolean;
@@ -9,7 +9,7 @@ export class Reponse {
 
   constructor() {
     this.id = null;
-    this.nom = '';
+    this.reponse = '';
     this.correct = false;
     this.selected = false;
     this.question_id = null;

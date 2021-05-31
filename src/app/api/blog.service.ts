@@ -17,6 +17,11 @@ export class BlogService {
     return this.httpClient.get<Blog[]>(this.url + '/blogs');
   }
 
+  public getAllCache(){
+    this.httpClient.get<Blog[]>(this.url + '/blogs').subscribe(next =>{
+      localStorage.setItem("blogsCache", JSON.stringify(next));
+    });
+  }
 
   public save(blog: Blog): Observable<any>{
     return this.httpClient.post(this.url + '/blog', blog);

@@ -23,7 +23,7 @@ export class EmployeurService {
     return this.httpClient.get<Employeur[]>(this.url + '/employeurs');
   }
 
-  public get(id: number): Observable<any>{
+  public get(id: any): Observable<any>{
     return this.httpClient.get<Employeur>(this.url + '/employeur/' + id);
   }
 

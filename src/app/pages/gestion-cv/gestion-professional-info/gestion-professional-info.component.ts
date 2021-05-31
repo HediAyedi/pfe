@@ -30,6 +30,13 @@ export class GestionProfessionalInfoComponent implements OnInit {
   selected_types: TypeOffre[] = [];
   unselected_types: TypeOffre[] = [];
 
+  // LOCAL ARRAYS
+
+  niveaux_experience = ['0-1 an ', '2 ans ', '3 ans', '4 ans', '+5 ans'];
+  niveaux_education = ['Baccaulauréat', 'Bac +3', 'Bac +5', 'Ingénieur'];
+  status = ['Nouveau diplomé','Sans emploi','employé'];
+
+
   cv_id: string;
   cv = new Cv();
 
@@ -68,6 +75,7 @@ export class GestionProfessionalInfoComponent implements OnInit {
     this.cvService.get(this.cv_id).subscribe(
       (res) => {
         this.cv = res;
+        console.log('CV :', this.cv);
         var cv_langues: Langue[] = this.cv.langues;
         var cv_competences: Competence[] = this.cv.competences;
         var cv_domaines: Domaine[] = this.cv.domaines;
@@ -142,7 +150,6 @@ export class GestionProfessionalInfoComponent implements OnInit {
   }
 
   unselectedCompetences() {
-    console.log('after change', this.selected_langues);
     this.unselected_competences = [];
     this.unselected_competences = this.competences.filter(
       item => this.selected_competences.indexOf(item) < 0
@@ -158,7 +165,6 @@ export class GestionProfessionalInfoComponent implements OnInit {
   }
 
   unselectedTypes() {
-    console.log('after change', this.selected_langues);
     this.unselected_types = [];
     this.unselected_types = this.offre_types.filter(
       (item) => this.selected_types.indexOf(item) < 0
@@ -196,7 +202,7 @@ export class GestionProfessionalInfoComponent implements OnInit {
 
     this.cvService.update(this.cv, this.cv.id).subscribe((res) => {
       var candidat = JSON.parse(localStorage.getItem('candidat'));
-      candidat.cv = res.data;
+      candidat.cv = res;
       localStorage.setItem('candidat', JSON.stringify(candidat));
 
       this.router.navigate(['gestion-cv/experiences', this.cv_id]);

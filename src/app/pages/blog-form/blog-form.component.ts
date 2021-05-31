@@ -44,6 +44,7 @@ export class BlogFormComponent implements OnInit {
               private primengConfig: PrimeNGConfig) { }
 
   ngOnInit(): void {
+    this.blog2=JSON.parse(localStorage["blogsCache"] || "[]");
     this.primengConfig.ripple = true;
     this.findAll();
 

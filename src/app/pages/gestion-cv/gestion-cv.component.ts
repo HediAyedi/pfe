@@ -21,11 +21,11 @@ export class GestionCvComponent implements OnInit {
   ngOnInit(): void {
     this.items = [
       {
-        label: 'Personal info',
+        label: 'Infos Personnelles',
         routerLink: 'personal',
       },
       {
-        label: 'Professional info',
+        label: 'Infos Professionnelles',
         routerLink: 'professional',
       },
       {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {QuizzService} from './quizz.service';
 import {animate, style, transition, trigger} from '@angular/animations';
+import { QuestionService } from '../api/question.service';
 
 @Component({
   selector: 'app-quizz',
@@ -25,19 +26,33 @@ export class QuizzComponent implements OnInit {
   result = false;
   resultStatus = 'Show Result';
 
-  constructor(private quizzService: QuizzService) { }
+  constructor(
+    private quizzService: QuizzService,
+    private questionService: QuestionService) { }
 
   ngOnInit(): void {
-    this.quizzes = this.quizzService.getQuizzes();
-    this.currentQuiz = this.getRandom();
-
-    this.prevAnswered.push(this.currentQuiz);
+    
+    this.getQuestionsByTestId(1);
+   
   }
+
+  getQuestionsByTestId( id ){
+    this.questionService.getAllByID(id).subscribe(res=>{
+      console.log(res);
+      this.quizzes=res;
+      console.log("result:",this.quizzes);
+      this.currentQuiz = this.getRandom();
+      this.prevAnswered.push(this.currentQuiz);
+    },err=>{
+      console.log(err);
+    })
+  }
+
   onAnswer(option: boolean){
     this.answerSelected = true;
     setTimeout(() => {
       let newQuiz = this.getRandom();
-      while(this.prevAnswered.includes(newQuiz) && this.prevAnswered.length < 10){
+      while(this.prevAnswered.includes(newQuiz) && this.prevAnswered.length < this.quizzes.length){
         newQuiz = this.getRandom();
       }
       this.currentQuiz = newQuiz;
@@ -62,6 +77,7 @@ export class QuizzComponent implements OnInit {
     this.result = true;
     this.resultStatus = 'Play Again!';
   }
+
   playAgain(){
     this.prevAnswered = [];
     this.prevAnswered.push(this.getRandom());
