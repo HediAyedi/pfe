@@ -1,109 +1,106 @@
 <body>
-  <div class="flex-container ">
+  <p-dialog header="Gestion questions de {{test.domaine}}" [modal]="true" [draggable]="false" styleClass="customDialog" [(visible)]="test.selected">
+  
+    <!-- Form for modifying a test -->
+    <p-dialog header="Modifier test" [modal]="true" styleClass="customDialog" [draggable]="false" [(visible)]="testModifDisplay">
+      <div style="width:50vw;">
+        <input type="text" pInputText value="{{test.domaine}}" [(ngModel)]="test.domaine" placeholder="test" />
 
+        <button pButton pRipple type="button" (click)="modifierTest(test)" icon="pi pi-check"
+          pTooltip="modifier question" class="p-button-rounded p-button-text"> </button>
+      </div>
+    </p-dialog>
+    <div style="display: flex;justify-content:center;margin-bottom: 12px;">
+        <button pButton pRipple type="button" (click)="testModifDialog()" label="Modifier Test" icon="pi pi-pencil"
+        class="p-button-rounded p-button-raised p-button-warning p-button-text "></button>
+
+      <button pButton pRipple type="button" (click)="supprimerTest(test_id)" label="Summprimer Test"
+        icon="pi pi-times" class="p-button-rounded p-button-raised p-button-danger p-button-text "></button>
+    </div>
+    <div style="width:60vw;">
+
+      <!-- Form for adding a question -->
+      <input type="text" pInputText [(ngModel)]="ajout_question.question" placeholder="question" />
+      <button pButton pRipple type="button" (click)="ajouterQuestion(test)" icon="pi pi-plus"
+        pTooltip="ajouter question" class="p-button-rounded p-button-text"> </button>
+
+      <!-- Loop in the questions array -->
+      <div *ngFor="let question of questions">
+
+        <!-- Gestion questions -->
+        <div style="display: flex;justify-content:center;width:100%">
+          <div class="question">{{question.question}}</div>
+          <div>
+
+            <!-- Form for modifying a question -->
+            <p-dialog header="Modifier question" [modal]="true" [draggable]="false"
+              [(visible)]="questionModifDisplay">
+              <div style="width:50vw;">
+                <input type="text" pInputText value="{{modif_question.question}}"
+                  [(ngModel)]="modif_question.question" placeholder="question" />
+
+                <button pButton pRipple type="button" (click)="modifierQuestion(question)" icon="pi pi-check"
+                  pTooltip="modifier question" class="p-button-rounded p-button-text"> </button>
+              </div>
+            </p-dialog>
+
+            <button pButton pRipple type="button" (click)="questionModifDialog(question)" icon="pi pi-pencil"
+              pTooltip="modifier question" class="p-button-rounded p-button-warning p-button-text"></button>
+
+            <button pButton pRipple type="button" (click)="supprimerQuestion(question.id)" icon="pi pi-times"
+              pTooltip="supprimer" class="p-button-rounded p-button-danger p-button-text"></button>
+          </div>
+        </div>
+
+
+        <!-- Loop in the reponses array -->
+        <div *ngFor="let reponse of reponses">
+          <div *ngIf="reponse.question_id == question.id">
+            <div *ngIf="reponse.selected == false">
+
+              <div style="display: flex;justify-content:center;">
+                <div class="reponse" [ngClass]="reponse.correct ? 'success' : 'danger'">{{reponse.reponse}}</div>
+                <div>
+                  <button pButton pRipple type="button" [disabled]="selected_reponse.id!=null"
+                    (click)="selectReponse(reponse)" icon="pi pi-pencil" pTooltip="modifier reponse"
+                    class="p-button-rounded p-button-warning p-button-text"></button>
+                  <button pButton pRipple type="button" (click)="supprimerReponse(reponse.id)" icon="pi pi-times"
+                    pTooltip="supprimer" class="p-button-rounded p-button-danger p-button-text"></button>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="reponse.selected == true">
+
+
+              <!-- Form for modifying a reponse -->
+
+              <p-inputSwitch class="sm" [(ngModel)]="selected_reponse.correct"></p-inputSwitch>
+
+              <!-- <p-checkbox name="groupname" value="selected_reponse.correct" [(ngModel)]="selected_reponse.correct"></p-checkbox> -->
+              <textarea class="reponse" pInputTextarea [ngClass]="selected_reponse.correct ? 'success' : 'danger'"
+                [(ngModel)]="selected_reponse.reponse" value="{{selected_reponse.reponse}}"></textarea>
+
+              <button pButton pRipple type="button" icon="pi pi-check" (click)="modifierReponse(reponse)"
+                pTooltip="confirmer" class="p-button-rounded p-button-text"></button>
+              <button pButton pRipple type="button" (click)="cancelReponse()" icon="pi pi-times" pTooltip="cancel"
+                class="p-button-rounded p-button-danger p-button-text"></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form for adding a reponse -->
+
+        <input type="text" pInputText [(ngModel)]="ajout_reponse.reponse" placeholder="réponse" />
+        <button pButton pRipple type="button" (click)="ajouterReponse(question)" icon="pi pi-plus" pTooltip="ajouter"
+          class="p-button-rounded p-button-text"></button>
+      </div>
+    </div>
+  </p-dialog>
+  <div class="flex-container ">
     <div class="card-single" *ngFor="let test of tests">
       <div>
         <h1>Test {{test.domaine}}</h1>
       </div>
-      <p-dialog header="Gestion questions de {{test.domaine}}" [modal]="true" [draggable]="false" styleClass="customDialog" [(visible)]="test.selected">
-  
-        <!-- Form for modifying a test -->
-        <p-dialog header="Modifier test" [modal]="true" styleClass="customDialog" [draggable]="false" [(visible)]="testModifDisplay">
-          <div style="width:50vw;">
-            <input type="text" pInputText value="{{test.domaine}}" [(ngModel)]="test.domaine" placeholder="test" />
-  
-            <button pButton pRipple type="button" (click)="modifierTest(test)" icon="pi pi-check"
-              pTooltip="modifier question" class="p-button-rounded p-button-text"> </button>
-          </div>
-        </p-dialog>
-        <div style="display: flex;justify-content:center;margin-bottom: 12px;">
-            <button pButton pRipple type="button" (click)="testModifDialog()" label="Modifier Test" icon="pi pi-pencil"
-            class="p-button-rounded p-button-raised p-button-warning p-button-text "></button>
-  
-          <button pButton pRipple type="button" (click)="supprimerTest(test_id)" label="Summprimer Test"
-            icon="pi pi-times" class="p-button-rounded p-button-raised p-button-danger p-button-text "></button>
-        </div>
-        <div style="width:60vw;">
-  
-          <!-- Form for adding a question -->
-          <input type="text" pInputText [(ngModel)]="ajout_question.question" placeholder="question" />
-          <button pButton pRipple type="button" (click)="ajouterQuestion(test)" icon="pi pi-plus"
-            pTooltip="ajouter question" class="p-button-rounded p-button-text"> </button>
-  
-          <!-- Loop in the questions array -->
-          <div *ngFor="let question of questions">
-  
-            <!-- Gestion questions -->
-            <div style="display: flex;justify-content:center;width:100%">
-              <div class="question">{{question.question}}</div>
-              <div>
-  
-                <!-- Form for modifying a question -->
-                <p-dialog header="Modifier question" [modal]="true" [draggable]="false"
-                  [(visible)]="questionModifDisplay">
-                  <div style="width:50vw;">
-                    <input type="text" pInputText value="{{modif_question.question}}"
-                      [(ngModel)]="modif_question.question" placeholder="question" />
-  
-                    <button pButton pRipple type="button" (click)="modifierQuestion(question)" icon="pi pi-check"
-                      pTooltip="modifier question" class="p-button-rounded p-button-text"> </button>
-                  </div>
-                </p-dialog>
-  
-                <button pButton pRipple type="button" (click)="questionModifDialog(question)" icon="pi pi-pencil"
-                  pTooltip="modifier question" class="p-button-rounded p-button-warning p-button-text"></button>
-  
-                <button pButton pRipple type="button" (click)="supprimerQuestion(question.id)" icon="pi pi-times"
-                  pTooltip="supprimer" class="p-button-rounded p-button-danger p-button-text"></button>
-              </div>
-            </div>
-  
-  
-            <!-- Loop in the reponses array -->
-            <div *ngFor="let reponse of reponses">
-              <div *ngIf="reponse.question_id == question.id">
-                <div *ngIf="reponse.selected == false">
-  
-                  <div style="display: flex;justify-content:center;">
-                    <div class="reponse" [ngClass]="reponse.correct ? 'success' : 'danger'">{{reponse.reponse}}</div>
-                    <div>
-                      <button pButton pRipple type="button" [disabled]="selected_reponse.id!=null"
-                        (click)="selectReponse(reponse)" icon="pi pi-pencil" pTooltip="modifier reponse"
-                        class="p-button-rounded p-button-warning p-button-text"></button>
-                      <button pButton pRipple type="button" (click)="supprimerReponse(reponse.id)" icon="pi pi-times"
-                        pTooltip="supprimer" class="p-button-rounded p-button-danger p-button-text"></button>
-                    </div>
-                  </div>
-                </div>
-                <div *ngIf="reponse.selected == true">
-  
-  
-                  <!-- Form for modifying a reponse -->
-  
-                  <p-inputSwitch class="sm" [(ngModel)]="selected_reponse.correct"></p-inputSwitch>
-  
-                  <!-- <p-checkbox name="groupname" value="selected_reponse.correct" [(ngModel)]="selected_reponse.correct"></p-checkbox> -->
-                  <textarea class="reponse" pInputTextarea [ngClass]="selected_reponse.correct ? 'success' : 'danger'"
-                    [(ngModel)]="selected_reponse.reponse" value="{{selected_reponse.reponse}}"></textarea>
-  
-                  <button pButton pRipple type="button" icon="pi pi-check" (click)="modifierReponse(reponse)"
-                    pTooltip="confirmer" class="p-button-rounded p-button-text"></button>
-                  <button pButton pRipple type="button" (click)="cancelReponse()" icon="pi pi-times" pTooltip="cancel"
-                    class="p-button-rounded p-button-danger p-button-text"></button>
-                </div>
-              </div>
-            </div>
-  
-            <!-- Form for adding a reponse -->
-  
-            <input type="text" pInputText [(ngModel)]="ajout_reponse.reponse" placeholder="réponse" />
-            <button pButton pRipple type="button" (click)="ajouterReponse(question)" icon="pi pi-plus" pTooltip="ajouter"
-              class="p-button-rounded p-button-text"></button>
-          </div>
-        </div>
-      </p-dialog>
-  
-  
       <button pButton pRipple type="button" (click)="showDialog(test); test.selected=true" label="gestion des questions"
         icon="pi pi-eye" class="p-button-text p-button-rounded"></button>
     </div>

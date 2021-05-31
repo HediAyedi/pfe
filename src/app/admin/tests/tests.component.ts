@@ -50,20 +50,18 @@ export class TestsComponent implements OnInit {
   }
 
 
-
-
-// GESTION TESTS 
+  // GESTION TESTS
   public findAllTests() {
     this.testService.getAll().subscribe(
       (data) => {
         this.tests = data;
         localStorage.setItem('testsCache', JSON.stringify(data));
-        if(this.test_id){
-          this.tests.forEach(item=> {
-            if(item.id == this.test_id) {
-              item.selected=true
+        if (this.test_id) {
+          this.tests.forEach((item) => {
+            if (item.id == this.test_id) {
+              item.selected = true;
             }
-          })
+          });
         }
       },
       (err) => {
@@ -72,16 +70,16 @@ export class TestsComponent implements OnInit {
     );
   }
 
-    ajouterTest() {
-      console.log(this.test)
+  ajouterTest() {
+    console.log(this.test);
     this.testService.save(this.test).subscribe(
       (data) => {
         console.log('Test added', data);
-        data.selected=true;
-        this.tests.push(data)
+        data.selected = true;
+        this.tests.push(data);
         this.testService.getAllCache();
-        this.display2=false;
-        this.showDialog(data)
+        this.display2 = false;
+        this.showDialog(data);
       },
       (err) => {
         console.log(err);
@@ -89,21 +87,19 @@ export class TestsComponent implements OnInit {
     );
   }
 
-
   modifierTest(test) {
-    
     this.testService.update(test, test.id).subscribe(
       (data) => {
         console.log('Test edited', data);
 
-        //modification de test au niveau de frontend 
-        this.tests.forEach(item=> {
-          if(item.id == test.id) {
-            item = data
-            item.selected=true
+        //modification de test au niveau de frontend
+        this.tests.forEach((item) => {
+          if (item.id == test.id) {
+            item = data;
+            item.selected = true;
           }
-        })
-        this.testModifDisplay=false;
+        });
+        this.testModifDisplay = false;
       },
       (err) => {
         console.log(err);
@@ -114,21 +110,23 @@ export class TestsComponent implements OnInit {
 
   supprimerTest(id) {
     this.testService.delete(id).subscribe(
-      (data) => {},
-      (err) => {
-        console.log(err);
+      (data) => {
+        console.log(data);
         this.findAllTests();
         this.display = false;
-
+      },
+      (err) => {
+        console.log(err);
+        this.display = false;
       }
     );
   }
 
 
- 
-//GESTION TEST DIALOG
+
+  //GESTION TEST DIALOG
   showDialog(test: Test) {
-    this.display = true;
+    this.test.selected = true;
     this.testModifDisplay = false;
     this.questions = test.questions;
     this.test_id = test.id;
@@ -140,8 +138,8 @@ export class TestsComponent implements OnInit {
     this.display2 = true;
   }
 
-  questionModifDialog( question: Question) {
-    this.modif_question=question
+  questionModifDialog(question: Question) {
+    this.modif_question = question;
     this.questionModifDisplay = true;
   }
 
@@ -151,7 +149,7 @@ export class TestsComponent implements OnInit {
 
 
 
-// GESTION REPONSES 
+  // GESTION REPONSES
   public findReponses() {
     this.reponseService.getAll().subscribe(
       (data) => {
@@ -183,7 +181,6 @@ export class TestsComponent implements OnInit {
     this.findReponses();
   }
 
-  
   ajouterReponse(question) {
     this.ajout_reponse.question_id = question.id;
     this.reponseService.save(this.ajout_reponse).subscribe(
@@ -215,19 +212,20 @@ export class TestsComponent implements OnInit {
 
   supprimerReponse(id) {
     this.reponseService.delete(id).subscribe(
-      (data) => {},
-      (err) => {
-        console.log(err);
+      (data) => {
+        console.log(data);
         this.findAllTests();
         this.findReponses();
+      },
+      (err) => {
+        console.log(err);
       }
     );
   }
 
 
 
-// GESTION QUESTIONS
-
+  // GESTION QUESTIONS
   public findQuestions(test_id) {
     this.questionService.getAll().subscribe(
       (data) => {
@@ -260,15 +258,13 @@ export class TestsComponent implements OnInit {
     );
   }
 
-
   modifierQuestion(question) {
-    
     this.questionService.update(question, question.id).subscribe(
       (data) => {
         console.log('Reponse edited', data);
         this.findAllTests();
 
-        this.questionModifDisplay=false;
+        this.questionModifDisplay = false;
       },
       (err) => {
         console.log(err);
@@ -279,15 +275,14 @@ export class TestsComponent implements OnInit {
 
   supprimerQuestion(id) {
     this.questionService.delete(id).subscribe(
-      (data) => {},
-      (err) => {
-        console.log(err);
+      (data) => {
+        console.log(data);
         this.findAllTests();
         this.findQuestions(this.test_id);
+      },
+      (err) => {
+        console.log(err);
       }
     );
   }
-
-
-  
 }
