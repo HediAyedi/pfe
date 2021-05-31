@@ -39,7 +39,7 @@
                 placeholder="Choisissez votre niveau d'expérience " name="experience" #experience="ngModel" required
                 [ngClass]="{'ng-dirty': (experience.dirty && experience.invalid)}">
               </p-dropdown>
-              <small [ngClass]="{'p-error': (experience.dirty && experience.invalid)}">L'experience est requis.</small>
+              <small class="p-error" *ngIf="(experience.dirty && experience.invalid)">L'experience est requis.</small>
             </div>
           </div>
 
@@ -50,7 +50,7 @@
                 placeholder="Choisissez le niveau d'education" name="niveau_education" #niveau_education="ngModel"
                 required [ngClass]="{'ng-dirty': (niveau_education.dirty && niveau_education.invalid)}">
               </p-dropdown>
-              <small [ngClass]="{'p-error': (niveau_education.dirty && niveau_education.invalid)}">Le niveau d'éducation
+              <small class="p-error" *ngIf="(niveau_education.dirty && niveau_education.invalid)">Le niveau d'éducation
                 est requis.</small>
             </div>
           </div>
