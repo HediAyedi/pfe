@@ -91,7 +91,6 @@
       </h3>
       <p>
         {{exp.description}}
-
       </p>
 
       <div>
@@ -113,10 +112,10 @@
     nextLabel="Suivant" autoHide="true"></pagination-controls>
   </div>
   <button pButton pRipple type="button" (click)="affichageAjoutForm()" label="Ajout d'une experience"
-    *ngIf="!experience.selected" icon="pi pi-plus" class="button-white p-button-text p-button-plain p-button-rounded p-justify-right"></button>
+    *ngIf="!selected" icon="pi pi-plus" class="button-white p-button-text p-button-plain p-button-rounded p-justify-right"></button>
 
   <!-- FORM AJOUT -->
-  <form *ngIf="(experience.selected)" class="flex-cont blur">
+  <form *ngIf="selected" class="flex-cont blur">
     <div class="p-fluid p-formgrid p-grid">
       <div class="p-field p-col-12 p-md-6 flex-container p-justify-between">
         <div class="size">

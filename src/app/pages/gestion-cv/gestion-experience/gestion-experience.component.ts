@@ -20,6 +20,7 @@ export class GestionExperienceComponent implements OnInit {
   date_fin_valid= false;
   term:string;
   p: number = 1;
+  selected=false;
 
   constructor(
     
@@ -51,7 +52,7 @@ export class GestionExperienceComponent implements OnInit {
 
   // Toggle adding experience form
   affichageAjoutForm(){
-    this.experience.selected=!this.experience.selected
+    this.selected=!this.selected
   }
 
   showSignUpDialog(){
