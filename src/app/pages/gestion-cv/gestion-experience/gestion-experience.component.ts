@@ -18,6 +18,8 @@ export class GestionExperienceComponent implements OnInit {
   modif_experience= new Experience();
   experiences: Experience[]=[] ;
   date_fin_valid= false;
+  term:string;
+  p: number = 1;
 
   constructor(
     
@@ -47,8 +49,21 @@ export class GestionExperienceComponent implements OnInit {
     );
   }
 
-  affichageForm(){
+  // Toggle adding experience form
+  affichageAjoutForm(){
     this.experience.selected=!this.experience.selected
+  }
+
+  showSignUpDialog(){
+    var modal = document.getElementById("signUp");
+    modal.style.display = "block";
+  }
+
+  cancel(){
+    var formModal = document.getElementById("form");
+    formModal.style.display = "none";
+    this.findCv();
+    this.modif_experience=new Experience();
   }
 
   ajouterExperience(){
@@ -64,7 +79,8 @@ export class GestionExperienceComponent implements OnInit {
   // DIALOG FOR MODIFYING EXPERIENCES
   modifDialog(expr){
     this.modif_experience=expr
-    this.modif_experience.selected=true;
+    var formModal = document.getElementById("form");
+    formModal.style.display = "block";
     console.log(this.modif_experience);
   }
 
@@ -75,16 +91,10 @@ export class GestionExperienceComponent implements OnInit {
     }
   }
 
-  cancel(){
-    this.findCv();
-    this.modif_experience=new Experience();
-  }
-
 
   modifierExperience(){
     this.experienceService.update(this.modif_experience,this.modif_experience.id).subscribe(res=>{
-      this.findCv();
-      this.modif_experience=new Experience();
+      this.cancel();
     }, err=>{
       console.log(err)
     })

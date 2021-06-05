@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {Blog} from '../../models/blog';
-import {CandidatService} from '../../api/candidat.service';
 import {MessageService, PrimeNGConfig} from 'primeng/api';
 import {BlogService} from '../../api/blog.service';
 
@@ -17,17 +16,13 @@ import {BlogService} from '../../api/blog.service';
 })
 export class BlogFormComponent implements OnInit {
 
-  blog: Blog = new Blog();
+  blog= new Blog();
   message: any;
-  display=false
-  blog2: Blog[];
+  editing=false
+  blogs: Blog[];
   first = 0;
-  displayPosition = false;
 
-  position: string;
-
-
-  rows = 10;
+  rows = 5;
 
   next() {
     this.first = this.first + this.rows;
@@ -37,85 +32,81 @@ export class BlogFormComponent implements OnInit {
     this.first = this.first - this.rows;
   }
 
-  clonedProducts: { [s: string]: Blog; } = {};
+
 
   constructor(private blogService: BlogService,
               private messageService: MessageService,
               private primengConfig: PrimeNGConfig) { }
 
   ngOnInit(): void {
-    this.blog2=JSON.parse(localStorage["blogsCache"] || "[]");
+
+
+    this.blogs=JSON.parse(localStorage["blogsCache"] || "[]");
     this.primengConfig.ripple = true;
     this.findAll();
 
   }
 
-  showPositionDialog(position: string) {
-    this.position = position;
-    this.displayPosition = true;
+  //Shows the form modal
+  showDialog(){
+    var modal = document.getElementById("blogForm");
+    modal.style.display = "block";
+  }
+
+  //Hides the form modal
+  cancel(){
+    var modal = document.getElementById("blogForm");
+    modal.style.display = "none";
+    this.blog = new Blog();
+    this.editing=false;
+  }
+
+  showEditDialog(blog){
+    this.showDialog();
+    this.blog= blog;
+    this.editing=true;
   }
 
   showSuccess() {
     this.messageService.add({severity: 'success', summary: 'Success', detail: this.message});
   }
-  ajouter() {
-
-    // console.log('blog:', this.blog);
-    // console.log('Image:', this.filedata);
-    this.blogService.save(this.blog).subscribe(res => {
-        
-          this.findAll();
-          this.display=true;
-      }, err => {
-        this.message = err.error.message;
-        this.findAll();
-
-      }
-    );
-  }
-
-  onRowEditInit(blog: Blog, id: number) {
-    this.clonedProducts[blog.id] = {...blog};
-    // this.blogService.update(blog, blog.id)
-    //   .subscribe(res => {
-    //     if (!res.succes) {
-    //       this.message="modification effectué avec succés";
-    //       // this.employeurService.getAllCache();
-    //     } else {
-    //       this.message="erreuuur";
-    //     }
-    //   }, err => {
-    //     this.message = 'not effected'
-    //   } ) ;
-  }
 
   public findAll() {
     this.blogService.getAll()
       .subscribe(data => {
-        this.blog2 = data;
+        this.blogs = data;
+        localStorage.setItem("blogsCache",JSON.stringify(data));
       }, err => {
         console.log(err);
       });
   }
 
-  onRowEditSave(blog: Blog,id: number) {
-this.blogService.update(blog, id)
-      .subscribe(res => {
-        if (!res.succes) {
-          this.message="modification effectué avec succés";
-          // this.employeurService.getAllCache();
-        } else {
-          this.message="erreuuur";
-        }
+  add() {
+    // console.log('blog:', this.blog);
+    // console.log('Image:', this.filedata);
+    this.blogService.save(this.blog).subscribe(res => {
+          this.findAll();
+          this.cancel();
       }, err => {
-        this.message = 'not effected'
-      } ) ;
-    }
+        this.message = err.error.message;
 
-  onRowEditCancel(blog: Blog, index: number) {
-    this.blog2[index] = this.clonedProducts[blog.id];
-    delete this.clonedProducts[blog.id];
+      }
+    );
   }
+
+  edit() {
+    // console.log('blog:', this.blog);
+    // console.log('Image:', this.filedata);
+    this.blogService.update(this.blog, this.blog.id).subscribe(res => {
+          this.findAll();
+          this.cancel();
+      }, err => {
+        this.message = err.error.message;
+
+      }
+    );
+  }
+
   delete(id:number){
     this.blogService.delete(id).subscribe(res => {
       if (!res.succes) {

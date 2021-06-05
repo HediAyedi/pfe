@@ -1,0 +1,126 @@
+.paging /deep/ .p-paginator .current {
+    border-radius: 20px;
+  }
+  .paging /deep/ .p-paginator {
+    border-radius: 20px;
+    margin: 0px 4px;
+    padding: 0px;
+    height: fit-content;
+  }
+  
+  .paging :host ::ng-deep .p-datatable-header .ng-star-inserted .p-input-icon-left{
+    border-radius: 20px;
+    background-color: aqua;
+    margin: 0px 2px;
+  }
+  .paging /deep/ .p-paginator .ng-star-inserted:hover {
+    border-radius: 20px;
+    margin: 0px 2px;
+  }
+  
+  
+.flex-container {
+  width: 80vvw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.card-single {
+  background: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 30px;
+  padding: 2rem;
+  border-radius: 30px;
+}
+.p-button-raised{
+  margin: 5px;
+}
+
+.input {
+  padding: 5px 15px;
+  border-radius: 25px;
+}
+@media (max-width:1000px) {
+  .flex-container {
+    width: 96vvw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  .card-single {
+    background: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 30px 0px;
+    padding: 2rem 5px;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  backdrop-filter: blur(10px);
+  z-index: 100; /* Sit on top */
+  padding-top: 20vh; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  animation: fadeInModal 0.3s;
+}
+
+@keyframes fadeInModal {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 10px;
+  border-radius: 20px;
+  width: 60%;
+  animation: fadeIn 0.3s;
+  
+}
+
+@keyframes fadeIn {
+  0% {opacity:0;
+    transform: scale(0, 0);}
+  100% {opacity:1;
+    transform: scale(1, 1);}
+  
+}
+
+.p-justify-right {
+  display: flex;
+  justify-content:flex-end;
+}
+
+label{
+  padding: 5px 10px;
+}
+
+button{
+  margin: 1px 5px;
+  top: 2;
+  z-index: 50;
+}
+
+:host ::ng-deep .p-dropdown, .p-component, .p-dropdown-items-wrapper, .p-multiselect-chip, .p-multiselect , .p-multiselect-open , .ng-tns-c75-6, .p-dropdown-items, .ng-tns-c72-1{
+  border-radius: 25px;
+}
+
+:host ::ng-deep p-multiselect .p-multiselect-chip, .p-multiselect , .p-multiselect-open , .ng-tns-c75-6, .p-dropdown-items, .ng-tns-c72-1{
+  border-radius: 25px;
+}
+
+:host ::ng-deep .p-multiselect-label .ng-star-inserted{
+  border-radius: 25px;
+}

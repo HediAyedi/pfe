@@ -33,7 +33,7 @@
 .kamjobs:hover{
   width: fit-content;
   cursor: pointer;
-  transform: scale(1.05);
+  transform: scale(1.08);
   text-align: center;
 }
 .sidebar-brand {
@@ -139,7 +139,7 @@ header label span {
 }
 
 main {
-  background-color: #00a2ff;
+  background-image:url("../../../../assets/apps.46003.14259451864568504.ad5e5d07-0fbb-46ed-b9b6-a1b781645691.jpg");
   border-radius: 20px;
   margin-top: 80px;
   padding: 2rem 1.5rem;
@@ -158,18 +158,10 @@ main {
   justify-content: space-between;
   background: white;
   padding: 2rem;
-  border-radius: 2px;
+  border-radius: 20px;
 }
 
-.card-single div:last-child span{
-  font-size: 3rem;
-  color: #00A4E5;
 
-}
-
-.card-single div:last-child span{
-  color: #8390A2;
-}
 
 .p-justify-between {
   display: flex;

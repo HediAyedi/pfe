@@ -1,10 +1,6 @@
-.search-wrapper{
-    border: 1px solid #ccc;
+.navbar{
     border-radius: 30px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    overflow-x: hidden;
+    width: 98vw;
   }
   
   .search-wrapper input {
@@ -18,3 +14,139 @@
     display: inline-block;
     padding: 0rem 1rem;
   }
+
+  
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 40vh; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  animation: fadeInModal 0.3s;
+}
+
+@keyframes fadeInModal {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 10px;
+  border-radius: 20px;
+  width: fit-content;
+  animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+  0% {opacity:0;
+    transform: scale(0, 0);}
+  100% {opacity:1;
+    transform: scale(1, 1);}
+  
+}
+.modal-content h2 {
+  margin-right: 50px;
+  color: #5375bdd5;
+}
+.p-justify-right {
+  display: flex;
+  justify-content:flex-end;
+}
+
+.p-justify-between {
+  display: flex;
+  justify-content:space-between;
+}
+div{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+p-menubar .p-button-rounded{
+  padding: 8px;
+  width: 38px;
+  height: 38px;
+  margin: 2px;
+  transition: 0.3s;
+}
+
+@media (max-width:1135px) {
+  .buttons{
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+  }
+}
+
+@media (max-width:960px) {
+  .buttons{
+    display: flex;
+    justify-content: flex-end;
+    flex-direction:row;
+  }
+}
+
+p-menubar .p-button-rounded:hover{
+  padding: 8px 16px;
+  width: fit-content;
+  transition: 0.3s;
+}
+
+:host ::ng-deep p-menubar .p-button-rounded .p-button-label{
+  width: 0px;
+  display:none;
+  transition: 0.3s;
+}
+
+:host ::ng-deep p-menubar .p-button-rounded:hover .p-button-label{
+  width: fit-content;
+  display:block;
+  transition: 0.3s;
+}
+
+:host ::ng-deep .p-menubar{
+  border-radius: 30px;
+  width: 97vw;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+:host ::ng-deep .p-menubar-root-list .p-menuitem,.p-menuitem-link{
+  border-radius: 30px;
+  background-color: rgba(255, 255, 255);
+  margin: 2px;
+}
+
+:host ::ng-deep .p-submenu-list{
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255);
+  margin: 2px;
+
+}
+:host ::ng-deep .p-menuitem:hover,.p-menuitem-link:hover{
+  border-radius: 30px;
+  background-color: rgba(255, 255, 255);
+  margin: 2px;
+}
+
+
+:host ::ng-deep .p-menuitem-active{
+  border-radius: 30px;
+  background-color: rgba(177, 223, 241);
+  margin: 2px;
+}
+
+:host ::ng-deep .p-menuitem-active:hover{
+  border-radius: 30px;
+  background-color: rgba(223, 236, 241);
+  margin: 2px;
+}

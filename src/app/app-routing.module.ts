@@ -24,7 +24,7 @@ import { OffresComponent } from './pages/offres/offres.component';
 import { OffreComponent } from './pages/offres/offre/offre.component';
 import { DraganddropComponent } from './pages/draganddrop/draganddrop.component';
 
-import { NavbarComponent } from './parts/navbar/navbar.component';
+
 import { LoginEmployeurComponent } from './parts/logins/login-employeur/login-employeur.component';
 import { LoginCandidatComponent } from './parts/logins/login-candidat/login-candidat.component';
 import { BlogFormComponent } from './pages/blog-form/blog-form.component';
@@ -43,7 +43,7 @@ const routes: Routes = [
 
   {path: '', component: HomeWebComponent},
 
-  {path: 'test', component: NavbarComponent},
+
   {path: 'test2', component: DraganddropTESTComponent},
   {path: 'draganddrop', component: DraganddropComponent},
 
@@ -61,6 +61,7 @@ const routes: Routes = [
   { path: 'SignUpEmployeur', component: FormsocieteComponent },
   { path: 'SignUpCandidat', component: FormCandidatComponent },
 
+  { path: 'admin', redirectTo:'admin/dashboard'},
   { path: 'admin/dashboard', component: DashboardComponent },
   { path: 'admin/tableEmployeurs', component: TableDesSocieteComponent },
   { path: 'admin/tableCandidats', component: TableDesCandidatsComponent },

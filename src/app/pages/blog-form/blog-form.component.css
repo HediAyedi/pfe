@@ -47,132 +47,113 @@
 /*}*/
 /*}*/
 
-.box {
-  background: white;
-  width: auto;
-  border-radius: 10px;
-  box-shadow: 5px 5px 5px white;
-  margin-top: 350px;
-  position: absolute;
-  margin-left: 150px;
-  height: 380px;
-  width: border-box;
-  padding: 100px;
-
-}
-.box input {
-  margin-bottom: 15px;
-}
-.box label {
-  margin-bottom: -15px;
-}
-/*label{*/
-/*display: inline-block;*/
-/*width: 240px;*/
-/*text-align: right;*/
-
-/*}*/
-.ctil{
-  text-transform: uppercase;
-  text-align: center;
-  color: black;
-  padding-top: 10px;
-}
-
-
-
-button {
-  display: inline-block;
-  cursor: pointer;
-  outline: none;
-  border: 0;
-  text-decoration: none;
-  color:white;
-  font-weight: 700;
-  text-transform: uppercase;
-  font-family: inherit;
-}
-
-button.big-button {
-  padding: 0.5em 1em;
-  border: 2px solid var(--colorShadeA);
-  border-radius: 1em;
-  background: #10B4F5;
-  transform-style: preserve-3d;
-  transition: all 175ms cubic-bezier(0, 0, 0.5, 0.5);
-  text-align: center;
-}
-button.big-button:disabled{
-  background: #637177;
-
-}
-button.big-button:disabled::before {
-  background: #637177;
-}
-button.big-button:disabled:hover {
-  background: #637177;
-  transform: translate(0, 0.0em);
-}
-
-button.big-button:disabled:hover::before {
-  transform: translate3d(0, 0.25em, -0.25em);
-}
-button.big-button::before {
-  position: absolute;
-  content: '';
-
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: #07ABEC;
-  border-radius: inherit;
-  box-shadow: 0 0 0 2px #0000003d, 0 0.25em 0 0 #0000003d;
-  transform: translate3d(0, 0.25em, -0.25em);
-  transition: all 175ms cubic-bezier(0, 0, 1, 1);
-}
-
-
-button.big-button:hover {
-  background: #10B4F5;
-  transform: translate(0, 0.375em);
-}
-
-button.big-button:hover::before {
-  transform: translate3d(0, 0.25em, -0.25em);
-}
-
-button.big-button:active {
-  transform: translate(0em, 0.25em);
-}
-
-button.big-button:active::before {
-  transform: translate3d(0, 0, -0.25em);
-
-  box-shadow: 0 0 0 2px #10B4F5, 0 0.25em 0 0 #07ABEC;
-
-}
-
 .flex-container {
   width: 80vvw;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 2rem;
-  margin-top: 1rem;
-}
-
 .card-single {
   background: white;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 30px;
   padding: 2rem;
   border-radius: 30px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.p-button-raised{
+  margin: 5px;
+}
+
+.input {
+  padding: 5px 15px;
+  border-radius: 25px;
+}
+@media (max-width:1000px) {
+  .flex-container {
+    width: 96vvw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  .card-single {
+    background: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 30px 0px;
+    padding: 2rem 5px;
+    border-radius: 30px;
+  }
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  backdrop-filter: blur(10px);
+  z-index: 100; /* Sit on top */
+  padding-top: 20vh; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  animation: fadeInModal 0.3s;
+}
+
+@keyframes fadeInModal {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 10px;
+  border-radius: 20px;
+  width: 60%;
+  animation: fadeIn 0.3s;
+  
+}
+
+@keyframes fadeIn {
+  0% {opacity:0;
+    transform: scale(0, 0);}
+  100% {opacity:1;
+    transform: scale(1, 1);}
+  
+}
+
+.p-justify-right {
+  display: flex;
+  justify-content:flex-end;
+}
+
+label{
+  padding: 5px 10px;
+}
+
+button{
+  margin: 1px 5px;
+  top: 2;
+  z-index: 50;
+}
+label{
+  padding: 5px 10px;
+}
+
+b
+
+:host ::ng-deep .p-dropdown, .p-component, .p-dropdown-items-wrapper, .p-multiselect-chip, .p-multiselect , .p-multiselect-open , .ng-tns-c75-6, .p-dropdown-items, .ng-tns-c72-1{
+  border-radius: 25px;
+}
+
+:host ::ng-deep p-multiselect .p-multiselect-chip, .p-multiselect , .p-multiselect-open , .ng-tns-c75-6, .p-dropdown-items, .ng-tns-c72-1{
+  border-radius: 25px;
+}
+
+:host ::ng-deep .p-multiselect-label .ng-star-inserted{
+  border-radius: 25px;
 }

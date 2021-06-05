@@ -1,9 +1,21 @@
 <div  *ngIf="!candidat.cv , else modify">
-
     <button (click)="ajoutCV()">ajouter CV</button>
-
 </div>
-
 <ng-template #modify>
         <button (click)="router.navigate(['gestion-cv/personal',candidat.cv.id])">Modifier CV</button>
 </ng-template>
+
+<button (click)="openTestDialog(2)">Faire un test</button>
+
+<div id="testModal" class="modal">
+    <div class="modal-content">
+      <div class="p-justify-right">
+        <button pButton pRipple type="button" (click)="cancel()" icon="pi pi-times"
+          class="p-button-danger p-button-rounded p-button-text "></button>
+      </div>
+        <div *ngIf="clicked">
+          <app-quizz></app-quizz>
+        </div>
+        
+    </div>
+  </div>

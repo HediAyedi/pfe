@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {QuizzService} from './quizz.service';
 import {animate, style, transition, trigger} from '@angular/animations';
 import { QuestionService } from '../api/question.service';
+import { Note } from '../models/note';
 
 @Component({
   selector: 'app-quizz',
@@ -22,23 +22,22 @@ export class QuizzComponent implements OnInit {
   correctAnswers = 0;
   incorrectAnswers = 0;
   prevAnswered = [];
-
-  result = false;
-  resultStatus = 'Show Result';
+  note=new Note();
 
   constructor(
-    private quizzService: QuizzService,
     private questionService: QuestionService) { }
 
   ngOnInit(): void {
-    
-    this.getQuestionsByTestId(1);
+    var test_id= JSON.parse(sessionStorage.getItem("test_id"));
+    var candidat= JSON.parse(localStorage.getItem("candidat"));
+    this.note.candidat_id=candidat.id;
+    this.note.test_id=test_id;
+    this.getQuestionsByTestId(test_id);
    
   }
 
   getQuestionsByTestId( id ){
     this.questionService.getAllByID(id).subscribe(res=>{
-      console.log(res);
       this.quizzes=res;
       console.log("result:",this.quizzes);
       this.currentQuiz = this.getRandom();
@@ -67,15 +66,33 @@ export class QuizzComponent implements OnInit {
       this.incorrectAnswers++;
     }
 
+    //Saving the final note of the test
+    if(this.prevAnswered.length == this.quizzes.length){
+      if(this.quizzes.length==2){
+        if(this.correctAnswers>=1){
+          this.note.success=true;
+          this.note.note= this.correctAnswers/this.quizzes.length
+        }
+      }
+      else if(this.quizzes.length==3){
+        if(this.correctAnswers>=2){
+          this.note.success=true;
+          this.note.note= this.correctAnswers/this.quizzes.length;
+          console.log("NOTE:",this.note);
+        }
+      }
+      else {
+        var final_note= this.correctAnswers/this.quizzes.length
+        if(final_note>=0.75){
+          this.note.success=true;
+          this.note.note= final_note;
+        }
+      }
+    }
   }
 
   getRandom(){
     return Math.floor(Math.random() * this.quizzes.length);
-  }
-
-  showResult(){
-    this.result = true;
-    this.resultStatus = 'Play Again!';
   }
 
   playAgain(){

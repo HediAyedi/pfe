@@ -13,7 +13,7 @@ export class Candidature {
       this.id = null;
       this.cv = null;
       this.lettre_motivation = '';
-      this.status = '';
+      this.status = 'not_selected';
       this.candidat_id = null;
       this.emploi_id = null;
   

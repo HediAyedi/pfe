@@ -1,12 +1,55 @@
-<p-menubar [model]="items">
-  <!-- <div class="search-wrapper">
-    <span class="las la-search"></span>
-    <input type="search" pInputText placeholder="Search" style=" width: 100%" >
-  </div> -->
-  <div>
-    <!-- <input type="text" pInputText placeholder="Search" style="margin-right: 50px ; width: 150px">
-    <button type="button" pButton label="Search" icon="las la-search" style="margin-right: 25px" ></button> -->
-    <p-splitButton [showTransitionOptions]="'0ms'" [hideTransitionOptions]="'0ms'" label="Connexion" icon="las la-sign-in-alt fa-lg"  [model]="boutton"></p-splitButton>
+<div class="navbar">
+  <p-menubar id="menu" [model]="items">
+    <!-- <div class="search-wrapper">
+        <span class="las la-search"></span>
+        <input type="search" pInputText placeholder="Search" style=" width: 100%" >
+      </div> -->
+    <div class="buttons">
+      <button pButton pRipple type="button" (click)="showSignInDialog()" icon="las la-sign-in-alt fa-lg" label="Connexion"
+        class="p-button-rounded"></button>
+      <button pButton pRipple type="button" (click)="showSignUpDialog()" icon="las la-user-plus fa-lg" label="Inscription"
+        class="p-button-rounded p-button-text p-button-info"></button>
+      <!-- <p-splitButton [showTransitionOptions]="'0ms'" [hideTransitionOptions]="'0ms'" label="Connexion" icon="las la-sign-in-alt fa-lg"  [model]="boutton"></p-splitButton> -->
+    </div>
+  </p-menubar>
+  
+  <div id="signIn" class="modal">
+    <div class="modal-content">
+      <div class="p-justify-between">
+        <h2>Connexion</h2>
+        <button pButton pRipple type="button" (click)="cancel()" icon="pi pi-times"
+        class="p-button-danger p-button-rounded p-button-text "></button>
+      </div>
+      <div class="p-fluid">
+        <div class="p-field">
+          <button pButton pRipple type="button" [routerLink]="['/loginCandidat']" (click)="cancel()"
+            label="Candidat" class="p-button-rounded p-button-text"></button>
+        </div>
+        <div class="p-field">
+          <button pButton pRipple type="button" [routerLink]="['/loginEmployeur']" (click)="cancel()"
+            label="Employeur" class="p-button-rounded p-button-text"></button>
+        </div>
+      </div>
+    </div>
   </div>
-</p-menubar>
-
+  
+  <div id="signUp" class="modal">
+    <div class="modal-content">
+      <div class="p-justify-between">
+        <h2>Inscription</h2>
+        <button pButton pRipple type="button" (click)="cancel()" icon="pi pi-times"
+        class="p-button-danger p-button-rounded p-button-text "></button>
+      </div>
+      <div class="p-fluid">
+        <div class="p-field">
+          <button pButton pRipple type="button" [routerLink]="['/SignUpCandidat']" (click)="cancel()"
+            label="Candidat" class="p-button-rounded p-button-text p-button-info"></button>
+        </div>
+        <div class="p-field">
+          <button pButton pRipple type="button" [routerLink]="['/SignUpEmployeur']" (click)="cancel()"
+            label="Employeur" class="p-button-rounded p-button-text p-button-info"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

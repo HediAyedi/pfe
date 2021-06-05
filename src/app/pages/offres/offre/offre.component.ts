@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Offre} from '../../../models/offre';
+import {Candidature} from '../../../models/candidature';
 import {OffreService} from '../../../api/offres.service';
+import {CandidatureService} from '../../../api/candidature.service';
+import { Candidat } from 'src/app/models/candidat';
 
 @Component({
   selector: 'app-offre',
@@ -10,26 +13,61 @@ import {OffreService} from '../../../api/offres.service';
 })
 export class OffreComponent implements OnInit {
 
+   
+
   idRoute: any;
   offre: Offre = new Offre() ;
   offres: Offre[] = [] ;
+  candidature=new Candidature();
+  candidat: Candidat;
   constructor(private route: ActivatedRoute,
-              private offreService: OffreService) { }
+    private router: Router,
+    private offreService: OffreService,
+    private candidatureService: CandidatureService) { }
 
   ngOnInit(): void {
     this.idRoute = this.route.snapshot.paramMap.get('offre_id');
-    this.findOffre()
-
-    // this.offre = this.offres.filter(
-    //     off => off.id === this.idRoute
-    //   ) ;
-
-
+    this.offre=JSON.parse(sessionStorage.getItem('offre'));
+    this.candidat=JSON.parse(localStorage.getItem('candidat'));
   }
 
-  public findOffre(){
-    this.offreService.get(this.idRoute).subscribe(data=>{
+  
+  //Shows the modal
+  showDialog() {
+    var modal = document.getElementById('PostulationModal');
+    modal.style.display = 'block';
+  }
+
+  //hides the modal
+  cancel() {
+    var modal = document.getElementById('PostulationModal');
+    modal.style.display = 'none';
+  }
+
+  //
+  connect(){
+    this.router.navigate(['/loginCandidat'])
+  }
+  Postulate(){
+    this.candidature.emploi_id=this.offre.id;
+    this.candidature.candidat_id=this.candidat.id;
+    this.candidatureService.save(this.candidature).subscribe(
+      res=>{
+        // Works inside modal or own page 
+        this.findOffre(this.offre.id)
+        //Works in own page only
+        //this.findOffre(this.idRoute)
+
+      },err=>{
+        console.log(err);
+      }
+    )
+  }
+
+  public findOffre(id){
+    this.offreService.get(id).subscribe(data=>{
       this.offre=data;
+      sessionStorage.setItem('offre',JSON.stringify(this.offre));
     })
   }
 

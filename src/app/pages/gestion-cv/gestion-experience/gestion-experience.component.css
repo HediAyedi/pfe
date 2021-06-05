@@ -7,41 +7,176 @@
 }
 
 .flex-cont {
-    
-    display: flex;
-    flex-wrap: wrap;
-    padding: 5px;
-    margin: 5px;
-    border-radius: 30px;
-    justify-content: space-between;
-    flex-flow: column;
+
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 30px;
+  justify-content: space-between;
+  flex-flow: column;
 }
 
-.blur{
-    background: rgba(255, 255, 255, 0.616);
-    backdrop-filter: blur(10px);
+.blur {
+  padding: 5px 10px;
+  margin: 5px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.616);
+  backdrop-filter: blur(10px);
+}
+.input {
+  padding: 5px 15px;
+  margin: 5px;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.616);
+  backdrop-filter: blur(10px);
+}
+
+.input-size{
+  width: 30vw;
 }
 
 .card-single {
-    background: hsla(0, 0%, 100%, 0.800);
-    backdrop-filter: blur(30px);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    height: fit-content;
-    padding: 2rem;
-    margin: 5px;
-    border-radius: 30px;
+  background: hsla(0, 0%, 100%, 0.800);
+  backdrop-filter: blur(30px);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  height: fit-content;
+  padding: 2rem;
+  margin: 5px;
+  border-radius: 30px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .main {
-    background-image:url("../../../../assets/apps.46003.14259451864568504.ad5e5d07-0fbb-46ed-b9b6-a1b781645691.jpg");
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding: 2rem;
-    margin: 5px;
-    border-radius: 20px;
+  background-image: url("../../../../assets/apps.46003.14259451864568504.ad5e5d07-0fbb-46ed-b9b6-a1b781645691.jpg");
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 2rem;
+  margin: 5px;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.button-white{
-    margin: 10px;
-    background-color: rgba(255, 255, 255, 0.555);
-    backdrop-filter: blur(80px);
+
+.dialog{
+  border-radius: 20px;
+}
+
+.p-fluid label{
+  padding: 5px 10px;
+}
+
+.paging-control {
+  background: rgba(255, 255, 255, 0.801);
+  backdrop-filter: blur(10px);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  height: fit-content;
+  width: fit-content;
+  margin: auto;
+  border-radius: 40px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.paging-control /deep/ .ngx-pagination .current {
+  border-radius: 20px;
+}
+.paging-control /deep/ .ngx-pagination {
+  border-radius: 20px;
+  margin: 0px 4px;
+  padding: 0px;
+  height: fit-content;
+}
+
+.paging-control /deep/ .ngx-pagination .ng-star-inserted {
+  border-radius: 20px;
+  margin: 0px 2px;
+}
+.paging-control /deep/ .ngx-pagination .ng-star-inserted:hover {
+  border-radius: 20px;
+  margin: 0px 2px;
+}
+
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 20vh; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  animation: fadeInModal 0.3s;
+}
+
+@keyframes fadeInModal {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 10px;
+  border-radius: 20px;
+  width: 60vw;
+  animation: fadeIn 0.3s;
+}
+
+@media (max-width:800px) {
+  
+  .modal-content {
+    
+    width: 75vw;
   }
+}
+
+@media (max-width:600px) {
+  
+  .modal-content {
+    
+    width: 85vw;
+  }
+}
+
+@media (max-width:500px) {
+  
+  .modal-content {
+    
+    width: 90vw;
+  }
+}
+
+@keyframes fadeIn {
+  0% {opacity:0;
+    transform: scale(0, 0);}
+  100% {opacity:1;
+    transform: scale(1, 1);}
+  
+}
+
+.p-justify-right {
+  display: flex;
+  justify-content:flex-end;
+}
+.p-justify-between {
+  display: flex;
+  justify-content:space-between;
+}
+div{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.p-button-rounded:hover{
+  
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.button-white {
+  margin: 10px;
+  background-color: rgba(255, 255, 255, 0.719);
+  backdrop-filter: blur(80px);
+}

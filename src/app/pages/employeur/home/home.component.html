@@ -1,18 +1,17 @@
 <p-sidebar [(visible)]="display">
 
 <div class="sidebar">
-  <div class="sidebar-brand">
+  <div class="sidebar-brand p-justify-between">
     <h2 (click)="router.navigate(['/offres'])" class="kamjobs">KamJobs</h2>
-  </div>
-  <div class="p-justify-right">
-    <button pButton pRipple type="button" (click)="display = false"
-          icon="pi pi-times" class="p-button-rounded p-button-danger p-button-text "></button>
+    <div >
+      <button pButton pRipple type="button" (click)="display = false"
+            icon="pi pi-times" class="p-button-rounded  p-button-text button-white"></button>
+    </div>
   </div>
   <div class="sidebar-menu">
     <ul>
       <li><a  [routerLink]="['/employeur/profil']"   routerLinkActive="active"><span class="las la-igloo"></span><span>Gestion Profile</span></a></li>
       <li><a [routerLink]="['/employeur/offres']"  routerLinkActive="active"><span class="las la-users"></span><span>Gestion Offres</span></a></li>
-      <li><a [routerLink]="['/employeur/welcome']" routerLinkActive="active"><span class="las la-clipboard-list"></span><span>Ajout offre</span></a></li>
       <!--<li><a href=""><span class="las la-shipping-fast"></span><span>Orders</span></a></li>-->
     </ul>
   </div>
@@ -23,7 +22,7 @@
 
 <div class="main-content">
   <header>
-    <h2 (click)="display = true">
+    <h2 (click)="display = true" class="kamjobs">
       <label for="">
         <span class="las la-bars"></span>
       </label>

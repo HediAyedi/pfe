@@ -7,7 +7,6 @@ export class Experience {
     description: string;
     date_debut: string;
     date_fin: string;
-    selected: boolean;
     en_cours: boolean;
     cv_id: number;
     created_at:any;
@@ -20,7 +19,6 @@ export class Experience {
       this.nbre_annee = '';
       this.date_debut = null;
       this.date_fin = null;
-      this.selected = false;
       this.en_cours = false;
     }
 }

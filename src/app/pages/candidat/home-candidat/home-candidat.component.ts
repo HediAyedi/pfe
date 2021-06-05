@@ -12,6 +12,7 @@ import { Cv } from 'src/app/models/cv';
 export class HomeCandidatComponent implements OnInit {
 
   candidat=new Candidat;
+  clicked: boolean;
   constructor(
     private cvService: CvService,
     private router: Router,
@@ -37,4 +38,21 @@ export class HomeCandidatComponent implements OnInit {
       console.log(err);
     })
   }
+
+    //Shows the test modal
+    openTestDialog(id){
+      this.clicked=true
+      sessionStorage.setItem('test_id',id)
+      var modal = document.getElementById('testModal');
+      modal.style.display = 'block';
+    }
+  
+    //hides the test modal
+    cancel() {
+      this.clicked=false;
+      sessionStorage.removeItem('test_id');
+      var modal = document.getElementById('testModal');
+      modal.style.display = 'none';
+    }
+  
 }

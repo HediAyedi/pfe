@@ -1,14 +1,13 @@
-<div>
-  <p-card>
-    <ng-template pTemplate="title">
+<div class="main">
+    <h1>
       Informations Professionnelles
-    </ng-template>
-    <ng-template pTemplate="subtitle">
+    </h1>
+    <h2>
       Vérifiez vos informations professionnelles
-    </ng-template>
-    <ng-template pTemplate="content">
+    </h2>
+    <div class="flex-cont">
 
-      <form class="p-fluid p-formgrid p-grid">
+      <form class="p-fluid p-formgrid p-grid card-single">
 
         <div class="p-field p-col-12 p-md-6 p-justify-between">
           <div style="width: 50%;">
@@ -60,20 +59,20 @@
           <div style="width: 25%;">
             <label for="salaire">Salaire préféré</label>
             <div class="p-field p-col-12 p-md-3">
-              <input type="number" required pInputText id="salaire" [options]="salaires" [(ngModel)]="cv.salaire"
+              <input type="number" required pInputText id="salaire" [(ngModel)]="cv.salaire"
                 placeholder="Choisissez votre salaire préféré" name="salaire" pTooltip="Vous pouvez laisser ce vide"
                 tooltipPosition="top">
             </div>
           </div>
 
           <div style="width: 74%;">
-            <label for="status">Status actuel </label>
+            <label for="stat">Status actuel </label>
             <div class="p-field p-col-12 p-md-3">
-              <p-dropdown id="status" [options]="status" [(ngModel)]="cv.status" required
+              <p-dropdown id="stat" [options]="status" [(ngModel)]="cv.status" required #stat="ngModel"
                 placeholder="Choisissez votre status d'emploi" name="status">
               </p-dropdown>
             </div>
-            <small [ngClass]="{'p-error': (status.dirty && status.invalid)}">Votre status d'emploi est requis.</small>
+            <small [ngClass]="{'p-error': (stat.dirty && stat.invalid)}">Votre status d'emploi est requis.</small>
           </div>
         </div>
 
@@ -98,13 +97,14 @@
         </div>
 
         <div class="p-justify-between margin-top">
-          <p-button label="Précédent" (onClick)="previousPage()" icon="pi pi-angle-left" iconPos="left"></p-button>
-          <p-button label="Confirmer" (onClick)="nextPage()" icon="pi pi-angle-right" iconPos="right"
-            [disabled]="selected_langues.length==0 || selected_types.length==0 || experience.invalid || niveau_education.invalid || status.invalid || selected_domaines.length==0">
-          </p-button>
+          <button pButton pRipple type="button" label="Précédent" (click)="previousPage()" icon="pi pi-angle-left"
+            iconPos="left" class="p-button-rounded"></button>
+          <button pButton pRipple type="button" label="Confirmer" (click)="nextPage()" icon="pi pi-angle-right"
+            iconPos="right"
+            [disabled]="selected_langues.length==0 || selected_types.length==0 || experience.invalid || niveau_education.invalid || stat.invalid || selected_domaines.length==0"
+            class="p-button-rounded"></button>
         </div>
 
       </form>
-    </ng-template>
-  </p-card>
+    </div>
 </div>

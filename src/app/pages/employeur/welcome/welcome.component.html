@@ -67,16 +67,16 @@
       <div class="p-field p-col-12 p-md-3">
         <label for="exigence_emploi">Exigence Emploi</label>
         <textarea id="exigence_emploi" [rows]="3" [cols]="30" pInputTextarea autoResize="autoResize"
-          [(ngModel)]="offre.exigence_emploi" name="exigence_emploi" #exigence_emploi="ngModel" required
+          [(ngModel)]="offre.exigence_emploi" name="exigence_emploi" #exigence_emploi="ngModel"
           pTooltip="Taper tous les exigences voulu par les candidats" tooltipPosition="right" tooltipEvent="focus"
           showDelay="1000" hideDelay="500"></textarea>
         <!--<input id="desc" type="text" pInputText [(ngModel)]="employeur.description_entreprise" name="desc" #desc="ngModel" required>-->
       </div>
 
       <div class="p-field p-col-12 p-md-3">
-        <label for="secteur">Domaine</label>
-        <p-dropdown id="secteur" [options]="secteurs" [(ngModel)]="selected_secteur"
-          placeholder="Choisissez un secteur d'activités" name="secteur" optionLabel="secteur"
+        <label for="domaine">Domaine</label>
+        <p-dropdown id="domaine" [options]="domaines" [(ngModel)]="selected_domaine"
+          placeholder="Choisissez un domaine" name="domaine" optionLabel="domaine"
           [style]="{'minWidth': '14rem'}"></p-dropdown>
       </div>
 

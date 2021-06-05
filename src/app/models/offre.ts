@@ -11,7 +11,8 @@ export class Offre {
     active: boolean;
     employeur_id: number;
     employeur: Employeur;
-    emploiTypes: any;
+    candidatures: [];
+    emploi_types: any;
     langues: any;
     created_at:any;
     updated_at:any;
@@ -26,7 +27,7 @@ export class Offre {
         this.exigence_emploi = '';
         this.active = true;
         this.employeur_id = null;
-        this.emploiTypes = [];
+        this.emploi_types = [];
         this.langues = [];
 
     }

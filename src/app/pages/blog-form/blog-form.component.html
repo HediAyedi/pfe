@@ -1,350 +1,120 @@
-<!--<div class="p-fluid p-formgrid p-grid ">-->
-<!--<div class="p-field p-col-12 p-md-6 ">-->
-<!--<label for="nom">Nom & Prénom</label>-->
-<!--<input id="nom" type="text" pInputText [(ngModel)]="candidat.nom" name="nom" #nom="ngModel" required pTooltip="Taper Votre nom" tooltipPosition="top" tooltipEvent="focus" showDelay="1000" hideDelay="500">-->
-<!--</div>-->
-<!--<div class="p-field p-col-12 p-md-6">-->
-<!--<label for="email">Email</label>-->
-<!--<input id="email" type="text"  pInputText width="50px" [(ngModel)]="candidat.email" name="email" #email="ngModel" required email pTooltip="Taper un email avec un bon format" tooltipPosition="right" tooltipEvent="focus" showDelay="1000" hideDelay="500">-->
-<!--</div>-->
+<!-- BLOG FORM -->
+<div id="blogForm" class="modal">
+  <form class="modal-content">
+    <div class="p-justify-right">
+      <button pButton pRipple type="button" (click)="cancel()" icon="pi pi-times"
+        class="p-button-danger p-button-rounded p-button-text "></button>
+    </div>
+    <div class="p-fluid">
+      <div class="p-field">
+        <label for="titre">Titre</label>
+        <input #titre="ngModel" name="titre" id="titre" type="text" required pInputText class="input"
+          [(ngModel)]="blog.titre" [ngClass]="{'ng-dirty': (titre.dirty && titre.invalid)}">
+        <small *ngIf="(titre.dirty && titre.invalid)" class="p-error">titre est requis.</small>
+      </div>
+      <div class="p-field">
+        <label for="logo">logo</label>
+        <input #logo="ngModel" id="logo" name="logo" type="text" required pInputText class="input"
+          [(ngModel)]="blog.logo" [ngClass]="{'ng-dirty':(logo.dirty && logo.invalid)}">
+        <small class="p-error" *ngIf="(logo.dirty && logo.invalid)">logo est requis.</small>
+      </div>
+      <div class="p-field">
+        <label for="description">Contenu</label>
 
-<!--<div class="p-field p-col-12 p-md-6">-->
-<!--&lt;!&ndash; <p-cascadeSelect [(ngModel)]="candidat.civilite" [options]="civilites" optionLabel="value" name="civilite1" #civilite1="ngModel" [style]="{'minWidth': '14rem'}" pTooltip="Choisissez une civilité" tooltipPosition="right" tooltipEvent="focus" showDelay="500" hideDelay="200"></p-cascadeSelect> &ndash;&gt;-->
-<!--<div class="p-field p-col-12 p-md-3">-->
-<!--<p-dropdown [options]="civilites" [(ngModel)]="candidat.civilite" placeholder="Choisissez une civilité" name="secteur"  [style]="{'minWidth': '14rem'}"></p-dropdown>-->
-<!--</div>-->
-<!--&lt;!&ndash; <select id="civilite" width="50px" [(ngModel)]="candidat.civilite" name="civilite" #civilite="ngModel" required >-->
-<!--<option value="" [hidden]="true" >Choisissez une civilité</option>-->
-<!--<option value="M" >M</option>-->
-<!--<option value="Mme" >Mme</option>-->
-<!--<option value="Mlle" >Mlle</option>-->
-<!--</select> &ndash;&gt;-->
-<!--</div>-->
-<!--<div class="p-field p-col-12">-->
-<!--<label for="mdp">Mot de passe</label>-->
-<!--<p-password id="mdp" type="text" rows="1" [(ngModel)]="candidat.mot_de_passe" name="mdp" #mdp="ngModel" required [toggleMask]="true" ></p-password>-->
-<!--</div>-->
-<!--<div class="p-field p-col-12">-->
-<!--<label for="mdp2">Mot de passe Confirmation</label>-->
-<!--<input id="mdp2" type="password" rows="1" pInputText [(ngModel)]="candidat.mot_de_passe_confirmation" name="mdp2" pattern="mdp" #mdp2="ngModel" required pTooltip="Taper un mot de passe exact comme le precedent" tooltipPosition="right" tooltipEvent="focus" showDelay="1000" hideDelay="500">-->
-<!--</div>-->
+        <textarea id="description" name="description" required pInputTextarea class="input" [rows]="6" [cols]="30"
+          [(ngModel)]="blog.description" #description="ngModel"
+          [ngClass]="(description.dirty && description.invalid)"></textarea>
 
-<!--</div>-->
-
-
-<!--<p-button (click)="showPositionDialog('bottom')" icon="pi pi-arrow-up" label="Bottom" styleClass="p-button-warning"></p-button>-->
-
-<!--<p-dialog header="Godfather I" [(visible)]="displayPosition" [position]="position" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"-->
-<!--[draggable]="false" [resizable]="false">-->
-<!--<form class="box">-->
-<!--<div class="stepsdemo-content">-->
-<!--<p-card>-->
-<!--<ng-template pTemplate="title">-->
-<!--Ajouter une description-->
-<!--</ng-template>-->
-<!--<ng-template pTemplate="subtitle">-->
-<!--Taper les données-->
-<!--</ng-template>-->
-<!--<ng-template pTemplate="content">-->
-<!--<div class="p-fluid">-->
-<!--<div class="p-field">-->
-<!--<label for="titre">Titre</label>-->
-<!--<input #titre="ngModel" name="titre" id="titre" type="text" required pInputText [(ngModel)]="blog.titre" [ngClass]="{'ng-dirty': (titre.dirty && titre.invalid)}">-->
-<!--<small *ngIf="(titre.dirty && titre.invalid)" class="p-error">titre is required.</small>-->
-<!--</div>-->
-<!--<div class="p-field">-->
-<!--<label for="logo">logo</label>-->
-<!--<input #logo="ngModel" id="logo" name="logo"  type="text" required pInputText [(ngModel)]="blog.logo" [ngClass]="{'ng-dirty':(logo.dirty && logo.invalid)}">-->
-<!--<small class="p-error" *ngIf="(logo.dirty && logo.invalid)">logo is required.</small>-->
-<!--</div>-->
-<!--<div class="p-field">-->
-<!--<label for="description">Age</label>-->
-<!--<input #description="ngModel" id="description" name="description"  type="text" required pInputText [(ngModel)]="blog.description" [ngClass]="(description.dirty && description.invalid)">-->
-<!--<small class="p-error" *ngIf="(description.dirty && description.invalid)">description is required.</small>-->
-<!--</div>-->
-<!--</div>-->
-<!--</ng-template>-->
-<!--<ng-template pTemplate="footer">-->
-<!--<div class="p-grid p-nogutter p-justify-end">-->
-<!--<p-button label="Ajouter" (onClick)="ajouter()" icon="pi pi-angle-right" iconPos="right"></p-button>-->
-<!--</div>-->
-<!--</ng-template>-->
-<!--</p-card>-->
-<!--</div>-->
-
-
-
-<!--</form>-->
-
-
-
-<!--</p-dialog>-->
-<!--<form class="box">-->
-<!--<div class="stepsdemo-content">-->
-<!--<p-card>-->
-<!--<ng-template pTemplate="title">-->
-<!--Ajouter une description-->
-
-<!--</ng-template>-->
-<!--<ng-template pTemplate="subtitle">-->
-<!--Taper les données-->
-<!--</ng-template>-->
-<!--<ng-template pTemplate="content">-->
-<!--<div class="p-fluid">-->
-<!--<div class="p-field">-->
-<!--<label for="titre">Titre</label>-->
-<!--<input #titre="ngModel" name="titre" id="titre" type="text" required pInputText [(ngModel)]="blog.titre" [ngClass]="{'ng-dirty': (titre.dirty && titre.invalid)}">-->
-<!--<small *ngIf="(titre.dirty && titre.invalid)" class="p-error">titre is required.</small>-->
-<!--=======-->
-<!---->
-<!--<div >-->
-<!--<p-card  >-->
-
-<!--<ng-template pTemplate="content">-->
-<!--<p-dialog header="Ajout test" [modal]="true" [draggable]="false" [(visible)]="display">-->
-
-<!--<ng-template pTemplate="title">-->
-<!--Ajouter une description-->
-
-<!--</ng-template>-->
-<!--<ng-template pTemplate="subtitle">-->
-<!--Taper les données-->
-<!--</ng-template>-->
-<!--<ng-template pTemplate="content">-->
-<!--<div class="p-fluid">-->
-<!--<div class="p-field">-->
-<!--<label for="titre">Titre</label>-->
-<!--<input #titre="ngModel" name="titre" id="titre" type="text" required pInputText [(ngModel)]="blog.titre"-->
-<!--[ngClass]="{'ng-dirty': (titre.dirty && titre.invalid)}">-->
-<!--<small *ngIf="(titre.dirty && titre.invalid)" class="p-error">titre is required.</small>-->
-<!--</div>-->
-<!--<div class="p-field">-->
-<!--<label for="logo">logo</label>-->
-<!--<input #logo="ngModel" id="logo" name="logo" type="text" required pInputText [(ngModel)]="blog.logo"-->
-<!--[ngClass]="{'ng-dirty':(logo.dirty && logo.invalid)}">-->
-<!--<small class="p-error" *ngIf="(logo.dirty && logo.invalid)">logo is required.</small>-->
-<!--</div>-->
-<!--<div class="p-field">-->
-<!--<label for="description">Contenu</label>-->
-<!--<input #description="ngModel" id="description" name="description" type="text" required pInputText [rows]="3" [cols]="30"-->
-<!--[(ngModel)]="blog.description" [ngClass]="(description.dirty && description.invalid)">-->
-<!--<small class="p-error" *ngIf="(description.dirty && description.invalid)">description is required.</small>-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="p-field">-->
-<!--<label for="logo">logo</label>-->
-<!--<input #logo="ngModel" id="logo" name="logo"  type="text" required pInputText [(ngModel)]="blog.logo" [ngClass]="{'ng-dirty':(logo.dirty && logo.invalid)}">-->
-<!--<small class="p-error" *ngIf="(logo.dirty && logo.invalid)">logo is required.</small>-->
-<!--</div>-->
-<!--<div class="p-field">-->
-<!--<label for="description">Age</label>-->
-<!--<input #description="ngModel" id="description" name="description"  type="text" required pInputText [(ngModel)]="blog.description" [ngClass]="(description.dirty && description.invalid)">-->
-<!--<small class="p-error" *ngIf="(description.dirty && description.invalid)">description is required.</small>-->
-<!--</div>-->
-<!---->
-<!--</div>-->
-<!--</ng-template>-->
-<!---->
-<!--<ng-template pTemplate="footer">-->
-<!--<div class="p-grid p-nogutter p-justify-end">-->
-<!--<p-button label="Ajouter" (onClick)="ajouter()" icon="pi pi-angle-right" iconPos="right"></p-button>-->
-<!--</div>-->
-<!--</ng-template>-->
-<!--</p-card>-->
-<!--</div>-->
-
-
-
-<!--</form>-->
-<!--=======-->
-<!--</ng-template>-->
-<!--</p-dialog>-->
-<!---->
-<!--<button pButton pRipple type="button" (click)="display=true" label="Ajout Test" icon="pi pi-plus"-->
-<!--class="p-button-raised p-button-text "></button>-->
-<!--</ng-template>-->
-
-<!--</p-card>-->
-<!--</div>-->
-
-
-<!--<div class="card">-->
-<!--<p-table [value]="blog2" dataKey="id" editMode="row" [paginator]="true" [rows]="rows" [showCurrentPageReport]="true"-->
-<!--[(first)]="first" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"-->
-<!--[rowsPerPageOptions]="[2,5,15]">-->
-<!--<ng-template pTemplate="header">-->
-<!--<tr>-->
-<!--<th>titre</th>-->
-<!--<th>logo</th>-->
-<!--<th>description</th>-->
-<!--<th>Modifier</th>-->
-<!--<th>Supprimer</th>-->
-
-<!--</tr>-->
-<!--</ng-template>-->
-<!--<ng-template pTemplate="body" let-blog let-editing="editing" let-ri="id">-->
-<!--<tr [pEditableRow]="blog">-->
-<!--<td pEditableColumn>-->
-<!--<p-cellEditor>-->
-<!--<ng-template pTemplate="input">-->
-<!--<input pInputText type="text" [(ngModel)]="blog.titre">-->
-<!--</ng-template>-->
-<!--<ng-template pTemplate="output">-->
-<!--{{blog.titre}}-->
-<!--</ng-template>-->
-<!--</p-cellEditor>-->
-<!--</td>-->
-<!--<td pEditableColumn>-->
-<!--<p-cellEditor>-->
-<!--<ng-template pTemplate="input">-->
-<!--<input pInputText type="text" [(ngModel)]="blog.logo">-->
-<!--</ng-template>-->
-<!--<ng-template pTemplate="output">-->
-<!--{{blog.logo | slice:0:18}}-->
-<!--</ng-template>-->
-<!--</p-cellEditor>-->
-<!--</td>-->
-<!--<td pEditableColumn>-->
-<!--<p-cellEditor>-->
-<!--<ng-template pTemplate="input">-->
-<!--<input pInputText type="text" [(ngModel)]="blog.description" required>-->
-<!--</ng-template>-->
-<!--<ng-template pTemplate="output">-->
-<!--{{blog.description | slice:0:8}}-->
-<!--</ng-template>-->
-<!--</p-cellEditor>-->
-<!--</td>-->
-<!--&lt;!&ndash;<button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-pencil" (click)="onRowEditInit(blog)" class="p-button-rounded p-button-text"></button>&ndash;&gt;-->
-<!--&lt;!&ndash;<button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi-check" (click)="onRowEditSave(blog, blog.id)" class="p-button-rounded p-button-text p-button-success p-mr-2"></button>&ndash;&gt;-->
-<!--&lt;!&ndash;<button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow icon="pi pi-times" (click)="onRowEditCancel(blog, ri)" class="p-button-rounded p-button-text p-button-danger"></button>&ndash;&gt;-->
-
-<!--<td>-->
-<!--<input type="button" icon="pi pi-pencil" pButton pRipple class="p-button-rounded p-mr-2"-->
-<!--style="background-color: darkseagreen" (click)="onRowEditSave(blog,blog.id)">-->
-<!--</td>-->
-<!--<td><input type="button" icon="pi pi-trash" pButton pRipple class="p-button-rounded "-->
-<!--style="background-color: darkred;" (click)="delete(blog.id)" icon="pi pi-check"></td>-->
-
-<!--</tr>-->
-<!--</ng-template>-->
-<!--</p-table>-->
-<!--</div>-->
-
-
+        <small class="p-error" *ngIf="(description.dirty && description.invalid)">Contenu est requis.</small>
+      </div>
+    </div>
+    <div class="p-grid p-nogutter p-justify-right">
+      <button pButton pRipple type="button" label="Ajouter" (click)="add()" icon="pi pi-check"
+        class="p-button-rounded p-button-text " *ngIf="!editing"></button>
+      <button pButton pRipple type="button" label="Modifier" (click)="edit()" icon="pi pi-check"
+        class="p-button-rounded p-button-warning p-button-text " *ngIf="editing"></button>
+    </div>
+  </form>
+</div>
 
 <div class="flex-container">
-
   <div class="card-single">
-
     <div>
-      <p-dialog header="Ajout blog" [modal]="true" [draggable]="false" [(visible)]="display">
-    
-        <ng-template pTemplate="title">
-          Ajouter une description
-    
-        </ng-template>
-        <ng-template pTemplate="subtitle">
-          Taper les données
-        </ng-template>
-        <ng-template pTemplate="content">
-          <div style="width:40vw;">
-            <div class="p-fluid">
-              <div class="p-field">
-                <label for="titre">Titre</label>
-                <input #titre="ngModel" name="titre" id="titre" type="text" required pInputText [(ngModel)]="blog.titre"
-                  [ngClass]="{'ng-dirty': (titre.dirty && titre.invalid)}">
-                <small *ngIf="(titre.dirty && titre.invalid)" class="p-error">titre is required.</small>
-              </div>
-              <div class="p-field">
-                <label for="logo">logo</label>
-                <input #logo="ngModel" id="logo" name="logo" type="text" required pInputText [(ngModel)]="blog.logo"
-                  [ngClass]="{'ng-dirty':(logo.dirty && logo.invalid)}">
-                <small class="p-error" *ngIf="(logo.dirty && logo.invalid)">logo is required.</small>
-              </div>
-              <div class="p-field">
-                <label for="description">Contenu</label>
-    
-                <textarea id="description" name="description" required pInputTextarea [rows]="6" [cols]="30"
-                  [(ngModel)]="blog.description" #description="ngModel"
-                  [ngClass]="(description.dirty && description.invalid)"></textarea>
-    
-    
-                <small class="p-error" *ngIf="(description.dirty && description.invalid)">Contenu is
-                  required.</small>
-              </div>
-            </div>
-          </div>
-        </ng-template>
-        <ng-template pTemplate="footer">
-          <div class="p-grid p-nogutter p-justify-end">
-            <p-button label="Ajouter" (onClick)="ajouter()" icon="pi pi-angle-right" iconPos="right"></p-button>
-          </div>
-        </ng-template>
-    
-      </p-dialog>
-    
-      <button pButton pRipple type="button" (click)="display=true" label="Ajout Blog" icon="pi pi-plus"
-        class="p-button-raised p-button-text "></button>
+      <button pButton pRipple type="button" (click)="showDialog()" label="Ajout Blog" icon="pi pi-plus"
+        class=" p-button-rounded p-button-text "></button>
     </div>
-    
-    <p-table [value]="blog2" dataKey="id" editMode="row" [paginator]="true" [rows]="rows" [showCurrentPageReport]="true"
-      [(first)]="first" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-      [rowsPerPageOptions]="[2,5,15]">
+
+    <p-table [value]="blogs" dataKey="id" [paginator]="true" [rows]="rows" [showCurrentPageReport]="true"
+      [globalFilterFields]="['titre']" [(first)]="first"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[5,10,15]">
       <ng-template pTemplate="header">
         <tr>
-          <th>titre</th>
-          <th>logo</th>
-          <th>description</th>
-          <th>Modifier</th>
-          <th>Supprimer</th>
+          <th width="99vw" pSortableColumn="titre">Titre <p-sortIcon field="titre"></p-sortIcon>
+          </th>
+          <th width="1vw"></th>
 
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-blog let-editing="editing" let-ri="id">
-        <tr [pEditableRow]="blog">
-          <td pEditableColumn>
-            <p-cellEditor>
-              <ng-template pTemplate="input">
-                <input pInputText type="text" [(ngModel)]="blog.titre">
-              </ng-template>
-              <ng-template pTemplate="output">
-                {{blog.titre}}
-              </ng-template>
-            </p-cellEditor>
+        <tr>
+          <td width="99vw">
+            {{blog.titre}}
           </td>
-          <td pEditableColumn>
-            <p-cellEditor>
-              <ng-template pTemplate="input">
-                <input pInputText type="text" [(ngModel)]="blog.logo">
-              </ng-template>
-              <ng-template pTemplate="output">
-                {{blog.logo | slice:0:18}}
-              </ng-template>
-            </p-cellEditor>
+          <td width="1vw">
+            <button pButton pRipple type="button" (click)="showEditDialog(blog)" icon="pi pi-pencil"
+              class="p-button-rounded p-button-warning"></button>
+            <button pButton pRipple type="button" (click)="delete(blog.id)" icon="pi pi-trash"
+              class="p-button-rounded p-button-danger"></button>
           </td>
-          <td pEditableColumn>
-            <p-cellEditor>
-              <ng-template pTemplate="input">
-                <input pInputText type="text" [(ngModel)]="blog.description" required>
-              </ng-template>
-              <ng-template pTemplate="output">
-                {{blog.description | slice:0:8}}
-              </ng-template>
-            </p-cellEditor>
-          </td>
-          <!--<button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-pencil" (click)="onRowEditInit(blog)" class="p-button-rounded p-button-text"></button>-->
-          <!--<button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi-check" (click)="onRowEditSave(blog, blog.id)" class="p-button-rounded p-button-text p-button-success p-mr-2"></button>-->
-          <!--<button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow icon="pi pi-times" (click)="onRowEditCancel(blog, ri)" class="p-button-rounded p-button-text p-button-danger"></button>-->
-
-          <td>
-            <input type="button" icon="pi pi-pencil" pButton pRipple class="p-button-rounded p-mr-2"
-              style="background-color: darkseagreen" (click)="onRowEditSave(blog,blog.id)">
-          </td>
-          <td><input type="button" icon="pi pi-trash" pButton pRipple class="p-button-rounded "
-              style="background-color: darkred;" (click)="delete(blog.id)" icon="pi pi-check"></td>
-
         </tr>
       </ng-template>
     </p-table>
   </div>
 </div>
+
+
+<!-- 
+<p-dialog [style]="{'color':'red'}" header="Ajout blog" [modal]="true" [draggable]="false" [(visible)]="display">
+  <ng-template pTemplate="title">
+    Ajouter une description
+
+  </ng-template>
+  <ng-template pTemplate="subtitle">
+    Taper les données
+  </ng-template>
+  <ng-template pTemplate="content">
+    <div style="width:40vw;">
+      <div class="p-fluid">
+        <div class="p-field">
+          <label for="titre">Titre</label>
+          <input #titre="ngModel" name="titre" id="titre" type="text" required pInputText class="input"
+            [(ngModel)]="blog.titre" [ngClass]="{'ng-dirty': (titre.dirty && titre.invalid)}">
+          <small *ngIf="(titre.dirty && titre.invalid)" class="p-error">titre is required.</small>
+        </div>
+        <div class="p-field">
+          <label for="logo">logo</label>
+          <input #logo="ngModel" id="logo" name="logo" type="text" required pInputText class="input"
+            [(ngModel)]="blog.logo" [ngClass]="{'ng-dirty':(logo.dirty && logo.invalid)}">
+          <small class="p-error" *ngIf="(logo.dirty && logo.invalid)">logo is required.</small>
+        </div>
+        <div class="p-field">
+          <label for="description">Contenu</label>
+
+          <textarea id="description" name="description" required pInputTextarea class="input" [rows]="6" [cols]="30"
+            [(ngModel)]="blog.description" #description="ngModel"
+            [ngClass]="(description.dirty && description.invalid)"></textarea>
+
+
+          <small class="p-error" *ngIf="(description.dirty && description.invalid)">Contenu is
+            required.</small>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <div class="p-grid p-nogutter p-justify-end">
+      <button pButton pRipple type="button" label="Ajouter" (click)="add()" icon="pi pi-check"
+        class="p-button-rounded p-button-text "></button>
+    </div>
+  </ng-template>
+</p-dialog> -->

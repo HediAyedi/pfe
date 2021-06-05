@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  ConfirmationService,
-  MessageService,
-  PrimeNGConfig,
-} from 'primeng/api';
+import { ConfirmationService, MessageService, PrimeNGConfig } from 'primeng/api';
 import { Test } from '../../models/test';
 import { TestService } from '../../api/test.service';
 import { ReponseService } from '../../api/reponse.service';
@@ -17,6 +13,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./tests.component.css'],
 })
 export class TestsComponent implements OnInit {
+
+  // First page number declaration
+  page=1;
+  //Filter value
+  term:string
+  
   tests: Test[] = [];
   test = new Test();
   questions: Question[] = [];
@@ -26,10 +28,6 @@ export class TestsComponent implements OnInit {
   ajout_test = new Test();
   selected_reponse = new Reponse();
   test_id: any;
-  display: boolean = false;
-  display2: boolean = false;
-  questionModifDisplay: boolean = false;
-  testModifDisplay: boolean = true;
   modif_question = new Question();
 
   constructor(
@@ -49,20 +47,23 @@ export class TestsComponent implements OnInit {
     }
   }
 
-
   // GESTION TESTS
+
+  public findTest(test_id) {
+    this.testService.get(test_id).subscribe(res=>{
+
+      this.questions= res.questions;
+      this.reponses= res.reponses
+    },err => {
+      console.log(err);
+    })
+  }
+
   public findAllTests() {
     this.testService.getAll().subscribe(
       (data) => {
         this.tests = data;
         localStorage.setItem('testsCache', JSON.stringify(data));
-        if (this.test_id) {
-          this.tests.forEach((item) => {
-            if (item.id == this.test_id) {
-              item.selected = true;
-            }
-          });
-        }
       },
       (err) => {
         console.log(err);
@@ -71,15 +72,13 @@ export class TestsComponent implements OnInit {
   }
 
   ajouterTest() {
-    console.log(this.test);
-    this.testService.save(this.test).subscribe(
+    this.testService.save(this.ajout_test).subscribe(
       (data) => {
         console.log('Test added', data);
-        data.selected = true;
-        this.tests.push(data);
-        this.testService.getAllCache();
-        this.display2 = false;
-        this.showDialog(data);
+        this.findAllTests();
+        this.ajout_test=new Test();
+        this.cancelTestAddDialog();
+        this.gestionTestDialog(data);
       },
       (err) => {
         console.log(err);
@@ -93,19 +92,13 @@ export class TestsComponent implements OnInit {
         console.log('Test edited', data);
 
         //modification de test au niveau de frontend
-        this.tests.forEach((item) => {
-          if (item.id == test.id) {
-            item = data;
-            item.selected = true;
-          }
-        });
-        this.testModifDisplay = false;
+        this.findAllTests();
+        this.cancelTestEditDialog();
       },
       (err) => {
         console.log(err);
       }
     );
-    this.selected_reponse = new Reponse();
   }
 
   supprimerTest(id) {
@@ -113,11 +106,11 @@ export class TestsComponent implements OnInit {
       (data) => {
         console.log(data);
         this.findAllTests();
-        this.display = false;
+        this.cancelTestGestDialog();
+        this.page=1
       },
       (err) => {
         console.log(err);
-        this.display = false;
       }
     );
   }
@@ -125,41 +118,64 @@ export class TestsComponent implements OnInit {
 
 
   //GESTION TEST DIALOG
-  showDialog(test: Test) {
-    this.test.selected = true;
-    this.testModifDisplay = false;
+  gestionTestDialog(test: Test) {
+    var modal = document.getElementById("gestTest");
+    modal.style.display = "block";
     this.questions = test.questions;
     this.test_id = test.id;
+    this.test=test;
+    console.log("TEST:",test)
     this.reponses = test.reponses;
   }
 
   //AJOUT TEST DIALOG
   testAddDialog() {
-    this.display2 = true;
+    var modal = document.getElementById("addTest");
+    modal.style.display = "block";
   }
 
-  questionModifDialog(question: Question) {
+  questionEditDialog(question: Question) {
     this.modif_question = question;
-    this.questionModifDisplay = true;
+    console.log(this.modif_question);
+    var modal = document.getElementById("editQuestion");
+    modal.style.display = "block";
   }
 
-  testModifDialog() {
-    this.testModifDisplay = true;
+  testEditDialog() {
+    var modal = document.getElementById("editTest");
+    modal.style.display = "block";
   }
 
+
+  //Hides the test form modal
+  cancelTestAddDialog(){
+    var modal = document.getElementById("addTest");
+    modal.style.display = "none";
+    this.test = new Test();
+  }
+
+   //Hides the test form modal
+   cancelTestEditDialog(){
+    var modal = document.getElementById("editTest");
+    modal.style.display = "none";
+  }
+
+  //Hides the test modal
+  cancelTestGestDialog(){
+    var modal = document.getElementById("gestTest");
+    modal.style.display = "none";
+    this.modif_question = new Question();
+  }
+
+  //Hides the question form modal
+  cancelQuestionEditDialog(){
+    var modal = document.getElementById("editQuestion");
+    modal.style.display = "none";
+    this.modif_question = new Question();
+  }
 
 
   // GESTION REPONSES
-  public findReponses() {
-    this.reponseService.getAll().subscribe(
-      (data) => {
-        this.reponses = data;
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
-  }
 
   selectReponse(rep: Reponse) {
     this.reponses.forEach((element) => {
@@ -178,7 +194,7 @@ export class TestsComponent implements OnInit {
       }
     });
     this.selected_reponse = new Reponse();
-    this.findReponses();
+    this.findTest(this.test_id);
   }
 
   ajouterReponse(question) {
@@ -186,8 +202,8 @@ export class TestsComponent implements OnInit {
     this.reponseService.save(this.ajout_reponse).subscribe(
       (data) => {
         console.log('Reponse added', data);
-        this.testService.getAllCache();
-        this.findReponses();
+        this.findAllTests();
+        this.findTest(this.test_id);
         this.ajout_reponse = new Reponse();
       },
       (err) => {
@@ -215,7 +231,7 @@ export class TestsComponent implements OnInit {
       (data) => {
         console.log(data);
         this.findAllTests();
-        this.findReponses();
+        this.findTest(this.test_id);
       },
       (err) => {
         console.log(err);
@@ -226,30 +242,16 @@ export class TestsComponent implements OnInit {
 
 
   // GESTION QUESTIONS
-  public findQuestions(test_id) {
-    this.questionService.getAll().subscribe(
-      (data) => {
-        this.questions = [];
-        data.forEach((ques) => {
-          if (ques.test_id == test_id) {
-            this.questions.push(ques);
-            console.log('Please work bbitch', this.questions);
-          }
-        });
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
-  }
+  
+  
 
-  ajouterQuestion(test) {
+  ajouterQuestion() {
     this.ajout_question.test_id = this.test_id;
     this.questionService.save(this.ajout_question).subscribe(
       (data) => {
         console.log('Quuestion added', data);
         this.findAllTests();
-        this.findQuestions(this.test_id);
+        this.findTest(this.test_id);
         this.ajout_question = new Question();
       },
       (err) => {
@@ -261,16 +263,14 @@ export class TestsComponent implements OnInit {
   modifierQuestion(question) {
     this.questionService.update(question, question.id).subscribe(
       (data) => {
-        console.log('Reponse edited', data);
+        console.log('Question edited', data);
         this.findAllTests();
-
-        this.questionModifDisplay = false;
+        this.cancelQuestionEditDialog();
       },
       (err) => {
         console.log(err);
       }
     );
-    this.selected_reponse = new Reponse();
   }
 
   supprimerQuestion(id) {
@@ -278,7 +278,7 @@ export class TestsComponent implements OnInit {
       (data) => {
         console.log(data);
         this.findAllTests();
-        this.findQuestions(this.test_id);
+        this.findTest(this.test_id);
       },
       (err) => {
         console.log(err);

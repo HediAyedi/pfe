@@ -1,17 +1,14 @@
-<div>
-  <p-card>
+<div class="main">
 
-    <ng-template pTemplate="title">
+    <h1>
       Informations Personnelles
-    </ng-template>
-
-    <ng-template pTemplate="subtitle">
+    </h1>
+    <h3>
       Tappez vos informations personnelles
-    </ng-template>
+    </h3>
 
-    <ng-template pTemplate="content">
-      <form>
-        <div class="p-fluid p-formgrid p-grid">
+    <div class="flex-cont">
+      <form class="p-fluid p-formgrid p-grid card-single">
 
 
           <div class="p-field p-col-12 p-md-6 p-justify-between">
@@ -31,45 +28,42 @@
 
           <div class="p-field p-col-12 margin-top">
             <label for="image">Image</label>
-            <input #image="ngModel" id="image" name="image" type="text" required pInputText
+            <input class="input" #image="ngModel" id="image" name="image" type="text" required pInputText
               [(ngModel)]="candidat.image">
           </div>
 
           <div class="p-field p-col-12 p-md-6 p-justify-between">
             <div style="width: 50%;">
               <label for="date_naissance">Date naissance</label>
-              <input #date_naissance="ngModel" id="date_naissance" name="date_naissance" type="date" required pInputText
+              <input class="input" #date_naissance="ngModel" id="date_naissance" name="date_naissance" type="date" required pInputText
                 [(ngModel)]="candidat.date_naissance"
                 [ngClass]="{'ng-dirty': (date_naissance.invalid && submitted) || (date_naissance.dirty && date_naissance.invalid)}">
               <small class="p-error" *ngIf="(date_naissance.dirty && date_naissance.invalid)">date de naissance est requis.</small>
             </div>
             <div style="width: 49%;">
               <label for="telephone">Telephone</label>
-              <input #telephone="ngModel" id="telephone" name="telephone" type="number" required pInputText
+              <input class="input" #telephone="ngModel" id="telephone" name="telephone" type="number" required pInputText
                 [(ngModel)]="candidat.telephone"
                 [ngClass]="{'ng-dirty': (telephone.invalid && submitted) || (telephone.dirty && telephone.invalid)}">
               <small class="p-error" *ngIf="(telephone.dirty && telephone.invalid)">Telephone est requis.</small>
             </div>
           </div>
 
-
-
           <div class="p-field p-col-12 margin-top">
             <label for="motivation">Motivation</label>
-            <textarea id="motivation" name="motivation" #motivation="ngModel" pInputTextarea required [rows]="5"
+            <textarea class="input" id="motivation" name="motivation" #motivation="ngModel" pInputTextarea required [rows]="5"
               [(ngModel)]="candidat.motivation"></textarea>
           </div>
 
-        </div>
-
         <div class="p-justify-between margin-top">
-          <p-button label="Précédent" (onClick)="previousPage()" icon="pi pi-angle-left" iconPos="left"></p-button>
-          <p-button label="Next" (onClick)="nextPage()"
-            [disabled]="civilite.invalid || telephone.invalid || date_naissance.invalid || nom.invalid"
-            icon="pi pi-angle-right" iconPos="right"></p-button>
+
+          <button pButton pRipple type="button" label="Précédent" (click)="previousPage()" icon="pi pi-angle-left"
+            iconPos="left" class="p-button-rounded"></button>
+          <button pButton pRipple type="button" label="Confirmer" (click)="nextPage()" icon="pi pi-angle-right"
+            iconPos="right"
+            class="p-button-rounded"></button>
         </div>
 
       </form>
-    </ng-template>
-  </p-card>
+    </div>
 </div>

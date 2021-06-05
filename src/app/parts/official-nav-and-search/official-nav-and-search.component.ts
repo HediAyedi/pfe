@@ -27,7 +27,7 @@ export class OfficialNavAndSearchComponent implements OnInit {
 
       },
       {
-        label: 'Rechercher par Spécialité',
+        label: 'Rechercher par Domaine',
         icon: 'lab la-searchengin fa-lg',
         items: [
           {
@@ -126,7 +126,7 @@ export class OfficialNavAndSearchComponent implements OnInit {
                 label: 'Strasbourg',
               },
               {
-                label: '\tLille',
+                label: 'Lille',
               },
               {
                 label: 'Paris',
@@ -141,10 +141,10 @@ export class OfficialNavAndSearchComponent implements OnInit {
                 label: 'Toulouse',
               },
               {
-                label: '\tNantes',
+                label: 'Nantes',
               },
               {
-                label: '\tMarseille',
+                label: 'Marseille',
               },
 
             ]
@@ -183,6 +183,24 @@ export class OfficialNavAndSearchComponent implements OnInit {
       },
 
     ];
+  }
+
+  
+  showSignInDialog(){
+    var modal = document.getElementById("signIn");
+    modal.style.display = "block";
+  }
+
+  showSignUpDialog(){
+    var modal = document.getElementById("signUp");
+    modal.style.display = "block";
+  }
+
+  cancel(){
+    var signUpModal = document.getElementById("signUp");
+    signUpModal.style.display = "none";
+    var signInModal = document.getElementById("signIn");
+    signInModal.style.display = "none";
   }
   showLogin(){
     this.show=!this.show;

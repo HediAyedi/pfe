@@ -49,11 +49,17 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { FieldsetModule } from 'primeng/fieldset';
 import { SplitterModule } from 'primeng/splitter';
 import { DataViewModule } from 'primeng/dataview';
-import {ChartModule} from 'primeng/chart';
+import { PaginatorModule } from 'primeng/paginator';
+import { ChartModule } from 'primeng/chart';
+import { PickListModule } from 'primeng/picklist';
+import { PanelModule } from 'primeng/panel';
+import {ScrollPanelModule} from 'primeng/scrollpanel';
+
+import { NgxPaginationModule } from 'ngx-pagination';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 import { ConfirmationService, MenuItem, MessageService } from 'primeng/api';
 
-import { NavbarComponent } from './parts/navbar/navbar.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { CvComponent } from './pages/cv/cv.component';
 import { DraganddropComponent } from './pages/draganddrop/draganddrop.component';
@@ -80,7 +86,6 @@ import { WelcomeComponent } from './pages/employeur/welcome/welcome.component';
 import { TestsComponent } from './admin/tests/tests.component';
 import { QuizzComponent } from './quizz/quizz.component';
 import { DraganddropTESTComponent } from './parts/draganddrop-test/draganddrop-test.component';
-import {PanelModule} from 'primeng/panel';
 import { HomeWebComponent } from './pages/home-web/home-web.component';
 import { OffreCarouselComponent } from './parts/offre-carousel/offre-carousel.component';
 import { GestionCvComponent } from './pages/gestion-cv/gestion-cv.component';
@@ -97,7 +102,6 @@ import { HomeCandidatComponent } from './pages/candidat/home-candidat/home-candi
     DraganddropComponent,
     DashboardComponent,
     CvComponent,
-    NavbarComponent,
     TableDesSocieteComponent,
     FormsocieteComponent,
     FormCandidatComponent,
@@ -177,7 +181,13 @@ import { HomeCandidatComponent } from './pages/candidat/home-candidat/home-candi
     SidebarModule,
     InputSwitchModule,
     PanelModule,
-    ChartModule
+    PaginatorModule,
+    ChartModule,
+    PickListModule,
+    ScrollPanelModule,
+
+    NgxPaginationModule,
+    Ng2SearchPipeModule,
     // ConfirmDialogModule,
     // ConfirmationService
   ],

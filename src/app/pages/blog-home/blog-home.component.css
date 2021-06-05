@@ -32,6 +32,7 @@ nav .onglets a{
   margin-bottom: 30px;
 }
 .articles .article .left img{
+  border-radius: 20px;
   height: 300px;
   width: 500px;
 }
@@ -95,25 +96,30 @@ footer .social-media p{
 
 
 
-.cards {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 2rem;
-  margin-top: 1rem;
-}
-
 .card-single {
   background: rgba(255, 255, 255, 0.74);
-  backdrop-filter: blur(80px);
+  backdrop-filter: blur(50px);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 80%;
   margin: 30px;
   padding: 2rem;
   border-radius: 30px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .flex-container {
-  width: 80vvw;
+  background-image: url(../../../assets/blog.jpg);
+  margin: 10px auto;
+  width: 80%;
+  border-radius: 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content:space-evenly;
+}
+.main {
+  background-color: white;
+  border-radius: 20px;
+  margin-top: 80px;
+  padding: 2rem 1.5rem;
+  min-height: calc(100vh - 90px);
 }

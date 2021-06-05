@@ -1,87 +1,161 @@
-<div class="card">
-  <p></p>
-  <p-table #dt [value]="offres" [rows]="6" [paginator]="true" editMode="row" [globalFilterFields]="['exigence_emploi','genre','niveau_education','experience']"
-           [(selection)]="selectedOffre" [rowHover]="true" dataKey="id"
-           currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
-    <ng-template pTemplate="caption">
-      <div class="p-d-flex p-ai-center p-jc-between">
-  <span class="p-input-icon-left">
-              <i class="pi pi-search"></i>
-              <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search..." />
-          </span>
+<!-- BLOG FORM -->
+<div id="offreForm" class="modal">
+  <form class="modal-content">
+    <div class="p-justify-right">
+      <button pButton pRipple type="button" (click)="cancel()" icon="pi pi-times"
+        class="p-button-danger p-button-rounded p-button-text "></button>
+    </div>
+    <p-scrollPanel [style]="{width: '100%', height: '60vh'}">
+      <div class="p-fluid">
+
+        <div class="p-field p-col-12 p-md-6 ">
+          <label for="nom_emploi">Nom d'offre</label>
+          <input id="nom_emploi" type="text" pInputText [(ngModel)]="offre.nom_emploi" name="nom_emploi" #genre="ngModel"
+            class="input" required pTooltip="Taper le nom d'emploi" tooltipPosition="top" tooltipEvent="focus"
+            showDelay="1000" hideDelay="500">
+        </div>
+  
+        <div class="p-field p-col-12 p-md-6">
+          <label for="genre">Genre d'offre</label>
+          <div class="p-field p-col-12 p-md-3">
+            <p-dropdown [options]="genres" [(ngModel)]="offre.genre" placeholder="Choisissez le genre d'employé"
+              name="genre" id="genre"></p-dropdown>
+          </div>
+        </div>
+  
+        <div class="p-field p-col-12 p-md-6">
+          <label for="genre">Experience exigé</label>
+          <div class="p-field p-col-12 p-md-3">
+            <p-dropdown id="experience" [options]="experiences" [(ngModel)]="offre.experience"
+              placeholder="Choisissez l'expérience " name="experience"></p-dropdown>
+          </div>
+        </div>
+  
+        <div class="p-field p-col-12 p-md-6">
+          <label for="niveau_education">Niveau Education</label>
+          <div class="p-field p-col-12 p-md-3">
+            <p-dropdown id="niveau_education" [options]="niveau_education" [(ngModel)]="offre.niveau_education"
+              placeholder="Choisissez le niveau d'education" name="niveau_education">
+            </p-dropdown>
+          </div>
+        </div>
+  
+        <div class="p-field p-col-12 p-md-3">
+          <label for="description_emploi">Description Emploi</label>
+          
+            <textarea id="description_emploi" name="description_emploi" required pInputTextarea class="input" [rows]="6" [cols]="30"
+            [(ngModel)]="offre.description_emploi" #description_emploi="ngModel"
+            [ngClass]="(description_emploi.dirty && description_emploi.invalid)"></textarea>
+        </div>
+  
+        <div class="p-field p-col-12 p-md-3">
+          <label for="exigence_emploi">Exigence Emploi</label>
+          <textarea id="exigence_emploi" name="exigence_emploi" required pInputTextarea class="input" [rows]="6"
+            [cols]="30" [(ngModel)]="offre.exigence_emploi" #exigence_emploi="ngModel"
+            [ngClass]="(exigence_emploi.dirty && exigence_emploi.invalid)"></textarea>
+        </div>
+  
+        <div class="p-field p-col-12 p-md-3">
+          <label for="domaine">Domaine</label>
+          <p-dropdown id="domaine" [options]="domaines" [(ngModel)]="selected_domaine" placeholder="Choisissez un domaine"
+            name="domaine" optionLabel="domaine"></p-dropdown>
+        </div>
+  
+        <div class="p-field p-col-12 p-md-6">
+          <label for="type_offre">Types d'emploi</label>
+          <p-multiSelect id="type_offre" [options]="selected_types.concat(this.unselected_types)"
+          (onChange)="unselectedTypes()" [(ngModel)]="selected_types" name="type_offre"
+            defaultLabel="Selectioner les types d'offres voulu" optionLabel="emploi_type" display="chip"></p-multiSelect>
+        </div>
+  
+        <div class="p-field p-col-12 p-md-6">
+          <label for="langue">Langues Exigées</label>
+          <p-multiSelect id="langue" [options]=" selected_langues.concat(this.unselected_langues)"
+          (onChange)="unselectedLangues()" [(ngModel)]="selected_langues" name="langue"
+            defaultLabel="Selectioner les langues voulu" optionLabel="langue" display="chip"></p-multiSelect>
+        </div>
+  
       </div>
-    </ng-template>
-    <ng-template pTemplate="header">
-      <tr>
-        <th pSortableColumn="genre">Genre <p-sortIcon field="genre"></p-sortIcon></th>
-        <th pSortableColumn="exigence_emploi">Exigences<p-sortIcon field="exigence_emploi"></p-sortIcon></th>
-        <th pSortableColumn="niveau_education">Niveau éducation<p-sortIcon field="niveau_education"></p-sortIcon></th>
-        <th>Modifier</th>
-        <th>Supprimer</th>
-        <th>view</th>
-
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-offre>
-      <!--<tr>-->
-
-        <!--<td>{{emploi.genre}}</td>-->
-        <!--<td>{{emploi.exigence_emploi}}</td>-->
-        <!--<td>{{emploi.niveau_education}}</td>-->
-        <!--<td>{{emploi.experience}}</td>-->
-        <!--<td>{{emploi.created_at |date:'MMM-dd hh:mm:ss' }}</td>-->
-
-      <!--</tr>-->
-      <tr [pEditableRow]="offre">
-        <td pEditableColumn>
-          <p-cellEditor>
-            <ng-template pTemplate="input">
-              <input pInputText type="text" [(ngModel)]="offre.genre">
-            </ng-template>
-            <ng-template pTemplate="output">
-              {{offre.genre}}
-            </ng-template>
-          </p-cellEditor>
-        </td>
-        <td pEditableColumn>
-          <p-cellEditor>
-            <ng-template pTemplate="input">
-              <input pInputText type="text" [(ngModel)]="offre.exigence_emploi" >
-            </ng-template>
-            <ng-template pTemplate="output">
-              {{offre.exigence_emploi}}
-            </ng-template>
-          </p-cellEditor>
-        </td>
-        <td pEditableColumn>
-          <p-cellEditor>
-            <ng-template pTemplate="input">
-              <input pInputText type="text" [(ngModel)]="offre.niveau_education" required>
-            </ng-template>
-            <ng-template pTemplate="output">
-              {{offre.niveau_education}}
-            </ng-template>
-          </p-cellEditor>
-        </td>
-        <!--<button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-pencil" (click)="onRowEditInit(blog)" class="p-button-rounded p-button-text"></button>-->
-        <!--<button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi-check" (click)="onRowEditSave(blog, blog.id)" class="p-button-rounded p-button-text p-button-success p-mr-2"></button>-->
-        <!--<button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow icon="pi pi-times" (click)="onRowEditCancel(blog, ri)" class="p-button-rounded p-button-text p-button-danger"></button>-->
-
-        <td>
-          <input type="button" icon="pi pi-pencil" pButton pRipple class="p-button-rounded p-mr-2" style="background-color: darkseagreen" (click)="onRowEditSave(offre,offre.id)" >
-        </td>
-        <td><input type="button" icon="pi pi-trash" pButton pRipple class="p-button-rounded " style="background-color: darkred;" (click)="delete(offre.id)" icon="pi pi-check"></td>
-
-
-        <td><input type="button" icon="pi pi-trash" pButton pRipple class="p-button-rounded " style="background-color: #0bb5f4;" (click)="route(offre.id)" icon="pi pi-eye"></td>
-
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="summary">
-      <div class="p-d-flex p-ai-center p-jc-between">
-        In total there are {{offres.length }} offres d'emploi.
-      </div>
-    </ng-template>
-  </p-table>
+    </p-scrollPanel>
+    
+    <div class="p-grid p-nogutter p-justify-right">
+      <button pButton pRipple type="button" label="Ajouter" (click)="add()" icon="pi pi-check"
+        class="p-button-rounded p-button-text " *ngIf="!editing"></button>
+      <button pButton pRipple type="button" label="Modifier" (click)="edit()" icon="pi pi-check"
+        class="p-button-rounded p-button-warning p-button-text " *ngIf="editing"></button>
+    </div>
+  </form>
 </div>
 
+<p-toast></p-toast>
+
+<div class="flex-container">
+  <div class="card-single">
+
+    <div>
+      <button pButton pRipple type="button" (click)="showDialog()" label="Ajout Offre" icon="pi pi-plus"
+        class="p-button-rounded p-button-text "></button>
+    </div>
+
+    <p-table #dt [value]="offres" [rows]="2" [paginator]="true" editMode="row"
+      [globalFilterFields]="['nom_emploi','created_at','experience']" [(selection)]="selectedOffre"
+      [rowHover]="true" dataKey="id" styleClass="paging"
+      currentPageReportTemplate="Affichage du {first} au {last} de {totalRecords} offres."
+      [showCurrentPageReport]="true">
+      <ng-template pTemplate="caption">
+        <div class="p-d-flex p-ai-center p-jc-between">
+          <span class="p-input-icon-left">
+            <i class="pi pi-search"></i>
+            <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+              placeholder="Search..." />
+          </span>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="nom_emploi">Nom emploi <p-sortIcon field="nom_emploi"></p-sortIcon>
+          </th>
+          <th pSortableColumn="experience">Experience<p-sortIcon field="experience"></p-sortIcon>
+          </th>
+          <th pSortableColumn="created_at">Date création<p-sortIcon field="created_at"></p-sortIcon>
+          </th>
+          <th>Modifier</th>
+          <th>Supprimer</th>
+          <th>view</th>
+
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-offre>
+        <tr>
+          <td>
+                {{offre.nom_emploi}}
+          </td>
+          <td>{{offre.experience}}</td>
+          <td>
+            {{offre.created_at |date:'MMM-dd hh:mm:ss':'': 'fr' }}
+          </td>
+          
+          <td>
+            <button icon="pi pi-pencil" pButton pRipple class="p-button-rounded p-button-text p-mr-2 "
+              style="color: darkseagreen" (click)="showEditDialog(offre)"></button>
+          </td>
+          <td>
+            <button icon="pi pi-trash" pButton pRipple class="p-button-rounded p-button-text p-mr-2 "
+              style="color: darkred" (click)="delete(offre.id)"></button>
+
+
+          <td>
+            <button icon="pi pi-eye" pButton pRipple class="p-button-rounded p-button-text p-mr-2 "
+              style="color: #0bb5f4;" (click)="route(offre.id)"></button>
+          </td>
+
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="summary">
+        <div class="p-d-flex p-ai-center p-jc-between">
+          Au total il existe {{offres.length }} offres d'emploi.
+        </div>
+      </ng-template>
+    </p-table>
+  </div>
+</div>

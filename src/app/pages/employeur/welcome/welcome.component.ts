@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {MessageService, PrimeNGConfig} from 'primeng/api';
 import {Employeur} from '../../../models/employeur';
-import {SecteurActivite} from '../../../models/secteur-activite';
 import {Adresse} from '../../../models/adresse';
 import {EmployeurService} from '../../../api/employeur.service';
-import {SecteurActiviteService} from '../../../api/caching services/secteur-activite.service';
 import {AdresseService} from '../../../api/adresse.service';
 import {Offre} from '../../../models/offre';
 import {Langue} from '../../../models/langue';
@@ -12,6 +10,7 @@ import {LangueService} from '../../../api/caching services/langue.service';
 import {OffreService} from '../../../api/offres.service';
 import { TypeOffre } from 'src/app/models/type-offre';
 import {SelectItem} from 'primeng/api';
+import { Domaine } from 'src/app/models/domaine';
 
 @Component({
   selector: 'app-welcome',
@@ -29,13 +28,13 @@ export class WelcomeComponent implements OnInit {
   
   employeur= new Employeur();
   offre: Offre = new Offre();
-  secteurs: SecteurActivite[] = [];
+  domaines: Domaine[] = [];
   adresse: Adresse = new Adresse();
-  secteur = new SecteurActivite();
+  domaine = new Domaine();
   
   offre_types: TypeOffre[]=[];
   selected_types: TypeOffre[]=[];
-  selected_secteur: SecteurActivite;
+  selected_domaine: Domaine;
 
   items: SelectItem[];
 
@@ -44,7 +43,6 @@ export class WelcomeComponent implements OnInit {
   niveau_education = ['Baccaulauréat', 'Bac +3', 'Bac +5', 'Ingénieur'];
 
   constructor(private employeurService: EmployeurService,
-              private secteurActiviteService: SecteurActiviteService,
               private adresseService: AdresseService,
               private messageService: MessageService,
               private primengConfig: PrimeNGConfig,
@@ -57,9 +55,9 @@ export class WelcomeComponent implements OnInit {
     this.primengConfig.ripple = true;
 
 
-    //Tableau des secteurs from cache
-    this.secteurs = JSON.parse(localStorage.secteursCache || '[]');
-    console.log("Les secteurs:",this.secteurs);
+    //Tableau des domaines from cache
+    this.domaines = JSON.parse(localStorage.domainesCache || '[]');
+    console.log("Les domaines:",this.domaines);
 
 
     //Tableau des types offres from cache
@@ -103,7 +101,7 @@ export class WelcomeComponent implements OnInit {
   Ajouter() {
     
     this.offre.employeur_id=this.employeur.id;
-    this.offre.domaine= this.selected_secteur.secteur
+    this.offre.domaine= this.selected_domaine.domaine
     // adding offre types to the offer
 
     this.selected_langues.forEach(function (langue) {
@@ -113,7 +111,7 @@ export class WelcomeComponent implements OnInit {
 
   // adding offre types to the offer
   this.selected_types.forEach(function (type) {
-    this.offre.emploiTypes.push(type.id);
+    this.offre.emploi_types.push(type.id);
 }, this);
 //Resetting the arrays
 this.selected_langues = [];

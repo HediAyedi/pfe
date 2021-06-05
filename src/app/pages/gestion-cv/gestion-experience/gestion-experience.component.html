@@ -1,6 +1,12 @@
 <!-- DIALOG FOR MODIFYING EXPERIENCES -->
-<p-dialog header="Ajout test" [modal]="true" [draggable]="false" [modal]="true" [(visible)]="modif_experience.selected">
-  <div class="dialog">
+
+<div id="form" class="modal">
+  <div class="modal-content">
+    <div class="p-justify-between">
+      <h2>Modification</h2>
+      <button pButton pRipple type="button" (click)="cancel()" icon="pi pi-times"
+      class="p-button-danger p-button-rounded p-button-text "></button>
+    </div>
     <form>
       <div class="p-fluid p-formgrid p-grid">
         <div class="p-field p-col-12 p-md-6 flex-container p-justify-between">
@@ -8,7 +14,7 @@
             <div class="p-field p-col-12 p-md-6 margin-top">
               <div>
                 <label for="nom">Nom de la Société</label>
-                <input id="nom" type="text" pInputText [(ngModel)]="modif_experience.nom_entreprise" name="nom" required
+                <input id="nom" type="text" pInputText class="input" [(ngModel)]="modif_experience.nom_entreprise" name="nom" required
                   #nom="ngModel" [ngClass]="{'ng-dirty': (nom.dirty && nom.invalid)}">
                 <small class="p-error" *ngIf="(nom.dirty && nom.invalid)">Nom de la société est
                   requis.</small>
@@ -18,7 +24,7 @@
             <div class="p-field p-col-12 p-md-6 margin-top">
               <div>
                 <label for="poste">Poste de travail</label>
-                <input id="poste" type="text" pInputText [(ngModel)]="modif_experience.poste" name="poste"
+                <input id="poste" type="text" pInputText class="input" [(ngModel)]="modif_experience.poste" name="poste"
                   #poste="ngModel" required [ngClass]="{'ng-dirty': (poste.dirty && poste.invalid)}">
                 <small class="p-error" *ngIf="(poste.dirty && poste.invalid)">Nom de la poste de travail est
                   requis.</small>
@@ -28,7 +34,7 @@
 
           <div class="size margin-top">
             <label for="desc">Description de l'expérience</label>
-            <textarea id="desc" [rows]="5" [cols]="30" pInputTextarea autoResize="autoResize"
+            <textarea id="desc" [rows]="5" [cols]="30" pInputTextarea class="input" autoResize="autoResize"
               [(ngModel)]="modif_experience.description" name="desc" #desc="ngModel"></textarea>
           </div>
         </div>
@@ -43,7 +49,7 @@
           <div style="width: 50%;">
             <label for="date_debut">Date début</label>
             <input #date_debut="ngModel" id="date_debut" name="date_debut" type="date" (change)="checkDate()" required
-              pInputText [(ngModel)]="modif_experience.date_debut"
+              pInputText class="input" [(ngModel)]="modif_experience.date_debut"
               [ngClass]="{'ng-dirty': (date_debut.dirty && date_debut.invalid)}">
             <small class="p-error" *ngIf="(date_debut.dirty && date_debut.invalid)">date début est
               requis.</small>
@@ -52,7 +58,7 @@
           <div style="width: 49%;" *ngIf="(!modif_experience.en_cours)">
             <label for="date_fin">Date fin</label>
             <input #date_fin="ngModel" id="date_fin" name="date_fin" [disabled]="modif_experience.date_debut==null"
-              min="{{modif_experience.date_debut | date: 'yyyy-MM-dd'}}" type="date" required pInputText
+              min="{{modif_experience.date_debut | date: 'yyyy-MM-dd'}}" type="date" required pInputText class="input"
               [(ngModel)]="modif_experience.date_fin" [ngClass]="{'ng-dirty': (date_debut.dirty && date_fin.invalid)}"
               onkeypress="return false">
             <small>Appuyez sur l'icône du calendrier à droite</small>
@@ -70,8 +76,7 @@
       </div>
     </form>
   </div>
-</p-dialog>
-
+</div>
 <div class="main">
   <h1>
     Gestion Experiences
@@ -79,7 +84,8 @@
 
 
   <div class="flex-cont">
-    <div *ngFor="let exp of experiences" class="card-single">
+    <input id="term" type="text" pInputText class="input input-size" [(ngModel)]="term" name="term" placeholder="rechercher experiences">
+    <div *ngFor="let exp of experiences | filter: term | paginate: { itemsPerPage: 2, currentPage: p }" class="card-single">
       <h3>
         {{exp.poste}} au seins de {{exp.nom_entreprise}}
       </h3>
@@ -97,15 +103,17 @@
         </ng-template>
       </div>
       <div class="p-justify-right">
-        <button pButton pRipple type="button" (click)="modifDialog(exp)" icon="pi pi-pencil" pTooltip="modifier"
+        <button pButton pRipple type="button" (click)="modifDialog(exp)" icon="pi pi-pencil" label="Modifier"
           class="p-button-rounded p-button-warning p-button-text "></button>
         <button pButton pRipple type="button" (click)="supprimerExperience(exp.id)" icon="pi pi-times"
-          pTooltip="supprimer" class="p-button-rounded p-button-danger p-button-text "></button>
+        label="Supprimer" class="p-button-rounded p-button-danger p-button-text "></button>
       </div>
     </div>
+    <pagination-controls (pageChange)="p = $event" class="paging-control" maxSize="3" previousLabel="Précédent"
+    nextLabel="Suivant" autoHide="true"></pagination-controls>
   </div>
-  <button pButton pRipple type="button" (click)="affichageForm()" label="Ajout d'une experience"
-    *ngIf="!experience.selected" icon="pi pi-plus" class="p-button-text p-button-rounded p-justify-right button-white"></button>
+  <button pButton pRipple type="button" (click)="affichageAjoutForm()" label="Ajout d'une experience"
+    *ngIf="!experience.selected" icon="pi pi-plus" class="button-white p-button-text p-button-plain p-button-rounded p-justify-right"></button>
 
   <!-- FORM AJOUT -->
   <form *ngIf="(experience.selected)" class="flex-cont blur">
@@ -115,7 +123,7 @@
           <div class="p-field p-col-12 p-md-6 margin-top">
             <div>
               <label for="nom">Nom de la Société</label>
-              <input id="nom" type="text" pInputText [(ngModel)]="experience.nom_entreprise" name="nom" required
+              <input id="nom" type="text" pInputText class="input" [(ngModel)]="experience.nom_entreprise" name="nom" required
                 #nom="ngModel" [ngClass]="{'ng-dirty': (nom.invalid && submitted) || (nom.dirty && nom.invalid)}">
               <small class="p-error" *ngIf="(nom.dirty && nom.invalid)">Nom de la société est requis.</small>
             </div>
@@ -124,7 +132,7 @@
           <div class="p-field p-col-12 p-md-6 margin-top">
             <div>
               <label for="poste">Poste de travail</label>
-              <input id="poste" type="text" pInputText [(ngModel)]="experience.poste" name="poste" #poste="ngModel"
+              <input id="poste" type="text" pInputText class="input" [(ngModel)]="experience.poste" name="poste" #poste="ngModel"
                 required [ngClass]="{'ng-dirty': (poste.invalid && submitted) || (poste.dirty && poste.invalid)}">
               <small class="p-error" *ngIf="(poste.dirty && poste.invalid)">Nom de la poste de travail est
                 requis.</small>
@@ -134,7 +142,7 @@
 
         <div class="size margin-top">
           <label for="desc">Description de l'expérience</label>
-          <textarea id="desc" [rows]="5" [cols]="30" pInputTextarea autoResize="autoResize"
+          <textarea id="desc" [rows]="5" [cols]="30" pInputTextarea class="input" autoResize="autoResize"
             [(ngModel)]="experience.description" name="desc" #desc="ngModel"></textarea>
         </div>
       </div>
@@ -149,7 +157,7 @@
         <div style="width: 50%;">
           <label for="date_debut">Date début</label>
           <input #date_debut="ngModel" id="date_debut" name="date_debut" type="date" (change)="checkDate()" required
-            pInputText [(ngModel)]="experience.date_debut"
+            pInputText class="input" [(ngModel)]="experience.date_debut"
             [ngClass]="{'ng-dirty': (date_debut.dirty && date_debut.invalid)}">
           <small class="p-error" *ngIf="(date_debut.dirty && date_debut.invalid)">date début est requis.</small>
         </div>
@@ -157,7 +165,7 @@
         <div style="width: 49%;" *ngIf="(!experience.en_cours)">
           <label for="date_fin">Date fin</label>
           <input #date_fin="ngModel" id="date_fin" name="date_fin" [disabled]="experience.date_debut==null"
-            min="{{experience.date_debut | date: 'yyyy-MM-dd'}}" type="date" required pInputText
+            min="{{experience.date_debut | date: 'yyyy-MM-dd'}}" type="date" required pInputText class="input"
             [(ngModel)]="experience.date_fin" [ngClass]="{'ng-dirty': (date_debut.dirty && date_fin.invalid)}"
             onkeypress="return false">
           <small>Appuyez sur l'icône du calendrier à droite</small>
@@ -170,7 +178,7 @@
       <button pButton pRipple type="button" (click)="ajouterExperience()" label="Confirmer" icon="pi pi-check"
         [disabled]="nom.invalid || poste.invalid || date_debut.invalid || (experience.en_cours==false && experience.date_fin==null)"
         class="p-button-text p-button-rounded button-white"></button>
-      <button pButton pRipple type="button" (click)="affichageForm()" label="Annuler" icon="pi pi-times"
+      <button pButton pRipple type="button" (click)="affichageAjoutForm()" label="Annuler" icon="pi pi-times"
         class="p-button-text p-button-rounded button-white p-button-danger"></button>
     </div>
   </form>

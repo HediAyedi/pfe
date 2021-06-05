@@ -1,28 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,700,900,400italic,700italic,900italic);
 
-/**,*/
-/*:before,*/
-/*:after {*/
-  /*box-sizing: border-box;*/
-/*}*/
-
-/*body {*/
-  /*background-color: #fdf9fd;*/
-  /*color: #011a32;*/
-  /*font: 16px/1.25 'Raleway', sans-serif;*/
-  /*text-align: center;*/
-/*}*/
-
-
-/*#container {*/
-  /*display: flex;*/
-  /*flex-direction: column;*/
-  /*float: left;*/
-  /*justify-content: center;*/
-  /*min-height: 100vh;*/
-  /*padding: 1em;*/
-  /*width: 100%;*/
-/*}*/
 
 h1 {
   animation: text-shadow 1.5s ease-in-out infinite;
@@ -95,10 +72,103 @@ a:hover {
   }
 }
 
+div{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .flex-container {
-  margin-top: 1%;
+  margin: 10px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
 }
 
+.postulate-button{
+  width: 20vw;
+  height: fit-content;
+  font-size:x-large;
+  font-weight: bold;
+  padding: 10px;
+  text-transform: uppercase ;
+}
+
+.p-justify-between {
+  margin: 10px;
+  display: flex;
+  font-size:large;
+  font-weight: bold;
+  justify-content:space-between;
+}
+.p-justify-between div p, .p-justify-between div{
+  margin: 0px;
+  text-align:right
+}
+
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 40vh; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  animation: fadeInModal 0.3s;
+}
+
+@keyframes fadeInModal {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 10px;
+  border-radius: 20px;
+  width: 60vw;
+  animation: fadeIn 0.3s;
+}
+
+@media (max-width:800px) {
+  
+  .modal-content {
+    
+    width: 70vw;
+  }
+}
+
+@media (max-width:600px) {
+  
+  .modal-content {
+    
+    width: 80vw;
+  }
+}
+
+@media (max-width:500px) {
+  
+  .modal-content {
+    
+    width: 90vw;
+  }
+}
+
+@keyframes fadeIn {
+  0% {opacity:0;
+    transform: scale(0, 0);}
+  100% {opacity:1;
+    transform: scale(1, 1);}
+  
+}
+
+.p-justify-right {
+  display: flex;
+  justify-content:flex-end;
+}

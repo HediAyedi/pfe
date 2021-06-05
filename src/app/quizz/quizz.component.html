@@ -1,7 +1,7 @@
 <div class="container">
   <div *ngIf="prevAnswered.length < this.quizzes.length+1">
     <p class="text-center">{{ prevAnswered.length }} | {{ quizzes.length }}</p>
-    <h1>{{ quizzes[currentQuiz].question }}</h1>
+    <h2>{{ quizzes[currentQuiz].question }}</h2>
 
     <div class="answers" >
       <ul class="answers__list" *ngFor="let quiz of quizzes[currentQuiz].reponses" >

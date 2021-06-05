@@ -1,5 +1,17 @@
+<div id="offreModal" class="modal">
+  <div class="modal-content">
+    <div class="p-justify-right">
+      <button pButton pRipple type="button" (click)="cancel()" icon="pi pi-times"
+        class="p-button-danger p-button-rounded p-button-text "></button>
+    </div>
+    <p-scrollPanel [style]="{width: '100%', height: '90%'}">
+      <div *ngIf="clicked">
+        <app-offres [items]="offres"></app-offres>
+      </div>
+    </p-scrollPanel>
+  </div>
+</div>
 <div class="flex-container">
-
 <p-card header="{{i.nom_entreprise}}" subheader="{{i.site_web}}"  [style]="{width: '300px'}" styleClass="p-card-shadow p" *ngFor="let i of employeurs">
   <ng-template pTemplate="header">
     <!--<img alt="Card" src="https://m.media-amazon.com/images/I/51nX7PBmzIL._SS500_.jpg" width="150px">-->
@@ -8,52 +20,7 @@
   </ng-template>
   <p>{{i.description_entreprise | slice:0:200}} ... </p>
   <ng-template pTemplate="footer"  >
-    <p-dialog header="Les Offres" [(visible)]="display"  [maximizable]="true" >
-
-
-      <div class="card" >
-        <p></p>
-        <p-table #dt [value]="offres" [rows]="6" [paginator]="true" [globalFilterFields]="['exigence_emploi','genre','niveau_education','experience']"
-                 [(selection)]="selectedOffre" [rowHover]="true" dataKey="id"
-                 currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
-          <ng-template pTemplate="caption">
-            <div class="p-d-flex p-ai-center p-jc-between">
-        <span class="p-input-icon-left">
-                    <i class="pi pi-search"></i>
-                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search..." />
-                </span>
-            </div>
-          </ng-template>
-          <ng-template pTemplate="header">
-            <tr>
-              <th pSortableColumn="genre">Genre <p-sortIcon field="genre"></p-sortIcon></th>
-              <th pSortableColumn="exigence_emploi">Exigences<p-sortIcon field="exigence_emploi"></p-sortIcon></th>
-              <th pSortableColumn="niveau_education">Niveau éducation<p-sortIcon field="niveau_education"></p-sortIcon></th>
-              <th pSortableColumn="experience">Experience<p-sortIcon field="experience"></p-sortIcon></th>
-              <th pSortableColumn="created_at" >Date de création<p-sortIcon field="created_at"></p-sortIcon></th>
-            </tr>
-          </ng-template>
-          <ng-template pTemplate="body" let-emploi>
-            <tr (click)="route(emploi.id)" pTooltip="Naviguer au details de l'offre" tooltipPosition="top" tooltipEvent="hover" showDelay="100" hideDelay="50">
-      
-              <td>{{emploi.genre}}</td>
-              <td>{{emploi.exigence_emploi}}</td>
-              <td>{{emploi.niveau_education}}</td>
-              <td>{{emploi.experience}}</td>
-              <td>{{emploi.created_at |date:'MMM-dd hh:mm:ss' }}</td>
-      
-            </tr>
-          </ng-template>
-          <ng-template pTemplate="summary">
-            <div class="p-d-flex p-ai-center p-jc-between">
-              In total there are {{offres.length }} offres d'emploi.
-            </div>
-          </ng-template>
-        </p-table>
-      </div>
-
-
-    </p-dialog>
+   
 
     <p-button type="button" (click)="showDialog(i)" label="Voir Offres" icon="pi pi-eye"></p-button>
   </ng-template>

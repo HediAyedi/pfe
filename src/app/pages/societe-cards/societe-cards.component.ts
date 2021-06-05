@@ -15,6 +15,7 @@ export class SocieteCardsComponent implements OnInit {
   employeurs: Employeur[] = [];
   employeur= new Employeur() ;
   offres: Offre[]=[];
+  clicked=false;
 
   constructor(private primengConfig: PrimeNGConfig,
               private router:Router,
@@ -41,15 +42,22 @@ export class SocieteCardsComponent implements OnInit {
         console.log(err);
       });
   }
-
-  display: boolean = false;
-
+  
+  //Shows the modal
   showDialog(employeur:Employeur) {
-    
-    this.display = true;
+    this.clicked=true;
     this.offres=employeur.emplois;
+    var modal = document.getElementById('offreModal');
+    modal.style.display = 'block';
+  }
 
-   }
+  //hides the modal
+  cancel() {
+    this.clicked=false;
+    sessionStorage.removeItem('offre');
+    var modal = document.getElementById('offreModal');
+    modal.style.display = 'none';
+  }
    route(id){
      console.log(id);
      this.router.navigate(['/offre',id]);

@@ -1,8 +1,9 @@
 .container{
-  max-width:1200px;
-  margin: 5rem auto;
+  
+  margin: 4rem auto;
   display: grid;
   justify-content: center;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   text-align: center;
 }
 
@@ -13,14 +14,18 @@
 
   &__list{
     list-style: none;
+    padding: 0px;
   }
   &__item{
     border: lightgray thin solid;
+    font-weight: bold;
+    border-radius: 20px;
     padding: 1rem;
     margin: 2rem 1rem 0;
 
     &:hover{
       cursor: pointer;
+      border: rgb(132, 190, 255) thin solid;
     }
   }
 }

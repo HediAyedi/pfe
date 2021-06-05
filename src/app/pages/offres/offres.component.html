@@ -1,109 +1,49 @@
-
-<!--<div class="card">-->
-  <!--<p></p>-->
-  <!--<p-table #dt [value]="offres" [rows]="6" [paginator]="true" [globalFilterFields]="['exigence_emploi','genre','niveau_education','experience']"-->
-           <!--[(selection)]="selectedOffre" [rowHover]="true" dataKey="id"-->
-           <!--currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">-->
-    <!--<ng-template pTemplate="caption">-->
-      <!--<div class="p-d-flex p-ai-center p-jc-between">-->
-  <!--<span class="p-input-icon-left">-->
-              <!--<i class="pi pi-search"></i>-->
-              <!--<input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search..." />-->
-          <!--</span>-->
-      <!--</div>-->
-    <!--</ng-template>-->
-    <!--<ng-template pTemplate="header">-->
-      <!--<tr>-->
-        <!--<th pSortableColumn="genre">Genre <p-sortIcon field="genre"></p-sortIcon></th>-->
-        <!--<th pSortableColumn="exigence_emploi">Exigences<p-sortIcon field="exigence_emploi"></p-sortIcon></th>-->
-        <!--<th pSortableColumn="niveau_education">Niveau éducation<p-sortIcon field="niveau_education"></p-sortIcon></th>-->
-        <!--<th pSortableColumn="experience">Experience<p-sortIcon field="experience"></p-sortIcon></th>-->
-        <!--<th pSortableColumn="created_at" >Date de création<p-sortIcon field="created_at"></p-sortIcon></th>-->
-      <!--</tr>-->
-    <!--</ng-template>-->
-    <!--<ng-template pTemplate="body" let-emploi>-->
-      <!--<tr>-->
-
-        <!--<td>{{emploi.genre}}</td>-->
-        <!--<td>{{emploi.exigence_emploi}}</td>-->
-        <!--<td>{{emploi.niveau_education}}</td>-->
-        <!--<td>{{emploi.experience}}</td>-->
-        <!--<td>{{emploi.created_at |date:'yy-MMM-dd' }}</td>-->
-
-      <!--</tr>-->
-    <!--</ng-template>-->
-    <!--<ng-template pTemplate="summary">-->
-      <!--<div class="p-d-flex p-ai-center p-jc-between">-->
-        <!--In total there are {{offres.length }} offres d'emploi.-->
-      <!--</div>-->
-    <!--</ng-template>-->
-  <!--</p-table>-->
-<!--</div>-->
-
-
-<!--<br><br><br><br><br>-->
-<!--<h1>TATATATTATATATATATAT</h1>-->
-<!--<br><br><br><br><br>-->
-
-<div class="card">
-  <p-dataView #dv [value]="offres" [paginator]="true" [rows]="9" filterBy="nom_emploi" layout="grid">
-    <!--[sortField]="sortField" [sortOrder]="sortOrder"-->
-    <ng-template pTemplate="header">
-      <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between">
-        <!--<p-dropdown [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Sort By Price" (onChange)="onSortChange($event)" styleClass="p-mb-2 p-mb-md-0"></p-dropdown>-->
-        <span class="p-input-icon-left p-mb-2 p-mb-md-0" >
-                  <i class="pi pi-search iconsearch" ></i>
-                  <input type="search" pInputText placeholder="  Chercher par Nom" (input)="dv.filter($event.target.value)" class="btnsearch">
-              </span>
-        <p-dataViewLayoutOptions class="boxes"></p-dataViewLayoutOptions>
+<div id="offreModal" class="modal">
+  <div class="modal-content">
+    <div class="p-justify-right">
+      <button pButton pRipple type="button" (click)="cancel()" icon="pi pi-times"
+        class="p-button-danger p-button-rounded p-button-text "></button>
+    </div>
+    <p-scrollPanel [style]="{width: '100%', height: '90%'}">
+      <div *ngIf="clicked">
+        <app-offre></app-offre>
       </div>
-    </ng-template>
-    <ng-template let-offre pTemplate="listItem">
-      <div class="p-col-12">
-        <div class="product-list-item">
-          <div class="product-list-detail">
-            <div class="product-name" style="cursor:pointer;" (click)="route(offre.id)">{{offre.nom_emploi}}</div>
-            <div class="product-description">{{offre.exigence_emploi | slice:0:250}} ... </div>
-            <!--<p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating>-->
-            <i class="pi pi-reply product-category-icon"></i><span class="product-category">{{offre.description_emploi | slice:0:250}} ...</span>
-          </div>
-          <!--<div class="product-list-action">-->
-            <!--<span class="product-price">${{product.price}}</span>-->
-            <!--<p-button icon="pi pi-shopping-cart" label="Add to Cart" [disabled]="product.inventoryStatus === 'OUTOFSTOCK'"></p-button>-->
-            <!--<span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span>-->
-          <!--</div>-->
+    </p-scrollPanel>
+  </div>
+</div>
+  <div class="search-bar">
+    yup
+  </div>
+<div class="main">
+  <div class="flex-cont ">
+    <div class="card-single" *ngFor="let offre of offres  | paginate: { itemsPerPage: 10, currentPage: page }">
+      <div class="p-justify-between">
+        <div>
+          <h1>{{offre.nom_emploi}}</h1>
+          <h3>{{offre.employeur.nom_entreprise }}</h3>
+          <p class="product-category">{{offre.description_emploi | slice:0:250}} ...</p>
         </div>
-      </div>
-    </ng-template>
-    <ng-template let-offre pTemplate="gridItem">
-      <div class="p-col-12 p-md-4">
-        <div class="product-grid-item card" >
-          <!--<div style="background-color: red ; height: 100px ; width: 80px">-->
-            <!--aaaa-->
-            <!--&lt;!&ndash;<img src="{{offre.employeur.logo}}" alt="" class="image_left" width="40px" height="40px">&ndash;&gt;-->
-          <!--</div>-->
-          <div class="product-grid-item-top" style="display: flex">
-            <div style="width: 180px ; height: 180px ; margin-bottom: 20px ;display: flex;flex-wrap: nowrap">
-              <!--<span class="product-category">{{offre.genre }}</span>-->
-              <img src="{{offre.employeur.logo}}" alt="" class="image_left" width="120px" height="120px " style=";border-radius: 50%"> <span style="font-weight: bolder;padding-left: 50px;
-    padding-top: 40%;">{{offre.nom_emploi}}</span>
-
-              <span style="color: #1D2231; font-style: italic;font-family: 'Lato', sans-serif ; font-weight: bold; padding-left: 250%">{{offre.employeur.nom_entreprise}}</span>
-              <span style="padding-left: 400px"><button pButton pRipple type="button" icon="pi pi-eye" (click)="route(offre.id)" class="p-button-rounded p-button-info"></button></span>
-            </div>
-            <!--<span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{offre.exigence_emploi}}</span>-->
-          <!--</div>-->
-          <div class="product-grid-item-content">
-            <div class="product-description" style="padding-top: 110px">{{offre.description_emploi | slice:0:250}} ...
-
-            </div>
-            <!--<p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating>-->
-          </div>
-          <!--<div class="product-grid-item-bottom">-->
-            <!--&lt;!&ndash;<span class="product-price">${{product.price}}</span>&ndash;&gt;-->
-            <!--&lt;!&ndash;<p-button icon="pi pi-shopping-cart" [disabled]="product.inventoryStatus === 'OUTOFSTOCK'"></p-button>&ndash;&gt;-->
+        <div>
+          <div class="right">
+            <img src="../../../assets/employee-candidate-reference-background-check-procedure.jpg" alt="">
           </div>
         </div>
       </div>
-    </ng-template>
-  </p-dataView>
+      <div class="p-justify-between">
+        <div class="p-justify-between">
+          <p><strong>Domaine: </strong>{{offre.domaine}}</p>
+          <p><strong>Genre: </strong>{{offre.genre}}</p>
+          <p><strong>Adresse: </strong>{{offre.employeur.adresse.pays | uppercase}}
+            {{offre.employeur.adresse.governat |titlecase}} {{offre.employeur.adresse.ville |lowercase}}</p>
+        </div>
+        <button pButton pRipple type="button" (click)="showDialog(offre)" label="Voir détails" icon="pi pi-eye"
+          class="p-button-text p-button-rounded"></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex-cont ">
+    <pagination-controls (pageChange)="page = $event" class="paging-control" maxSize="3" previousLabel="Précédent"
+      nextLabel="Suivant" ></pagination-controls>
+  </div>
+</div>
