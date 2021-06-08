@@ -6,6 +6,30 @@
           class="p-button-danger p-button-rounded p-button-text "></button>
       </div>
       <div>
+        <form >
+          <div class="p-fluid">
+            <div class="p-field">
+              <label for="cv">Cv</label>
+              <input #cv="ngModel" id="cv" name="cv" type="text" required pInputText class="input"
+                [(ngModel)]="candidature.cv" [ngClass]="{'ng-dirty':(cv.dirty && cv.invalid)}">
+              <small class="p-error" *ngIf="(cv.dirty && cv.invalid)">Le cv est requis.</small>
+            </div>
+
+            <div class="p-field">
+              <label for="description">Lettre de motivation</label>
+              <textarea id="lettre_motivation" name="description" required pInputTextarea class="input" [rows]="8" [cols]="30"
+                [(ngModel)]="candidature.lettre_motivation" #lettre_motivation="ngModel"
+                [ngClass]="(lettre_motivation.dirty && lettre_motivation.invalid)"></textarea>
+              <small class="p-error" *ngIf="(lettre_motivation.dirty && lettre_motivation.invalid)">La lettre est requis.</small>
+            </div>
+          </div>
+
+          <div class="p-grid p-nogutter p-justify-right">
+            <button pButton pRipple type="button" [disabled]="postulated_candidat" label="Ajouter" (click)="postulate()" icon="pi pi-check"
+              class="p-button-rounded p-button-text "></button>
+          </div>
+        </form>
+
       </div>
     </div>
   </div>

@@ -1,33 +1,58 @@
 <div class="root">
-  <div class="navbar has-background-dark">
-    <div class="navbar-brand">
-      <div class="navbar-item">
-        <h1 class="app-name has-gradient-text">Tableau des candidatures</h1>
-      </div>
-    </div>
-  </div>
 
   <div class="board">
 
     <div class="board-bar">
-      <p class="board-name">{{ board.name }}</p>
+      <p class="board-name "> Tableau des candidatures</p>
     </div>
 
     <div class="board-wrapper">
 
       <div class="board-columns" cdkDropListGroup>
-        <div class="board-column" *ngFor="let column of board.columns">
+        <div class="board-column" >
 
           <div class="column-title">
-            {{ column.name }}
+            Non selectionés
           </div>
 
           <div class="tasks-container"
                cdkDropList
-               [cdkDropListData]="column.tasks"
+               [cdkDropListData]="not_selected_candidatures"
                (cdkDropListDropped)="drop($event)">
-            <div class="task" *ngFor="let item of column.tasks" cdkDrag>
-              {{ item }}
+            <div class="task" *ngFor="let candidature of not_selected_candidatures" cdkDrag>
+              {{ candidature.lettre_motivation }}
+            </div>
+          </div>
+        </div>
+
+        <div class="board-column" >
+
+          <div class="column-title">
+            Selectionés
+          </div>
+
+          <div class="tasks-container"
+               cdkDropList
+               [cdkDropListData]="selected_candidatures"
+               (cdkDropListDropped)="drop($event)">
+            <div class="task" *ngFor="let candidature of selected_candidatures" cdkDrag>
+              {{ candidature.lettre_motivation }}
+            </div>
+          </div>
+        </div>
+
+        <div class="board-column" >
+
+          <div class="column-title">
+            à l'étude
+          </div>
+
+          <div class="tasks-container"
+               cdkDropList
+               [cdkDropListData]="in_review_candidatures"
+               (cdkDropListDropped)="drop($event)">
+            <div class="task" *ngFor="let candidature of in_review_candidatures" cdkDrag>
+              {{ candidature.lettre_motivation }}
             </div>
           </div>
         </div>

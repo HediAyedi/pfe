@@ -11,39 +11,40 @@
     </p-scrollPanel>
   </div>
 </div>
-  <div class="search-bar">
-    yup
+<div class="p-justify-between">
+  <div class="search">
+    <p-chips [(ngModel)]="offres_noms" placeholder="Chercher par nom d'offres" (onAdd)="searchByName()" (onRemove)="searchByName()"></p-chips>
   </div>
-<div class="main">
-  <div class="flex-cont ">
-    <div class="card-single" *ngFor="let offre of offres  | paginate: { itemsPerPage: 10, currentPage: page }">
-      <div class="p-justify-between">
-        <div>
-          <h1>{{offre.nom_emploi}}</h1>
-          <h3>{{offre.employeur.nom_entreprise }}</h3>
-          <p class="product-category">{{offre.description_emploi | slice:0:250}} ...</p>
-        </div>
-        <div>
-          <div class="right">
-            <img src="../../../assets/employee-candidate-reference-background-check-procedure.jpg" alt="">
+  <div class="main">
+    <div class="flex-cont ">
+      <div class="card-single" *ngFor="let offre of searched_offres  | paginate: { itemsPerPage: 10, currentPage: page }">
+        <div class="p-justify-between">
+          <div>
+            <h1>{{offre.nom_emploi}}</h1>
+            <h3>{{offre.employeur.nom_entreprise }}</h3>
+            <p class="product-category">{{offre.description_emploi | slice:0:250}} ...</p>
+          </div>
+          <div>
+            <div class="right">
+              <img src="{{offre.employeur.logo}}" alt="">
+            </div>
           </div>
         </div>
-      </div>
-      <div class="p-justify-between">
         <div class="p-justify-between">
-          <p><strong>Domaine: </strong>{{offre.domaine}}</p>
-          <p><strong>Genre: </strong>{{offre.genre}}</p>
-          <p><strong>Adresse: </strong>{{offre.employeur.adresse.pays | uppercase}}
-            {{offre.employeur.adresse.governat |titlecase}} {{offre.employeur.adresse.ville |lowercase}}</p>
+          <div class="p-justify-between">
+            <p><strong>Domaine: </strong>{{offre.domaine}}</p>
+            <p><strong>Genre: </strong>{{offre.genre}}</p>
+            <p><strong>Adresse: </strong>{{offre.employeur.adresse.pays | uppercase}}
+              {{offre.employeur.adresse.governat |titlecase}} {{offre.employeur.adresse.ville |lowercase}}</p>
+          </div>
+          <button pButton pRipple type="button" (click)="showDialog(offre)" label="Voir détails" icon="pi pi-eye"
+            class="p-button-text p-button-rounded"></button>
         </div>
-        <button pButton pRipple type="button" (click)="showDialog(offre)" label="Voir détails" icon="pi pi-eye"
-          class="p-button-text p-button-rounded"></button>
       </div>
     </div>
   </div>
-
-  <div class="flex-cont ">
-    <pagination-controls (pageChange)="page = $event" class="paging-control" maxSize="3" previousLabel="Précédent"
-      nextLabel="Suivant" ></pagination-controls>
-  </div>
+</div>
+<div class="flex-cont ">
+  <pagination-controls (pageChange)="page = $event" class="paging-control" maxSize="3" previousLabel="Précédent"
+    nextLabel="Suivant" autoHide="true"></pagination-controls>
 </div>

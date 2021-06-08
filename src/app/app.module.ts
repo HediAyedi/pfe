@@ -54,6 +54,7 @@ import { ChartModule } from 'primeng/chart';
 import { PickListModule } from 'primeng/picklist';
 import { PanelModule } from 'primeng/panel';
 import {ScrollPanelModule} from 'primeng/scrollpanel';
+import {ChipsModule} from 'primeng/chips';
 
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
@@ -85,7 +86,6 @@ import { OffresEmployeurComponent } from './pages/employeur/offres-employeur/off
 import { WelcomeComponent } from './pages/employeur/welcome/welcome.component';
 import { TestsComponent } from './admin/tests/tests.component';
 import { QuizzComponent } from './quizz/quizz.component';
-import { DraganddropTESTComponent } from './parts/draganddrop-test/draganddrop-test.component';
 import { HomeWebComponent } from './pages/home-web/home-web.component';
 import { OffreCarouselComponent } from './parts/offre-carousel/offre-carousel.component';
 import { GestionCvComponent } from './pages/gestion-cv/gestion-cv.component';
@@ -123,7 +123,6 @@ import { HomeCandidatComponent } from './pages/candidat/home-candidat/home-candi
     WelcomeComponent,
     TestsComponent,
     QuizzComponent,
-    DraganddropTESTComponent,
     HomeWebComponent,
     OffreCarouselComponent,
     GestionCvComponent,
@@ -185,6 +184,7 @@ import { HomeCandidatComponent } from './pages/candidat/home-candidat/home-candi
     ChartModule,
     PickListModule,
     ScrollPanelModule,
+    ChipsModule,
 
     NgxPaginationModule,
     Ng2SearchPipeModule,

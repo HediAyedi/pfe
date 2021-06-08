@@ -18,6 +18,7 @@
   
 /* The Modal (background) */
 .modal {
+  backdrop-filter: blur(20px);
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -132,7 +133,7 @@ p-menubar .p-button-rounded:hover{
   margin: 2px;
 
 }
-:host ::ng-deep .p-menuitem:hover,.p-menuitem-link:hover{
+:host ::ng-deep .p-menubar-root-list .p-menuitem:hover,.p-menubar-root-list .p-menuitem-link:hover{
   border-radius: 30px;
   background-color: rgba(255, 255, 255);
   margin: 2px;

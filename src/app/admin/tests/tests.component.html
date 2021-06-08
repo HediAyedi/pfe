@@ -84,8 +84,7 @@
   
   
               <!-- Loop in the reponses array -->
-              <div *ngFor="let reponse of reponses">
-                <div *ngIf="reponse.question_id == question.id">
+              <div *ngFor="let reponse of question.reponses">
                   <div *ngIf="reponse.selected == false">
   
                     <div style="display: flex;justify-content:center;">
@@ -93,7 +92,7 @@
                       </div>
                       <div>
                         <button pButton pRipple type="button" [disabled]="selected_reponse.id!=null"
-                          (click)="selectReponse(reponse)" icon="pi pi-pencil" pTooltip="modifier reponse"
+                          (click)="selectReponse(question,reponse)" icon="pi pi-pencil" pTooltip="modifier reponse"
                           class="p-button-rounded p-button-warning p-button-text"></button>
   
                         <button pButton pRipple type="button" (click)="supprimerReponse(reponse.id)" icon="pi pi-times"
@@ -114,10 +113,9 @@
                     <button pButton pRipple type="button" icon="pi pi-check" (click)="modifierReponse(reponse)"
                       pTooltip="confirmer" class="p-button-rounded p-button-text"></button>
   
-                    <button pButton pRipple type="button" (click)="cancelReponse()" icon="pi pi-times" pTooltip="cancel"
+                    <button pButton pRipple type="button" (click)="cancelReponse(question)" icon="pi pi-times" pTooltip="cancel"
                       class="p-button-rounded p-button-danger p-button-text"></button>
                   </div>
-                </div>
               </div>
   
               <!-- Form for adding a reponse -->
@@ -130,7 +128,10 @@
         </div>
       </p-scrollPanel>
       
-
+      <p>
+        NB: Il faut existe une seule réponse  correcte <br>
+        Les réponses sont fausses par défaut 
+      </p>
     </div>
   </div>
 
@@ -150,6 +151,7 @@
       nextLabel="Suivant" autoHide="true"></pagination-controls>
   </div>
 
+  <!-- Ajout Test -->
   <div>
     <div id="addTest" class="modal">
       <div class="modal-content">

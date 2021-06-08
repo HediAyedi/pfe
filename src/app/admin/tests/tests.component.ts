@@ -124,8 +124,7 @@ export class TestsComponent implements OnInit {
     this.questions = test.questions;
     this.test_id = test.id;
     this.test=test;
-    console.log("TEST:",test)
-    this.reponses = test.reponses;
+    console.log("TEST:",test);
   }
 
   //AJOUT TEST DIALOG
@@ -177,20 +176,28 @@ export class TestsComponent implements OnInit {
 
   // GESTION REPONSES
 
-  selectReponse(rep: Reponse) {
-    this.reponses.forEach((element) => {
-      if (element.id == rep.id) {
-        this.selected_reponse = element;
-        element.selected = !element.selected;
+  selectReponse(question,rep: Reponse) {
+    this.questions.forEach((element) => {
+      if (element.id == question.id) {
+        element.reponses.forEach((element) => {
+          if (element.id == rep.id) {
+            this.selected_reponse = element;
+            element.selected = !element.selected;
+          }
+        });
       }
     });
   }
 
-  cancelReponse() {
-    this.reponses.forEach((element) => {
-      if (element.id == this.selected_reponse.id) {
-        element = this.selected_reponse;
-        element.selected = false;
+  cancelReponse(question) {
+    this.questions.forEach((element) => {
+      if (element.id == question.id) {
+        element.reponses.forEach((element) => {
+          if (element.id == this.selected_reponse.id) {
+            this.selected_reponse = element;
+            element.selected = !element.selected;
+          }
+        });
       }
     });
     this.selected_reponse = new Reponse();

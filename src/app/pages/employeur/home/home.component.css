@@ -141,9 +141,9 @@ header label span {
 main {
   background-image:url("../../../../assets/apps.46003.14259451864568504.ad5e5d07-0fbb-46ed-b9b6-a1b781645691.jpg");
   border-radius: 20px;
-  margin-top: 80px;
+  margin-top: 40px;
   padding: 2rem 1.5rem;
-  min-height: calc(100vh - 90px);
+  min-height: calc(100vh - 170px);
 }
 
 .cards {

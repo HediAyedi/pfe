@@ -1,3 +1,4 @@
+import { Candidature } from './candidature';
 import { Employeur } from './employeur';
 export class Offre {
     id: number;
@@ -11,7 +12,7 @@ export class Offre {
     active: boolean;
     employeur_id: number;
     employeur: Employeur;
-    candidatures: [];
+    candidatures: Candidature[];
     emploi_types: any;
     langues: any;
     created_at:any;

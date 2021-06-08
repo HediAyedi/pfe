@@ -15,7 +15,6 @@ export class SocieteCardsComponent implements OnInit {
   employeurs: Employeur[] = [];
   employeur= new Employeur() ;
   offres: Offre[]=[];
-  clicked=false;
 
   constructor(private primengConfig: PrimeNGConfig,
               private router:Router,
@@ -27,10 +26,7 @@ export class SocieteCardsComponent implements OnInit {
     this.primengConfig.ripple = true;
     this.employeurs=JSON.parse(localStorage["employeursCache"] || "[]");
 
-    if(this.employeurs.length==0){
       this.findAll();
-      this.employeurService.getAllCache();
-    }
     
   }
 
@@ -38,6 +34,7 @@ export class SocieteCardsComponent implements OnInit {
     this.employeurService.getAll()
       .subscribe(data => {
         this.employeurs = data;
+        localStorage.setItem("employeursCache", JSON.stringify(this.employeurs))
       }, err => {
         console.log(err);
       });
@@ -45,19 +42,11 @@ export class SocieteCardsComponent implements OnInit {
   
   //Shows the modal
   showDialog(employeur:Employeur) {
-    this.clicked=true;
-    this.offres=employeur.emplois;
-    var modal = document.getElementById('offreModal');
-    modal.style.display = 'block';
+    
+    this.router.navigate(['/offres',employeur.id]);
   }
 
-  //hides the modal
-  cancel() {
-    this.clicked=false;
-    sessionStorage.removeItem('offre');
-    var modal = document.getElementById('offreModal');
-    modal.style.display = 'none';
-  }
+
    route(id){
      console.log(id);
      this.router.navigate(['/offre',id]);

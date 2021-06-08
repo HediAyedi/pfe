@@ -88,18 +88,6 @@ export class OffresEmployeurComponent implements OnInit {
     });
   }
 
-  public findAll() {
-    this.offreService.getAll().subscribe(
-      (data) => {
-        this.offres = data;
-        console.log('data Emplois :' , this.offres );
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
-  }
-
   public findEmployeur(id) {
     this.employeurService.get(id).subscribe(
       (data) => {
@@ -144,7 +132,7 @@ export class OffresEmployeurComponent implements OnInit {
           this.message = 'Ajout effectué avec succés';
           this.offres.push(res);
           localStorage.setItem('employeur', JSON.stringify(this.employeur));
-          this.findEmployeur(this.offre.employeur_id);
+          this.findEmployeur(this.employeur.id);
           this.cancel();
           this.employeurService.getAllCache();
           this.offreService.getAllCache();
@@ -179,7 +167,7 @@ export class OffresEmployeurComponent implements OnInit {
         console.log(res);
         if (res) {
           this.message = 'Ajout effectué avec succés';
-          this.findEmployeur(this.offre.employeur_id);
+          this.findEmployeur(this.employeur.id);
           localStorage.setItem('employeur', JSON.stringify(this.employeur));
           this.employeurService.getAllCache();
           this.offreService.getAllCache();

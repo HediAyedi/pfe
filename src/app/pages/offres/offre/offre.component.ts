@@ -20,6 +20,9 @@ export class OffreComponent implements OnInit {
   offres: Offre[] = [] ;
   candidature=new Candidature();
   candidat: Candidat;
+  postulated_candidat= false;
+
+  
   constructor(private route: ActivatedRoute,
     private router: Router,
     private offreService: OffreService,
@@ -34,6 +37,8 @@ export class OffreComponent implements OnInit {
   
   //Shows the modal
   showDialog() {
+    this.postulated_candidat=false;
+    this.postulated();
     var modal = document.getElementById('PostulationModal');
     modal.style.display = 'block';
   }
@@ -48,15 +53,15 @@ export class OffreComponent implements OnInit {
   connect(){
     this.router.navigate(['/loginCandidat'])
   }
-  Postulate(){
+  postulate(){
     this.candidature.emploi_id=this.offre.id;
     this.candidature.candidat_id=this.candidat.id;
     this.candidatureService.save(this.candidature).subscribe(
       res=>{
         // Works inside modal or own page 
-        this.findOffre(this.offre.id)
-        //Works in own page only
-        //this.findOffre(this.idRoute)
+        this.findOffre(this.offre.id);
+
+        this.cancel();
 
       },err=>{
         console.log(err);
@@ -64,11 +69,17 @@ export class OffreComponent implements OnInit {
     )
   }
 
+  postulated(){
+    this.offre.candidatures.forEach(candidature=>{
+      if(candidature.id){
+        this.postulated_candidat=true;
+      }
+    })
+  }
   public findOffre(id){
     this.offreService.get(id).subscribe(data=>{
       this.offre=data;
       sessionStorage.setItem('offre',JSON.stringify(this.offre));
     })
   }
-
 }

@@ -20,10 +20,24 @@ export class OffreService {
     });
   }
 
+  // Returns All active offres
   public getAll(): Observable<any> {
     
     return this.httpClient.get<Offre[]>(this.url + '/emplois');
   }
+
+  // Returns All active offres by using employeur id
+  public getOffresByEmployeur(employeur_id): Observable<any> {
+    
+    return this.httpClient.get<Offre[]>(this.url + '/emplois/search/' + employeur_id);
+  }
+
+  // Returns All active offres by using domaine
+  public getOffresByDomaine(domaine): Observable<any> {
+    
+    return this.httpClient.get<Offre[]>(this.url + '/emplois/search/' + domaine);
+  }
+
 
   public get(id: any): Observable<any>{
     return this.httpClient.get<Offre>(this.url + '/emploi/' + id);

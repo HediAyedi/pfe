@@ -1,16 +1,4 @@
-<div id="offreModal" class="modal">
-  <div class="modal-content">
-    <div class="p-justify-right">
-      <button pButton pRipple type="button" (click)="cancel()" icon="pi pi-times"
-        class="p-button-danger p-button-rounded p-button-text "></button>
-    </div>
-    <p-scrollPanel [style]="{width: '100%', height: '90%'}">
-      <div *ngIf="clicked">
-        <app-offres [items]="offres"></app-offres>
-      </div>
-    </p-scrollPanel>
-  </div>
-</div>
+
 <div class="flex-container">
 <p-card header="{{i.nom_entreprise}}" subheader="{{i.site_web}}"  [style]="{width: '300px'}" styleClass="p-card-shadow p" *ngFor="let i of employeurs">
   <ng-template pTemplate="header">

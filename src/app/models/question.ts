@@ -1,8 +1,10 @@
+import { Reponse } from "./reponse";
+
 export class Question {
   id: number;
   test_id: number;
   question: string;
-  reponses: [];
+  reponses: Reponse[];
   created_at: any;
   updated_at: any;
 

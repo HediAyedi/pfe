@@ -14,13 +14,12 @@ export class CandidatureService {
   private url = environment.baseUrl;
   constructor(private httpClient: HttpClient) { }
 
-  public getAllCache() {
-    this.httpClient.get<Candidature[]>(this.url + '/candidatures').subscribe(next =>{
-      localStorage[CACHE_KEY]=JSON.stringify(next);
-    });
+  public getAll(): Observable<any> {
+    
+    return this.httpClient.get<Candidature[]>(this.url + '/candidatures');
   }
 
-  public getAll(): Observable<any> {
+  public getAllById(id: any): Observable<any> {
     
     return this.httpClient.get<Candidature[]>(this.url + '/candidatures');
   }

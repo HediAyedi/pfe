@@ -158,31 +158,7 @@ export class OfficialNavAndSearchComponent implements OnInit {
 
       }
     ];
-    this.boutton = [
-      {
-        label: 'Candidat', icon: 'las la-graduation-cap fa-lg',
-        routerLink: ['/loginCandidat'],
-      },
-      {
-        label: 'Employeur',  icon: 'las la-user-tie fa-lg',
-        routerLink: ['/loginEmployeur'],
-      },
-      {separator: true},
-      {
-        label: 'Pas de Compte : S\'inscrire', icon: 'pi pi-info'
-      },
-
-      {separator: true},
-      {
-        label: 'S\'inscrire en tant qu\'un candidat', icon: 'las la-graduation-cap fa-lg'  ,
-        routerLink: ['/SignUpCandidat'],
-      },
-      {
-        label: 'S\'inscrire en tant qu\'un employeur', icon: 'las la-user-tie fa-lg'  ,
-        routerLink: ['/SignUpEmployeur'],
-      },
-
-    ];
+    
   }
 
   
