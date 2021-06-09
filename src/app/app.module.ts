@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,7 +15,6 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 import { CheckboxModule } from 'primeng/checkbox';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { CardModule } from 'primeng/card';
 import { StepsModule } from 'primeng/steps';
@@ -51,55 +51,60 @@ import { SplitterModule } from 'primeng/splitter';
 import { DataViewModule } from 'primeng/dataview';
 import { PaginatorModule } from 'primeng/paginator';
 import { ChartModule } from 'primeng/chart';
-import { PickListModule } from 'primeng/picklist';
 import { PanelModule } from 'primeng/panel';
-import {ScrollPanelModule} from 'primeng/scrollpanel';
-import {ChipsModule} from 'primeng/chips';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
+import { ChipsModule } from 'primeng/chips';
 
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 import { ConfirmationService, MenuItem, MessageService } from 'primeng/api';
 
-import { DashboardComponent } from './admin/dashboard/dashboard.component';
-import { CvComponent } from './pages/cv/cv.component';
-import { DraganddropComponent } from './pages/draganddrop/draganddrop.component';
-import { TableDesSocieteComponent } from './pages/table-des-societe/table-des-societe.component';
-import { FormsocieteComponent } from './pages/formsociete/formsociete.component';
-import { FormCandidatComponent } from './pages/form-candidat/form-candidat.component';
-import { TableDesCandidatsComponent } from './pages/table-des-candidats/table-des-candidats.component';
-import { SocieteCardsComponent } from './pages/societe-cards/societe-cards.component';
-import { CarouselSocieteComponent } from './parts/carousel-societe/carousel-societe.component';
 import { OfficialNavAndSearchComponent } from './parts/official-nav-and-search/official-nav-and-search.component';
-
+import { BlogHomeComponent } from './pages/blog-home/blog-home.component';
+import { ContactComponent } from './parts/contact/contact.component';
+import { HomeWebComponent } from './pages/home-web/home-web.component';
+import { SocieteCardsComponent } from './pages/societe-cards/societe-cards.component';
 import { OffresComponent } from './pages/offres/offres.component';
 import { OffreComponent } from './pages/offres/offre/offre.component';
+import { CarouselSocieteComponent } from './parts/carousel-societe/carousel-societe.component';
+import { OffreCarouselComponent } from './parts/offre-carousel/offre-carousel.component';
+
+
+import { AdminComponent } from './admin/admin.component';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { BlogFormComponent } from './pages/blog-form/blog-form.component';
+import { TestsComponent } from './admin/tests/tests.component';
+import { TableDesSocieteComponent } from './pages/table-des-societe/table-des-societe.component';
+import { TableDesCandidatsComponent } from './pages/table-des-candidats/table-des-candidats.component';
+
+
+import { FormsocieteComponent } from './pages/formsociete/formsociete.component';
+import { FormCandidatComponent } from './pages/form-candidat/form-candidat.component';
 import { LoginEmployeurComponent } from './parts/logins/login-employeur/login-employeur.component';
 import { LoginCandidatComponent } from './parts/logins/login-candidat/login-candidat.component';
-import { AdminComponent } from './admin/admin.component';
-import { ContactComponent } from './parts/contact/contact.component';
-import { BlogHomeComponent } from './pages/blog-home/blog-home.component';
-import { BlogFormComponent } from './pages/blog-form/blog-form.component';
+
+
 import { HomeComponent } from './pages/employeur/home/home.component';
 import { ProfileEmployeurComponent } from './pages/employeur/profile-employeur/profile-employeur.component';
 import { OffresEmployeurComponent } from './pages/employeur/offres-employeur/offres-employeur.component';
-import { WelcomeComponent } from './pages/employeur/welcome/welcome.component';
-import { TestsComponent } from './admin/tests/tests.component';
+import { EmployeurDashboardComponent } from './pages/employeur/employeur-dashboard/employeur-dashboard.component';
+import { CandidaturesComponent } from './pages/employeur/candidatures/candidatures.component';
+
+
+import { HomeCandidatComponent } from './pages/candidat/home-candidat/home-candidat.component';
 import { QuizzComponent } from './quizz/quizz.component';
-import { HomeWebComponent } from './pages/home-web/home-web.component';
-import { OffreCarouselComponent } from './parts/offre-carousel/offre-carousel.component';
 import { GestionCvComponent } from './pages/gestion-cv/gestion-cv.component';
 import { GestionExperienceComponent } from './pages/gestion-cv/gestion-experience/gestion-experience.component';
 import { GestionPersonalInfoComponent } from './pages/gestion-cv/gestion-personal-info/gestion-personal-info.component';
 import { GestionProfessionalInfoComponent } from './pages/gestion-cv/gestion-professional-info/gestion-professional-info.component';
-import { HomeCandidatComponent } from './pages/candidat/home-candidat/home-candidat.component';
+import { CvComponent } from './pages/cv/cv.component';
 
 // import {ConfirmDialogModule} from 'primeng/confirmdialog';
 // import {ConfirmationService} from 'primeng/api';
 @NgModule({
   declarations: [
     AppComponent,
-    DraganddropComponent,
     DashboardComponent,
     CvComponent,
     TableDesSocieteComponent,
@@ -120,7 +125,6 @@ import { HomeCandidatComponent } from './pages/candidat/home-candidat/home-candi
     HomeComponent,
     ProfileEmployeurComponent,
     OffresEmployeurComponent,
-    WelcomeComponent,
     TestsComponent,
     QuizzComponent,
     HomeWebComponent,
@@ -130,6 +134,8 @@ import { HomeCandidatComponent } from './pages/candidat/home-candidat/home-candi
     GestionPersonalInfoComponent,
     GestionProfessionalInfoComponent,
     HomeCandidatComponent,
+    CandidaturesComponent,
+    EmployeurDashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -182,7 +188,6 @@ import { HomeCandidatComponent } from './pages/candidat/home-candidat/home-candi
     PanelModule,
     PaginatorModule,
     ChartModule,
-    PickListModule,
     ScrollPanelModule,
     ChipsModule,
 

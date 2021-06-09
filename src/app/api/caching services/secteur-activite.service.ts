@@ -17,11 +17,8 @@ export class SecteurActiviteService {
   private url = environment.baseUrl;
   constructor(private httpClient: HttpClient) { }
 
-  public async getAllCache() {
-    this.httpClient.get<SecteurActivite[]>(this.url + '/secteur_activites').subscribe(next =>{
-      localStorage[CACHE_KEY]=JSON.stringify(next);
-    });
-    
+  public getAll(): Observable<SecteurActivite[]> {
+    return this.httpClient.get<SecteurActivite[]>(this.url + '/secteur_activites');
   }
 
   public save(secteur_activite: SecteurActivite): Observable<any>{

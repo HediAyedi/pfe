@@ -1,3 +1,4 @@
+import { Experience } from "./experience";
 
 export class Cv {
     id: number;
@@ -7,11 +8,11 @@ export class Cv {
     salaire: number;
     nbre_annee: number;
     candidat_id: number;
-    competences:[];
-    domaines:[];
-    emploi_types:[];
-    langues:[];
-    experiences:[];
+    competences:any[];
+    domaines:any[];
+    emploi_types:any[];
+    langues:any[];
+    experiences:Experience[];
     created_at:any;
     updated_at:any;
   

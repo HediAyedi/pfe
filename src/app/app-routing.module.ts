@@ -22,7 +22,6 @@ import { CarouselSocieteComponent } from './parts/carousel-societe/carousel-soci
 
 import { OffresComponent } from './pages/offres/offres.component';
 import { OffreComponent } from './pages/offres/offre/offre.component';
-import { DraganddropComponent } from './pages/draganddrop/draganddrop.component';
 
 
 import { LoginEmployeurComponent } from './parts/logins/login-employeur/login-employeur.component';
@@ -32,17 +31,15 @@ import { BlogHomeComponent } from './pages/blog-home/blog-home.component';
 import { ContactComponent } from './parts/contact/contact.component';
 import { OffresEmployeurComponent } from './pages/employeur/offres-employeur/offres-employeur.component';
 import { ProfileEmployeurComponent } from './pages/employeur/profile-employeur/profile-employeur.component';
-import { WelcomeComponent } from './pages/employeur/welcome/welcome.component';
 import { QuizzComponent } from './quizz/quizz.component';
 import { TestsComponent } from './admin/tests/tests.component';
 import {HomeWebComponent} from './pages/home-web/home-web.component';
+import { CandidaturesComponent } from './pages/employeur/candidatures/candidatures.component';
 
 const routes: Routes = [
 
 
   {path: '', component: HomeWebComponent},
-
-  {path: 'draganddrop', component: DraganddropComponent},
 
   { path: 'cv', component: CvComponent },
   {
@@ -82,9 +79,8 @@ const routes: Routes = [
 
   {path: 'employeur/home', component: HomeComponent},
   {path: 'employeur/offres', component: OffresEmployeurComponent},
-  {path: 'employeur/offreCandidat/:offre_id', component: DraganddropComponent},
+  {path: 'employeur/offres/:offre_id/candidatures', component: CandidaturesComponent},
   {path: 'employeur/profil', component: ProfileEmployeurComponent},
-  {path: 'employeur/welcome', component: WelcomeComponent},
 
 
   {path: 'contact-us', component: ContactComponent},

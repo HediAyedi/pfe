@@ -34,8 +34,8 @@ export class OffresEmployeurComponent implements OnInit {
   editing: boolean;
 
   genres = ['indifférent', 'Femme', 'Homme'];
-  experiences = ['1ans ', '3 ans', '5 ans', '10 ans'];
-  niveau_education = ['Baccaulauréat', 'Bac +3', 'Bac +5', 'Ingénieur'];
+  experiences = ['0-1 an ', '2 ans ', '3 ans', '4 ans', '+5 ans'];
+  niveau_education = ['Baccaulauréat', 'Bac +3', 'Bac +5', 'Ingénierie'];
 
   selected_langues=[];
   selected_types=[];
@@ -102,9 +102,9 @@ export class OffresEmployeurComponent implements OnInit {
   }
 
   // Navigats to specific offer candidatures
-  route(id) {
+  navigate(id) {
     console.log(id);
-    this.router.navigate(['/employeur/offreCandidat', id]);
+    this.router.navigate(['/employeur/offres/', id,'candidatures']);
   }
 
   

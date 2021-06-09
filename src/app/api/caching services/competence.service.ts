@@ -16,11 +16,10 @@ export class CompetenceService {
   private url = environment.baseUrl;
   constructor(private httpClient: HttpClient) { }
 
-  public async getAllCache(){
-    this.httpClient.get<Competence[]>(this.url + '/competences').subscribe(next =>{
-      localStorage[CACHE_KEY]=JSON.stringify(next);
-    });
+  public getAll(): Observable<Competence[]> {
+    return this.httpClient.get<Competence[]>(this.url + '/competences');
   }
+
 
   public save(competence: Competence): Observable<any>{
     return this.httpClient.post(this.url + '/competence', competence);

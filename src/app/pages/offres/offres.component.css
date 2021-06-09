@@ -36,6 +36,7 @@ body{
   background-size: cover;
   padding: 0px 2rem;
   margin: 5px auto;
+  width: 70vw;
   border-radius: 20px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -46,7 +47,7 @@ body{
   color: white;
   font-weight: bold;
   height: 30vh;
-  padding: 1vw;
+  padding: 0.5vw;
   margin: 5px 0.5vw 5px 0vw;
   padding: 10px;
   width: 29vw;
@@ -67,8 +68,7 @@ body{
 .flex-cont {
   display: flex;
   flex-wrap: wrap;
-  padding: 1vw 1vw 1vw 1vw;
-  margin: 1vw 1vw 1vw 1vw;
+  padding: 1vw auto;
   border-radius: 30px;
   flex-flow: column;
 }
@@ -221,13 +221,18 @@ div{
 .p-justify-between p{
   margin-left: 10px;
 }
-
-:host ::ng-deep .p-dropdown, .p-component, .p-dropdown-items-wrapper, .p-multiselect-chip, .p-multiselect , .p-multiselect-open , .ng-tns-c75-6, .p-dropdown-items, .ng-tns-c72-1{
+:host ::ng-deep .p-component{
+  border-radius: 20px;
+}
+:host ::ng-deep .p-dropdown, .p-dropdown-items-wrapper, .p-multiselect-chip, .p-multiselect , .p-multiselect-open , .ng-tns-c75-6, .p-dropdown-items, .ng-tns-c72-1{
   border-radius: 25px;
+  min-width: 15vw;
 }
 
 :host ::ng-deep p-multiselect .p-multiselect-chip, .p-multiselect , .p-multiselect-open , .ng-tns-c75-6, .p-dropdown-items, .ng-tns-c72-1{
   border-radius: 25px;
+  margin: 6px;
+  min-width: 15vw;
 }
 
 :host ::ng-deep .p-multiselect-label .ng-star-inserted{
@@ -235,10 +240,19 @@ div{
 }
 
 :host ::ng-deep .p-chips-multiple-container{
+  margin: 6px;
   border-radius: 25px;
+  min-width: 20vw;
   width: 100%;
 }
 
-:host ::ng-deep .p-chips-multiple-container .p-chips-token ,:host ::ng-deep .p-chips-token-label ,:host ::ng-deep .p-component ,:host ::ng-deep .p-inputtext {
+:host ::ng-deep .p-chips-multiple-container .p-chips-token {
+  margin: 1px;
   border-radius: 25px;
+}
+
+.mots-cles :host ::ng-deep .p-chips-multiple-container{
+  margin: 6px;
+  border-radius: 25px;
+  width: 100vw;
 }

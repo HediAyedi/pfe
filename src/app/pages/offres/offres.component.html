@@ -11,13 +11,26 @@
     </p-scrollPanel>
   </div>
 </div>
+<div class="flex-cont ">
+<p-chips  styleClass="mots-cles" [(ngModel)]="mots_cles" disabled="true" placeholder="Les mots clés de la recherche"></p-chips>
+</div>
 <div class="p-justify-between">
   <div class="search">
-    <p-chips [(ngModel)]="offres_noms" placeholder="Chercher par nom d'offres" (onAdd)="searchByName()" (onRemove)="searchByName()"></p-chips>
+    <p-chips [(ngModel)]="offres_noms" placeholder="Chercher par nom d'offres" (onAdd)="search()" (onRemove)="search()">
+    </p-chips>
+
+    <p-multiSelect class="p-field"  [options]="offre_types" (onChange)="search()" (onRemove)="search()" [(ngModel)]="selected_types"
+      defaultLabel="Chercher par type d'emploi " optionLabel="emploi_type" display="chip">
+    </p-multiSelect>
+
+    <p-multiSelect class="p-field"  [options]="offre_types" (onChange)="search()" (onRemove)="search()" [(ngModel)]="selected_types"
+      defaultLabel="Chercher par domaine " optionLabel="emploi_type" display="chip">
+    </p-multiSelect>
   </div>
   <div class="main">
     <div class="flex-cont ">
-      <div class="card-single" *ngFor="let offre of searched_offres  | paginate: { itemsPerPage: 10, currentPage: page }">
+      <div class="card-single"
+        *ngFor="let offre of searched_offres  | paginate: { itemsPerPage: 10, currentPage: page }">
         <div class="p-justify-between">
           <div>
             <h1>{{offre.nom_emploi}}</h1>

@@ -13,8 +13,8 @@ export class Offre {
     employeur_id: number;
     employeur: Employeur;
     candidatures: Candidature[];
-    emploi_types: any;
-    langues: any;
+    emploi_types: any[];
+    langues: any[];
     created_at:any;
     updated_at:any;
 

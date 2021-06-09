@@ -38,19 +38,37 @@ export class AppComponent {
   }
 
   public findLangues(){
-    this.langueService.getAllCache();
+    this.langueService.getAll().subscribe(res=>{
+       
+      localStorage.setItem("languesCache",JSON.stringify(res));
+  
+    });
   }
   public findSecteurs(){
-    this.secteurActiviteService.getAllCache();
+    this.secteurActiviteService.getAll().subscribe(res=>{
+
+      localStorage.setItem("secteursCache",JSON.stringify(res));
+    
+    });
   }
   public findDomaines(){
-    this.domaineService.getAllCache();
+    this.domaineService.getAll().subscribe(res=>{
+      
+      localStorage.setItem("domainesCache",JSON.stringify(res));
+
+    });
   }
   public findCompetences(){
-    this.competenceService.getAllCache();
+    this.competenceService.getAll().subscribe(res=>{
+      localStorage.setItem("competencesCache",JSON.stringify(res));
+    });
   }
   public findTypeOffres(){
-    this.type_offreService.getAllCache();
+    this.type_offreService.getAll().subscribe(res=>{
+      
+      localStorage.setItem("type_offresCache",JSON.stringify(res));
+
+    });
   }
   // public findEmployeurs(){
   //   this.employeurService.getAllCache();

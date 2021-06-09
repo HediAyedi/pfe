@@ -16,10 +16,8 @@ export class DomaineService {
   private url = environment.baseUrl;
   constructor(private httpClient: HttpClient) { }
 
-  public async getAllCache(){
-    this.httpClient.get<Domaine[]>(this.url + '/domaines').subscribe(next =>{
-      localStorage[CACHE_KEY]=JSON.stringify(next);
-    });
+  public getAll(): Observable<Domaine[]> {
+    return this.httpClient.get<Domaine[]>(this.url + '/domaines');
   }
 
   public save(domaine: Domaine): Observable<any>{

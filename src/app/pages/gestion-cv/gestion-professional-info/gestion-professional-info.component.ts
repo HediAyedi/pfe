@@ -33,7 +33,7 @@ export class GestionProfessionalInfoComponent implements OnInit {
   // LOCAL ARRAYS
 
   niveaux_experience = ['0-1 an ', '2 ans ', '3 ans', '4 ans', '+5 ans'];
-  niveaux_education = ['Baccaulauréat', 'Bac +3', 'Bac +5', 'Ingénieur'];
+  niveaux_education = ['Baccaulauréat', 'Bac +3', 'Bac +5', 'Ingénierie'];
   status = ['Nouveau diplomé','Sans emploi','employé'];
 
 

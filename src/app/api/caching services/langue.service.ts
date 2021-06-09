@@ -16,10 +16,8 @@ export class LangueService {
   private url = environment.baseUrl;
   constructor(private httpClient: HttpClient) { }
 
-  public async getAllCache(){
-    this.httpClient.get<Langue[]>(this.url + '/langues').subscribe(next =>{
-      localStorage[CACHE_KEY]=JSON.stringify(next);
-    });
+  public getAll(): Observable<Langue[]> {
+    return this.httpClient.get<Langue[]>(this.url + '/langues');
   }
 
   public save(langue: Langue): Observable<any>{

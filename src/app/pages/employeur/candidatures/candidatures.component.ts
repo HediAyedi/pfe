@@ -5,11 +5,11 @@ import { Candidature } from 'src/app/models/candidature';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-draganddrop',
-  templateUrl: './draganddrop.component.html',
-  styleUrls: ['./draganddrop.component.scss']
+  selector: 'app-candidatures',
+  templateUrl: './candidatures.component.html',
+  styleUrls: ['./candidatures.component.scss']
 })
-export class DraganddropComponent implements OnInit {
+export class CandidaturesComponent implements OnInit {
   candidatures: Candidature[]=[];
   not_selected_candidatures: Candidature[]=[];
   selected_candidatures: Candidature[]=[];

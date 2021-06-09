@@ -15,10 +15,8 @@ export class TypeOffreService {
   private url = environment.baseUrl;
   constructor(private httpClient: HttpClient) { }
 
-  public async getAllCache(){
-    this.httpClient.get<TypeOffre[]>(this.url + '/emploi_types').subscribe(next =>{
-      localStorage[CACHE_KEY]=JSON.stringify(next);
-    });
+  public getAll(): Observable<TypeOffre[]> {
+    return this.httpClient.get<TypeOffre[]>(this.url + '/emploi_types');
   }
 
   public save(emploi_type: TypeOffre): Observable<any>{

@@ -27,6 +27,7 @@
 
 .kamjobs{
   width: fit-content;
+  padding: 0px 12px ;
   cursor: pointer;
   text-align: center;
 }
