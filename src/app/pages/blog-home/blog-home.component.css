@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@600&display=swap');
 body{
   margin: 10px 80px;
+  
   font-family: 'Noto Sans JP', sans-serif;
 }
 
@@ -110,6 +111,7 @@ footer .social-media p{
 .flex-container {
   background-image: url(../../../assets/blog.jpg);
   margin: 10px auto;
+  margin-top: 80px;
   width: 80%;
   border-radius: 20px;
   display: flex;

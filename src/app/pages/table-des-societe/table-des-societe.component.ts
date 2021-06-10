@@ -42,11 +42,8 @@ export class TableDesSocieteComponent implements OnInit  {
   { }
 
   ngOnInit() {
-    this.employeurs=JSON.parse(localStorage["employeursCache"] || "[]");
-    if(this.employeurs.length==0){
+    
       this.findAll();
-      this.employeurService.getAllCache();
-    }
   }
 
 
@@ -58,8 +55,7 @@ export class TableDesSocieteComponent implements OnInit  {
       .subscribe(res => {
         if (!res.succes) {
           this.message="modification effectué avec succés";
-          localStorage.setItem("employeursCache",JSON.stringify(this.employeurs));
-          // this.employeurService.getAllCache();
+          this.employeurService.getAllCache();
         } else {
           this.message="erreuuur";
         }
@@ -74,8 +70,7 @@ export class TableDesSocieteComponent implements OnInit  {
       .subscribe(res => {
         if (!res.succes) {
           this.message="modification effectué avec succés";
-          localStorage.setItem("employeursCache",JSON.stringify(this.employeurs));
-          // this.employeurService.getAllCache();
+          this.employeurService.getAllCache();
         } else {
           this.message="erreuuur";
         }
@@ -86,7 +81,7 @@ export class TableDesSocieteComponent implements OnInit  {
 
 
   public findAll() {
-    this.employeurService.getAll()
+    this.employeurService.getAllForAdmin()
       .subscribe(data => {
         this.employeurs = data;
       }, err => {

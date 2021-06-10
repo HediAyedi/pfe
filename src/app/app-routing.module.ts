@@ -35,6 +35,7 @@ import { QuizzComponent } from './quizz/quizz.component';
 import { TestsComponent } from './admin/tests/tests.component';
 import {HomeWebComponent} from './pages/home-web/home-web.component';
 import { CandidaturesComponent } from './pages/employeur/candidatures/candidatures.component';
+import { EmployeurDashboardComponent } from './pages/employeur/employeur-dashboard/employeur-dashboard.component';
 
 const routes: Routes = [
 
@@ -77,7 +78,7 @@ const routes: Routes = [
 
   { path: 'candidat/home', component: HomeCandidatComponent },
 
-  {path: 'employeur/home', component: HomeComponent},
+  { path: 'employeur/home', component: EmployeurDashboardComponent },
   {path: 'employeur/offres', component: OffresEmployeurComponent},
   {path: 'employeur/offres/:offre_id/candidatures', component: CandidaturesComponent},
   {path: 'employeur/profil', component: ProfileEmployeurComponent},
