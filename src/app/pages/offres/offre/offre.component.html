@@ -74,9 +74,8 @@
 
   <div style="text-transform: uppercase ; font-style: oblique ; font-family: 'Noto Sans JP', sans-serif ; font-weight: bold;text-decoration: underline">
     Description de l'annonce : </div>
-  <div style="white-space: pre-wrap"> {{offre.description_emploi}} </div>
 
-
+  <div style="white-space: pre-wrap" [innerHTML]="offre.description_emploi"></div>
   <div id="wrapper">
     <div id="container">
 

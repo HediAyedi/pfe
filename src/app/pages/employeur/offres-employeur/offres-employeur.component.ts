@@ -13,6 +13,7 @@ import { Langue } from '../../../models/langue';
 import { OffreService } from '../../../api/offres.service';
 import { TypeOffre } from 'src/app/models/type-offre';
 import { Domaine } from 'src/app/models/domaine';
+import {AngularEditorConfig} from "@kolkov/angular-editor";
 
 @Component({
   selector: 'app-offres-employeur',
@@ -21,7 +22,7 @@ import { Domaine } from 'src/app/models/domaine';
 })
 export class OffresEmployeurComponent implements OnInit {
   langues: Langue[];
-
+  text1 : string ;
   sortOptions: SelectItem[];
 
   sortOrder: number;
@@ -45,6 +46,38 @@ export class OffresEmployeurComponent implements OnInit {
   employeur: Employeur ;
   unselected_langues=[];
   unselected_types=[];
+
+
+
+  config: AngularEditorConfig = {
+    editable: true,
+    spellcheck: true,
+    height: '15rem',
+    minHeight: '5rem',
+    placeholder: 'Enter text here...',
+    translate: 'no',
+    defaultParagraphSeparator: 'p',
+    defaultFontName: 'Arial',
+    toolbarHiddenButtons: [
+      ['bold']
+    ],
+    customClasses: [
+      {
+        name: "quote",
+        class: "quote",
+      },
+      {
+        name: 'redText',
+        class: 'redText'
+      },
+      {
+        name: "titleText",
+        class: "titleText",
+        tag: "h1",
+      },
+    ]
+  };
+
 
   constructor(
     private primengConfig: PrimeNGConfig,

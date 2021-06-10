@@ -42,17 +42,22 @@
 
         <div class="p-field p-col-12 p-md-3">
           <label for="description_emploi">Description Emploi</label>
+          <angular-editor [placeholder]="'Description de emploi'"  id="description_emploi" name="description_emploi" required
+                          [(ngModel)]="offre.description_emploi" #description_emploi="ngModel"></angular-editor>
 
-          <textarea id="description_emploi" name="description_emploi" required pInputTextarea class="input" [rows]="6"
-            [cols]="30" [(ngModel)]="offre.description_emploi" #description_emploi="ngModel"
-            [ngClass]="(description_emploi.dirty && description_emploi.invalid)"></textarea>
+          <!--<textarea id="description_emploi" name="description_emploi" required pInputTextarea class="input" [rows]="6"-->
+            <!--[cols]="30" [(ngModel)]="offre.description_emploi" #description_emploi="ngModel"-->
+            <!--[ngClass]="(description_emploi.dirty && description_emploi.invalid)"></textarea>-->
         </div>
 
         <div class="p-field p-col-12 p-md-3">
           <label for="exigence_emploi">Exigences de l'emploi</label>
-          <textarea id="exigence_emploi" name="exigence_emploi" required pInputTextarea class="input" [rows]="6"
-            [cols]="30" [(ngModel)]="offre.exigence_emploi" #exigence_emploi="ngModel" placeholder="Exigences supplémetaires ou détaillées"
-            [ngClass]="(exigence_emploi.dirty && exigence_emploi.invalid)"></textarea>
+          <angular-editor placeholder="Exigences supplémetaires ou détaillées"  id="exigence_emploi" name="exigence_emploi" required
+                          [(ngModel)]="offre.exigence_emploi" #exigence_emploi="ngModel" ></angular-editor>
+
+          <!--<textarea  pInputTextarea class="input" [rows]="6"-->
+            <!--[cols]="30" -->
+            <!--[ngClass]="(exigence_emploi.dirty && exigence_emploi.invalid)"></textarea>-->
         </div>
 
         <div class="p-field p-col-12 p-md-3">
@@ -75,6 +80,7 @@
             (onChange)="unselectedLangues()" [(ngModel)]="selected_langues" name="langue"
             defaultLabel="Selectioner les langues voulu" optionLabel="langue" display="chip"></p-multiSelect>
         </div>
+
 
       </div>
     </p-scrollPanel>
@@ -154,3 +160,6 @@
     </p-table>
   </div>
 </div>
+
+
+

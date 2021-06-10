@@ -10,6 +10,7 @@ import {BlogService} from '../../api/blog.service';
 export class BlogHomeComponent implements OnInit {
 
   blogs: Blog[]=[];
+  displayMaximizable: boolean;
 
   constructor(private blogService: BlogService) { }
 

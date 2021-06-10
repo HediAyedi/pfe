@@ -100,6 +100,8 @@ import { GestionPersonalInfoComponent } from './pages/gestion-cv/gestion-persona
 import { GestionProfessionalInfoComponent } from './pages/gestion-cv/gestion-professional-info/gestion-professional-info.component';
 import { CvComponent } from './pages/cv/cv.component';
 import {ColorPickerModule} from "primeng/colorpicker";
+import {EditorModule} from "primeng/editor";
+import {AngularEditorModule} from "@kolkov/angular-editor";
 
 // import {ConfirmDialogModule} from 'primeng/confirmdialog';
 // import {ConfirmationService} from 'primeng/api';
@@ -194,6 +196,9 @@ import {ColorPickerModule} from "primeng/colorpicker";
     ColorPickerModule,
     NgxPaginationModule,
     Ng2SearchPipeModule,
+    EditorModule,
+    AngularEditorModule
+
     // ConfirmDialogModule,
     // ConfirmationService
   ],
