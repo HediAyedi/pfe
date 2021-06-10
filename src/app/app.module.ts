@@ -99,6 +99,7 @@ import { GestionExperienceComponent } from './pages/gestion-cv/gestion-experienc
 import { GestionPersonalInfoComponent } from './pages/gestion-cv/gestion-personal-info/gestion-personal-info.component';
 import { GestionProfessionalInfoComponent } from './pages/gestion-cv/gestion-professional-info/gestion-professional-info.component';
 import { CvComponent } from './pages/cv/cv.component';
+import {ColorPickerModule} from "primeng/colorpicker";
 
 // import {ConfirmDialogModule} from 'primeng/confirmdialog';
 // import {ConfirmationService} from 'primeng/api';
@@ -190,7 +191,7 @@ import { CvComponent } from './pages/cv/cv.component';
     ChartModule,
     ScrollPanelModule,
     ChipsModule,
-
+    ColorPickerModule,
     NgxPaginationModule,
     Ng2SearchPipeModule,
     // ConfirmDialogModule,

@@ -225,3 +225,23 @@ body{
 .resume .resume_right .resume_hobby ul li:last-child:before {
   display: none;
 }
+
+.download-button{
+  padding: 10px 20px 10px 20px;
+  margin-left: 50%;
+  background-color: #b1eaff;
+  color: #000;
+  border-radius: 30px;
+  font-weight: bold;
+
+}
+
+.download-button2{
+  padding: 10px 20px 10px 20px;
+  margin-left: 47%;
+  background-color: #b1eaff;
+  color: #000;
+  border-radius: 30px;
+  font-weight: bold;
+
+}
