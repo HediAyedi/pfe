@@ -84,8 +84,10 @@
 
 
   <div class="flex-cont">
-    <input id="term" type="text" pInputText class="input input-size" [(ngModel)]="term" name="term" placeholder="rechercher experiences">
-    <div *ngFor="let exp of experiences | filter: term | paginate: { itemsPerPage: 2, currentPage: p }" class="card-single">
+    <div *ngIf="experiences.length>1">
+      <input id="term" type="text" pInputText class="input input-size" [(ngModel)]="term" name="term" placeholder="rechercher experiences">
+    </div>
+    <div *ngFor="let exp of experiences | filter: term " class="card-single">
       <h3>
         {{exp.poste}} au seins de {{exp.nom_entreprise}}
       </h3>
@@ -108,8 +110,6 @@
         label="Supprimer" class="p-button-rounded p-button-danger p-button-text "></button>
       </div>
     </div>
-    <pagination-controls (pageChange)="p = $event" class="paging-control" maxSize="3" previousLabel="Précédent"
-    nextLabel="Suivant" autoHide="true"></pagination-controls>
   </div>
   <button pButton pRipple type="button" (click)="affichageAjoutForm()" label="Ajout d'une experience"
     *ngIf="!selected" icon="pi pi-plus" class="button-white p-button-text p-button-plain p-button-rounded p-justify-right"></button>
