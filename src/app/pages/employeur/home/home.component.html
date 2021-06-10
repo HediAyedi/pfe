@@ -3,31 +3,29 @@
 <div class="sidebar">
   <div class="sidebar-brand p-justify-between">
     <div >
-      <h2 (click)="display = false" class="kamjobs">
-        <label for="">
+      <h2 (click)="display = false" >
+        <div class="kamjobs">
           <span class="las la-bars"></span>
-        </label>
+        </div>
       </h2>
     </div>
     <h2 (click)="router.navigate(['/offres'])" class="kamjobs">KamJobs</h2>
   </div>
   <div class="sidebar-menu">
     <ul>
-      <li><a  [routerLink]="['/employeur/profil']"   routerLinkActive="active"><span class="las la-igloo"></span><span>Gestion Profile</span></a></li>
-      <li><a [routerLink]="['/employeur/offres']"  routerLinkActive="active"><span class="las la-users"></span><span>Gestion Offres</span></a></li>
+      <li><a  [routerLink]="['/employeur/profil']"   routerLinkActive="active"><span class="las la-user-circle"></span><span>Gestion Profile</span></a></li>
+      <li><a [routerLink]="['/employeur/offres']"  routerLinkActive="active"><span class="las la-clipboard-list"></span><span>Gestion Offres</span></a></li>
     </ul>
   </div>
 </div>
 </p-sidebar>
 
-
-
 <div class="main-content">
   <header>
-    <h2 (click)="display = true" class="kamjobs">
-      <label for="">
+    <h2 (click)="display = true" >
+      <div class="kamjobs">
         <span class="las la-bars"></span>
-      </label>
+      </div>
     </h2>
 
     <div class="user-wrapper">

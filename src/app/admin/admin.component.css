@@ -27,6 +27,7 @@
   
   .kamjobs{
     width: fit-content;
+    padding: 0px 12px ;
     cursor: pointer;
     text-align: center;
   }
@@ -143,7 +144,7 @@
     border-radius: 20px;
     margin-top: 80px;
     padding: 2rem 1.5rem;
-    min-height: calc(100vh - 90px);
+    min-height: 75vh;
   }
   
   .cards {

@@ -27,7 +27,6 @@ export class OffresComponent implements OnInit {
   offres: Offre[] = [];
   searched_offres: Offre[] = [];
 
-  mots_cles=[];
 
   offres_noms: string[] = [];
 
@@ -43,6 +42,10 @@ export class OffresComponent implements OnInit {
   //Boolean value to minimize errors in the offre modal
   clicked = false;
 
+  // Logged Candidat
+  candidat: any;
+  postulated_candidat: boolean;
+
   constructor(
     private langueService: LangueService,
     private domaineService: DomaineService,
@@ -56,6 +59,8 @@ export class OffresComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+
+    this.candidat=JSON.parse(localStorage.getItem('candidat'));
     //Tableau des langues from cache
     this.langues = JSON.parse(localStorage.languesCache || '[]');
     if (this.langues.length == 0) {
@@ -138,36 +143,81 @@ export class OffresComponent implements OnInit {
   }
 
   search() {
-    var search = [];
-    this.mots_cles=[];
-    var index = 0;
+    
+    
     this.searched_offres = this.offres;
-
-    //Search by offer name
     if (this.offres_noms.length > 0) {
-      // Transforming the list's items to upper case
-      this.offres_noms = this.offres_noms.map((name) => name.toUpperCase());
-      this.offres_noms.forEach((offre_nom) => {
-        //Checks if the offre name will be duplicated in the offre names list
-        if (
-          this.offres_noms.indexOf(offre_nom) != index &&
-          this.offres_noms.indexOf(offre_nom) != -1
-        ) {
-          this.offres_noms.splice(index, index + 1);
+      this.searchByName();
+    }
+    if (this.selected_types.length > 0) {
+      this.searchByType();
+    }
+    if (this.selected_domaines.length > 0) {
+      this.searchByDomaine();
+    }
+
+    if (this.selected_competences.length > 0) {
+      this.searchByCompetence();
+    }
+    
+  }
+
+  searchByName(){
+    var search = [];
+    var index = 0;
+    //Search by offer name
+
+    // Transforming the list's items to upper case
+    this.offres_noms = this.offres_noms.map((name) => name.toUpperCase());
+    this.offres_noms.forEach((offre_nom) => {
+      //Checks if the offre name will be duplicated in the offre names list
+      if (
+        this.offres_noms.indexOf(offre_nom) != index &&
+        this.offres_noms.indexOf(offre_nom) != -1
+      ) {
+        this.offres_noms.splice(index, index + 1);
+      }
+      index++;
+    });
+
+    this.offres_noms.forEach((offre_nom) => {
+      offre_nom = offre_nom.toUpperCase();
+
+      this.searched_offres.forEach((offre) => {
+        var upper_case_nom = offre.nom_emploi.toUpperCase();
+
+        //Check if nom offre existe
+        if (upper_case_nom.indexOf(offre_nom) !== -1) {
+          //Checks if the offre will be duplicated in the list
+          if (search.indexOf(offre) == -1) {
+            search.push(offre);
+          }
         }
-        index++;
       });
-      
-      this.mots_cles= this.mots_cles.concat(this.offres_noms);
-
-      this.offres_noms.forEach((offre_nom) => {
-        offre_nom = offre_nom.toUpperCase();
-
-        this.offres.forEach((offre) => {
-          var upper_case_nom = offre.nom_emploi.toUpperCase();
+    });
+    this.searched_offres=search;
+  }
   
-          //Check if nom offre existe
-          if (upper_case_nom.indexOf(offre_nom) !== -1) {
+  searchByType(){
+    var search = [];
+    //Search by offer type
+      this.selected_types.forEach((selected_type) => {
+        console.log('selected:', selected_type);
+
+        // Gets string from the TypeOffre object 
+        var selected_offre_type = selected_type.emploi_type;
+
+        
+
+        //Loop in the offer array
+        this.searched_offres.forEach((offre) => {
+          var offre_types = [];
+          //Loop in the offer type array
+          offre.emploi_types.forEach((type) => {
+            offre_types.push(type.emploi_type);
+          });
+
+          if (offre_types.indexOf(selected_offre_type) !== -1) {
             //Checks if the offre will be duplicated in the list
             if (search.indexOf(offre) == -1) {
               search.push(offre);
@@ -175,34 +225,88 @@ export class OffresComponent implements OnInit {
           }
         });
       });
-      
-      this.searched_offres = search;
-    }
-    
+      console.log("Seaarch: ",search)
+      this.searched_offres=search;
+  }
+  searchByDomaine(){
+    var search = [];
     //Search by offer type
-    if (this.selected_types.length > 0) {
-
-      this.selected_types.forEach((selected_type) => {
-
-        var selected_offre_type= selected_type.emploi_type;
-
-        this.mots_cles.push(selected_offre_type);
+      this.selected_domaines.forEach((selected_domaine) => {
+        
+        // Gets string from the Domaine object 
+        var domaine = selected_domaine.domaine;
+        console.log('Domaine:', selected_domaine);
+        
 
         //Loop in the offer array
-        this.offres.forEach((offre) => {
-
-          var offre_types = [];
-          offre.emploi_types.forEach((type) => {
-            type=type.emploi_type;
-          });
-          console.log("Les offres de l'emploi",offre_types);
+        this.searched_offres.forEach((offre) => {
+          if (offre.domaine.indexOf(domaine) !== -1) {
+            //Checks if the offre will be duplicated in the list
+            if (search.indexOf(offre) == -1) {
+              search.push(offre);
+            }
+          }
         });
       });
-      
+      this.searched_offres=search;
+  }
+  searchByCompetence(){
+    var search = [];
+    // Transforming the list's items to upper case
+    this.offres_noms = this.offres_noms.map((name) => name.toUpperCase());
+    //Search by offer type
+      this.selected_competences.forEach((selected_competence) => {
+        
+        // Gets string from the Competence object and changes it to upper case
+        var competence = selected_competence.competence.toUpperCase();
+
+        //Loop in the offer array
+        this.searched_offres.forEach((offre) => {
+
+          // Gets exigence from the Offre object and changes it to upper case
+          // To maximize the adaptability between the competence and the written exigences
+          var exigence = offre.exigence_emploi.toUpperCase();
+
+          var description = offre.description_emploi.toUpperCase();
+
+          if (exigence.indexOf(competence) !== -1) {
+            //Checks if the offre will be duplicated in the list
+            if (search.indexOf(offre) == -1) {
+              search.push(offre);
+            }
+          }
+        });
+      });
+      this.searched_offres=search;
+  }
+
+  //Methode pour determiner si le candidat a postulé pour cette offre
+  postulated(offre){
+    console.log(offre);
+    if(offre.candidatures.length>0){
+      offre.candidatures.forEach(candidature=>{
+        if(candidature.candidat_id == this.candidat.id){
+          console.log("we got here");
+          this.postulated_candidat=true;
+          sessionStorage.setItem('postulated',JSON.stringify(this.postulated_candidat));
+        }
+        else{
+          console.log("we did not got here");
+          this.postulated_candidat=false;
+          sessionStorage.setItem('postulated',JSON.stringify(this.postulated_candidat));
+        }
+      })
+    }
+    else{
+      console.log("we did not got here");
+      this.postulated_candidat=false;
+      sessionStorage.setItem('postulated',JSON.stringify(this.postulated_candidat));
     }
   }
   //Shows the modal
   showDialog(offre) {
+    this.postulated_candidat=false;
+    this.postulated(offre);
     this.clicked = true;
     sessionStorage.setItem('offre', JSON.stringify(offre));
     var modal = document.getElementById('offreModal');

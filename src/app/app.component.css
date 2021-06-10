@@ -8,17 +8,5 @@
   z-index: 100;
 }
 .router{
-  padding-top: 40px;
-}
-
-@media (max-width:1135px) {
-  .router{
-    margin-top: 132px;
-  }
-}
-
-@media (max-width:960px) {
-  .router{
-    margin-top: 90px;
-  }
+  margin-top: 10px;
 }

@@ -25,7 +25,7 @@
           </div>
 
           <div class="p-grid p-nogutter p-justify-right">
-            <button pButton pRipple type="button" [disabled]="postulated_candidat" label="Ajouter" (click)="postulate()" icon="pi pi-check"
+            <button pButton pRipple type="button"  label="Ajouter" (click)="postulate()" icon="pi pi-check"
               class="p-button-rounded p-button-text "></button>
           </div>
         </form>
@@ -35,7 +35,7 @@
   </div>
 
   <div class="p-justify-between" *ngIf="candidat, else not_connected">
-    <button pButton pRipple type="button" (click)="showDialog()" label="Postuler"
+    <button pButton pRipple type="button" [disabled]="postulated_candidat" (click)="showDialog()" label="Postuler"
       class="p-button-info p-button-rounded postulate-button"></button>
       <div>
         <p>{{offre.candidatures.length}} Candidatures</p>

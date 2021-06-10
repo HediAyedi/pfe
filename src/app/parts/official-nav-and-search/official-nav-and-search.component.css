@@ -80,21 +80,6 @@ p-menubar .p-button-rounded{
   transition: 0.3s;
 }
 
-@media (max-width:1135px) {
-  .buttons{
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: column;
-  }
-}
-
-@media (max-width:960px) {
-  .buttons{
-    display: flex;
-    justify-content: flex-end;
-    flex-direction:row;
-  }
-}
 
 p-menubar .p-button-rounded:hover{
   padding: 8px 16px;
@@ -121,6 +106,9 @@ p-menubar .p-button-rounded:hover{
 
 }
 
+:host ::ng-deep p-menubar .p-component{
+  border-radius: 30px;
+}
 :host ::ng-deep .p-menubar-root-list .p-menuitem,.p-menuitem-link{
   border-radius: 30px;
   background-color: rgba(255, 255, 255);
@@ -133,7 +121,7 @@ p-menubar .p-button-rounded:hover{
   margin: 2px;
 
 }
-:host ::ng-deep .p-menubar-root-list .p-menuitem:hover,.p-menubar-root-list .p-menuitem-link:hover{
+:host ::ng-deep .p-menubar-mobile-active .p-menubar-root-list .p-menuitem:hover,.p-menubar-root-list .p-menuitem-link:hover{
   border-radius: 30px;
   background-color: rgba(255, 255, 255);
   margin: 2px;

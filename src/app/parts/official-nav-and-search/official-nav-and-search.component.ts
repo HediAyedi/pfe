@@ -21,7 +21,7 @@ export class OfficialNavAndSearchComponent implements OnInit {
         routerLink: ['/offres'],
       },
       {
-        label: 'Enreprise',
+        label: 'Enreprises',
         icon: 'las la-industry fa-lg',
         routerLink: ['/cardsEmployeurs'],
 
@@ -43,111 +43,6 @@ export class OfficialNavAndSearchComponent implements OnInit {
           {
             label: 'Centres d \'appels',
             icon: 'las la-headphones',
-          }
-        ]
-      },
-      {
-        label: 'Recherche par région',
-        icon: 'las la-search-location fa-lg',
-        items: [
-          {
-            label: 'Allemagne',
-            items: [
-              {
-                label: 'Baden-Württemberg\n',
-              },
-              {
-                label: 'Bavaria',
-              },
-              {
-                label: 'Berlin',
-              },
-              {
-                label: 'Brandenburg',
-              },
-              {
-                label: 'Bremen',
-              },
-              {
-                label: 'Hamburg',
-              },
-              {
-                label: 'Hesse',
-              },
-              {
-                label: 'Lower Saxony',
-              },
-              {
-                label: 'Mecklenburg-Vorpommern',
-              },
-              {
-                label: 'North Rhine-Westphalia',
-              },
-              {
-                label: 'Rhineland-Palatinate',
-              },
-              {
-                label: 'Saarland',
-              },
-              {
-                label: 'Saxony',
-              },
-              {
-                label: 'Saxony-Anhalt',
-              },
-              {
-                label: 'Schleswig-Holstein',
-              },
-              {
-                label: 'Thuringia',
-              },
-
-            ]
-          },
-          {
-            label: 'France',
-            items: [
-              {
-                label: 'Lyon',
-              },
-              {
-                label: 'Dijon',
-              },
-              {
-                label: 'Rennes',
-              },
-              {
-                label: 'Orléans',
-              },
-              {
-                label: 'Ajaccio',
-              },
-              {
-                label: 'Strasbourg',
-              },
-              {
-                label: 'Lille',
-              },
-              {
-                label: 'Paris',
-              },
-              {
-                label: 'Rouen',
-              },
-              {
-                label: 'Bordeaux',
-              },
-              {
-                label: 'Toulouse',
-              },
-              {
-                label: 'Nantes',
-              },
-              {
-                label: 'Marseille',
-              },
-
-            ]
           }
         ]
       },

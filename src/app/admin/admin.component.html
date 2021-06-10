@@ -2,19 +2,21 @@
 <p-sidebar [(visible)]="display">
   <div class="sidebar">
     <div class="sidebar-brand p-justify-between">
-      <h2 (click)="router.navigate(['/offres'])" class="kamjobs">KamJobs</h2>
       <div >
-        <button pButton pRipple type="button" (click)="display = false"
-              icon="pi pi-times" class="p-button-rounded  p-button-text button-white"></button>
+        <h2 (click)="display = false" >
+          <div class="kamjobs">
+            <span class="las la-bars"></span>
+          </div>
+        </h2>
       </div>
+      <h2 (click)="router.navigate(['/offres'])" class="kamjobs">KamJobs</h2>
     </div>
     
     <div class="sidebar-menu">
       <ul>
-        <li><a routerLinkActive="active" [routerLink]="['/admin/dashboard']" ><span class="las la-igloo"></span><span>Dashboard</span></a></li>
-        <li><a routerLinkActive="active" [routerLink]="['/admin/tableEmployeurs']" ><span class="las la-user-circle"></span><span>Gestion Employeurs</span></a></li>
+        <li><a routerLinkActive="active" [routerLink]="['/admin/dashboard']" ><span class="lar la-chart-bar"></span><span>Dashboard</span></a></li>
+        <li><a routerLinkActive="active" [routerLink]="['/admin/tableEmployeurs']" ><span class="las la-building"></span><span>Gestion Employeurs</span></a></li>
         <li><a routerLinkActive="active" [routerLink]="['/admin/tableCandidats']" ><span class="las la-graduation-cap"></span><span>Gestion Candidats</span></a></li>
-        <li><a routerLinkActive="active" [routerLink]="['/admin/blog/home']" ><span class="las la-blog"></span><span>Affichage Blogs</span></a></li>
         <li><a routerLinkActive="active" [routerLink]="['/admin/blog/form']" ><span class="las la-blog"></span><span>Gestion Blogs</span></a></li>
         <li><a routerLinkActive="active" [routerLink]="['/admin/tests/home']" ><span class="las la-clipboard-list"></span><span>Gestion Tests</span></a></li>
       </ul>
@@ -24,10 +26,10 @@
 
   <div class="main-content">
     <header>
-      <h2 (click)="display = true" class="kamjobs">
-        <label for="">
+      <h2 (click)="display = true" >
+        <div class="kamjobs">
           <span class="las la-bars"></span>
-        </label>
+        </div>
       </h2>
   
       

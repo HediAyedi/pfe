@@ -11,53 +11,77 @@
     </p-scrollPanel>
   </div>
 </div>
-<div class="flex-cont ">
-<p-chips  styleClass="mots-cles" [(ngModel)]="mots_cles" disabled="true" placeholder="Les mots clés de la recherche"></p-chips>
-</div>
-<div class="p-justify-between">
+
+<div class="responsive-body">
   <div class="search">
-    <p-chips [(ngModel)]="offres_noms" placeholder="Chercher par nom d'offres" (onAdd)="search()" (onRemove)="search()">
+    <p-chips [(ngModel)]="offres_noms" placeholder="Chercher par nom d'offre" (onAdd)="search()" (onRemove)="search()">
     </p-chips>
 
-    <p-multiSelect class="p-field"  [options]="offre_types" (onChange)="search()" (onRemove)="search()" [(ngModel)]="selected_types"
-      defaultLabel="Chercher par type d'emploi " optionLabel="emploi_type" display="chip">
+    <p-multiSelect class="p-field" [options]="offre_types" (onChange)="search()" (onRemove)="search()"
+      [(ngModel)]="selected_types" defaultLabel="Chercher par type d'emploi " optionLabel="emploi_type" display="chip">
     </p-multiSelect>
 
-    <p-multiSelect class="p-field"  [options]="offre_types" (onChange)="search()" (onRemove)="search()" [(ngModel)]="selected_types"
-      defaultLabel="Chercher par domaine " optionLabel="emploi_type" display="chip">
+    <p-multiSelect class="p-field" [options]="domaines" (onChange)="search()" (onRemove)="search()"
+      [(ngModel)]="selected_domaines" defaultLabel="Chercher par domaine " optionLabel="domaine" display="chip">
+    </p-multiSelect>
+
+    <p-multiSelect class="p-field" [options]="competences" (onChange)="search()" (onRemove)="search()"
+      [(ngModel)]="selected_competences" defaultLabel="Chercher par competence " optionLabel="competence"
+      display="chip">
     </p-multiSelect>
   </div>
   <div class="main">
     <div class="flex-cont ">
       <div class="card-single"
         *ngFor="let offre of searched_offres  | paginate: { itemsPerPage: 10, currentPage: page }">
-        <div class="p-justify-between">
-          <div>
+        <div>
+          <div class="p-justify-between ">
             <h1>{{offre.nom_emploi}}</h1>
-            <h3>{{offre.employeur.nom_entreprise }}</h3>
-            <p class="product-category">{{offre.description_emploi | slice:0:250}} ...</p>
-          </div>
-          <div>
-            <div class="right">
-              <img src="{{offre.employeur.logo}}" alt="">
+            <div class="p-justify-right column">
+              <div class="right">
+                <div *ngIf="offre.employeur.logo==null, else logo">
+                  <img src="../../../assets/firm.png" alt="">
+                </div>
+                <ng-template #logo>
+                  <img src="{{offre.employeur.logo}}" alt="">
+                </ng-template>
+              </div>
+              <h3 style="text-transform: uppercase;">{{offre.employeur.nom_entreprise }}</h3>
             </div>
           </div>
+          <div>
+            <p class="product-category">
+              {{offre.description_emploi | slice:0:250}} ...</p>
+          </div>
+        </div>
+        <div class="details">
+
+          <p><strong>Types d'emploi: </strong>
+            <span *ngFor="let type of offre.emploi_types">
+              <span>{{type.emploi_type}}  </span>
+            </span>
+          </p>
+          <p><strong>Domaine: </strong>
+            <span>
+              {{offre.domaine |titlecase}}
+            </span>
+          </p>
+
         </div>
         <div class="p-justify-between">
-          <div class="p-justify-between">
-            <p><strong>Domaine: </strong>{{offre.domaine}}</p>
-            <p><strong>Genre: </strong>{{offre.genre}}</p>
+          <div class="details">
             <p><strong>Adresse: </strong>{{offre.employeur.adresse.pays | uppercase}}
               {{offre.employeur.adresse.governat |titlecase}} {{offre.employeur.adresse.ville |lowercase}}</p>
           </div>
+
           <button pButton pRipple type="button" (click)="showDialog(offre)" label="Voir détails" icon="pi pi-eye"
             class="p-button-text p-button-rounded"></button>
         </div>
       </div>
     </div>
+    <div class="flex-cont ">
+      <pagination-controls (pageChange)="page = $event" class="paging-control" maxSize="3" previousLabel="Précédent"
+        nextLabel="Suivant" autoHide="true"></pagination-controls>
+    </div>
   </div>
-</div>
-<div class="flex-cont ">
-  <pagination-controls (pageChange)="page = $event" class="paging-control" maxSize="3" previousLabel="Précédent"
-    nextLabel="Suivant" autoHide="true"></pagination-controls>
 </div>

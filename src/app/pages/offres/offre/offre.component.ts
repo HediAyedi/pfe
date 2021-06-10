@@ -32,13 +32,14 @@ export class OffreComponent implements OnInit {
     this.idRoute = this.route.snapshot.paramMap.get('offre_id');
     this.offre=JSON.parse(sessionStorage.getItem('offre'));
     this.candidat=JSON.parse(localStorage.getItem('candidat'));
+    this.postulated_candidat=JSON.parse(sessionStorage.getItem('postulated'));
+
   }
 
   
   //Shows the modal
   showDialog() {
-    this.postulated_candidat=false;
-    this.postulated();
+    
     var modal = document.getElementById('PostulationModal');
     modal.style.display = 'block';
   }
@@ -60,7 +61,8 @@ export class OffreComponent implements OnInit {
       res=>{
         // Works inside modal or own page 
         this.findOffre(this.offre.id);
-
+        this.postulated_candidat=true;
+        sessionStorage.setItem('postulated',JSON.stringify(this.postulated_candidat));
         this.cancel();
 
       },err=>{
@@ -69,13 +71,7 @@ export class OffreComponent implements OnInit {
     )
   }
 
-  postulated(){
-    this.offre.candidatures.forEach(candidature=>{
-      if(candidature.id){
-        this.postulated_candidat=true;
-      }
-    })
-  }
+  
   public findOffre(id){
     this.offreService.get(id).subscribe(data=>{
       this.offre=data;
