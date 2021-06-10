@@ -50,8 +50,7 @@
             </div>
           </div>
           <div>
-            <p class="product-category">
-              {{offre.description_emploi | slice:0:120}} ...</p>
+            <p class="overflow" [innerHTML]="offre.description_emploi "></p>
           </div>
         </div>
         <div class="details">

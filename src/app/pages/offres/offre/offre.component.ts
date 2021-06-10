@@ -5,7 +5,6 @@ import {Candidature} from '../../../models/candidature';
 import {OffreService} from '../../../api/offres.service';
 import {CandidatureService} from '../../../api/candidature.service';
 import { Candidat } from 'src/app/models/candidat';
-
 @Component({
   selector: 'app-offre',
   templateUrl: './offre.component.html',

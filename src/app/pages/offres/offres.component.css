@@ -14,6 +14,13 @@ div{
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.overflow{
+  display:inline-block;
+  width:80%;
+  white-space: nowrap;
+  overflow:hidden !important;
+  text-overflow: ellipsis;
+}
 
 .blur {
   padding: 5px 10px;
