@@ -50,7 +50,8 @@
             </div>
           </div>
           <div>
-            <p class="overflow" [innerHTML]="offre.description_emploi "></p>
+            <span class="overflow" [innerHTML]="offre.description_emploi | slice:0:150 ">
+            </span>...
           </div>
         </div>
         <div class="details">
