@@ -2,9 +2,6 @@
 @import "main-styles.scss";
 @import "../node_modules/bulma/bulma.sass";
 
-* {
-  white-space: pre-wrap
-}
 
 .p-button-rounded:hover {
 
@@ -20,4 +17,5 @@
 
 div{
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  white-space: pre-wrap;
 }

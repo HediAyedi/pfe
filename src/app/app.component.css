@@ -6,7 +6,6 @@
   position: fixed;
   top: 0;
   z-index: 100;
+  margin-bottom: 90px;
 }
-.router{
-  margin-top: 10px;
-}
+
