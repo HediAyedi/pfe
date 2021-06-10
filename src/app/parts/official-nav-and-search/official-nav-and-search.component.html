@@ -5,49 +5,70 @@
         <input type="search" pInputText placeholder="Search" style=" width: 100%" >
       </div> -->
     <div class="buttons">
-      <button pButton pRipple type="button" (click)="showSignInDialog()" icon="las la-sign-in-alt fa-lg" label="Connexion"
-        class="p-button-rounded"></button>
-      <button pButton pRipple type="button" (click)="showSignUpDialog()" icon="las la-user-plus fa-lg" label="Inscription"
-        class="p-button-rounded p-button-text p-button-info"></button>
-      <!-- <p-splitButton [showTransitionOptions]="'0ms'" [hideTransitionOptions]="'0ms'" label="Connexion" icon="las la-sign-in-alt fa-lg"  [model]="boutton"></p-splitButton> -->
+
+      <ng-container [ngSwitch]="true">
+
+        <div *ngSwitchCase="candidat!=null">
+          <button pButton pRipple type="button" (click)="navigateCandidat()" icon="fas fa-home"
+          label="Espace candidat" class="p-button-rounded "></button>
+        <button pButton pRipple type="button" (click)="logOut()" icon="fas fa-sign-out-alt"
+          label="Déconnecter" class="p-button-rounded p-button-text p-button-info"></button>
+        </div>
+
+        <div *ngSwitchCase="employeur!=null">
+          <button pButton pRipple type="button" (click)="navigateEmployeur()" icon="fas fa-home"
+            label="Espace employeur" class="p-button-rounded"></button>
+          <button pButton pRipple type="button" (click)="logOut()" icon="fas fa-sign-out-alt"
+          label="Déconnecter" class="p-button-rounded p-button-text p-button-info"></button>
+        </div>
+
+        <div *ngSwitchDefault>
+          <button pButton pRipple type="button" (click)="showSignInDialog()" icon="las la-sign-in-alt fa-lg"
+          label="Connexion" class="p-button-rounded"></button>
+        <button pButton pRipple type="button" (click)="showSignUpDialog()" icon="las la-user-plus fa-lg"
+          label="Inscription" class="p-button-rounded p-button-text p-button-info"></button>
+        </div>
+
+      </ng-container>
+     
     </div>
   </p-menubar>
-  
+
   <div id="signIn" class="modal">
     <div class="modal-content">
       <div class="p-justify-between">
         <h2>Connexion</h2>
         <button pButton pRipple type="button" (click)="cancel()" icon="pi pi-times"
-        class="p-button-danger p-button-rounded p-button-text "></button>
+          class="p-button-danger p-button-rounded p-button-text "></button>
       </div>
       <div class="p-fluid">
         <div class="p-field">
-          <button pButton pRipple type="button" [routerLink]="['/loginCandidat']" (click)="cancel()"
-            label="Candidat" class="p-button-rounded p-button-text"></button>
+          <button pButton pRipple type="button" [routerLink]="['/loginCandidat']" (click)="cancel()" label="Candidat"
+            class="p-button-rounded p-button-text"></button>
         </div>
         <div class="p-field">
-          <button pButton pRipple type="button" [routerLink]="['/loginEmployeur']" (click)="cancel()"
-            label="Employeur" class="p-button-rounded p-button-text"></button>
+          <button pButton pRipple type="button" [routerLink]="['/loginEmployeur']" (click)="cancel()" label="Employeur"
+            class="p-button-rounded p-button-text"></button>
         </div>
       </div>
     </div>
   </div>
-  
+
   <div id="signUp" class="modal">
     <div class="modal-content">
       <div class="p-justify-between">
         <h2>Inscription</h2>
         <button pButton pRipple type="button" (click)="cancel()" icon="pi pi-times"
-        class="p-button-danger p-button-rounded p-button-text "></button>
+          class="p-button-danger p-button-rounded p-button-text "></button>
       </div>
       <div class="p-fluid">
         <div class="p-field">
-          <button pButton pRipple type="button" [routerLink]="['/SignUpCandidat']" (click)="cancel()"
-            label="Candidat" class="p-button-rounded p-button-text p-button-info"></button>
+          <button pButton pRipple type="button" [routerLink]="['/SignUpCandidat']" (click)="cancel()" label="Candidat"
+            class="p-button-rounded p-button-text p-button-info"></button>
         </div>
         <div class="p-field">
-          <button pButton pRipple type="button" [routerLink]="['/SignUpEmployeur']" (click)="cancel()"
-            label="Employeur" class="p-button-rounded p-button-text p-button-info"></button>
+          <button pButton pRipple type="button" [routerLink]="['/SignUpEmployeur']" (click)="cancel()" label="Employeur"
+            class="p-button-rounded p-button-text p-button-info"></button>
         </div>
       </div>
     </div>

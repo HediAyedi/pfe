@@ -283,22 +283,25 @@ export class OffresComponent implements OnInit {
   //Methode pour determiner si le candidat a postulé pour cette offre
   postulated(offre){
     console.log(offre);
-    if(offre.candidatures.length>0){
-      offre.candidatures.forEach(candidature=>{
-        if(candidature.candidat_id == this.candidat.id){
-          console.log("we got here");
-          this.postulated_candidat=true;
-          sessionStorage.setItem('postulated',JSON.stringify(this.postulated_candidat));
-        }
-        else{
-          console.log("we did not got here");
-          this.postulated_candidat=false;
-          sessionStorage.setItem('postulated',JSON.stringify(this.postulated_candidat));
-        }
-      })
+    if(this.candidat){
+      if(offre.candidatures.length>0){
+        offre.candidatures.forEach(candidature=>{
+          if(candidature.candidat_id == this.candidat.id){
+            this.postulated_candidat=true;
+            sessionStorage.setItem('postulated',JSON.stringify(this.postulated_candidat));
+          }
+          else{
+            this.postulated_candidat=false;
+            sessionStorage.setItem('postulated',JSON.stringify(this.postulated_candidat));
+          }
+        })
+      }
+      else{
+        this.postulated_candidat=false;
+        sessionStorage.setItem('postulated',JSON.stringify(this.postulated_candidat));
+      }
     }
     else{
-      console.log("we did not got here");
       this.postulated_candidat=false;
       sessionStorage.setItem('postulated',JSON.stringify(this.postulated_candidat));
     }

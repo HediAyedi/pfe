@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {MenuItem} from 'primeng/api';
+import { Candidat } from 'src/app/models/candidat';
+import { Employeur } from 'src/app/models/employeur';
 
 @Component({
   selector: 'app-official-nav-and-search',
@@ -9,11 +12,16 @@ import {MenuItem} from 'primeng/api';
 export class OfficialNavAndSearchComponent implements OnInit {
   items: MenuItem[];
   boutton: MenuItem[];
-  show: boolean;
+  employeur: Employeur;
+  candidat: Candidat;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+    
+    this.employeur=JSON.parse(localStorage.getItem("employeur"));
+    this.candidat=JSON.parse(localStorage.getItem("candidat"));
+    
     this.items = [
       {
         label: 'Tous les offres',
@@ -21,30 +29,10 @@ export class OfficialNavAndSearchComponent implements OnInit {
         routerLink: ['/offres'],
       },
       {
-        label: 'Enreprises',
+        label: 'Les enreprises',
         icon: 'las la-industry fa-lg',
         routerLink: ['/cardsEmployeurs'],
 
-      },
-      {
-        label: 'Rechercher par Domaine',
-        icon: 'lab la-searchengin fa-lg',
-        items: [
-          {
-            label: 'Economie & Gestion',
-            icon: 'las la-landmark',
-
-          },
-          {
-            label: 'Informatique',
-            icon: 'las la-desktop',
-
-          },
-          {
-            label: 'Centres d \'appels',
-            icon: 'las la-headphones',
-          }
-        ]
       },
       {
         label: 'Blog',
@@ -56,7 +44,23 @@ export class OfficialNavAndSearchComponent implements OnInit {
     
   }
 
-  
+  navigateCandidat(){
+    this.router.navigate(["candidat/home"]);
+  }
+
+  navigateEmployeur(){
+    this.router.navigate(["employeur/home"]);
+  }
+
+  logOut(){
+    this.employeur=null;
+    this.candidat=null;
+    localStorage.removeItem("candidat");
+    localStorage.removeItem("employeur");
+    localStorage.removeItem("token");
+    this.router.navigate(["/offres"]);
+    console.log('Logged Out');
+  }
   showSignInDialog(){
     var modal = document.getElementById("signIn");
     modal.style.display = "block";
@@ -73,8 +77,6 @@ export class OfficialNavAndSearchComponent implements OnInit {
     var signInModal = document.getElementById("signIn");
     signInModal.style.display = "none";
   }
-  showLogin(){
-    this.show=!this.show;
-  }
+  
 }
 

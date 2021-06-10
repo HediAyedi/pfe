@@ -1,4 +1,6 @@
-
+body{
+  margin-top: 90px;
+}
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */

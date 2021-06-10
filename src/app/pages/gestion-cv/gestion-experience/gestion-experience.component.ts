@@ -19,7 +19,6 @@ export class GestionExperienceComponent implements OnInit {
   experiences: Experience[]=[] ;
   date_fin_valid= false;
   term:string;
-  p: number = 1;
   selected=false;
 
   constructor(
