@@ -101,7 +101,8 @@ p-menubar .p-button-rounded:hover{
 
 :host ::ng-deep .p-menubar{
   border-radius: 30px;
-  width: 97vw;
+  width: 96vw;
+  margin: 0% 1.5vw;
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 }
@@ -109,7 +110,7 @@ p-menubar .p-button-rounded:hover{
 :host ::ng-deep p-menubar .p-component{
   border-radius: 30px;
 }
-:host ::ng-deep .p-menubar-root-list .p-menuitem,.p-menuitem-link{
+:host ::ng-deep .p-menubar-root-list,:host ::ng-deep .p-menubar-root-list .p-menuitem,.p-menuitem-link{
   border-radius: 30px;
   background-color: rgba(255, 255, 255);
   margin: 2px;

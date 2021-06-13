@@ -15,14 +15,12 @@ export class BlogHomeComponent implements OnInit {
   constructor(private blogService: BlogService) { }
 
   ngOnInit(): void {
-    this.blogs=JSON.parse(localStorage["blogsCache"] || "[]");
     this.findAll()
   }
   public findAll() {
     this.blogService.getAll()
       .subscribe(data => {
         this.blogs = data;
-        localStorage.setItem("blogsCache", JSON.stringify(data));
       }, err => {
         console.log(err);
       });

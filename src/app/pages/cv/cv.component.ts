@@ -23,14 +23,31 @@ export class CvComponent implements OnInit {
 
   }
   download(){
-    var element = document.getElementById('cv');
-    html2canvas(element).then((canvas) => {
-      console.log(canvas);
-      var imgData = canvas.toDataURL('image/png');
-      var doc = new jspdf();
-      var imgHeight = canvas.height * 180 / canvas.width;
-      doc.addImage(imgData, 0, 0, 210, imgHeight);
-      doc.save("mon cv.pdf");
+    /* COMPRESSED */
+    var data = document.getElementById('cv');
+    html2canvas(data).then(canvas => {
+    var imgWidth = 200;
+    var pageHeight = 400;
+    var imgHeight = canvas.height * imgWidth / canvas.width;
+    var heightLeft = imgHeight;
+    var position = 0;
+    const contentDataURL = canvas.toDataURL('image/png',0.3)
+    var pdf = new jspdf('p', 'mm', 'a4', true);
+    pdf.addImage(contentDataURL, "JPEG", 5, 0, 200, 287, undefined, 'FAST');
+    
+    pdf.save("cv");
     });
+    
+    /*  BBETTER CODED */
+    
+    // var element = document.getElementById('cv');
+    // html2canvas(element).then((canvas) => {
+    //   console.log(canvas);
+    //   var imgData = canvas.toDataURL('image/png');
+    //   var doc = new jspdf();
+    //   var imgHeight = canvas.height * 180 / canvas.width;
+    //   doc.addImage(imgData, 0, 0, 210, imgHeight);
+    //   doc.save("mon cv.pdf");
+    // });
   }
 }

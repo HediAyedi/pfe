@@ -13,7 +13,7 @@ export class Employeur {
   matricule: string;
   site_web: string;
   telephone: number;
-  logo: string;
+  logo: any;
   verifie: boolean;
   active: boolean;
   secteur_id: number;

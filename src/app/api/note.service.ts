@@ -12,9 +12,9 @@ export class NoteService {
   private url = environment.baseUrl;
   constructor(private httpClient: HttpClient) { }
 
-  public getAll(): Observable<any> {
+  public getAll(id): Observable<any> {
     
-    return this.httpClient.get<Note[]>(this.url + '/notes');
+    return this.httpClient.get<Note[]>(this.url + '/notes/'+ id);
   }
 
   public get(id: any): Observable<any>{

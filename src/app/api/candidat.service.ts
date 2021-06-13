@@ -23,7 +23,10 @@ export class CandidatService {
   public getAll(): Observable<any>{
     return this.httpClient.get<Candidat[]>(this.url + '/candidats');
   }
-
+  
+  public get(id: any): Observable<any>{
+    return this.httpClient.get<Candidat>(this.url + '/candidat/' + id);
+  }
 
   public logIn(candidat: Candidat): Observable<any>{
     return this.httpClient.post(this.url + '/loginCandidat', candidat);

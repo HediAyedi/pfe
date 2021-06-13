@@ -1,6 +1,6 @@
 <!-- BLOG FORM -->
 <div id="blogForm" class="modal">
-  <form class="modal-content">
+  <form id="form" class="modal-content">
     <div class="p-justify-right">
       <button pButton pRipple type="button" (click)="cancel()" icon="pi pi-times"
         class="p-button-danger p-button-rounded p-button-text "></button>
@@ -13,10 +13,10 @@
         <small *ngIf="(titre.dirty && titre.invalid)" class="p-error">titre est requis.</small>
       </div>
       <div class="p-field">
-        <label for="logo">logo</label>
-        <input #logo="ngModel" id="logo" name="logo" type="text" required pInputText class="input"
-          [(ngModel)]="blog.logo" [ngClass]="{'ng-dirty':(logo.dirty && logo.invalid)}">
-        <small class="p-error" *ngIf="(logo.dirty && logo.invalid)">logo est requis.</small>
+        <div><label for="logo">logo</label></div>
+        <input pInputText type="file" accept=".png,.jpg,.jpeg" id="file" (change)="handleFileInput($event.target.files)">
+        
+        <br><img [src]="blog.logo" height="200px">
       </div>
       <div class="p-field">
         <label for="description">Contenu</label>

@@ -4,25 +4,25 @@
         <span class="las la-search"></span>
         <input type="search" pInputText placeholder="Search" style=" width: 100%" >
       </div> -->
-    <div class="buttons">
+    <div class="p-justify-between" >
 
       <ng-container [ngSwitch]="true">
 
-        <div *ngSwitchCase="candidat!=null">
+        <div class="buttons" *ngSwitchCase="candidat!=null">
           <button pButton pRipple type="button" (click)="navigateCandidat()" icon="fas fa-home"
           label="Espace candidat" class="p-button-rounded "></button>
-        <button pButton pRipple type="button" (click)="logOut()" icon="fas fa-sign-out-alt"
+        <button pButton pRipple type="button" (click)="logOut()" icon="pi pi-sign-out"
           label="Déconnecter" class="p-button-rounded p-button-text p-button-info"></button>
         </div>
 
-        <div *ngSwitchCase="employeur!=null">
+        <div class="buttons" *ngSwitchCase="employeur!=null">
           <button pButton pRipple type="button" (click)="navigateEmployeur()" icon="fas fa-home"
             label="Espace employeur" class="p-button-rounded"></button>
-          <button pButton pRipple type="button" (click)="logOut()" icon="fas fa-sign-out-alt"
+          <button pButton pRipple type="button" (click)="logOut()" icon="pi pi-sign-out"
           label="Déconnecter" class="p-button-rounded p-button-text p-button-info"></button>
         </div>
 
-        <div *ngSwitchDefault>
+        <div class="buttons" *ngSwitchDefault>
           <button pButton pRipple type="button" (click)="showSignInDialog()" icon="las la-sign-in-alt fa-lg"
           label="Connexion" class="p-button-rounded"></button>
         <button pButton pRipple type="button" (click)="showSignUpDialog()" icon="las la-user-plus fa-lg"

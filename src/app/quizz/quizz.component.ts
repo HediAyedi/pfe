@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {animate, style, transition, trigger} from '@angular/animations';
 import { QuestionService } from '../api/question.service';
+import { NoteService } from '../api/note.service';
 import { Note } from '../models/note';
 
 @Component({
@@ -25,7 +26,8 @@ export class QuizzComponent implements OnInit {
   note=new Note();
 
   constructor(
-    private questionService: QuestionService) { }
+    private questionService: QuestionService,
+    private noteService: NoteService) { }
 
   ngOnInit(): void {
     var test_id= JSON.parse(sessionStorage.getItem("test_id"));
@@ -71,23 +73,46 @@ export class QuizzComponent implements OnInit {
       if(this.quizzes.length==2){
         if(this.correctAnswers>=1){
           this.note.success=true;
-          this.note.note= this.correctAnswers/this.quizzes.length
+          this.note.note= this.correctAnswers/this.quizzes.length*100;
+          this.addNote();
+        }
+        else{
+          this.note.note= this.correctAnswers/this.quizzes.length*100;
+          console.log("NOTE:",this.note);
+          this.addNote();
         }
       }
       else if(this.quizzes.length==3){
         if(this.correctAnswers>=2){
           this.note.success=true;
-          this.note.note= this.correctAnswers/this.quizzes.length;
+          this.note.note= this.correctAnswers/this.quizzes.length*100;
           console.log("NOTE:",this.note);
+          this.addNote();
+        }
+        else{
+          this.note.note= this.correctAnswers/this.quizzes.length*100;
+          console.log("NOTE:",this.note);
+          this.addNote();
         }
       }
       else {
-        var final_note= this.correctAnswers/this.quizzes.length
-        if(final_note>=0.75){
+        var final_note= this.correctAnswers/this.quizzes.length*100;
+        if(final_note>=70){
           this.note.success=true;
           this.note.note= final_note;
+          console.log("NOTE:",this.note);
+          this.addNote();
+        }
+        else{
+          this.note.note= this.correctAnswers/this.quizzes.length*100;
+          console.log("NOTE:",this.note);
+          this.addNote();
         }
       }
+
+      
+      
+      
     }
   }
 
@@ -102,4 +127,11 @@ export class QuizzComponent implements OnInit {
     this.incorrectAnswers = 0;
   }
 
+  addNote(){
+    this.noteService.save(this.note).subscribe(res=>{
+      console.log(res)
+    },err=>{
+      console.log(err)
+    })
+  }
 }

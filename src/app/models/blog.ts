@@ -1,13 +1,13 @@
 export class Blog {
   id: number;
   titre: string;
-  logo: string;
+  logo: any;
   description: string;
 
   constructor() {
     this.id = null;
     this.titre = '';
-    this.logo = '';
+    this.logo = null;
     this.description = '';
 
 

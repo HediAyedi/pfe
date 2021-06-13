@@ -41,10 +41,7 @@ export class TestsComponent implements OnInit {
   ngOnInit(): void {
     this.primengConfig.ripple = true;
     this.tests = JSON.parse(localStorage['testsCache'] || '[]');
-
-    if (this.tests.length == 0) {
-      this.findAllTests();
-    }
+    this.findAllTests();
   }
 
   // GESTION TESTS

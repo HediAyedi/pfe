@@ -10,6 +10,8 @@ export class Candidat {
   cv:any;
   image: any;
   date_naissance: Date;
+  critiques: any[];
+  notes: any[];
 
   verifie: boolean;
   active: boolean;

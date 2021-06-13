@@ -9,10 +9,7 @@
 
 
 body{
-  background: #585c68;
-  font-size: 14px;
-  line-height: 22px;
-  color: #555555;
+  margin-top: 90px ;
 }
 
 
@@ -228,20 +225,19 @@ body{
 
 .download-button{
   padding: 10px 20px 10px 20px;
-  margin-left: 50%;
-  background-color: #b1eaff;
-  color: #000;
+  margin: auto 10px;
   border-radius: 30px;
   font-weight: bold;
 
 }
 
-.download-button2{
-  padding: 10px 20px 10px 20px;
-  margin-left: 47%;
-  background-color: #b1eaff;
-  color: #000;
-  border-radius: 30px;
-  font-weight: bold;
+.center{
+  display: flex;
+  justify-content: center;
+  justify-items: center;
 
+}
+
+:host ::ng-deep .ng-tns-c25-0.p-component{
+  border-radius: 14px 25px 25px 25px;
 }

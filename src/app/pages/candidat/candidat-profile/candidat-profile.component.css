@@ -1,0 +1,93 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,700,900,400italic,700italic,900italic);
+
+
+div{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.flex-container {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+
+
+.p-justify-between {
+  margin: 10px;
+  display: flex;
+  font-size:large;
+  font-weight: bold;
+  justify-content:space-between;
+}
+
+.p-justify-right {
+  display: flex;
+  justify-content:flex-end;
+}
+
+
+.details{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: fit-content;
+}
+
+
+.title{
+  color: #ffffffcc;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+.card-single {
+  background: #3771bd;
+  backdrop-filter: blur(30px);
+  height: fit-content;
+  width: fit-content;
+  padding: 10px;
+  margin: 1vw;
+  border-radius: 30px;
+  box-shadow: 0 4px 4px 0 rgba(136, 136, 136, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.chip-wrapper {
+  display: flex;
+  flex-direction: row;
+  height: fit-content;
+}
+.chip {
+  background: #4b96ec;
+  font-weight: bold;
+  text-transform: capitalize;
+  color: rgb(233, 233, 233);
+  height: fit-content;
+  width: fit-content;
+  padding: 2px;
+  margin: 0px 2px;
+  border-radius: 30px;
+}
+
+
+
+
+.description-card {
+  background: hsla(0, 0%, 100%, 0.800);
+  backdrop-filter: blur(30px);
+  min-height: 10vh;
+  height: fit-content;
+  width: 98%;
+  padding: 10px;
+  margin: 20px 1%;
+  border-radius: 20px;
+  border: 1px #9de6fc solid;
+}
+
+.description-title{
+  color: #3771bd;
+  font-weight: bold;
+  text-transform: capitalize;
+  margin-bottom: 10px;
+}

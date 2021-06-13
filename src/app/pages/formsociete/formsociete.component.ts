@@ -30,15 +30,27 @@ export class FormsocieteComponent implements OnInit {
               private messageService: MessageService,
               private primengConfig: PrimeNGConfig) {
                 
-                console.log(this.secteurs);
-  }
+              }
 
   ngOnInit(): void {
     this.primengConfig.ripple = true;
     this.secteurs=JSON.parse(localStorage["secteursCache"] || "[]");
-    
-
+    if (this.secteurs.length == 0) {
+      this.findSecteurs();
+    }
   }
+
+
+  handleFileInput(files: FileList) {
+    var fileToUpload = files.item(0);
+    const reader = new FileReader();
+    reader.readAsDataURL(fileToUpload);
+    reader.onload = () => {
+        this.employeur.logo=reader.result;
+        console.log(this.employeur.logo);
+    };
+  }
+
 
   showSuccess() {
     this.messageService.add({severity:'success', summary: 'Success', detail: this.message});
@@ -80,5 +92,12 @@ export class FormsocieteComponent implements OnInit {
         this.showWarn(err);
       }
     );
+  }
+
+  public findSecteurs() {
+    this.secteurActiviteService.getAll().subscribe((res) => {
+      this.secteurs = res;
+      localStorage.setItem('secteursCache', JSON.stringify(res));
+    });
   }
 }

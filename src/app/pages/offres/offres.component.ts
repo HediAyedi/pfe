@@ -28,6 +28,9 @@ export class OffresComponent implements OnInit {
   searched_offres: Offre[] = [];
 
 
+  currentOffre = new Offre();
+
+
   offres_noms: string[] = [];
 
   competences: Competence[] = [];
@@ -44,7 +47,6 @@ export class OffresComponent implements OnInit {
 
   // Logged Candidat
   candidat: any;
-  postulated_candidat: boolean;
 
   constructor(
     private langueService: LangueService,
@@ -61,6 +63,7 @@ export class OffresComponent implements OnInit {
   ngOnInit(): void {
 
     this.candidat=JSON.parse(localStorage.getItem('candidat'));
+    
     //Tableau des langues from cache
     this.langues = JSON.parse(localStorage.languesCache || '[]');
     if (this.langues.length == 0) {
@@ -88,7 +91,7 @@ export class OffresComponent implements OnInit {
       this.findTypeOffres();
     }
     console.log('Les types:', this.offre_types);
-
+    
     //In case you logged/signed as a candidate after being prompted to login from the offre modal
     if (JSON.parse(sessionStorage.getItem('connected'))) {
       var selectedOffre = JSON.parse(sessionStorage.getItem('offre'));
@@ -107,7 +110,6 @@ export class OffresComponent implements OnInit {
       this.findAll();
     }
 
-    this.langues = JSON.parse(localStorage.languesCache || '[]');
     this.primengConfig.ripple = true;
   }
 
@@ -280,38 +282,11 @@ export class OffresComponent implements OnInit {
       this.searched_offres=search;
   }
 
-  //Methode pour determiner si le candidat a postulé pour cette offre
-  postulated(offre){
-    console.log(offre);
-    if(this.candidat){
-      if(offre.candidatures.length>0){
-        offre.candidatures.forEach(candidature=>{
-          if(candidature.candidat_id == this.candidat.id){
-            this.postulated_candidat=true;
-            sessionStorage.setItem('postulated',JSON.stringify(this.postulated_candidat));
-          }
-          else{
-            this.postulated_candidat=false;
-            sessionStorage.setItem('postulated',JSON.stringify(this.postulated_candidat));
-          }
-        })
-      }
-      else{
-        this.postulated_candidat=false;
-        sessionStorage.setItem('postulated',JSON.stringify(this.postulated_candidat));
-      }
-    }
-    else{
-      this.postulated_candidat=false;
-      sessionStorage.setItem('postulated',JSON.stringify(this.postulated_candidat));
-    }
-  }
+  
   //Shows the modal
   showDialog(offre) {
-    this.postulated_candidat=false;
-    this.postulated(offre);
+    this.currentOffre=offre;
     this.clicked = true;
-    sessionStorage.setItem('offre', JSON.stringify(offre));
     var modal = document.getElementById('offreModal');
     modal.style.display = 'block';
   }

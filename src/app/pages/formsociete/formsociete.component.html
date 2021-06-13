@@ -37,10 +37,11 @@
           showDelay="1000" hideDelay="500">
       </div>
 
-      <div class="p-field p-col-12">
-        <label for="logo">Logo</label>
-        <input id="logo" type="text" rows="1" pInputText [(ngModel)]="employeur.logo" name="logo" #logo="ngModel"
-          pTooltip="Taper le url de img" tooltipPosition="right" tooltipEvent="focus" showDelay="1000" hideDelay="500">
+      <div class="p-field">
+        <label for="logo">logo</label>
+          <input type="file" accept=".jpg,.png,.jpeg"
+                 id="file"
+                 (change)="handleFileInput($event.target.files)">
       </div>
 
 

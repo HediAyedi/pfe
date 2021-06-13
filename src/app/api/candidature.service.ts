@@ -14,22 +14,12 @@ export class CandidatureService {
   private url = environment.baseUrl;
   constructor(private httpClient: HttpClient) { }
 
-  public getAll(): Observable<any> {
-    
-    return this.httpClient.get<Candidature[]>(this.url + '/candidatures');
-  }
-
   public getAllById(id: any): Observable<any> {
-    
-    return this.httpClient.get<Candidature[]>(this.url + '/candidatures');
+    return this.httpClient.get<Candidature[]>(this.url + '/candidatures/' + id);
   }
-
-  public get(id: any): Observable<any>{
-    return this.httpClient.get<Candidature>(this.url + '/candidature/' + id);
-  }
-
 
   public save(candidature: Candidature): Observable<any>{
+    
     return this.httpClient.post(this.url + '/candidature', candidature);
   }
 

@@ -9,7 +9,7 @@
         <div class="right">
           
           <h1>{{blog.titre}}</h1>
-          <p class="description" style="white-space: pre-wrap">{{blog.description | slice:0:250}}... <br></p>
+          <p class="description" style="white-space: pre-wrap">{{(blog.description | slice:0:250)+'...'}}<br></p>
           <p class="date"> posted at : {{blog.created_at | date: 'dd/MM/yyyy'}}</p>
           <p class="suite">voir la suite</p>
         </div>

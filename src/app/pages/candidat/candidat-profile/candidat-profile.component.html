@@ -1,0 +1,92 @@
+<div class="flex-container">
+  <div class="description-card">
+    <div class="description-title">
+      Nom et prenom : </div>
+
+    <div [innerHTML]="candidat.nom | titlecase"></div>
+  </div>
+
+  <div class="description-card">
+    <div class="description-title">
+      motivation : </div>
+
+    <div [innerHTML]="candidat.motivation | lowercase"></div>
+  </div>
+
+  <div class="description-card">
+    <div class="description-title">
+      Informations généralles : </div>
+
+    <div class="details">
+
+      <div class="card-single">
+        <div class="chip-wrapper">
+          <span class="title"> telephone :
+          </span>
+          <div class="chip">
+            {{candidat.telephone}}
+          </div>
+        </div>
+      </div>
+
+      <div class="card-single">
+        <div class="chip-wrapper">
+          <span class="title"> civilite :
+          </span>
+          <div class="chip">
+            {{candidat.civilite}}
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="candidat.cv" class="card-single">
+        <div class="chip-wrapper">
+          <span class="title"> experience :
+          </span>
+          <div class="chip">
+            {{candidat.cv.niveau_experience}}
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="candidat.cv" class="card-single">
+        <div class="chip-wrapper">
+          <span class="title"> Status :
+          </span>
+          <div class="chip">
+            {{candidat.cv.status}}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div *ngIf="candidat.critiques" class="description-card">
+    <div class="description-title">
+      Critiques : </div>
+
+    <div *ngFor="let critique of candidat.critiques">
+        <div *ngIf="critique.visible" class="description-card">
+            {{critique.critique}}
+          </div>
+    </div>
+  </div>
+
+  <div *ngIf="candidat.notes" class="description-card">
+    <div class="description-title">
+      Badges : </div>
+
+    <div class="details">
+      <div *ngFor=" let note of candidat.notes" class="card-single">
+        <div class="chip-wrapper">
+          
+          <div class="chip">
+            {{note.test.domaine}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

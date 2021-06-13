@@ -42,7 +42,7 @@ div{
 }
 
 .main {
-  background-image: url("../../../assets/Hiring-Manager-Reviewing-Resume-During-Job-Interview.jpg");
+  /*  background-image: url("../../../assets/Hiring-Manager-Reviewing-Resume-During-Job-Interview.jpg");  */
   background-size: cover;
   padding: 0px 2rem;
   margin: 5px auto;
@@ -93,16 +93,10 @@ div{
 .column{
     
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: column;
   }
 
-@media (max-width:700px) {
-  
-  .column{
-    display: flex;
-    flex-direction: column;
-    }
-}
+
 
 .search {
   display: flex;
@@ -120,7 +114,8 @@ div{
 }
 
 .card-single {
-  background: hsla(0, 0%, 100%, 0.800);
+  background: rgba(255, 255, 255, 0.8);
+  color: rgb(0, 90, 192);
   backdrop-filter: blur(30px);
   height: fit-content;
   padding: 20px 20px 10px 20px;
@@ -267,6 +262,7 @@ div{
 .details{
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   height: fit-content;
 }
 
@@ -306,4 +302,20 @@ div{
   margin: 6px;
   border-radius: 25px;
   width: 100vw;
+}
+
+:host ::ng-deep .p-dropdown,:host ::ng-deep .p-component{
+  border-radius: 25px;
+}
+
+:host ::ng-deep p-multiselect .p-multiselect-chip, :host ::ng-deep p-multiselect .p-multiselect-item {
+  border-radius: 25px;
+}
+
+:host ::ng-deep p-multiselect .p-multiselect-items-wrapper{
+  border-radius: 0px 0px 25px 25px;
+}
+
+:host ::ng-deep p-multiselect .p-multiselect-header{
+  border-radius: 25px 25px 0px 0px;
 }

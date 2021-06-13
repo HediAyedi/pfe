@@ -99,6 +99,11 @@ import { CvComponent } from './pages/cv/cv.component';
 import { ColorPickerModule } from 'primeng/colorpicker';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 
+
+import { NgxImageCompressService } from 'ngx-image-compress';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { CandidatProfileComponent } from './pages/candidat/candidat-profile/candidat-profile.component';
+
 // import {ConfirmDialogModule} from 'primeng/confirmdialog';
 // import {ConfirmationService} from 'primeng/api';
 @NgModule({
@@ -135,6 +140,7 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
     HomeCandidatComponent,
     CandidaturesComponent,
     EmployeurDashboardComponent,
+    CandidatProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -196,10 +202,12 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
     Ng2SearchPipeModule,
     AngularEditorModule,
 
+    PdfViewerModule,
+
     // ConfirmDialogModule,
     // ConfirmationService
   ],
-  providers: [MessageService, ConfirmationService],
+  providers: [MessageService, ConfirmationService,NgxImageCompressService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

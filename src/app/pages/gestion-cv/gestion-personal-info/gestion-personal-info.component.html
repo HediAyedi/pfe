@@ -28,8 +28,12 @@
 
           <div class="p-field p-col-12 margin-top">
             <label for="image">Image</label>
-            <input class="input" #image="ngModel" id="image" name="image" type="text" required pInputText
-              [(ngModel)]="candidat.image">
+              <div class="p-field">
+                
+                <input pInputText class="input" type="file" accept=".png,.jpg,.jpeg"  id="image" name="image" (change)="handleFileInput($event.target.files)">
+                
+                <br><img [src]="candidat.image" height="200px">
+              </div>
           </div>
 
           <div class="p-field p-col-12 p-md-6 p-justify-between">

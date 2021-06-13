@@ -1,26 +1,29 @@
 <div class="main">
-    <h1>
-      Informations Professionnelles
-    </h1>
-    <h2>
-      Vérifiez vos informations professionnelles
-    </h2>
-    <div class="flex-cont">
+  <h1>
+    Informations Professionnelles
+  </h1>
+  <h2>
+    Vérifiez vos informations professionnelles
+  </h2>
+  <div class="flex-cont">
 
-      <form class="p-fluid p-formgrid p-grid card-single">
+    <form class="p-fluid p-formgrid p-grid card-single">
 
-        <div class="p-field p-col-12 p-md-6 p-justify-between">
-          <div style="width: 50%;">
-            <label for="langue">Langues Exigées</label>
+      <div class="p-field p-col-12 p-md-6 p-justify-between">
+        <div style="width: 50%;">
+          <label for="langue">Langues Exigées</label>
+          <div class="p-field">
             <p-multiSelect id="langue" [options]=" selected_langues.concat(this.unselected_langues)"
               (onChange)="unselectedLangues()" [(ngModel)]="selected_langues" name="langue" #langue="ngModel"
               defaultLabel="Selectioner les langues voulu" optionLabel="langue" display="chip" required
               [ngClass]="{'ng-dirty': (langue.dirty && langue.invalid)}"></p-multiSelect>
             <small [ngClass]="{'p-error': (langue.dirty && langue.invalid)}">Selectionner au minimum une langue.</small>
           </div>
+        </div>
 
-          <div style="width: 49%;">
-            <label for="type_offres">Types d'offres</label>
+        <div style="width: 49%;">
+          <label for="type_offres">Types d'offres</label>
+          <div class="p-field">
             <p-multiSelect id="type_offres" [options]="selected_types.concat(this.unselected_types)"
               (onChange)="unselectedTypes()" [(ngModel)]="selected_types" name="type_offres" #type_offres="ngModel"
               defaultLabel="Selectioner les types d'offres voulu" optionLabel="emploi_type" display="chip" required
@@ -29,82 +32,87 @@
             <small [ngClass]="{'p-error': (type_offres.dirty && type_offres.invalid)}">Les types sont requis.</small>
           </div>
         </div>
+      </div>
 
-        <div class="p-field p-col-12 p-md-6 p-justify-between">
-          <div style="width: 43%;">
-            <label for="experience">Experience exigé</label>
-            <div class="p-field p-col-12 p-md-3">
-              <p-dropdown id="experience" [options]="niveaux_experience" [(ngModel)]="cv.niveau_experience"
-                placeholder="Choisissez votre niveau d'expérience " name="experience" #experience="ngModel" required
-                [ngClass]="{'ng-dirty': (experience.dirty && experience.invalid)}">
-              </p-dropdown>
-              <small class="p-error" *ngIf="(experience.dirty && experience.invalid)">L'experience est requis.</small>
-            </div>
-          </div>
-
-          <div style="width: 56%;">
-            <label for="niveau_education">Niveau Education</label>
-            <div class="p-field p-col-12 p-md-3">
-              <p-dropdown id="niveau_education" [options]="niveaux_education" [(ngModel)]="cv.niveau_education"
-                placeholder="Choisissez le niveau d'education" name="niveau_education" #niveau_education="ngModel"
-                required [ngClass]="{'ng-dirty': (niveau_education.dirty && niveau_education.invalid)}">
-              </p-dropdown>
-              <small class="p-error" *ngIf="(niveau_education.dirty && niveau_education.invalid)">Le niveau d'éducation
-                est requis.</small>
-            </div>
+      <div class="p-field p-col-12 p-md-6 p-justify-between">
+        <div style="width: 43%;">
+          <label for="experience">Experience exigé</label>
+          <div class="p-field p-col-12 p-md-3">
+            <p-dropdown id="experience" [options]="niveaux_experience" [(ngModel)]="cv.niveau_experience"
+              placeholder="Choisissez votre niveau d'expérience " name="experience" #experience="ngModel" required
+              [ngClass]="{'ng-dirty': (experience.dirty && experience.invalid)}">
+            </p-dropdown>
+            <small class="p-error" *ngIf="(experience.dirty && experience.invalid)">L'experience est requis.</small>
           </div>
         </div>
 
-        <div class="p-field p-col-12 p-md-6 p-justify-between">
-          <div style="width: 25%;">
-            <label for="salaire">Salaire préféré</label>
-            <div class="p-field p-col-12 p-md-3">
-              <input type="number" required pInputText id="salaire" [(ngModel)]="cv.salaire"
-                placeholder="Choisissez votre salaire préféré" name="salaire" pTooltip="Vous pouvez laisser ce vide"
-                tooltipPosition="top">
-            </div>
+        <div style="width: 56%;">
+          <label for="niveau_education">Niveau Education</label>
+          <div class="p-field p-col-12 p-md-3">
+            <p-dropdown id="niveau_education" [options]="niveaux_education" [(ngModel)]="cv.niveau_education"
+              placeholder="Choisissez le niveau d'education" name="niveau_education" #niveau_education="ngModel"
+              required [ngClass]="{'ng-dirty': (niveau_education.dirty && niveau_education.invalid)}">
+            </p-dropdown>
+            <small class="p-error" *ngIf="(niveau_education.dirty && niveau_education.invalid)">Le niveau d'éducation
+              est requis.</small>
           </div>
+        </div>
+      </div>
 
-          <div style="width: 74%;">
-            <label for="stat">Status actuel </label>
-            <div class="p-field p-col-12 p-md-3">
-              <p-dropdown id="stat" [options]="status" [(ngModel)]="cv.status" required #stat="ngModel"
-                placeholder="Choisissez votre status d'emploi" name="status">
-              </p-dropdown>
-            </div>
-            <small [ngClass]="{'p-error': (stat.dirty && stat.invalid)}">Votre status d'emploi est requis.</small>
+      <div class="p-field p-col-12 p-md-6 p-justify-between">
+        <div style="width: 25%;">
+          <label for="salaire">Salaire préféré</label>
+          <div class="p-field p-col-12 p-md-3">
+            <input type="number" required pInputText id="salaire" [(ngModel)]="cv.salaire"
+              placeholder="Choisissez votre salaire préféré" name="salaire" pTooltip="Vous pouvez laisser ce vide"
+              tooltipPosition="top">
           </div>
         </div>
 
-        <div class="p-field p-col-12 p-md-6 p-justify-between">
-          <div class="p-field p-col-12 p-md-6" style="width: 100%;">
-            <label for="domaines">Domaines d'intêret</label>
+        <div style="width: 74%;">
+          <label for="stat">Status actuel </label>
+          <div class="p-field p-col-12 p-md-3">
+            <p-dropdown id="stat" [options]="status" [(ngModel)]="cv.status" required #stat="ngModel"
+              placeholder="Choisissez votre status d'emploi" name="status">
+            </p-dropdown>
+          </div>
+          <small [ngClass]="{'p-error': (stat.dirty && stat.invalid)}">Votre status d'emploi est requis.</small>
+        </div>
+      </div>
+
+      <div class="p-field p-col-12 p-md-6 p-justify-between">
+        <div class="p-field p-col-12 p-md-6" style="width: 100%;">
+          <label for="domaines">Domaines d'intêret</label>
+          <div class="p-field">
             <p-multiSelect id="domaines" [options]="selected_domaines.concat(this.unselected_domaines)"
               (onChange)="unselectedDomaines()" [(ngModel)]="selected_domaines" name="domaines"
               defaultLabel="Selectioner vos domaines" optionLabel="domaine" display="chip" required></p-multiSelect>
             <small>Selectionner au minimum un domaine.</small>
           </div>
         </div>
+      </div>
 
 
-        <div class="p-field p-col-12 p-md-6 p-justify-between">
-          <div class="p-field p-col-12 p-md-6" style="width: 100%;">
-            <label for="competences">Compétences exigées</label>
+      <div class="p-field p-col-12 p-md-6 p-justify-between">
+        <div class="p-field p-col-12 p-md-6" style="width: 100%;">
+          <label for="competences">Compétences exigées</label>
+          <div class="p-field">
             <p-multiSelect id="competences" [options]="selected_competences.concat(this.unselected_competences)"
               (onChange)="unselectedCompetences()" [(ngModel)]="selected_competences" name="competences"
               defaultLabel="Selectioner vos compétences" optionLabel="competence" display="chip"></p-multiSelect>
           </div>
         </div>
+      </div>
 
-        <div class="p-justify-between margin-top">
-          <button pButton pRipple type="button" label="Précédent" (click)="previousPage()" icon="pi pi-angle-left"
-            iconPos="left" class="p-button-rounded"></button>
-          <button pButton pRipple type="button" label="Confirmer" (click)="nextPage()" icon="pi pi-angle-right"
-            iconPos="right"
-            [disabled]="selected_langues.length==0 || selected_types.length==0 || experience.invalid || niveau_education.invalid || stat.invalid || selected_domaines.length==0"
-            class="p-button-rounded"></button>
-        </div>
+      <div class="p-justify-between margin-top">
+        <button pButton pRipple type="button" label="Précédent" (click)="previousPage()" icon="pi pi-angle-left"
+          iconPos="left" class="p-button-rounded"></button>
+        <button pButton pRipple type="button" label="Confirmer" (click)="nextPage()" icon="pi pi-angle-right"
+          iconPos="right"
+          [disabled]="selected_langues.length==0 || selected_types.length==0 || experience.invalid || niveau_education.invalid || stat.invalid || selected_domaines.length==0"
+          class="p-button-rounded"></button>
+      </div>
 
-      </form>
-    </div>
+    </form>
+  </div>
 </div>

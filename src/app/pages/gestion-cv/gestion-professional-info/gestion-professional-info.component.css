@@ -185,14 +185,34 @@ div{
   backdrop-filter: blur(80px);
 }
 
-:host ::ng-deep .p-dropdown, .p-component, .p-dropdown-items-wrapper, .p-multiselect-chip, .p-multiselect , .p-multiselect-open , .ng-tns-c75-6, .p-dropdown-items, .ng-tns-c72-1{
+
+  
+/* NG PRIME STYLING*/
+
+:host ::ng-deep .p-dropdown,:host ::ng-deep .p-component{
   border-radius: 25px;
 }
 
-:host ::ng-deep p-multiselect .p-multiselect-chip, .p-multiselect , .p-multiselect-open , .ng-tns-c75-6, .p-dropdown-items, .ng-tns-c72-1{
+:host ::ng-deep p-multiselect .p-multiselect-chip, :host ::ng-deep p-multiselect .p-multiselect-item {
   border-radius: 25px;
+}
+
+:host ::ng-deep p-multiselect .p-multiselect-items-wrapper{
+  border-radius: 0px 0px 25px 25px;
+}
+
+:host ::ng-deep p-multiselect .p-multiselect-header{
+  border-radius: 25px 25px 0px 0px;
 }
 
 :host ::ng-deep .p-multiselect-label .ng-star-inserted{
   border-radius: 25px;
+}
+
+:host ::ng-deep .p-dropdown,:host ::ng-deep  .p-dropdown-items-wrapper, .p-dropdown-items, .ng-tns-c72-1{
+  border-radius: 25px;
+}
+
+.p-field{
+  margin: 2px;
 }
