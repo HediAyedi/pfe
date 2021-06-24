@@ -10,6 +10,7 @@ export class Offre {
     exigence_emploi: string;
     nom_emploi: string;
     active: boolean;
+    nbre_postes:number;
     employeur_id: number;
     employeur: Employeur;
     candidatures: Candidature[];
@@ -21,10 +22,12 @@ export class Offre {
     constructor() {
         this.id = null;
         this.genre = '';
+        this.nom_emploi = '';
         this.experience = '';
+        this.nbre_postes=0;
         this.niveau_education = '';
         this.description_emploi = '';
-        this.domaine = null;
+        this.domaine = '';
         this.exigence_emploi = '';
         this.active = true;
         this.employeur_id = null;

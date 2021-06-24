@@ -238,6 +238,9 @@ body{
 
 }
 
-:host ::ng-deep .ng-tns-c25-0.p-component{
-  border-radius: 14px 25px 25px 25px;
+:host ::ng-deep .ng-tns-c25-0{
+  border-radius: 25px;
+}
+:host ::ng-deep .p-overlaypanel:after,:host ::ng-deep .p-overlaypanel:before{
+  display: none;
 }

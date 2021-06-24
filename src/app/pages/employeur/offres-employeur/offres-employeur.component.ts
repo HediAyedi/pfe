@@ -55,9 +55,9 @@ export class OffresEmployeurComponent implements OnInit {
   config: AngularEditorConfig = {
     editable: true,
     spellcheck: true,
-    height: '15rem',
-    minHeight: '5rem',
-    placeholder: 'Enter text here...',
+    height: '200px',
+    minHeight: '200px',
+    placeholder: '',
     translate: 'no',
     defaultParagraphSeparator: 'p',
     defaultFontName: 'Arial',
@@ -155,6 +155,8 @@ export class OffresEmployeurComponent implements OnInit {
   
 
   add() {
+    document.getElementById('loader').style.display = "block";
+    document.getElementById('add').style.display = "none";
     this.offre.employeur_id = this.employeur.id;
     this.offre.domaine = this.selected_domaine.domaine;
 
@@ -172,8 +174,11 @@ export class OffresEmployeurComponent implements OnInit {
 
     this.offreService.save(this.offre).subscribe(
       (res) => {
+        
+        document.getElementById('loader').style.display = "none";
+        document.getElementById('add').style.display = "block";
         console.log(res);
-        if (res) {
+        
           this.message = 'Ajout effectué avec succés';
           this.offres.push(res);
           localStorage.setItem('employeur', JSON.stringify(this.employeur));
@@ -182,9 +187,11 @@ export class OffresEmployeurComponent implements OnInit {
           this.employeurService.getAllCache();
           this.offreService.getAllCache();
           this.offre = new Offre();
-        }
       },
       (err) => {
+        
+        document.getElementById('loader').style.display = "none";
+        document.getElementById('add').style.display = "block";
         this.message = err.error;
         console.log(this.message);
       }
@@ -192,6 +199,9 @@ export class OffresEmployeurComponent implements OnInit {
   }
 
   edit() {
+    document.getElementById('loader').style.display = "block";
+    document.getElementById('edit').style.display = "none";
+
     this.offre.domaine = this.selected_domaine.domaine;
     this.offre.emploi_types=[];
     this.offre.langues=[];
@@ -210,7 +220,6 @@ export class OffresEmployeurComponent implements OnInit {
     this.offreService.update(this.offre, this.offre.id).subscribe(
       (res) => {
         console.log(res);
-        if (res) {
           this.message = 'Ajout effectué avec succés';
           this.findEmployeur(this.employeur.id);
           localStorage.setItem('employeur', JSON.stringify(this.employeur));
@@ -218,11 +227,16 @@ export class OffresEmployeurComponent implements OnInit {
           this.offreService.getAllCache();
           this.cancel();
           this.offre = new Offre();
-        }
+        
+          document.getElementById('loader').style.display = "none";
+          document.getElementById('edit').style.display = "block";
       },
       (err) => {
         this.message = err.error;
         console.log(this.message);
+        
+        document.getElementById('loader').style.display = "none";
+        document.getElementById('edit').style.display = "block";
       }
     );
   }
@@ -296,7 +310,6 @@ export class OffresEmployeurComponent implements OnInit {
     this.selected_langues = [];
     this.selected_types = [];
     this.selected_domaine=null;
-    document.forms[0].reset();
   }
 
   //Shows the editing form modal

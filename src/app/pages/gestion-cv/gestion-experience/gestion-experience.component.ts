@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { CvService } from 'src/app/api/cv.service';
 import { ExperienceService } from 'src/app/api/experience.service';
 import { Location } from '@angular/common';
-import { Cv } from 'src/app/models/cv';
 import { Experience } from 'src/app/models/experience';
 
 @Component({
@@ -13,7 +11,6 @@ import { Experience } from 'src/app/models/experience';
 })
 export class GestionExperienceComponent implements OnInit {
   cv_id: string;
-  cv= new Cv();
   experience= new Experience();
   modif_experience= new Experience();
   experiences: Experience[]=[] ;
@@ -23,7 +20,6 @@ export class GestionExperienceComponent implements OnInit {
 
   constructor(
     
-    private cvService: CvService,
     private experienceService: ExperienceService,
     private router: Router,
     private route: ActivatedRoute,
@@ -32,15 +28,13 @@ export class GestionExperienceComponent implements OnInit {
 
   ngOnInit(): void {
     this.cv_id = this.route.snapshot.paramMap.get('cv_id');
-    this.findCv();
+    this.findExperienceById();
   }
 
-  findCv() {
-    this.cvService.get(this.cv_id).subscribe(
+  findExperienceById() {
+    this.experienceService.getAllById(this.cv_id).subscribe(
       (res) => {
-        this.cv = res;
-        console.log('CV :', this.cv);
-        this.experiences= this.cv.experiences;
+        this.experiences = res;
         console.log('Experiences :', this.experiences);
       },
       (err) => {
@@ -62,17 +56,27 @@ export class GestionExperienceComponent implements OnInit {
   cancel(){
     var formModal = document.getElementById("form");
     formModal.style.display = "none";
-    this.findCv();
+    this.findExperienceById();
     this.modif_experience=new Experience();
   }
 
   ajouterExperience(){
-    this.experience.cv_id=this.cv.id;
+    document.getElementById('add_loader').style.display = "none";
+    document.getElementById('add').style.display = "block";
+    this.experience.cv_id= +this.cv_id;
     this.experienceService.save(this.experience).subscribe(res=>{
       this.experiences.push(res);
+
+      this.selected = false;
       this.experience=new Experience();
+      document.getElementById('add_loader').style.display = "block";
+      document.getElementById('add').style.display = "none";
+      document.forms[0].reset();
+      document.forms[1].reset();
     }, err=>{
-      console.log(err)
+      console.log(err);
+      document.getElementById('add_loader').style.display = "block";
+      document.getElementById('add').style.display = "none";
     })
   }
 
@@ -93,10 +97,19 @@ export class GestionExperienceComponent implements OnInit {
 
 
   modifierExperience(){
+    
+    document.getElementById('edit_loader').style.display = "block";
+    document.getElementById('edit').style.display = "none";
     this.experienceService.update(this.modif_experience,this.modif_experience.id).subscribe(res=>{
+      
+      document.getElementById('edit_loader').style.display = "none";
+      document.getElementById('edit').style.display = "block";
       this.cancel();
+
     }, err=>{
-      console.log(err)
+      console.log(err);
+      document.getElementById('edit_loader').style.display = "none";
+      document.getElementById('edit').style.display = "block";
     })
   }
 
@@ -105,9 +118,9 @@ export class GestionExperienceComponent implements OnInit {
   //Suppression experience
   supprimerExperience(id){
     this.experienceService.delete(id).subscribe(res=>{
-      this.findCv();
+      this.findExperienceById();
     }, err=>{
-      this.findCv();
+      this.findExperienceById();
       console.log(err)
     })
   }
@@ -139,7 +152,7 @@ export class GestionExperienceComponent implements OnInit {
     this.location.back();
   }
 
-   confirm(){
+  confirm(){
     this.router.navigate(['candidat/home']);
    }
 }

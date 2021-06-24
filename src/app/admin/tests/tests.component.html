@@ -29,7 +29,7 @@
                   name="test" placeholder="test" />
   
                 <button pButton pRipple type="button" (click)="modifierTest(test)" icon="pi pi-check"
-                  pTooltip="modifier question" class="p-button-rounded p-button-text"> </button>
+                  pTooltip="modifier question" class="p-button-rounded p-button-text" [disabled]="test.domaine==''"> </button>
               </form>
             </div>
           </div>
@@ -44,7 +44,7 @@
             <!-- Form for adding a question -->
             <input type="text" pInputText class="input" [(ngModel)]="ajout_question.question" placeholder="question" />
             <button pButton pRipple type="button" (click)="ajouterQuestion()" icon="pi pi-plus"
-              pTooltip="ajouter question" class="p-button-rounded p-button-text"> </button>
+              pTooltip="ajouter question" class="p-button-rounded p-button-text" [disabled]="ajout_question.question==''"> </button>
   
             <!-- Loop in the questions array -->
             <div *ngFor="let question of questions">
@@ -54,7 +54,7 @@
                 <div class="question input">{{question.question}}</div>
                 <div>
   
-                  <!-- Form for modifying a question -->
+                  <!-- Form Modal for modifying a question -->
   
                   <div id="editQuestion" class="modal">
                     <div class="modal-content">
@@ -69,7 +69,7 @@
                           pTooltip="modifier la taille à partir du coin en bas à droit."></textarea>
   
                         <button pButton pRipple type="button" (click)="modifierQuestion(modif_question)" icon="pi pi-check"
-                          pTooltip="modifier question" class="p-button-rounded p-button-text"> </button>
+                          pTooltip="modifier question" class="p-button-rounded p-button-text" [disabled]="modif_question.question==''"> </button>
                       </form>
                     </div>
                   </div>
@@ -86,7 +86,6 @@
               <!-- Loop in the reponses array -->
               <div *ngFor="let reponse of question.reponses">
                   <div *ngIf="reponse.selected == false">
-  
                     <div style="display: flex;justify-content:center;">
                       <div class="reponse input" [ngClass]="reponse.correct ? 'success' : 'danger'">{{reponse.reponse}}
                       </div>
@@ -111,7 +110,7 @@
                       value="{{selected_reponse.reponse}}"></textarea>
   
                     <button pButton pRipple type="button" icon="pi pi-check" (click)="modifierReponse(reponse)"
-                      pTooltip="confirmer" class="p-button-rounded p-button-text"></button>
+                      pTooltip="confirmer" class="p-button-rounded p-button-text" [disabled]="selected_reponse.reponse==''"></button>
   
                     <button pButton pRipple type="button" (click)="cancelReponse(question)" icon="pi pi-times" pTooltip="cancel"
                       class="p-button-rounded p-button-danger p-button-text"></button>
@@ -122,7 +121,7 @@
   
               <input type="text" pInputText class="input" [(ngModel)]="ajout_reponse.reponse" placeholder="réponse" />
               <button pButton pRipple type="button" (click)="ajouterReponse(question)" icon="pi pi-plus"
-                pTooltip="ajouter" class="p-button-rounded p-button-text"></button>
+                pTooltip="ajouter" class="p-button-rounded p-button-text" [disabled]="ajout_reponse.reponse==''"></button>
             </div>
           </div>
         </div>
@@ -164,7 +163,7 @@
           <input id="test" type="text" pInputText class="input" [(ngModel)]="ajout_test.domaine" name="test"
             placeholder="test sujet">
           <button pButton pRipple type="button" (click)="ajouterTest()" icon="pi pi-plus" pTooltip="ajouter"
-            class="p-button-rounded p-button-text"></button>
+            class="p-button-rounded p-button-text" [disabled]="ajout_test.domaine==''"></button>
         </form>
 
       </div>

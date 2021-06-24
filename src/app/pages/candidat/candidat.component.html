@@ -1,0 +1,122 @@
+<div id="testModal" class="test-modal">
+  <div class="test-modal-content">
+    <div class="p-justify-right">
+      <button pButton pRipple type="button" (click)="TestCancel()" icon="pi pi-times"
+        class="p-button-danger p-button-rounded p-button-text "></button>
+    </div>
+    <div *ngIf="clicked">
+      <app-quizz></app-quizz>
+    </div>
+  </div>
+</div>
+
+
+<!-- CANDIDAT MODAL -->
+<div id="candidatModal" class="candidatModal">
+  <div class="candidatModal-content">
+    <div class="p-justify-right">
+      <button pButton pRipple type="button" (click)="CandidatCancel()" icon="pi pi-times"
+        class="p-button-danger p-button-rounded p-button-text "></button>
+    </div>
+    <p-scrollPanel [style]="{width: '100%', height: '80vh'}">
+      <app-candidat-profile *ngIf="displayed_candidat" [candidat]="displayed_candidat"></app-candidat-profile>
+    </p-scrollPanel>
+  </div>
+</div>
+
+  <!-- Navigation bar segment -->
+  <div class="navigation-container">
+    <div class=" navigation sidebar-menu">
+    
+      
+          <a [routerLink]="['/candidat/home']" routerLinkActive="active">
+            Accueil
+          </a>
+        
+      
+          <a [routerLink]="['/candidat/critiques']" routerLinkActive="active">
+            Critiques
+          </a>
+        
+        <div *ngIf="candidat.cv">
+          <h4 style="padding: 10px;" >Informations CV:</h4>
+        
+            <a [routerLink]="['/candidat/gestion-cv/personal',candidat.cv.id]" routerLinkActive="active">
+              Personnelles
+            </a>
+          
+        
+            <a [routerLink]="['/candidat/gestion-cv/professional',candidat.cv.id]" routerLinkActive="active">
+              Professionnelles
+            </a>
+          
+        
+            <a [routerLink]="['/candidat/gestion-cv/experiences',candidat.cv.id]" routerLinkActive="active">
+              Experiences
+            </a>
+          
+        </div>
+      
+    </div>
+  </div>
+
+
+  <!-- Main content -->
+  <div class="p-justify-between main-container">
+    <div class="main">
+      <p-scrollPanel [styleClass]="'scroll'" >
+        <router-outlet></router-outlet>
+      </p-scrollPanel>
+    </div>
+
+    <div class="test-bar">
+
+      <!-- User Overlay -->
+      <p-overlayPanel #op [style]="{width: '200px'}">
+        <ng-template pTemplate>
+
+          <button pButton pRipple type="button" [routerLink]="['/candidat/profil']" icon="pi pi-user-edit"
+            label="Gestion profil" class="p-button-text sign-out"></button>
+
+          <button pButton pRipple type="button" (click)="signOut()" icon="pi pi-sign-out" label="Déconnecter"
+            class="p-button-text sign-out"></button>
+        </ng-template>
+      </p-overlayPanel>
+
+      <!-- User segment -->
+      <div>
+        <div class="user-wrapper">
+          <div *ngIf="candidat.image==null, else image">
+            <img src="../../../../assets/firm.png" width="80px" height="80px">
+          </div>
+
+          <ng-template #image>
+            <img src="{{candidat.image}}" width="80px" height="80px">
+          </ng-template>
+
+          <i (click)="op.toggle($event)" class="pi pi-ellipsis-v"></i>
+        </div>
+
+        <div class="user-wrapper">
+          <h4>{{candidat.nom}}</h4>
+        </div>
+      </div>
+      <div class="nav-buttons">
+        <a pButton pRipple class="p-button-rounded p-button-text nav-button"
+          (click)="CandidatDialog()"> Affichagge Candidat </a>
+        <div *ngIf="!candidat.cv">
+          <a pButton (click)="ajoutCV()" class="p-button-rounded p-button-text nav-button">
+            Ajouter CV
+          </a>
+        </div>
+      </div>
+      <!-- Test segment -->
+      <div class="test-bar-card">
+        <p-dropdown id="test" [options]="tests" [(ngModel)]="selected_test" required optionLabel="domaine"
+          #test="ngModel" placeholder="Choisissez un test" name="test">
+        </p-dropdown>
+        <button pButton (click)="openTestDialog(selected_test)" [disabled]="test.invalid"
+          class="p-button-rounded p-button-text test-button">Faire un test</button>
+      </div>
+    </div>
+  </div>

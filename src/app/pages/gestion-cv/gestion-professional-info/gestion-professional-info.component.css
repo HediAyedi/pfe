@@ -6,7 +6,7 @@
   white-space: pre-wrap
 }
 
-.flex-cont {
+.flex-container {
 
   display: flex;
   flex-wrap: wrap;
@@ -17,26 +17,12 @@
   flex-flow: column;
 }
 
-.blur {
-  padding: 5px 10px;
-  margin: 5px;
-  border-radius: 30px;
-  background: rgba(255, 255, 255, 0.616);
-  backdrop-filter: blur(10px);
-}
-.input {
-  padding: 5px 15px;
-  margin: 5px;
-  border-radius: 25px 25px 25px 25px ;
-  background: rgba(255, 255, 255, 0.616);
-  backdrop-filter: blur(10px);
-}
 
 .input-size{
   width: 30vw;
 }
 
-.card-single {
+.container {
   background: hsla(0, 0%, 100%, 0.800);
   backdrop-filter: blur(30px);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -48,52 +34,19 @@
 }
 
 .main {
-  background-image: url("../../../../assets/apps.46003.14259451864568504.ad5e5d07-0fbb-46ed-b9b6-a1b781645691.jpg");
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  padding: 2rem;
+  padding: 1rem 2rem;
   margin: 5px;
   border-radius: 20px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 
-.dialog{
-  border-radius: 20px;
-}
+
 
 .p-fluid label{
   padding: 5px 10px;
 }
 
-.paging-control {
-  background: rgba(255, 255, 255, 0.801);
-  backdrop-filter: blur(10px);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  height: fit-content;
-  width: fit-content;
-  margin: auto;
-  border-radius: 40px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.paging-control /deep/ .ngx-pagination .current {
-  border-radius: 20px;
-}
-.paging-control /deep/ .ngx-pagination {
-  border-radius: 20px;
-  margin: 0px 4px;
-  padding: 0px;
-  height: fit-content;
-}
-
-.paging-control /deep/ .ngx-pagination .ng-star-inserted {
-  border-radius: 20px;
-  margin: 0px 2px;
-}
-.paging-control /deep/ .ngx-pagination .ng-star-inserted:hover {
-  border-radius: 20px;
-  margin: 0px 2px;
-}
 
 
 /* The Modal (background) */
@@ -185,6 +138,17 @@ div{
   backdrop-filter: blur(80px);
 }
 
+.p-button-rounded:disabled {
+  border: 0px;
+  color: gray;
+  background-color: white;
+  box-shadow: none;
+}
+
+
+.p-field{
+  margin: 2px;
+}
 
   
 /* NG PRIME STYLING*/
@@ -213,6 +177,46 @@ div{
   border-radius: 25px;
 }
 
-.p-field{
-  margin: 2px;
+/*  Loader  */
+:host ::ng-deep .custom-spinner .p-progress-spinner-circle {
+  
+  animation: custom-progress-spinner-dash 1.5s ease-in-out infinite, custom-progress-spinner-color 6s ease-in-out infinite;
+}
+
+@keyframes custom-progress-spinner-color {
+  100%,
+  0% {
+      stroke: #3c91ff;
+  }
+  40% {
+      stroke: #b9b9b9;
+  }
+  66% {
+      stroke: #02bee4;
+  }
+  80%,
+  90% {
+      stroke: #3c91ff;
+  }
+}
+
+@keyframes custom-progress-spinner-dash {
+  0% {
+      stroke-dasharray: 1, 200;
+      stroke-dashoffset: 0;
+  }
+  50% {
+      stroke-dasharray: 89, 200;
+      stroke-dashoffset: -35px;
+  }
+  100% {
+      stroke-dasharray: 89, 200;
+      stroke-dashoffset: -124px;
+  }
+}
+
+.spinner{
+  display:flex;
+  justify-content:space-around;
+  margin: 10px auto;
 }

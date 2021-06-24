@@ -1,48 +1,70 @@
 <p-sidebar [(visible)]="display">
 
-<div class="sidebar">
-  <div class="sidebar-brand p-justify-between">
-    <div >
-      <h2 (click)="display = false" >
+  <div class="sidebar">
+    <div class="sidebar-brand p-justify-between">
+      <div>
+        <h2 (click)="display = false">
+          <div class="kamjobs">
+            <span class="las la-bars"></span>
+          </div>
+        </h2>
+      </div>
+      <h2 (click)="router.navigate(['/offres'])" class="kamjobs">KamJobs</h2>
+    </div>
+    <div class="sidebar-menu">
+      <ul>
+        <li><a [routerLink]="['/employeur/home']" routerLinkActive="active"><span
+              class="lar la-chart-bar"></span><span>Dashboard</span></a></li>
+        <li><a [routerLink]="['/employeur/offres']" routerLinkActive="active"><span
+              class="las la-clipboard-list"></span><span>Gestion Offres</span></a></li>
+      </ul>
+
+    </div>
+  </div>
+</p-sidebar>
+
+<p-overlayPanel #op  [style]="{width: '200px'}">
+  <ng-template pTemplate>
+
+    <button pButton pRipple type="button" [routerLink]="['/employeur/profil']" icon="pi pi-user-edit" label="Gestion profil"
+      class="p-button-text sign-out"></button>
+    <button pButton pRipple type="button" (click)="signOut()"  icon="pi pi-sign-out" label="Déconnecter"
+      class="p-button-text sign-out"></button>
+  </ng-template>
+</p-overlayPanel>
+
+<p-scrollPanel [style]="{width: '100%', height: '98vh'}">
+  <div class="main-content">
+    <header>
+      <h2 (click)="display = true">
         <div class="kamjobs">
           <span class="las la-bars"></span>
         </div>
       </h2>
-    </div>
-    <h2 (click)="router.navigate(['/offres'])" class="kamjobs">KamJobs</h2>
-  </div>
-  <div class="sidebar-menu">
-    <ul>
-      <li><a  [routerLink]="['/employeur/home']"   routerLinkActive="active"><span class="lar la-chart-bar"></span><span>Dashboard</span></a></li>
-      <li><a  [routerLink]="['/employeur/profil']"   routerLinkActive="active"><span class="las la-user-circle"></span><span>Gestion Profile</span></a></li>
-      <li><a [routerLink]="['/employeur/offres']"  routerLinkActive="active"><span class="las la-clipboard-list"></span><span>Gestion Offres</span></a></li>
-    </ul>
-  </div>
-</div>
-</p-sidebar>
-
-<div class="main-content">
-  <header>
-    <h2 (click)="display = true" >
-      <div class="kamjobs">
-        <span class="las la-bars"></span>
+  
+      <div class="user-wrapper ">
+  
+        
+        <div>
+          <h4>{{employeur.nom_entreprise}}</h4>
+          <!-- <small>{{employeur.telephone}}</small> -->
+        </div>
+        <div *ngIf="employeur.logo==null, else logo">
+          <img src="../../../../assets/firm.png" width="40px" height="40px">
+        </div>
+        <ng-template #logo>
+          <img  src="{{employeur.logo}}" width="40px" height="40px">
+        </ng-template>
+        <i (click)="op.toggle($event)" class="pi pi-ellipsis-h"></i>
       </div>
-    </h2>
-
-    <div class="user-wrapper">
-      <img (click)="signOut()" pTooltip src="{{employeur.logo}}" width="40px" height="40px">
-      <div>
-        <h4>{{employeur.nom_entreprise}}</h4>
-        <!-- <small>{{employeur.telephone}}</small> -->
-      </div>
-
-    </div>
-
-  </header>
-  <main>
-    <!--<h1>  THIS IS JNAYYEH, you must add languages and offre types to have them show up in the offer selection shit</h1>-->
-    <!--<h2> This Jnayeh warning is being displayed from the employeur home component and Why TF is the adding offre component named welcome ? </h2>-->
-    <router-outlet></router-outlet>
-  </main>
-</div>
+  
+  
+  
+    </header>
+    <main>
+  
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</p-scrollPanel>
 

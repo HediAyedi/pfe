@@ -6,7 +6,7 @@
   white-space: pre-wrap
 }
 
-.flex-cont {
+.flex-container {
 
   display: flex;
   flex-wrap: wrap;
@@ -23,6 +23,7 @@
   border-radius: 30px;
   background: rgba(255, 255, 255, 0.616);
   backdrop-filter: blur(10px);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 .input {
   padding: 5px 15px;
@@ -36,7 +37,7 @@
   width: 30vw;
 }
 
-.card-single {
+.container {
   background: hsla(0, 0%, 100%, 0.800);
   backdrop-filter: blur(30px);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -48,12 +49,10 @@
 }
 
 .main {
-  background-image: url("../../../../assets/apps.46003.14259451864568504.ad5e5d07-0fbb-46ed-b9b6-a1b781645691.jpg");
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  padding: 2rem;
+  padding: 1rem 2rem;
   margin: 5px;
   border-radius: 20px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 
@@ -101,6 +100,7 @@
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
+  backdrop-filter: blur(20px);
   padding-top: 20vh; /* Location of the box */
   left: 0;
   top: 0;
@@ -116,14 +116,16 @@
   0% {opacity:0;}
   100% {opacity:1;}
 }
-
+.form{
+  padding: 20px !important;
+}
 /* Modal Content */
 .modal-content {
   background-color: #fefefe;
   margin: auto;
   padding: 10px;
   border-radius: 20px;
-  width: 60vw;
+  width: 80vw;
   animation: fadeIn 0.3s;
 }
 
@@ -181,3 +183,56 @@ div{
   backdrop-filter: blur(80px);
 }
 
+.p-button-rounded:disabled {
+  border: 0px;
+  color: gray;
+  background-color: white;
+  box-shadow: none;
+}
+
+.margin{
+  margin: 20px;
+}
+/*  Loader  */
+:host ::ng-deep .custom-spinner .p-progress-spinner-circle {
+  
+  animation: custom-progress-spinner-dash 1.5s ease-in-out infinite, custom-progress-spinner-color 6s ease-in-out infinite;
+}
+
+@keyframes custom-progress-spinner-color {
+  100%,
+  0% {
+      stroke: #3c91ff;
+  }
+  40% {
+      stroke: #b9b9b9;
+  }
+  66% {
+      stroke: #02bee4;
+  }
+  80%,
+  90% {
+      stroke: #3c91ff;
+  }
+}
+
+@keyframes custom-progress-spinner-dash {
+  0% {
+      stroke-dasharray: 1, 200;
+      stroke-dashoffset: 0;
+  }
+  50% {
+      stroke-dasharray: 89, 200;
+      stroke-dashoffset: -35px;
+  }
+  100% {
+      stroke-dasharray: 89, 200;
+      stroke-dashoffset: -124px;
+  }
+}
+
+.spinner{
+  display:flex;
+  justify-content:space-around;
+  margin: 10px auto;
+}

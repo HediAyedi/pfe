@@ -6,6 +6,15 @@
   position: fixed;
   top: 0;
   z-index: 100;
-  margin-bottom: 90px;
 }
 
+.router{
+  margin-top: 60px;
+}
+
+:host ::ng-deep .p-scrollpanel .p-scrollpanel-bar {
+  top: 100;
+  z-index: 0;
+  background-color: #c7e1ff;
+  border-radius: 10px;
+}

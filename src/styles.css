@@ -19,3 +19,8 @@ div{
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   white-space: pre-wrap;
 }
+
+:host ::ng-deep .p-scrollpanel .p-scrollpanel-bar {
+
+  background-color: rgb(193, 193, 255);
+}

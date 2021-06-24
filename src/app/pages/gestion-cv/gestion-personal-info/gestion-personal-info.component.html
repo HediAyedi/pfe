@@ -7,14 +7,14 @@
       Tappez vos informations personnelles
     </h3>
 
-    <div class="flex-cont">
-      <form class="p-fluid p-formgrid p-grid card-single">
+    <div class="flex-container">
+      <form class="p-fluid p-formgrid p-grid container">
 
 
           <div class="p-field p-col-12 p-md-6 p-justify-between">
             <div style="width: 70%;">
               <label for="nom">Nom</label>
-              <input #nom="ngModel" id="nom" name="nom" type="text" required pInputText [(ngModel)]="candidat.nom"
+              <input  #nom="ngModel" id="nom" name="nom" type="text" required pInputText [(ngModel)]="candidat.nom"
                 [ngClass]="{'ng-dirty': (nom.invalid && submitted) || (nom.dirty && nom.invalid)}">
               <small *ngIf="(nom.invalid && submitted) || (nom.dirty && nom.invalid)" class="p-error">nom est requis.</small>
             </div>
@@ -30,9 +30,29 @@
             <label for="image">Image</label>
               <div class="p-field">
                 
-                <input pInputText class="input" type="file" accept=".png,.jpg,.jpeg"  id="image" name="image" (change)="handleFileInput($event.target.files)">
+                <div class="button-wrapper" icon="pi pi-upload">
+                  <span class="label">
+                    Telecharger image
+                  </span>
+                  <input type="file" name="upload" id="upload" accept=".png,.jpg,.jpeg" (change)="handleFileInput($event.target.files)" class="upload-box"
+                    placeholder="Telecharger logo">
+                </div>
+
+                <div style="display: flex; justify-content:space-around">
+                  <img id="image" [src]="candidat.image" style="border-radius: 15px; margin: 8px;" height="200px">
+                </div>
+
+                <div id="compression" style="display: none;">
+                  <div class="spinner">
+                    <p-progressSpinner [style]="{width: '50px', height: '50px'}" styleClass="custom-spinner" strokeWidth="8"
+                      fill="#EEEEEE" animationDuration=".5s"></p-progressSpinner>
+                  </div>
+                  <div class="spinner">
+                    <p>Compression en cours</p>
+                  </div>
+                </div>
                 
-                <br><img [src]="candidat.image" height="200px">
+                
               </div>
           </div>
 
@@ -47,27 +67,43 @@
             <div style="width: 49%;">
               <label for="telephone">Telephone</label>
               <input class="input" #telephone="ngModel" id="telephone" name="telephone" type="number" required pInputText
-                [(ngModel)]="candidat.telephone"
+                [(ngModel)]="candidat.telephone" pattern="[0-9]{8}$"
                 [ngClass]="{'ng-dirty': (telephone.invalid && submitted) || (telephone.dirty && telephone.invalid)}">
-              <small class="p-error" *ngIf="(telephone.dirty && telephone.invalid)">Telephone est requis.</small>
+                <div> 
+                  <small class="p-error" *ngIf="(telephone.dirty && telephone.invalid)">Telephone doit être 8 chiffres.</small>
+                </div>
+                <div [hidden]="!telephone.errors?.required || telephone.pristine" > 
+                  <small class="p-error" >Telephone est requis.</small>
+                </div>
+                
             </div>
           </div>
 
           <div class="p-field p-col-12 margin-top">
             <label for="motivation">Motivation</label>
             <textarea class="input" id="motivation" name="motivation" #motivation="ngModel" pInputTextarea required [rows]="5"
-              [(ngModel)]="candidat.motivation"></textarea>
+              [(ngModel)]="candidat.motivation">
+            </textarea>
           </div>
-
-        <div class="p-justify-between margin-top">
-
-          <button pButton pRipple type="button" label="Précédent" (click)="previousPage()" icon="pi pi-angle-left"
-            iconPos="left" class="p-button-rounded"></button>
-          <button pButton pRipple type="button" label="Confirmer" (click)="nextPage()" icon="pi pi-angle-right"
-            iconPos="right"
-            class="p-button-rounded"></button>
+          <div class="spinner">
+            <div id="loader" style="display: none;">
+              <p-progressSpinner [style]="{width: '50px', height: '50px'}" styleClass="custom-spinner" strokeWidth="6" fill="#EEEEEE" animationDuration=".5s"></p-progressSpinner>
+            </div>
+          </div>
+        
+        <div id='confirm'>
+          <div class="p-justify-between margin-top">
+            <button pButton pRipple type="button" label="Précédent" (click)="previousPage()" 
+              icon="pi pi-angle-left" iconPos="left" class="p-button-rounded">
+            </button>
+  
+            <button pButton pRipple type="button"  label="Confirmer" (click)="nextPage()" 
+              [disabled]=" telephone.invalid || date_naissance.invalid || civilite.invalid || nom.invalid "
+              icon="pi pi-angle-right" iconPos="right" class="p-button-rounded">
+            </button>
+          </div>
         </div>
-
+        
       </form>
     </div>
 </div>

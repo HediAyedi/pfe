@@ -1,3 +1,5 @@
+import { Cv } from "./cv";
+
 export class Candidat {
   id: number;
   nom: string;
@@ -7,7 +9,7 @@ export class Candidat {
   civilite: string;
   motivation: string;
   telephone: number;
-  cv:any;
+  cv:Cv;
   image: any;
   date_naissance: Date;
   critiques: any[];

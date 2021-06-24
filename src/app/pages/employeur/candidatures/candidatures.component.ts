@@ -27,6 +27,7 @@ export class CandidaturesComponent implements OnInit {
   displayed_candidat= new Candidat();
   displayed_candidature = new Candidature();
   displayed: boolean;
+  cv_base64: any;
 
   constructor(
     private candidatureService: CandidatureService,
@@ -36,6 +37,7 @@ export class CandidaturesComponent implements OnInit {
   ngOnInit() {
     this.idRoute = this.route.snapshot.paramMap.get('offre_id');
     this.findAllbyId(this.idRoute);
+
   }
 
   findAllbyId(id) {
@@ -167,6 +169,7 @@ export class CandidaturesComponent implements OnInit {
   //Shows the candidat modal
   CandidatDialog(candidature : Candidature) {
     this.displayed_candidat = candidature.candidat;
+    
     var modal = document.getElementById('candidatModal');
     modal.style.display = 'block';
   }
@@ -182,6 +185,9 @@ export class CandidaturesComponent implements OnInit {
   CandidatureDialog(candidature) {
     this.displayed = true;
     this.displayed_candidature = candidature;
+
+    this.cv_base64=this.displayed_candidature.cv;
+    
     var modal = document.getElementById('candidatureModal');
     modal.style.display = 'block';
   }
@@ -196,6 +202,7 @@ export class CandidaturesComponent implements OnInit {
   //Shows the form modal
   CritiqueDialog(candidature) {
     this.add_critique.candidature_id = candidature.id;
+    this.add_critique.candidat_id=candidature.candidat_id;
     var modal = document.getElementById('critiqueForm');
     modal.style.display = 'block';
   }

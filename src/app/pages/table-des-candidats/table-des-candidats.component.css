@@ -18,6 +18,8 @@
   margin: 30px;
   padding: 2rem;
   border-radius: 30px;
+  
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 :host ::ng-deep .p-dropdown, .p-component, .p-dropdown-items-wrapper, .p-multiselect-chip, .p-multiselect , .p-multiselect-open , .ng-tns-c75-6, .p-dropdown-items, .ng-tns-c72-1{

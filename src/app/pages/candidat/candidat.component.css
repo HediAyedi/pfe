@@ -1,0 +1,396 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+
+/* The Modal (background) */
+.candidatModal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  backdrop-filter: blur(10px);
+  z-index: 10;
+  /* Sit on top */
+  padding-top: 10vh;
+  /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+  animation: fadeInModal 0.3s;
+}
+
+/* Modal Content */
+.candidatModal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 10px;
+  border-radius: 20px;
+  width: 63%;
+  animation: fadeIn 0.3s;
+}
+
+/* The Modal (background) */
+.test-modal {
+  display: none;
+  /* Hidden by default */
+  backdrop-filter: blur(20px);
+  position: fixed;
+  /* Stay in place */
+  z-index: 100;
+  /* Sit on top */
+  padding-top: 20vh;
+  /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+  animation: fadeInModal 0.3s;
+}
+
+
+
+/* Modal Content */
+.test-modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 10px;
+  border-radius: 20px;
+  width: 60vw;
+  animation: fadeIn 0.3s;
+}
+
+
+@media (max-width:800px) {
+
+  .test-modal-content {
+
+    width: 75vw;
+  }
+}
+
+@media (max-width:600px) {
+
+  .test-modal-content {
+
+    width: 85vw;
+  }
+}
+
+@media (max-width:500px) {
+
+  .test-modal-content {
+
+    width: 90vw;
+  }
+}
+
+@keyframes fadeInModal {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+
+}
+
+.p-justify-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.p-justify-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navigation-container {
+  /*position: fixed;*/
+  width: 19vw;
+  position: fixed;
+  height: fit-content;
+  padding: 0.5vw;
+  margin: 20px 0.5vw;
+  border-radius: 20px;
+}
+
+.navigation {
+  margin: 10px 10px;
+  padding: 20px 0px;
+  display: flex;
+  flex-direction: column;
+  background: rgb(32, 132, 247);
+  color: white;
+  border-radius: 20px;
+}
+
+.sidebar-menu {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  left: 0;
+  top: 0;
+}
+
+.sidebar-menu a {
+  margin-bottom: 17px;
+  margin-left: 20px;
+  padding-left: 10px;
+  display: block;
+  color: white;
+  padding-left: 10px;
+}
+
+.sidebar-menu a:last-child {
+  margin-bottom: 0px;
+}
+
+.sidebar-menu a.active {
+  background: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: rgb(32, 132, 247);
+  border-radius: 30px 0px 0px 30px;
+}
+
+
+.main-container {
+  margin-left: 19vw;
+}
+
+.main {
+  margin: auto 1vw;
+  width: 60vw;
+}
+
+/* Test Bar */
+.test-bar {
+  /*position: fixed;*/
+  width: 18vw;
+  height: fit-content;
+  padding: 10px;
+  margin: 10px 0.5vw;
+}
+
+.test-bar-card {
+  padding: 2%;
+  margin: 10px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  justify-items: center;
+  background: rgb(229, 233, 235);
+  color: rgba(32, 132, 247);
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.nav-buttons{
+  display: flex;
+  flex-direction: row ;
+  flex-wrap: wrap;
+  width: fit-content;
+  margin: 1% 0.5vw;
+}
+
+.nav-button{
+  padding: 4px 10px;
+  width: fit-content;
+  margin: 1%;
+}
+
+.test-button{
+    padding: 4px 10px;
+    width: fit-content;
+    margin: 1% auto;
+}
+
+@media (max-width: 1236px) {
+
+  .navigation-container {
+    width: 70vw !important;
+    margin: 0px -20px !important;
+    padding-bottom: 0px;
+    margin-top: 20px;
+    position: static !important;
+  }
+  
+  .navigation {
+    flex-direction: row;
+    padding: 0px 10px;
+    border-radius: 0px 30px 30px 0px;
+  }
+
+  .sidebar-menu {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    margin: 10px 5px 0px 5px !important;
+  }
+  
+  .sidebar-menu a {
+    margin: 9px 5px 0px 5px !important;
+    padding: 5px;
+    display: block;
+    color: white;
+    padding-left: 10px;
+  }
+  
+  .sidebar-menu a.active {
+    background: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: rgb(32, 132, 247);
+    border-radius: 18px 18px 0px 0px;
+  }
+  .sidebar-menu a.active:first-child {
+    
+    margin-left: calc( 5px) !important;
+  }
+  
+  .sidebar-menu div {
+    display: flex;
+    flex-direction: row;
+  }
+  .sidebar-menu h4 {
+    display: none;
+  }
+  .main-container {
+    margin: 0px !important;
+    width: 100%;
+    height: fit-content !important;
+  }
+  
+  .main {
+    margin: auto ;
+    width: 66vw;
+  }
+
+  .test-bar {
+    
+    width: 30vw;
+    
+  }
+
+  :host ::ng-deep .scroll{
+    width: 100%;
+    height: calc(99vh - 126px) !important;
+  }
+}
+
+/* NG PRIME STYLING*/
+:host ::ng-deep .p-component {
+  border-radius: 20px;
+}
+
+:host ::ng-deep .p-dropdown{
+  border-radius: 25px;
+  width: 96%;
+  margin: 4% 2%;
+  min-width: 12vw;
+}
+
+:host ::ng-deep .p-dropdown-items {
+  border-radius: 25px;
+  min-width: 12vw;
+}
+
+
+:host ::ng-deep .p-dropdown-items-wrapper,
+.ng-tns-c72-1 {
+  border-radius: 25px;
+}
+
+/* User wrap*/
+
+.user-wrapper {
+  color: rgb(29, 110, 202);
+  margin: 1vh 2vw;
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+}
+
+.user-wrapper h4{
+  margin: 0px;
+  text-align:right
+}
+
+.user-wrapper img {
+  border-radius: 50%;
+  margin-left: 20px;
+  object-fit: cover;
+  object-position: center;
+  animation: reveal ease-in 1s;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+@keyframes reveal {
+
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.sign-out{
+  padding: 8px 16px;
+  width: 100%;
+  border-radius: 25px;
+}
+
+:host ::ng-deep .p-overlaypanel {
+  border-radius: 25px;
+}
+
+:host ::ng-deep .p-overlaypanel:after,:host ::ng-deep .p-overlaypanel:before{
+  display: none;
+}
+
+:host ::ng-deep .scroll{
+  width: 100%;
+  height: calc(99vh - 60px);
+}
+.pi-ellipsis-v{
+  cursor: pointer;
+}

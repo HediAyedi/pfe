@@ -1,21 +1,8 @@
 .navbar{
     border-radius: 30px;
-    width: 98vw;
+    width: 97vw;
+    margin: auto 1vw;
   }
-  
-  .search-wrapper input {
-   height: 100%;
-    padding: .5rem;
-    border: none;
-    outline: none;
-  }
-  
-  .search-wrapper span {
-    display: inline-block;
-    padding: 0rem 1rem;
-  }
-
-  
 /* The Modal (background) */
 .modal {
   backdrop-filter: blur(20px);
@@ -104,15 +91,17 @@ p-menubar .p-button-rounded:hover{
   width: 96vw;
   margin: 0% 1.5vw;
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
+}
+:host ::ng-deep .p-menubar .p-menubar-root-list{
+  border-radius: 30px;
 }
 
 :host ::ng-deep p-menubar .p-component{
   border-radius: 30px;
 }
-:host ::ng-deep .p-menubar-root-list,:host ::ng-deep .p-menubar-root-list .p-menuitem,.p-menuitem-link{
+:host ::ng-deep .p-menubar-root-list .p-menuitem,.p-menuitem-link,.p-menuitem-link-active{
   border-radius: 30px;
-  background-color: rgba(255, 255, 255);
+  background-color: rgb(255, 255, 255);
   margin: 2px;
 }
 
@@ -124,7 +113,7 @@ p-menubar .p-button-rounded:hover{
 }
 :host ::ng-deep .p-menubar-mobile-active .p-menubar-root-list .p-menuitem:hover,.p-menubar-root-list .p-menuitem-link:hover{
   border-radius: 30px;
-  background-color: rgba(255, 255, 255);
+  background-color: rgb(255, 255, 255);
   margin: 2px;
 }
 
@@ -139,4 +128,9 @@ p-menubar .p-button-rounded:hover{
   border-radius: 30px;
   background-color: rgba(223, 236, 241);
   margin: 2px;
+}
+
+:host ::ng-deep .p-menubar{
+  width: 100%;
+  margin: 0px;
 }

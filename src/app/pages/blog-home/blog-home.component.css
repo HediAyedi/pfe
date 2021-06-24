@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@600&display=swap');
 body{
-  margin: 10px 80px;
+  margin: 0px 80px;
   
   font-family: 'Noto Sans JP', sans-serif;
 }
@@ -29,7 +29,6 @@ nav .onglets a{
 }
 .articles .article{
   display: flex;
-  flex-wrap:wrap;
   margin-bottom: 30px;
 }
 .articles .article .left img{
@@ -37,8 +36,23 @@ nav .onglets a{
   width: 300px;
 }
 .articles .article .right {
-  margin-left: 40px;
+  margin-left: 20px;
   max-width: 50%;
+}
+
+@media (max-width: 950px) {
+  .articles .article{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+  }
+  .articles .article .left img{
+    width: 100%;
+  }
+  .articles .article .right {
+    margin-left: 10px;
+    max-width: 99%;
+  }
 }
 .articles .article .right p.date{
   color: #7f7e7e;

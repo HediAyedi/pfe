@@ -7,74 +7,81 @@
       <button pButton pRipple type="button" (click)="cancel()" icon="pi pi-times"
       class="p-button-danger p-button-rounded p-button-text "></button>
     </div>
-    <form>
-      <div class="p-fluid p-formgrid p-grid">
-        <div class="p-field p-col-12 p-md-6 flex-container p-justify-between">
-          <div class="size">
-            <div class="p-field p-col-12 p-md-6 margin-top">
-              <div>
-                <label for="nom">Nom de la Société</label>
-                <input id="nom" type="text" pInputText class="input" [(ngModel)]="modif_experience.nom_entreprise" name="nom" required
-                  #nom="ngModel" [ngClass]="{'ng-dirty': (nom.dirty && nom.invalid)}">
-                <small class="p-error" *ngIf="(nom.dirty && nom.invalid)">Nom de la société est
-                  requis.</small>
+    <p-scrollPanel [style]="{width: '100%', height: '35vh'}">
+      <form class="form">
+        <div class="p-fluid p-formgrid p-grid">
+          <div class="p-field p-col-12 p-md-6 p-justify-between">
+            <div class="size">
+              <div class="p-field p-col-12 p-md-6 margin-top">
+                <div>
+                  <label for="nom">Nom de la Société</label>
+                  <input id="nom" type="text" pInputText class="input" [(ngModel)]="modif_experience.nom_entreprise" name="nom" required
+                    #nom="ngModel" [ngClass]="{'ng-dirty': (nom.dirty && nom.invalid)}">
+                  <small class="p-error" *ngIf="(nom.dirty && nom.invalid)">Nom de la société est
+                    requis.</small>
+                </div>
+              </div>
+  
+              <div class="p-field p-col-12 p-md-6 margin-top">
+                <div>
+                  <label for="poste">Poste de travail</label>
+                  <input id="poste" type="text" pInputText class="input" [(ngModel)]="modif_experience.poste" name="poste"
+                    #poste="ngModel" required [ngClass]="{'ng-dirty': (poste.dirty && poste.invalid)}">
+                  <small class="p-error" *ngIf="(poste.dirty && poste.invalid)">Nom de la poste de travail est
+                    requis.</small>
+                </div>
               </div>
             </div>
-
-            <div class="p-field p-col-12 p-md-6 margin-top">
-              <div>
-                <label for="poste">Poste de travail</label>
-                <input id="poste" type="text" pInputText class="input" [(ngModel)]="modif_experience.poste" name="poste"
-                  #poste="ngModel" required [ngClass]="{'ng-dirty': (poste.dirty && poste.invalid)}">
-                <small class="p-error" *ngIf="(poste.dirty && poste.invalid)">Nom de la poste de travail est
-                  requis.</small>
-              </div>
+  
+            <div class="size margin-top">
+              <label for="desc">Description de l'expérience</label>
+              <textarea id="desc" [rows]="5" [cols]="30" pInputTextarea class="input" autoResize="autoResize"
+                [(ngModel)]="modif_experience.description" name="desc" #desc="ngModel"></textarea>
             </div>
           </div>
-
-          <div class="size margin-top">
-            <label for="desc">Description de l'expérience</label>
-            <textarea id="desc" [rows]="5" [cols]="30" pInputTextarea class="input" autoResize="autoResize"
-              [(ngModel)]="modif_experience.description" name="desc" #desc="ngModel"></textarea>
+  
+          <div class="p-field-checkbox margin-top">
+            <input type="checkbox" id="en_cours" [(ngModel)]="modif_experience.en_cours" (change)="nullifyDateFinModif()"
+              [checked]="modif_experience.en_cours" name="en_cours" #en_cours="ngModel" />
+            <label for="en_cours">Je travaille encore sur cette poste.</label>
+          </div>
+  
+          <div class="p-field p-col-12 p-md-6 p-justify-between">
+            <div style="width: 50%;">
+              <label for="date_debut">Date début</label>
+              <input #date_debut="ngModel" id="date_debut" name="date_debut" type="date" (change)="checkDate()" required
+                pInputText class="input" [(ngModel)]="modif_experience.date_debut"
+                [ngClass]="{'ng-dirty': (date_debut.dirty && date_debut.invalid)}">
+              <small class="p-error" *ngIf="(date_debut.dirty && date_debut.invalid)">date début est
+                requis.</small>
+            </div>
+  
+            <div style="width: 49%;" *ngIf="(!modif_experience.en_cours)">
+              <label for="date_fin">Date fin</label>
+              <input #date_fin="ngModel" id="date_fin" name="date_fin" [disabled]="modif_experience.date_debut==null"
+                min="{{modif_experience.date_debut | date: 'yyyy-MM-dd'}}" type="date" required pInputText class="input"
+                [(ngModel)]="modif_experience.date_fin" [ngClass]="{'ng-dirty': (date_debut.dirty && date_fin.invalid)}"
+                onkeypress="return false">
+              <small>Appuyez sur l'icône du calendrier à droite</small>
+              <small class="p-error" *ngIf="(date_fin.dirty && date_fin.invalid)">date fin est requis.</small>
+            </div>
           </div>
         </div>
-
-        <div class="p-field-checkbox margin-top">
-          <input type="checkbox" id="en_cours" [(ngModel)]="modif_experience.en_cours" (change)="nullifyDateFinModif()"
-            [checked]="modif_experience.en_cours" name="en_cours" #en_cours="ngModel" />
-          <label for="en_cours">Je travaille encore sur cette poste.</label>
-        </div>
-
-        <div class="p-field p-col-12 p-md-6 p-justify-between">
-          <div style="width: 50%;">
-            <label for="date_debut">Date début</label>
-            <input #date_debut="ngModel" id="date_debut" name="date_debut" type="date" (change)="checkDate()" required
-              pInputText class="input" [(ngModel)]="modif_experience.date_debut"
-              [ngClass]="{'ng-dirty': (date_debut.dirty && date_debut.invalid)}">
-            <small class="p-error" *ngIf="(date_debut.dirty && date_debut.invalid)">date début est
-              requis.</small>
-          </div>
-
-          <div style="width: 49%;" *ngIf="(!modif_experience.en_cours)">
-            <label for="date_fin">Date fin</label>
-            <input #date_fin="ngModel" id="date_fin" name="date_fin" [disabled]="modif_experience.date_debut==null"
-              min="{{modif_experience.date_debut | date: 'yyyy-MM-dd'}}" type="date" required pInputText class="input"
-              [(ngModel)]="modif_experience.date_fin" [ngClass]="{'ng-dirty': (date_debut.dirty && date_fin.invalid)}"
-              onkeypress="return false">
-            <small>Appuyez sur l'icône du calendrier à droite</small>
-            <small class="p-error" *ngIf="(date_fin.dirty && date_fin.invalid)">date fin est requis.</small>
+        <div class="spinner">
+          <div id="edit_loader" style="display: none;">
+            <p-progressSpinner [style]="{width: '50px', height: '50px'}" styleClass="custom-spinner" strokeWidth="6" fill="#EEEEEE" animationDuration=".5s"></p-progressSpinner>
           </div>
         </div>
-      </div>
-
-      <div class="p-justify-right margin-top">
-        <button pButton pRipple type="button" (click)="modifierExperience()" label="Modifier" icon="pi pi-check"
-          [disabled]="nom.invalid || poste.invalid || date_debut.invalid || (modif_experience.en_cours==false && modif_experience.date_fin==null)"
-          class="p-button-text p-button-rounded"></button>
-        <button pButton pRipple type="button" (click)="cancel()" label="Annuler" icon="pi pi-times"
-          class="p-button-text p-button-rounded p-button-danger"></button>
-      </div>
-    </form>
+        <div class="p-justify-right margin-top">
+          <button pButton pRipple id="edit" type="button" (click)="modifierExperience()" label="Modifier" icon="pi pi-check"
+            [disabled]="nom.invalid || poste.invalid || date_debut.invalid || (modif_experience.en_cours==false && modif_experience.date_fin==null)"
+            class="p-button-text p-button-rounded"></button>
+          <button pButton pRipple type="button" (click)="cancel()" label="Annuler" icon="pi pi-times"
+            class="p-button-text p-button-rounded p-button-danger"></button>
+        </div>
+      </form>
+    </p-scrollPanel>
+    
   </div>
 </div>
 <div class="main">
@@ -83,16 +90,16 @@
   </h1>
 
 
-  <div class="flex-cont">
+  <div class="flex-container">
     <div *ngIf="experiences.length>1">
       <input id="term" type="text" pInputText class="input input-size" [(ngModel)]="term" name="term" placeholder="rechercher experiences">
     </div>
-    <div *ngFor="let exp of experiences | filter: term " class="card-single">
+    <div *ngFor="let exp of experiences | filter: term " class="container">
       <h3>
         {{exp.poste}} au seins de {{exp.nom_entreprise}}
       </h3>
-      <p>
-        {{exp.description}}
+      <p *ngIf="exp.description">
+        {{(exp.description | slice:0:250)+'...'}}
       </p>
 
       <div>
@@ -115,9 +122,9 @@
     *ngIf="!selected" icon="pi pi-plus" class="button-white p-button-text p-button-plain p-button-rounded p-justify-right"></button>
 
   <!-- FORM AJOUT -->
-  <form *ngIf="selected" class="flex-cont blur">
+  <form *ngIf="selected" class="flex-container blur">
     <div class="p-fluid p-formgrid p-grid">
-      <div class="p-field p-col-12 p-md-6 flex-container p-justify-between">
+      <div class="p-field p-col-12 p-md-6 p-justify-between">
         <div class="size">
           <div class="p-field p-col-12 p-md-6 margin-top">
             <div>
@@ -172,9 +179,14 @@
         </div>
       </div>
     </div>
-
+    
+    <div class="spinner">
+      <div id="add_loader" style="display: none;">
+        <p-progressSpinner [style]="{width: '50px', height: '50px'}" styleClass="custom-spinner" strokeWidth="6" fill="#EEEEEE" animationDuration=".5s"></p-progressSpinner>
+      </div>
+    </div>
     <div class="p-justify-right margin-top">
-      <button pButton pRipple type="button" (click)="ajouterExperience()" label="Confirmer" icon="pi pi-check"
+      <button pButton pRipple type="button" id="add" (click)="ajouterExperience()" label="Confirmer" icon="pi pi-check"
         [disabled]="nom.invalid || poste.invalid || date_debut.invalid || (experience.en_cours==false && experience.date_fin==null)"
         class="p-button-text p-button-rounded button-white"></button>
       <button pButton pRipple type="button" (click)="affichageAjoutForm()" label="Annuler" icon="pi pi-times"
@@ -182,7 +194,7 @@
     </div>
   </form>
 
-  <div class="p-justify-between margin-top">
+  <div class="p-justify-between margin">
     <button pButton pRipple type="button" label="Précédent" (click)="previousPage()" icon="pi pi-angle-left" iconPos="left"
         class="p-button-rounded"></button>
       <button pButton pRipple type="button" label="Terminer" (click)="confirm()" icon="pi pi-check" iconPos="right"

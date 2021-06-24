@@ -3,7 +3,18 @@
 
 div{
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+  animation: reveal ease-in 0.5s;
+  }
+  
+  @keyframes reveal {
+
+    0% {
+        opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 
 .flex-container {
   margin: 10px;
@@ -38,19 +49,21 @@ div{
 
 
 .title{
-  color: #ffffffcc;
+  color: #3771bd;
   font-weight: bold;
   text-transform: capitalize;
 }
 .card-single {
-  background: #3771bd;
+  background: white;
+  color: #3771bd;
+  font-weight: bold;
   backdrop-filter: blur(30px);
   height: fit-content;
   width: fit-content;
   padding: 10px;
-  margin: 1vw;
+  margin: 20px 10px 10px 5px;
   border-radius: 30px;
-  box-shadow: 0 4px 4px 0 rgba(136, 136, 136, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 1px 2px 2px 1px rgba(136, 136, 136, 0.2);
 }
 
 .chip-wrapper {
@@ -59,10 +72,10 @@ div{
   height: fit-content;
 }
 .chip {
-  background: #4b96ec;
+  background: rgb(233, 233, 233);
   font-weight: bold;
   text-transform: capitalize;
-  color: rgb(233, 233, 233);
+  color: #4b96ec;
   height: fit-content;
   width: fit-content;
   padding: 2px;
@@ -81,6 +94,7 @@ div{
   width: 98%;
   padding: 10px;
   margin: 20px 1%;
+  margin-bottom: 1%;
   border-radius: 20px;
   border: 1px #9de6fc solid;
 }
@@ -90,4 +104,12 @@ div{
   font-weight: bold;
   text-transform: capitalize;
   margin-bottom: 10px;
+}
+
+.text{
+  font-weight: normal;
+}
+
+.lowercase{
+  text-transform: lowercase;
 }

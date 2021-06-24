@@ -31,6 +31,8 @@
   margin: 30px;
   padding: 2rem;
   border-radius: 30px;
+  
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .p-button-raised{
   margin: 5px;
@@ -63,7 +65,7 @@
   position: fixed; /* Stay in place */
   backdrop-filter: blur(10px);
   z-index: 100; /* Sit on top */
-  padding-top: 20vh; /* Location of the box */
+  padding-top: 5vh; /* Location of the box */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -85,7 +87,7 @@
   margin: auto;
   padding: 10px;
   border-radius: 20px;
-  width: 60%;
+  width: 80%;
   animation: fadeIn 0.3s;
   
 }
@@ -113,14 +115,94 @@ button{
   z-index: 50;
 }
 
-:host ::ng-deep .p-dropdown, .p-component, .p-dropdown-items-wrapper, .p-multiselect-chip, .p-multiselect , .p-multiselect-open , .ng-tns-c75-6, .p-dropdown-items, .ng-tns-c72-1{
+.p-button-rounded:disabled {
+  border: 0px;
+  color: gray;
+  background-color: white;
+  box-shadow: none;
+}
+
+/* NG PRIME STYLING*/
+
+:host ::ng-deep .p-dropdown,:host ::ng-deep .p-component{
   border-radius: 25px;
 }
 
-:host ::ng-deep p-multiselect .p-multiselect-chip, .p-multiselect , .p-multiselect-open , .ng-tns-c75-6, .p-dropdown-items, .ng-tns-c72-1{
+:host ::ng-deep p-multiselect .p-multiselect-chip, :host ::ng-deep p-multiselect .p-multiselect-item {
   border-radius: 25px;
+}
+
+:host ::ng-deep p-multiselect .p-multiselect-items-wrapper{
+  border-radius: 0px 0px 25px 25px;
+}
+
+:host ::ng-deep p-multiselect .p-multiselect-header{
+  border-radius: 25px 25px 0px 0px;
 }
 
 :host ::ng-deep .p-multiselect-label .ng-star-inserted{
   border-radius: 25px;
+}
+
+:host ::ng-deep .p-dropdown,:host ::ng-deep  .p-dropdown-items-wrapper, .p-dropdown-items, .ng-tns-c72-1{
+  border-radius: 25px;
+}
+
+:host ::ng-deep .angular-editor-toolbar {
+  border-radius: 10px;
+}
+
+:host ::ng-deep .angular-editor-textarea {
+  border-radius: 20px;
+  border: none;
+  height: 200px;
+  min-height: 200px;
+}
+:host ::ng-deep .angular-editor-wrapper, :host ::ng-deep .show-placeholder {
+  border-radius: 20px;
+  border: none;
+}
+
+/*  Loader  */
+:host ::ng-deep .custom-spinner .p-progress-spinner-circle {
+  
+  animation: custom-progress-spinner-dash 1.5s ease-in-out infinite, custom-progress-spinner-color 6s ease-in-out infinite;
+}
+
+@keyframes custom-progress-spinner-color {
+  100%,
+  0% {
+      stroke: #3c91ff;
+  }
+  40% {
+      stroke: #b9b9b9;
+  }
+  66% {
+      stroke: #02bee4;
+  }
+  80%,
+  90% {
+      stroke: #3c91ff;
+  }
+}
+
+@keyframes custom-progress-spinner-dash {
+  0% {
+      stroke-dasharray: 1, 200;
+      stroke-dashoffset: 0;
+  }
+  50% {
+      stroke-dasharray: 89, 200;
+      stroke-dashoffset: -35px;
+  }
+  100% {
+      stroke-dasharray: 89, 200;
+      stroke-dashoffset: -124px;
+  }
+}
+
+.spinner{
+  display:flex;
+  justify-content:space-around;
+  margin: 10px auto;
 }

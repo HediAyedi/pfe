@@ -30,24 +30,26 @@ export class QuizzComponent implements OnInit {
     private noteService: NoteService) { }
 
   ngOnInit(): void {
-    var test_id= JSON.parse(sessionStorage.getItem("test_id"));
+    var test= JSON.parse(sessionStorage.getItem("test"));
     var candidat= JSON.parse(localStorage.getItem("candidat"));
     this.note.candidat_id=candidat.id;
-    this.note.test_id=test_id;
-    this.getQuestionsByTestId(test_id);
+    this.note.test_id=test.id;
+    this.quizzes=test.questions;
+    this.currentQuiz = this.getRandom();
+    this.prevAnswered.push(this.currentQuiz);
+    //this.getQuestionsByTestId(test_id);
    
   }
 
-  getQuestionsByTestId( id ){
-    this.questionService.getAllByID(id).subscribe(res=>{
-      this.quizzes=res;
-      console.log("result:",this.quizzes);
-      this.currentQuiz = this.getRandom();
-      this.prevAnswered.push(this.currentQuiz);
-    },err=>{
-      console.log(err);
-    })
-  }
+  // getQuestionsByTestId( id ){
+  //   this.questionService.getAllByID(id).subscribe(res=>{
+  //     this.quizzes=res;
+  //     console.log("result:",this.quizzes);
+ 
+  //   },err=>{
+  //     console.log(err);
+  //   })
+  // }
 
   onAnswer(option: boolean){
     this.answerSelected = true;
@@ -71,7 +73,7 @@ export class QuizzComponent implements OnInit {
     //Saving the final note of the test
     if(this.prevAnswered.length == this.quizzes.length){
       if(this.quizzes.length==2){
-        if(this.correctAnswers>=1){
+        if(this.correctAnswers==2){
           this.note.success=true;
           this.note.note= this.correctAnswers/this.quizzes.length*100;
           this.addNote();
@@ -83,7 +85,7 @@ export class QuizzComponent implements OnInit {
         }
       }
       else if(this.quizzes.length==3){
-        if(this.correctAnswers>=2){
+        if(this.correctAnswers==3){
           this.note.success=true;
           this.note.note= this.correctAnswers/this.quizzes.length*100;
           console.log("NOTE:",this.note);

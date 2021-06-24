@@ -1,20 +1,23 @@
-<div class="flex-container">
-  <div class="card-single">
-    <section class="articles">
 
-      <div class="article" *ngFor="let blog of blogs">
-        <div class="left">
-          <img src="{{blog.logo}}" alt="">
+<p-scrollPanel [style]="{width: '100%', height: 'calc(100vh - 68px)'}">
+  <div class="flex-container">
+    <div class="card-single">
+      <section class="articles">
+  
+        <div class="article" *ngFor="let blog of blogs">
+          <div class="left">
+            <img src="{{blog.logo}}" alt="">
+          </div>
+          <div class="right">
+            
+            <h1>{{blog.titre}}</h1>
+            <p class="description" style="white-space: pre-wrap">{{(blog.description | slice:0:250)+'...'}}<br></p>
+            <p class="date"> posted at : {{blog.created_at | date: 'dd/MM/yyyy'}}</p>
+            <p class="suite">voir la suite</p>
+          </div>
         </div>
-        <div class="right">
-          
-          <h1>{{blog.titre}}</h1>
-          <p class="description" style="white-space: pre-wrap">{{(blog.description | slice:0:250)+'...'}}<br></p>
-          <p class="date"> posted at : {{blog.created_at | date: 'dd/MM/yyyy'}}</p>
-          <p class="suite">voir la suite</p>
-        </div>
-      </div>
-
-    </section>
+  
+      </section>
+    </div>
   </div>
-</div>
+</p-scrollPanel>

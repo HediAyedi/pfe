@@ -54,26 +54,30 @@ export class GestionProfessionalInfoComponent implements OnInit {
     this.findCv();
 
     //Tableau des langues from cache
-    this.langues = JSON.parse(localStorage.languesCache || '[]');
+    this.langues = JSON.parse(sessionStorage.languesCache || '[]');
     console.log('Les langues:', this.langues);
 
     //Tableau des competences from cache
-    this.competences = JSON.parse(localStorage.competencesCache || '[]');
+    this.competences = JSON.parse(sessionStorage.competencesCache || '[]');
     console.log('Les competences:', this.competences);
 
     //Tableau des domaines from cache
-    this.domaines = JSON.parse(localStorage.domainesCache || '[]');
+    this.domaines = JSON.parse(sessionStorage.domainesCache || '[]');
     console.log('Les domaines:', this.domaines);
 
     //Tableau des types cvs from cache
-    this.offre_types = JSON.parse(localStorage.type_offresCache || '[]');
+    this.offre_types = JSON.parse(sessionStorage.type_offresCache || '[]');
     console.log('Les types:', this.offre_types);
 
   }
 
   findCv() {
+    document.getElementById('form_loader').style.display = "block";
+    document.getElementById('form').style.display = "none";
     this.cvService.get(this.cv_id).subscribe(
       (res) => {
+        document.getElementById('form_loader').style.display = "none";
+        document.getElementById('form').style.display = "block";
         this.cv = res;
         console.log('CV :', this.cv);
         var cv_langues: Langue[] = this.cv.langues;
@@ -138,6 +142,8 @@ export class GestionProfessionalInfoComponent implements OnInit {
       },
       (err) => {
         console.log(err);
+        document.getElementById('form_loader').style.display = "none";
+        document.getElementById('form').style.display = "block";
       }
     );
   }
@@ -173,12 +179,14 @@ export class GestionProfessionalInfoComponent implements OnInit {
 
   // Modifying the CV and navigating to the next page
   nextPage() {
+    
+    document.getElementById('loader').style.display = "block";
+    document.getElementById('confirm').style.display = "none";
+
     this.cv.langues = [];
     this.cv.emploi_types = [];
     this.cv.competences = [];
     this.cv.domaines = [];
-
-    // Laravel takes only an array of ids to make many to many relations so I need to change the array, from an array of objects to an array of IDs
 
     // adding langues to the cv
     this.selected_langues.forEach(function (langue) {
@@ -204,8 +212,16 @@ export class GestionProfessionalInfoComponent implements OnInit {
       var candidat = JSON.parse(localStorage.getItem('candidat'));
       candidat.cv = res;
       localStorage.setItem('candidat', JSON.stringify(candidat));
+      
+      document.getElementById('loader').style.display = "none";
+      document.getElementById('confirm').style.display = "block";
 
-      this.router.navigate(['gestion-cv/experiences', this.cv_id]);
+      this.router.navigate(['candidat/gestion-cv/experiences', this.cv_id]);
+    }, err=>{
+      console.log(err);
+      
+      document.getElementById('loader').style.display = "none";
+      document.getElementById('confirm').style.display = "block";
     });
   }
 

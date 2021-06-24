@@ -14,7 +14,7 @@ export class CritiqueService {
 
   public getAll(id): Observable<any> {
     
-    return this.httpClient.get<Critique[]>(this.url + '/critiques');
+    return this.httpClient.get<Critique[]>(this.url + '/critiques/'+ id);
   }
 
   public get(id: any): Observable<any>{

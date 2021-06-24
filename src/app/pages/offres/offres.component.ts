@@ -22,6 +22,7 @@ export class OffresComponent implements OnInit {
   page = 1;
   //Filter value
   term: string;
+  loading=false;
 
   langues: Langue[];
   offres: Offre[] = [];
@@ -63,30 +64,38 @@ export class OffresComponent implements OnInit {
   ngOnInit(): void {
 
     this.candidat=JSON.parse(localStorage.getItem('candidat'));
-    
+
+    var employeur_id = this.route.snapshot.paramMap.get('employeur_id');
+    if (employeur_id) {
+      this.findAllByEmployeur(employeur_id);
+    } else {
+      this.findAll();
+    }
+
+
     //Tableau des langues from cache
-    this.langues = JSON.parse(localStorage.languesCache || '[]');
+    this.langues = JSON.parse(sessionStorage.languesCache || '[]');
     if (this.langues.length == 0) {
       this.findLangues();
     }
     console.log('Les langues:', this.langues);
 
     //Tableau des competences from cache
-    this.competences = JSON.parse(localStorage.competencesCache || '[]');
+    this.competences = JSON.parse(sessionStorage.competencesCache || '[]');
     if (this.competences.length == 0) {
       this.findCompetences();
     }
     console.log('Les competences:', this.competences);
 
     //Tableau des domaines from cache
-    this.domaines = JSON.parse(localStorage.domainesCache || '[]');
+    this.domaines = JSON.parse(sessionStorage.domainesCache || '[]');
     if (this.domaines.length == 0) {
       this.findDomaines();
     }
     console.log('Les domaines:', this.domaines);
 
     //Tableau des types cvs from cache
-    this.offre_types = JSON.parse(localStorage.type_offresCache || '[]');
+    this.offre_types = JSON.parse(sessionStorage.type_offresCache || '[]');
     if (this.offre_types.length == 0) {
       this.findTypeOffres();
     }
@@ -101,39 +110,55 @@ export class OffresComponent implements OnInit {
       }
     }
 
-    var employeur_id = this.route.snapshot.paramMap.get('employeur_id');
-    if (employeur_id) {
-      this.findAllByEmployeur(employeur_id);
-    } else {
-      this.offres = JSON.parse(localStorage.offresCache || '[]');
-      this.searched_offres = this.offres;
-      this.findAll();
-    }
-
     this.primengConfig.ripple = true;
   }
 
+  
+
   public findAll() {
+    this.loading=true;
     this.offreService.getAll().subscribe(
-      (data) => {
-        this.offres = data;
+      data => {
+        this.loading=false;
+        this.offres = [];
+        data.forEach(offre=>{
+          if( offre.employeur.active && offre.employeur.verifie){
+            this.offres.push(offre);
+          }
+        });
+        
+        
+
+        //Array for searched data
         this.searched_offres = this.offres;
-        localStorage.setItem('offresCache', JSON.stringify(data));
+
+        //Sort offers by date
+       // this.searched_offres =this.searched_offres.sort(this.custom_sort);
       },
-      (err) => {
+      err => {
+        this.loading=false;
         console.log(err);
       }
     );
   }
 
+  //Sort offers by date 
+  custom_sort(a, b) {
+    return  new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+  }
+
   public findAllByEmployeur(id) {
+    
+    this.loading=true;
     this.offreService.getOffresByEmployeur(id).subscribe(
       (data) => {
+        this.loading=false;
         this.offres = data;
         this.searched_offres = this.offres;
         console.log('data Emplois :', this.offres);
       },
       (err) => {
+        this.loading=false;
         console.log(err);
       }
     );
@@ -145,8 +170,7 @@ export class OffresComponent implements OnInit {
   }
 
   search() {
-    
-    
+    this.page = 1;
     this.searched_offres = this.offres;
     if (this.offres_noms.length > 0) {
       this.searchByName();
@@ -286,6 +310,7 @@ export class OffresComponent implements OnInit {
   //Shows the modal
   showDialog(offre) {
     this.currentOffre=offre;
+    sessionStorage.setItem('offre', JSON.stringify(offre));
     this.clicked = true;
     var modal = document.getElementById('offreModal');
     modal.style.display = 'block';
@@ -303,25 +328,25 @@ export class OffresComponent implements OnInit {
   public findLangues() {
     this.langueService.getAll().subscribe((res) => {
       this.langues = res;
-      localStorage.setItem('languesCache', JSON.stringify(res));
+      sessionStorage.setItem('languesCache', JSON.stringify(res));
     });
   }
   public findDomaines() {
     this.domaineService.getAll().subscribe((res) => {
       this.domaines = res;
-      localStorage.setItem('domainesCache', JSON.stringify(res));
+      sessionStorage.setItem('domainesCache', JSON.stringify(res));
     });
   }
   public findCompetences() {
     this.competenceService.getAll().subscribe((res) => {
       this.competences = res;
-      localStorage.setItem('competencesCache', JSON.stringify(res));
+      sessionStorage.setItem('competencesCache', JSON.stringify(res));
     });
   }
   public findTypeOffres() {
     this.type_offreService.getAll().subscribe((res) => {
       this.offre_types = res;
-      localStorage.setItem('type_offresCache', JSON.stringify(res));
+      sessionStorage.setItem('type_offresCache', JSON.stringify(res));
     });
   }
 }

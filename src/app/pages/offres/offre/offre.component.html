@@ -11,22 +11,29 @@
             <label for="cv">Cv</label>
             <div class="form-group">
               <label for="file">Choose File</label>
-              <input type="file" accept=".pdf, .doc, .docx" id="file" (change)="handleFileInput($event.target.files)">
+              <input class="input" type="file" accept=".pdf, .doc, .docx" id="file"
+                (change)="handleFileInput($event.target.files)">
             </div>
           </div>
 
           <div class="p-field">
-            <label for="description">Lettre de motivation</label>
-            <textarea id="lettre_motivation" name="description" required pInputTextarea class="input" [rows]="8"
+            <label for="lettre_motivation">Lettre de motivation</label>
+            <textarea id="lettre_motivation" name="lettre_motivation" pInputTextarea class="input" [rows]="8"
               [cols]="30" [(ngModel)]="candidature.lettre_motivation" #lettre_motivation="ngModel"
               [ngClass]="(lettre_motivation.dirty && lettre_motivation.invalid)"></textarea>
-            <small class="p-error" *ngIf="(lettre_motivation.dirty && lettre_motivation.invalid)">La lettre est
-              requis.</small>
+
           </div>
         </div>
 
-        <div class="p-grid p-nogutter p-justify-right">
-          <button pButton pRipple type="button" label="Ajouter" (click)="postulate()" icon="pi pi-check"
+        <div class="spinner" *ngIf="postulation_loading">
+          <div>
+            <p-progressSpinner [style]="{width: '50px', height: '50px'}" styleClass="custom-spinner" strokeWidth="4"
+              fill="#EEEEEE" animationDuration=".5s"></p-progressSpinner>
+          </div>
+        </div>
+
+        <div class="p-grid p-nogutter p-justify-right" *ngIf="!postulation_loading">
+          <button pButton pRipple type="button" label="Postuler" (click)="postulate()" icon="pi pi-check"
             class="p-button-rounded p-button-text "></button>
         </div>
       </form>
@@ -35,158 +42,193 @@
   </div>
 </div>
 
-<!-- the offre injected by using input does not have a list of candidatures attached to it, so we need to call a fucntion to get the candidatures from the database -->
-<div *ngIf="offre.candidatures">
-  <div class="p-justify-between" *ngIf="candidat, else not_connected">
-    <button pButton pRipple type="button" [disabled]="postulated_candidat" (click)="showDialog()" label="Postuler"
-      class="p-button-info p-button-rounded postulate-button"></button>
-    <div *ngIf="offre.candidatures.length==0, else not_first">
-      <div>
-        <p>{{offre.candidatures.length}} Souyez le premier </p>
-        <small>pour postuler</small>
+
+
+<body style="animation: reveal ease-in 0.3s">
+  <button pButton pRipple type="button" (click)="back()" label="Retourne à l'offre précédent"
+    *ngIf="back_offres.length>0" class="p-button-rounded p-button-text back-button" icon="pi pi-arrow-left"></button>
+  <div *ngIf="offre, else loading">
+    <!-- the offre injected by using input does not have a list of candidatures attached to it to lessen the load time, so we need to call a fucntion to get the candidatures from the database -->
+    <div *ngIf="offre.candidatures" style="animation: reveal ease-in 0.5s;">
+      <div class="p-justify-between" *ngIf="candidat, else not_connected">
+        <button pButton pRipple type="button" [disabled]="postulated_candidat" (click)="showDialog()" label="Postuler"
+          class="p-button-info p-button-rounded postulate-button"></button>
+        <div *ngIf="offre.candidatures.length==0, else not_first">
+          <div>
+            <p>Souyez le premier </p>
+            <small>pour postuler</small>
+          </div>
+        </div>
+
+        <ng-template #not_first>
+          <div *ngIf="offre.candidatures.length==1, else multiple">
+            <div>
+              <p>Une Candidature</p>
+              <small *ngIf="offre.nbre_postes">pour {{offre.nbre_postes}} Postes</small>
+            </div>
+          </div>
+          <ng-template #multiple>
+
+            <div>
+              <p>{{offre.candidatures.length}} Candidatures</p>
+              <small *ngIf="offre.nbre_postes">pour {{offre.nbre_postes}} Postes</small>
+            </div>
+
+          </ng-template>
+        </ng-template>
+
       </div>
+      <ng-template #not_connected>
+        <div class="p-justify-between">
+          <button pButton pRipple type="button" (click)="connect()" label="Connecter"
+            class="p-button-info p-button-rounded postulate-button"></button>
+          <div>
+            <h3>Connectez-vous pour postuler</h3>
+          </div>
+        </div>
+      </ng-template>
     </div>
 
-    <ng-template #not_first>
-      <div *ngIf="offre.candidatures.length==1, else multiple">
-        <div>
-          <p>Une Candidature</p>
-          <small>pour 2 Postes</small>
+    <ng-container>
+      <p-fieldset legend="A propos nous :" [toggleable]="true" [transitionOptions]="'10ms'">
+        <div> Enreprise: {{offre.employeur.nom_entreprise}} </div>
+        <div *ngIf="offre.employeur.description_entreprise"> Enreprise description:
+          {{offre.employeur.description_entreprise}} </div>
+        <div *ngIf="offre.employeur.adresse.adresse"><i class="las la-map-marker"></i>
+          {{offre.employeur.adresse.pays | uppercase}}, {{offre.employeur.adresse.governat |titlecase}},
+          {{offre.employeur.adresse.ville |lowercase}} {{offre.employeur.adresse.adresse}} </div>
+      </p-fieldset>
+    </ng-container>
+
+    <div class="details">
+
+      <div class="card-single">
+        <div class="chip-wrapper">
+          <span class="title"> niveau d'éducation :
+          </span>
+          <div class="chip">
+            {{offre.niveau_education}}
+          </div>
         </div>
       </div>
-      <ng-template #multiple>
 
-        <div>
-          <p>{{offre.candidatures.length}} Candidatures</p>
-          <small>pour 2 Postes</small>
+      <div class="card-single">
+        <div class="chip-wrapper">
+          <span class="title"> experience minimum:
+          </span>
+          <div class="chip">
+            {{offre.experience}}
+          </div>
         </div>
+      </div>
 
-      </ng-template>
-    </ng-template>
+      <div class="card-single">
+        <div class="chip-wrapper">
+          <span class="title"> Genre :
+          </span>
+          <div class="chip">
+            {{offre.genre}}
+          </div>
+        </div>
+      </div>
 
+      <div class="card-single">
+        <div class="chip-wrapper">
+          <span class="title"> domaine :
+          </span>
+          <div class="chip">
+            {{offre.domaine}}
+          </div>
+        </div>
+      </div>
+
+      <div class="card-single">
+        <div class="chip-wrapper">
+          <span class="title"> langues :
+          </span>
+          <div *ngFor=" let langue of offre.langues" class="chip">
+            {{langue.langue}}
+          </div>
+        </div>
+      </div>
+
+      <div class="card-single">
+        <div class="chip-wrapper">
+          <span class="title"> Types d'emploi :
+          </span>
+          <div *ngFor=" let emploi_type of offre.emploi_types" class="chip">
+            {{emploi_type.emploi_type}}
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="description-card">
+      <div class="description-title">
+        Description de l'annonce : </div>
+
+      <div [innerHTML]="offre.description_emploi"></div>
+    </div>
+
+    <div class="description-card">
+      <div class="description-title">
+        Les exigences :</div>
+
+      <div [innerHTML]="offre.exigence_emploi"></div>
+    </div>
+
+
+    <div *ngIf="top_offres.length>0">
+      <div id="wrapper">
+        <div id="container">
+
+          <h1 class="description-title">Suggestion parmi nous :</h1>
+
+        </div>
+      </div>
+      <div class="flex-container">
+
+        <div class="card-offre" *ngFor="let offre of top_offres">
+          <div>
+            <div class="justify-between ">
+              <h3>{{offre.nom_emploi}}</h3>
+
+              <div class="justify-right column">
+                <div class="right">
+                  <div *ngIf="offre.employeur.logo==null, else logo">
+                    <img src="../../../assets/firm.png" alt="">
+                  </div>
+                  <ng-template #logo>
+                    <img src="{{offre.employeur.logo}}" alt="">
+                  </ng-template>
+                </div>
+                <div class="justify-right">
+                  <h4 style="text-transform: uppercase;">{{offre.employeur.nom_entreprise }}</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="details">
+            <p><strong> Adresse: </strong>{{offre.employeur.adresse.pays | uppercase}},
+              {{offre.employeur.adresse.governat |titlecase}}, {{offre.employeur.adresse.ville |lowercase}}</p>
+          </div>
+          <div class="justify-right bottom-button">
+            <div></div>
+            <button pButton pRipple type="button" (click)="suggest(offre)" label="Voir détails" icon="pi pi-eye"
+              class="p-button-rounded"></button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <ng-template #not_connected>
-    <div class="p-justify-between">
-      <button pButton pRipple type="button" (click)="connect()" label="Connecter"
-        class="p-button-info p-button-rounded postulate-button"></button>
-      <div>
-        <h3>Connectez-vous pour postuler</h3>
+  <ng-template #loading>
+    <div class="spinner" style="margin-top: 30vh">
+      <div id="loader">
+        <p-progressSpinner [style]="{width: '80px', height: '80px'}" styleClass="custom-spinner" strokeWidth="4"
+          fill="#EEEEEE" animationDuration=".5s"></p-progressSpinner>
       </div>
     </div>
   </ng-template>
-</div>
-
-<ng-container>
-  <p-fieldset legend="A prropos nous :" [toggleable]="true" [transitionOptions]="'10ms'">
-    <div> Enreprise: {{offre.employeur.nom_entreprise}} </div>
-    <div> Enreprise description: {{offre.employeur.description_entreprise}} </div>
-  </p-fieldset>
-</ng-container>
-
-<div class="details">
-  
-  <div class="card-single">
-    <div class="chip-wrapper">
-      <span class="title"> niveau d'éducation :
-      </span>
-      <div class="chip">
-        {{offre.niveau_education}}
-      </div>
-    </div>
-  </div>
-
-  <div class="card-single">
-    <div class="chip-wrapper">
-      <span class="title"> experience minimum:
-      </span>
-      <div class="chip">
-        {{offre.experience}}
-      </div>
-    </div>
-  </div>
-
-  <div class="card-single">
-    <div class="chip-wrapper">
-      <span class="title"> Genre :
-      </span>
-      <div class="chip">
-        {{offre.genre}}
-      </div>
-    </div>
-  </div>
-
-  <div class="card-single">
-    <div class="chip-wrapper">
-      <span class="title"> domaine :
-      </span>
-      <div class="chip">
-        {{offre.domaine}}
-      </div>
-    </div>
-  </div>
-
-  <div class="card-single">
-    <div class="chip-wrapper">
-      <span class="title"> langues :
-      </span>
-      <div *ngFor=" let langue of offre.langues" class="chip">
-        {{langue.langue}}
-      </div>
-    </div>
-  </div>
-
-  <div class="card-single">
-    <div class="chip-wrapper">
-      <span class="title"> Types d'emploi :
-      </span>
-      <div *ngFor=" let emploi_type of offre.emploi_types" class="chip">
-        {{emploi_type.emploi_type}}
-      </div>
-    </div>
-  </div>
-
-</div>
-
-
-<div class="description-card">
-  <div class="description-title">
-    Description de l'annonce : </div>
-
-  <div [innerHTML]="offre.description_emploi"></div>
-</div>
-
-<div class="description-card">
-  <div class="description-title">
-    Les exigences :</div>
-
-  <div [innerHTML]="offre.exigence_emploi"></div>
-</div>
-
-
-<div id="wrapper">
-  <div id="container">
-
-    <h1 class="description-title">Suggestion parmi nous :</h1>
-
-  </div>
-</div>
-<!--<br> <br>-->
-<div class="flex-container">
-
-  <p-card header="Societe nom" subheader="definition ou detail" [style]="{width: '360px'}" styleClass="p-card-shadow">
-    <ng-template pTemplate="header">
-      <img alt="Card"
-        src="data:image/jpeg;base64,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">
-    </ng-template>
-    <p>description de société</p>
-  </p-card>
-
-  <p-card header="Societe nom" subheader="definition ou detail" [style]="{width: '360px'}" styleClass="p-card-shadow">
-    <ng-template pTemplate="header">
-      <img alt="Card"
-        src="data:image/jpeg;base64,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">
-    </ng-template>
-    <p>description de société</p>
-  </p-card>
-
-</div>
+</body>

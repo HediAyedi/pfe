@@ -1,12 +1,149 @@
 <p-toast></p-toast>
 
+
+<div class="all">
+
+  <div class="cont">
+    <form class="form sign-in">
+        <h2>Bienvenue à nouveau</h2>
+        <label>
+          <span>Email</span>
+          <input id="login_email" type="login_email" width="50px" [(ngModel)]="candidat.email" name="login_email"
+            #login_email="ngModel" required email [ngClass]="{'ng-dirty': login_email.dirty && login_email.invalid}">
+          <div>
+            <small class="p-error" *ngIf="(login_email.dirty && login_email.invalid)">Taper un email valable.</small>
+          </div>
+          <div [hidden]="!login_email.errors?.required || login_email.pristine">
+            <small class="p-error">l'email est requis.</small>
+          </div>
+        </label>
+        <label>
+          <span>Mot De Passe</span>
+          <input type="password" id="login_mdp" pInputText [(ngModel)]="candidat.mot_de_passe" name="login_mdp"
+            #login_mdp="ngModel" minlength="6" required
+            [ngClass]="{'ng-dirty': login_mdp.dirty && login_mdp.invalid}" />
+          <div>
+            <small class="p-error" *ngIf="(login_mdp.dirty && login_mdp.invalid)">6 caractéres au minimum.</small>
+          </div>
+          <div [hidden]="!login_mdp.errors?.required || login_mdp.pristine">
+            <small class="p-error">mot de passe est requis.</small>
+          </div>
+        </label>
+        <p class="forgot-pass">Forgot password?</p>
+        <button id='login_btn' type="button" (click)="logIn()" pButton class="submit  p-button-rounded p-button-text"
+          [disabled]="login_email.invalid || login_mdp.invalid">Connecter</button>
+        
+          <div class="spinner" style="margin-top: 40px">
+            <div id="login_loader" style="display: none;">
+              <p-progressSpinner [style]="{width: '50px', height: '50px'}" styleClass="custom-spinner" strokeWidth="8" fill="#EEEEEE" animationDuration=".5s"></p-progressSpinner>
+            </div>
+          </div>
+    </form>
+    <div class="sub-cont">
+      <div class="img">
+        <div class="img__text m--up">
+          <h2>Nouveau ici?</h2>
+          <p>Inscrivez-vous et découvrez un grand nombre de nouvelles opportunités! </p>
+        </div>
+        <div class="img__text m--in">
+          <h2>Un d'entre nous?</h2>
+          <p>Si vous avez déjà un compte, connectez-vous simplement. Vous nous avez manqué ! </p>
+        </div>
+        <div class="img__btn" (click)="toggle()">
+          <span class="m--up">S'inscrire</span>
+          <span class="m--in">Connecter</span>
+        </div>
+      </div>
+      <form class="form sign-up">
+        <div id="form">
+          <h2>Il est temps de se sentir comme à la maison</h2>
+          <label>
+            <span>Nom</span>
+            <input id="nom" type="text" pInputText [(ngModel)]="nom_candidat" name="nom" #nom="ngModel" required>
+          </label>
+
+          <label>
+            <span>Prenom</span>
+            <input id="prenom" type="text" pInputText [(ngModel)]="prenom_candidat" name="prenom" #prenom="ngModel"
+              required>
+          </label>
+
+          <label>
+            <span>Email</span>
+            <input id="email" type="email" pInputText width="50px" [(ngModel)]="candidat.email" name="email"
+              #email="ngModel" required email [ngClass]="{'ng-dirty': email.dirty && email.invalid}">
+            <div>
+              <small class="p-error" *ngIf="(email.dirty && email.invalid)">Taper un email valable.</small>
+            </div>
+            <div [hidden]="!email.errors?.required || email.pristine">
+              <small class="p-error">l'email est requis.</small>
+            </div>
+          </label>
+
+          <label>
+            <span>Civilité</span><br>
+            <p-dropdown [options]="civilites" [(ngModel)]="candidat.civilite" placeholder="Choisissez une civilité"
+              name="secteur" required [ngClass]="{'ng-dirty': email.dirty && email.invalid}"></p-dropdown>
+          </label>
+
+          <label>
+            <span>Mot De Passe</span>
+            <input type="password" id="mdp" pInputText [(ngModel)]="candidat.mot_de_passe" name="mdp" #mdp="ngModel"
+              minlength="6" required [ngClass]="{'ng-dirty': mdp.dirty && mdp.invalid}" />
+            <div>
+              <small class="p-error" *ngIf="(mdp.dirty && mdp.invalid)">Le mot de passe doit être 6 caractéres au
+                minimum.</small>
+            </div>
+            <div [hidden]="!mdp.errors?.required || mdp.pristine">
+              <small class="p-error">mot de passe est requis.</small>
+            </div>
+          </label>
+
+          <label>
+            <span>Confirmation Mot De Passe</span>
+            <input type="password" id="confirm_mdp" pInputText [(ngModel)]="candidat.mot_de_passe_confirmation"
+              pattern="{{candidat.mot_de_passe}}" name="confirm_mdp" #confirm_mdp="ngModel" required />
+            <div>
+              <small class="p-error" *ngIf="(confirm_mdp.dirty && confirm_mdp.errors?.required) && mdp.valid">la
+                confirmation du mot de passe est requis.</small>
+            </div>
+            <div>
+              <small class="p-error" *ngIf="(confirm_mdp.dirty && confirm_mdp.invalid) && mdp.valid">la confirmation
+                doit
+                être identique au mot de passe.</small>
+            </div>
+          </label>
+          <button type="button" pButton class="submit p-button-rounded p-button-text" (click)="signUp()"
+            [disabled]="nom.invalid || prenom.invalid || email.invalid || mdp.invalid || confirm_mdp.invalid">S'inscrire</button>
+
+        </div>
+        <div class="spinner" style="margin-top: 30vh">
+          <div id="loader" style="display: none;">
+            <p-progressSpinner [style]="{width: '50px', height: '50px'}" styleClass="custom-spinner" strokeWidth="8" fill="#EEEEEE" animationDuration=".5s"></p-progressSpinner>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- 
 <div class="all">
   <h1 class="ctil">Rejoins nous </h1>
   <form class="box">
     <div class="p-fluid p-formgrid p-grid ">
       <div class="p-field p-col-12 p-md-6 ">
-        <label for="nom">Nom & Prénom</label>
-        <input id="nom" type="text" pInputText [(ngModel)]="candidat.nom" name="nom" #nom="ngModel" required pTooltip="Taper Votre nom" tooltipPosition="top" tooltipEvent="focus" showDelay="1000" hideDelay="500">
+        
+        <div style="display: flex; justify-content:space-between ">
+          <div class="p-field p-col-12 p-md-6 " style="width: 49%;">
+            <label for="nom">Nom </label>
+            <input id="nom" type="text" pInputText [(ngModel)]="nom_candidat" name="nom" #nom="ngModel" required pTooltip="Taper Votre nom" tooltipPosition="top" tooltipEvent="focus" showDelay="1000" hideDelay="500">
+          </div>
+          <div class="p-field p-col-12 p-md-6 "style="width: 49%;">
+            <label for="prenom">Prénom</label>
+            <input id="prenom" type="text" pInputText [(ngModel)]="prenom_candidat" name="prenom" #prenom="ngModel" required pTooltip="Taper Votre prenom" tooltipPosition="top" tooltipEvent="focus" showDelay="1000" hideDelay="500">
+          </div>
+        </div>
       </div>
       <div class="p-field p-col-12 p-md-6">
         <label for="email">Email</label>
@@ -14,16 +151,9 @@
       </div>
 
       <div class="p-field p-col-12 p-md-6">
-        <!-- <p-cascadeSelect [(ngModel)]="candidat.civilite" [options]="civilites" optionLabel="value" name="civilite1" #civilite1="ngModel" [style]="{'minWidth': '14rem'}" pTooltip="Choisissez une civilité" tooltipPosition="right" tooltipEvent="focus" showDelay="500" hideDelay="200"></p-cascadeSelect> -->
         <div class="p-field p-col-12 p-md-3">
           <p-dropdown [options]="civilites" [(ngModel)]="candidat.civilite" placeholder="Choisissez une civilité" name="secteur"  [style]="{'minWidth': '14rem'}"></p-dropdown>
         </div>
-        <!-- <select id="civilite" width="50px" [(ngModel)]="candidat.civilite" name="civilite" #civilite="ngModel" required >
-        <option value="" [hidden]="true" >Choisissez une civilité</option>
-        <option value="M" >M</option>
-        <option value="Mme" >Mme</option>
-        <option value="Mlle" >Mlle</option>
-        </select> -->
       </div>
       <div class="p-field p-col-12">
         <label for="mdp">Mot de passe</label>
@@ -38,4 +168,4 @@
   </form>
 
   <button class="big-button" (click)="ajouter()" [disabled]="nom.invalid || email.invalid">S'inscrire</button>
-</div>
+</div> -->

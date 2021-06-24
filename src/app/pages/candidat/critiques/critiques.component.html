@@ -1,0 +1,35 @@
+<div class="main">
+  <div class="description-card">
+    <div class="description-title">
+      Critiques : </div>
+
+    <div *ngIf="!loading">
+      <div class="description-sub-title">
+        Visibles : </div>
+
+      <div *ngFor="let critique of critiques">
+        <div *ngIf="critique.visible" class="description-card p-justify-between">
+          {{critique.critique}}
+          <p-inputSwitch (onChange)="updateCritique(critique)" [(ngModel)]="critique.visible"></p-inputSwitch>
+        </div>
+      </div>
+
+      <div class="description-sub-title">
+        Cachés : </div>
+
+      <div *ngFor="let critique of critiques">
+        <div *ngIf="!critique.visible" class="description-card p-justify-between">
+          {{critique.critique}}
+          <p-inputSwitch (onChange)="updateCritique(critique)" [(ngModel)]="critique.visible"></p-inputSwitch>
+        </div>
+      </div>
+    </div>
+
+    <div class="spinner" *ngIf="loading" style="margin-top: 10vh">
+      <div id="loader" >
+        <p-progressSpinner [style]="{width: '70px', height: '70px'}" styleClass="custom-spinner" strokeWidth="4"
+          fill="#EEEEEE" animationDuration=".5s"></p-progressSpinner>
+      </div>
+    </div>
+  </div>
+</div>

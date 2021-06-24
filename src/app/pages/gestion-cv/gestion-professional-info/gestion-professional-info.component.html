@@ -5,9 +5,9 @@
   <h2>
     Vérifiez vos informations professionnelles
   </h2>
-  <div class="flex-cont">
+  <div class="flex-container">
 
-    <form class="p-fluid p-formgrid p-grid card-single">
+    <form id="form" class="p-fluid p-formgrid p-grid container">
 
       <div class="p-field p-col-12 p-md-6 p-justify-between">
         <div style="width: 50%;">
@@ -104,15 +104,28 @@
         </div>
       </div>
 
-      <div class="p-justify-between margin-top">
-        <button pButton pRipple type="button" label="Précédent" (click)="previousPage()" icon="pi pi-angle-left"
-          iconPos="left" class="p-button-rounded"></button>
-        <button pButton pRipple type="button" label="Confirmer" (click)="nextPage()" icon="pi pi-angle-right"
-          iconPos="right"
-          [disabled]="selected_langues.length==0 || selected_types.length==0 || experience.invalid || niveau_education.invalid || stat.invalid || selected_domaines.length==0"
-          class="p-button-rounded"></button>
+      <div class="spinner">
+        <div id="loader" style="display: none;">
+          <p-progressSpinner [style]="{width: '50px', height: '50px'}" styleClass="custom-spinner" strokeWidth="6" fill="#EEEEEE" animationDuration=".5s"></p-progressSpinner>
+        </div>
       </div>
+      <div id='confirm'>
+        <div class="p-justify-between margin-top">
+          <button pButton pRipple type="button" label="Précédent" (click)="previousPage()" icon="pi pi-angle-left"
+            iconPos="left" class="p-button-rounded"></button>
+          <button pButton pRipple type="button" label="Confirmer" (click)="nextPage()" icon="pi pi-angle-right"
+            iconPos="right"
+            [disabled]="selected_langues.length==0 || selected_types.length==0 || experience.invalid || niveau_education.invalid || stat.invalid || selected_domaines.length==0"
+            class="p-button-rounded"></button>
+        </div>
+      </div>
+      
 
     </form>
+    <div class="spinner">
+      <div id="form_loader" style="display: none; margin-top:20vh">
+        <p-progressSpinner [style]="{width: '50px', height: '50px'}" styleClass="custom-spinner" strokeWidth="6" fill="#EEEEEE" animationDuration=".5s"></p-progressSpinner>
+      </div>
+    </div>
   </div>
 </div>

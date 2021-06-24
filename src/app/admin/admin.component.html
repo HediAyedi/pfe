@@ -25,24 +25,38 @@
 </p-sidebar>
 
   <div class="main-content">
-    <header>
-      <h2 (click)="display = true" >
-        <div class="kamjobs">
-          <span class="las la-bars"></span>
-        </div>
-      </h2>
+    
+    <p-scrollPanel [style]="{width: '100%', height: '98vh'}">
+      <header>
+        <h2 (click)="display = true" >
+          <div class="kamjobs">
+            <span class="las la-bars"></span>
+          </div>
+        </h2>
+    
+        <p-overlayPanel #op  [style]="{width: '200px'}">
+          <ng-template pTemplate>
+        
+            <button pButton pRipple type="button" [routerLink]="['/employeur/profil']" icon="pi pi-user-edit" label="Gestion profil"
+              class="p-button-text sign-out"></button>
+            <button pButton pRipple type="button" (click)="signOut()"  icon="pi pi-sign-out" label="Déconnecter"
+              class="p-button-text sign-out"></button>
+          </ng-template>
+        </p-overlayPanel>
+    
+        <div class="user-wrapper">
+          <i (click)="op.toggle($event)" class="pi pi-ellipsis-h"></i>
   
-      
-  
-      <div class="user-wrapper">
-        <img src="https://scontent.ftun2-1.fna.fbcdn.net/v/t1.6435-9/94610675_2612309645724396_3824631985830100992_n.jpg?_nc_cat=110&ccb=1-3&_nc_sid=174925&_nc_ohc=LB-5A8g5qNoAX8CpCR6&_nc_ht=scontent.ftun2-1.fna&oh=002b7e7bbb2230d2c9c76f0174df9ad6&oe=60A7D585" alt="admin photo" width="40px" height="40px">
-        <div>
-          <h4>Mourad Jnayah</h4>
-          <small>Super Admin</small>
+          <img style="background-image: url(https://firebasestorage.googleapis.com/v0/b/kamjobs-d59d8.appspot.com/o/images%2F186522372_282428813561160_8130797224775870315_n.jpg?alt=media&token=86f1e207-16d0-4ad0-a826-c61f28f61265)" src="https://firebasestorage.googleapis.com/v0/b/kamjobs-d59d8.appspot.com/o/images%2F186522372_282428813561160_8130797224775870315_n.jpg?alt=media&token=86f1e207-16d0-4ad0-a826-c61f28f61265"  width="40px" height="40px">
+          <div>
+            <h4>Mourad Jnayah</h4>
+            <small>Super Admin</small>
+          </div>
         </div>
-      </div>
-    </header>
-    <main>
+      </header>
+      <main>
         <router-outlet></router-outlet>
-      </main>      
+      </main>  
+    </p-scrollPanel>
+        
 </div>

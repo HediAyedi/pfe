@@ -6,18 +6,23 @@
     <div [innerHTML]="candidat.nom | titlecase"></div>
   </div>
 
-  <div class="description-card">
-    <div class="description-title">
-      motivation : </div>
-
-    <div [innerHTML]="candidat.motivation | lowercase"></div>
-  </div>
+  
 
   <div class="description-card">
     <div class="description-title">
       Informations généralles : </div>
 
     <div class="details">
+
+      <div class="card-single">
+        <div class="chip-wrapper">
+          <span class="title"> Email :
+          </span>
+          <div class="chip lowercase">
+            {{candidat.email}}
+          </div>
+        </div>
+      </div>
 
       <div class="card-single">
         <div class="chip-wrapper">
@@ -39,7 +44,7 @@
         </div>
       </div>
 
-      <div *ngIf="candidat.cv" class="card-single">
+      <div *ngIf="candidat.cv.niveau_experience" class="card-single">
         <div class="chip-wrapper">
           <span class="title"> experience :
           </span>
@@ -49,7 +54,7 @@
         </div>
       </div>
 
-      <div *ngIf="candidat.cv" class="card-single">
+      <div *ngIf="candidat.cv.status" class="card-single">
         <div class="chip-wrapper">
           <span class="title"> Status :
           </span>
@@ -59,7 +64,58 @@
         </div>
       </div>
 
+      <div *ngIf="candidat.cv.salaire>0" class="card-single">
+        <div class="chip-wrapper">
+          <span class="title"> Salaire souhaité :
+          </span>
+          <div class="chip">
+            {{candidat.cv.salaire | currency}}
+          </div>
+        </div>
+      </div>
+
     </div>
+  </div>
+
+  <div class="description-card">
+    <div class="description-title">
+      motivation : </div>
+
+    <div class="text" [innerHTML]="candidat.motivation"></div>
+  </div>
+
+  <div *ngIf="candidat.cv.competences" class="description-card">
+
+    <div class="description-title">
+      Competences : </div>
+    <div class="details">
+      <div *ngFor="let competence of candidat.cv.competences">
+        <div class="card-single">
+              {{competence.competence}}
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+
+  <div *ngIf="candidat.cv.domaines" class="description-card">
+
+    <div class="description-title">
+      Domaines d'interêt : </div>
+    <div class="details">
+      <div *ngFor="let domaine of candidat.cv.domaines">
+        <div class="card-single">
+          <div class="chip-wrapper">
+            <div class="chip">
+              {{domaine.domaine}}
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
   </div>
 
   <div *ngIf="candidat.critiques" class="description-card">
@@ -67,9 +123,9 @@
       Critiques : </div>
 
     <div *ngFor="let critique of candidat.critiques">
-        <div *ngIf="critique.visible" class="description-card">
-            {{critique.critique}}
-          </div>
+      <div *ngIf="critique.visible" class="description-card text">
+        {{critique.critique}}
+      </div>
     </div>
   </div>
 
@@ -78,15 +134,13 @@
       Badges : </div>
 
     <div class="details">
-      <div *ngFor=" let note of candidat.notes" class="card-single">
-        <div class="chip-wrapper">
-          
-          <div class="chip">
-            {{note.test.domaine}}
-          </div>
+      <div *ngFor=" let note of candidat.notes">
+        <div *ngIf="note.success" class="card-single">
+          {{note.test.domaine}}
         </div>
       </div>
     </div>
   </div>
+
 
 </div>

@@ -5,84 +5,104 @@
         class="p-button-danger p-button-rounded p-button-text "></button>
     </div>
     <p-scrollPanel [style]="{width: '100%', height: '90%'}">
-      
-        <app-offre *ngIf="clicked" [offre]="currentOffre"></app-offre>
+      <app-offre *ngIf="clicked" [offre]="currentOffre"></app-offre>
+      <p-scrollTop target="parent" [threshold]="100" icon="pi pi-arrow-up"></p-scrollTop>
     </p-scrollPanel>
   </div>
 </div>
 
-<div class="responsive-body">
-  <div class="search">
-    <p-chips [(ngModel)]="offres_noms" placeholder="Chercher par nom d'offre" (onAdd)="search()" (onRemove)="search()">
-    </p-chips>
+<div class="responsive-body ">
+  
+  <p-scrollPanel [styleClass]="'scroll'" >
 
-    <p-multiSelect class="p-field" [options]="offre_types" (onChange)="search()" (onRemove)="search()"
-      [(ngModel)]="selected_types" defaultLabel="Chercher par type d'emploi " optionLabel="emploi_type" display="chip">
-    </p-multiSelect>
+    <div class="search">
+      <p-chips [(ngModel)]="offres_noms" placeholder="Chercher par nom d'offre" (onAdd)="search()" (onRemove)="search()">
+      </p-chips>
+  
+      <p-multiSelect class="p-field" [options]="offre_types" (onChange)="search()" (onRemove)="search()"
+        [(ngModel)]="selected_types" defaultLabel="Chercher par type d'emploi " optionLabel="emploi_type" display="chip">
+      </p-multiSelect>
+  
+      <p-multiSelect class="p-field" [options]="domaines" (onChange)="search()" (onRemove)="search()"
+        [(ngModel)]="selected_domaines" defaultLabel="Chercher par domaine " optionLabel="domaine" display="chip">
+      </p-multiSelect>
+  
+      <p-multiSelect class="p-field" [options]="competences" (onChange)="search()" (onRemove)="search()"
+        [(ngModel)]="selected_competences" defaultLabel="Chercher par competence " optionLabel="competence"
+        display="chip">
+      </p-multiSelect>
+    </div>
 
-    <p-multiSelect class="p-field" [options]="domaines" (onChange)="search()" (onRemove)="search()"
-      [(ngModel)]="selected_domaines" defaultLabel="Chercher par domaine " optionLabel="domaine" display="chip">
-    </p-multiSelect>
-
-    <p-multiSelect class="p-field" [options]="competences" (onChange)="search()" (onRemove)="search()"
-      [(ngModel)]="selected_competences" defaultLabel="Chercher par competence " optionLabel="competence"
-      display="chip">
-    </p-multiSelect>
-  </div>
-  <div class="main">
-    <div class="flex-cont ">
-      <div class="card-single"
-        *ngFor="let offre of searched_offres  | paginate: { itemsPerPage: 10, currentPage: page }">
-        <div>
-          <div class="p-justify-between ">
-            <h1>{{offre.nom_emploi}}</h1>
-            <div class="p-justify-right column">
-              <div class="right">
-                <div *ngIf="offre.employeur.logo==null, else logo">
-                  <img src="../../../assets/firm.png" alt="">
+    <div class="main" *ngIf="!loading">
+      <div class="flex-cont ">
+        <pagination-controls (pageChange)="page = $event" class="paging-control" maxSize="3" previousLabel="Précédent"
+          nextLabel="Suivant" autoHide="true"></pagination-controls>
+      </div>
+      <div class="flex-cont ">
+        <div class="card-single"
+          *ngFor="let offre of searched_offres  | paginate: { itemsPerPage: 6, currentPage: page }">
+          <div>
+            <div class="p-justify-between ">
+              <h2 style="text-align: left;">{{offre.nom_emploi}}</h2>
+              
+              <div class="p-justify-right column">
+                <div class="right">
+                  <div *ngIf="offre.employeur.logo==null, else logo">
+                    <img src="../../../assets/firm.png" alt="">
+                  </div>
+                  <ng-template #logo>
+                    <img src="{{offre.employeur.logo}}" alt="">
+                  </ng-template>
                 </div>
-                <ng-template #logo>
-                  <img src="{{offre.employeur.logo}}" alt="">
-                </ng-template>
-              </div>
-              <div class="p-justify-right">
-                <h3 style="text-transform: uppercase;">{{offre.employeur.nom_entreprise }}</h3>
+                <div class="p-justify-right">
+                  <h3 style="text-transform: uppercase;">{{offre.employeur.nom_entreprise }}</h3>
+                </div>
               </div>
             </div>
+            <div>
+              <span class="overflow" [innerHTML]="(offre.description_emploi | slice:0:150)+'...'">
+              </span>
+            </div>
           </div>
-          <div>
-            <span class="overflow" [innerHTML]="(offre.description_emploi | slice:0:150)+'...'">
-            </span>
-          </div>
-        </div>
-        <div class="details">
-
-          <p><strong>Types d'emploi: </strong>
-            <span *ngFor="let type of offre.emploi_types">
-              <span>{{type.emploi_type}}  </span>
-            </span>
-          </p>
-          <p><strong>Domaine: </strong>
-            <span>
-              {{offre.domaine |titlecase}}
-            </span>
-          </p>
-
-        </div>
-        <div class="p-justify-between">
           <div class="details">
-            <p><strong>Adresse: </strong>{{offre.employeur.adresse.pays | uppercase}}
-              {{offre.employeur.adresse.governat |titlecase}} {{offre.employeur.adresse.ville |lowercase}}</p>
+  
+            <p><strong>Types d'emploi: </strong>
+              <span *ngFor="let type of offre.emploi_types">
+                <span>{{type.emploi_type}}  </span>
+              </span>
+            </p>
+            <p><strong>Domaine: </strong>
+              <span>
+                {{offre.domaine |titlecase}}
+              </span>
+            </p>
+  
           </div>
-
-          <button pButton pRipple type="button" (click)="showDialog(offre)" label="Voir détails" icon="pi pi-eye"
-            class="p-button-rounded"></button>
+          <div class="p-justify-between">
+            <div class="details">
+              <p><strong> Adresse: </strong>{{offre.employeur.adresse.pays | uppercase}}, {{offre.employeur.adresse.governat |titlecase}}, {{offre.employeur.adresse.ville |lowercase}}</p>
+            </div>
+  
+            <button pButton pRipple type="button" (click)="showDialog(offre)" label="Voir détails" icon="pi pi-eye"
+              class="p-button-rounded"></button>
+          </div>
+        </div>
+      </div>
+      <div class="flex-cont ">
+        <pagination-controls (pageChange)="page = $event" class="paging-control" maxSize="3" previousLabel="Précédent"
+          nextLabel="Suivant" autoHide="true"></pagination-controls>
+      </div>
+    </div>
+    
+    <div class="main">
+      <div class="spinner" *ngIf="loading" style="margin-top: 30vh">
+        <div id="loader" >
+          <p-progressSpinner [style]="{width: '80px', height: '80px'}" styleClass="custom-spinner" strokeWidth="4"
+            fill="#EEEEEE" animationDuration=".5s"></p-progressSpinner>
         </div>
       </div>
     </div>
-    <div class="flex-cont ">
-      <pagination-controls (pageChange)="page = $event" class="paging-control" maxSize="3" previousLabel="Précédent"
-        nextLabel="Suivant" autoHide="true"></pagination-controls>
-    </div>
-  </div>
+    
+  </p-scrollPanel>
+  
 </div>

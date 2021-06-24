@@ -5,7 +5,7 @@
       <button pButton pRipple type="button" (click)="cancel()" icon="pi pi-times"
         class="p-button-danger p-button-rounded p-button-text "></button>
     </div>
-    <div class="p-fluid">
+    <div id="fluid" class="p-fluid">
       <div class="p-field">
         <label for="titre">Titre</label>
         <input #titre="ngModel" name="titre" id="titre" type="text" required pInputText class="input"
@@ -14,9 +14,20 @@
       </div>
       <div class="p-field">
         <div><label for="logo">logo</label></div>
-        <input pInputText type="file" accept=".png,.jpg,.jpeg" id="file" (change)="handleFileInput($event.target.files)">
+        <input  class="input" pInputText type="file" accept=".png,.jpg,.jpeg" id="file" (change)="handleFileInput($event.target.files)">
+        <div  style="display: flex; justify-content:space-around">
+          <img id="logo" [src]="blog.logo" style="border-radius: 15px; margin: 8px;" height="200px">
+        </div>
         
-        <br><img [src]="blog.logo" height="200px">
+          <div id="loader" style="display: none;">
+            <div class="spinner">
+              <p-progressSpinner [style]="{width: '50px', height: '50px'}" styleClass="custom-spinner" strokeWidth="8" fill="#EEEEEE" animationDuration=".5s"></p-progressSpinner>
+            </div>
+            <div class="spinner">
+              <p>Compression en cours</p>
+            </div>
+          </div>
+        
       </div>
       <div class="p-field">
         <label for="description">Contenu</label>
@@ -28,14 +39,24 @@
         <small class="p-error" *ngIf="(description.dirty && description.invalid)">Contenu est requis.</small>
       </div>
     </div>
-    <div class="p-grid p-nogutter p-justify-right">
-      <button pButton pRipple type="button" label="Ajouter" (click)="add()" icon="pi pi-check"
-        class="p-button-rounded p-button-text " *ngIf="!editing"></button>
-      <button pButton pRipple type="button" label="Modifier" (click)="edit()" icon="pi pi-check"
-        class="p-button-rounded p-button-warning p-button-text " *ngIf="editing"></button>
+    <div id="uploading" style="display: none;">
+      <div class="spinner">
+        <p-progressSpinner [style]="{width: '50px', height: '50px'}" styleClass="custom-spinner" strokeWidth="8" fill="#EEEEEE" animationDuration=".5s"></p-progressSpinner>
+      </div>
+    </div>
+    <div id="btn">
+      <div class="p-grid p-nogutter p-justify-right">
+        <button  pButton pRipple type="button" label="Ajouter" [disabled]="description.invalid || titre.invalid" (click)="add()" icon="pi pi-check"
+          class="p-button-rounded p-button-text " *ngIf="!editing"></button>
+        <button pButton pRipple type="button" label="Modifier"  [disabled]="description.invalid || titre.invalid" (click)="edit()" icon="pi pi-check"
+          class="p-button-rounded p-button-warning p-button-text" *ngIf="editing"></button>
+      </div>
     </div>
   </form>
 </div>
+
+
+
 
 <div class="flex-container">
   <div class="card-single">
@@ -71,50 +92,3 @@
     </p-table>
   </div>
 </div>
-
-
-<!-- 
-<p-dialog [style]="{'color':'red'}" header="Ajout blog" [modal]="true" [draggable]="false" [(visible)]="display">
-  <ng-template pTemplate="title">
-    Ajouter une description
-
-  </ng-template>
-  <ng-template pTemplate="subtitle">
-    Taper les données
-  </ng-template>
-  <ng-template pTemplate="content">
-    <div style="width:40vw;">
-      <div class="p-fluid">
-        <div class="p-field">
-          <label for="titre">Titre</label>
-          <input #titre="ngModel" name="titre" id="titre" type="text" required pInputText class="input"
-            [(ngModel)]="blog.titre" [ngClass]="{'ng-dirty': (titre.dirty && titre.invalid)}">
-          <small *ngIf="(titre.dirty && titre.invalid)" class="p-error">titre is required.</small>
-        </div>
-        <div class="p-field">
-          <label for="logo">logo</label>
-          <input #logo="ngModel" id="logo" name="logo" type="text" required pInputText class="input"
-            [(ngModel)]="blog.logo" [ngClass]="{'ng-dirty':(logo.dirty && logo.invalid)}">
-          <small class="p-error" *ngIf="(logo.dirty && logo.invalid)">logo is required.</small>
-        </div>
-        <div class="p-field">
-          <label for="description">Contenu</label>
-
-          <textarea id="description" name="description" required pInputTextarea class="input" [rows]="6" [cols]="30"
-            [(ngModel)]="blog.description" #description="ngModel"
-            [ngClass]="(description.dirty && description.invalid)"></textarea>
-
-
-          <small class="p-error" *ngIf="(description.dirty && description.invalid)">Contenu is
-            required.</small>
-        </div>
-      </div>
-    </div>
-  </ng-template>
-  <ng-template pTemplate="footer">
-    <div class="p-grid p-nogutter p-justify-end">
-      <button pButton pRipple type="button" label="Ajouter" (click)="add()" icon="pi pi-check"
-        class="p-button-rounded p-button-text "></button>
-    </div>
-  </ng-template>
-</p-dialog> -->

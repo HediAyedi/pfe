@@ -17,8 +17,8 @@ export class ExperienceService {
   
   
 
-  public getAll(): Observable<any>{
-    return this.httpClient.get<Experience[]>(this.url + '/experiences');
+  public getAllById(id): Observable<any>{
+    return this.httpClient.get<Experience[]>(this.url + '/experiences/' + id);
   }
 
   public get(id: any): Observable<any>{

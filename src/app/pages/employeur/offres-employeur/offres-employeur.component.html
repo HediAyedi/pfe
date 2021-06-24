@@ -1,25 +1,25 @@
-<!-- BLOG FORM -->
+<!-- OFFRE FORM -->
 <div id="offreForm" class="modal">
   <form class="modal-content">
     <div class="p-justify-right">
       <button pButton pRipple type="button" (click)="cancel()" icon="pi pi-times"
         class="p-button-danger p-button-rounded p-button-text "></button>
     </div>
-    <p-scrollPanel [style]="{width: '100%', height: '60vh'}">
+    <p-scrollPanel [style]="{width: '100%', height: '80vh'}">
       <div class="p-fluid">
 
         <div class="p-field p-col-12 p-md-6 ">
           <label for="nom_emploi">Nom d'offre</label>
           <input id="nom_emploi" type="text" pInputText [(ngModel)]="offre.nom_emploi" name="nom_emploi"
-            #genre="ngModel" class="input" required pTooltip="Taper le nom d'emploi" tooltipPosition="top"
+            #nom_emploi="ngModel" class="input" required pTooltip="Taper le nom d'emploi" tooltipPosition="top"
             tooltipEvent="focus" showDelay="1000" hideDelay="500">
         </div>
 
         <div class="p-field p-col-12 p-md-6">
           <label for="genre">Genre d'offre</label>
           <div class="p-field p-col-12 p-md-3">
-            <p-dropdown [options]="genres" [(ngModel)]="offre.genre" placeholder="Choisissez le genre d'employé"
-              name="genre" id="genre"></p-dropdown>
+            <p-dropdown [options]="genres" required [(ngModel)]="offre.genre"
+              placeholder="Choisissez le genre d'employé" name="genre" id="genre"></p-dropdown>
           </div>
         </div>
 
@@ -41,54 +41,60 @@
         </div>
 
         <div class="p-field p-col-12 p-md-3">
-          <label for="description_emploi">Description Emploi</label>
-          <angular-editor [placeholder]="'Description de emploi'"  id="description_emploi" name="description_emploi" required
-                          [(ngModel)]="offre.description_emploi" #description_emploi="ngModel"></angular-editor>
+          <label for="description_emploi">Description Offre</label>
+          <angular-editor id="description_emploi" required placeholder="Description d'emploi"
+            name="description_emploi" [(ngModel)]="offre.description_emploi" #description_emploi="ngModel">
+          </angular-editor>
 
-          <!--<textarea id="description_emploi" name="description_emploi" required pInputTextarea class="input" [rows]="6"-->
-            <!--[cols]="30" [(ngModel)]="offre.description_emploi" #description_emploi="ngModel"-->
-            <!--[ngClass]="(description_emploi.dirty && description_emploi.invalid)"></textarea>-->
+
         </div>
 
         <div class="p-field p-col-12 p-md-3">
-          <label for="exigence_emploi">Exigences de l'emploi</label>
-          <angular-editor placeholder="Exigences supplémetaires ou détaillées"  id="exigence_emploi" name="exigence_emploi" required
-                          [(ngModel)]="offre.exigence_emploi" #exigence_emploi="ngModel" ></angular-editor>
+          <label for="exigence_emploi">Exigences de l'offre</label>
+          <angular-editor placeholder="Exigences supplémetaires et compétences" id="exigence_emploi"
+            name="exigence_emploi" [(ngModel)]="offre.exigence_emploi" #exigence_emploi="ngModel">
+          </angular-editor>
+        </div>
 
-          <!--<textarea  pInputTextarea class="input" [rows]="6"-->
-            <!--[cols]="30" -->
-            <!--[ngClass]="(exigence_emploi.dirty && exigence_emploi.invalid)"></textarea>-->
+        <div class="p-field p-col-12 p-md-6 ">
+          <label for="nbre_postes">Nombre de postes</label>
+          <input id="nbre_postes" type="text" pInputText [(ngModel)]="offre.nbre_postes" name="nbre_postes"
+            #nbre_postes="ngModel" class="input" required pTooltip="Taper le nombre de postes" tooltipPosition="top"
+            tooltipEvent="focus" showDelay="1000" hideDelay="500">
         </div>
 
         <div class="p-field p-col-12 p-md-3">
           <label for="domaine">Domaine</label>
-          <p-dropdown id="domaine" [options]="domaines" [(ngModel)]="selected_domaine"
+          <p-dropdown id="domaine" required [options]="domaines" [(ngModel)]="selected_domaine"
             placeholder="Choisissez un domaine" name="domaine" optionLabel="domaine"></p-dropdown>
         </div>
 
         <div class="p-field p-col-12 p-md-6">
           <label for="type_offre">Types d'emploi</label>
-          <p-multiSelect id="type_offre" [options]="selected_types.concat(this.unselected_types)"
-            (onChange)="unselectedTypes()" [(ngModel)]="selected_types" name="type_offre"
+          <p-multiSelect id="type_offre" required [options]="selected_types.concat(this.unselected_types)"
+            (onChange)="unselectedTypes()" [virtualScroll]="true" [(ngModel)]="selected_types" name="type_offre"
             defaultLabel="Selectioner les types d'offres voulu" optionLabel="emploi_type" display="chip">
           </p-multiSelect>
         </div>
 
         <div class="p-field p-col-12 p-md-6">
           <label for="langue">Langues Exigées</label>
-          <p-multiSelect id="langue" [options]=" selected_langues.concat(this.unselected_langues)"
-            (onChange)="unselectedLangues()" [(ngModel)]="selected_langues" name="langue"
+          <p-multiSelect id="langue" required [options]=" selected_langues.concat(this.unselected_langues)"
+            (onChange)="unselectedLangues()" [virtualScroll]="true" [(ngModel)]="selected_langues" name="langue"
             defaultLabel="Selectioner les langues voulu" optionLabel="langue" display="chip"></p-multiSelect>
         </div>
 
-
       </div>
     </p-scrollPanel>
-
+    <div class="spinner">
+      <div id="loader" style="display: none;">
+        <p-progressSpinner [style]="{width: '50px', height: '50px'}" styleClass="custom-spinner" strokeWidth="6" fill="#EEEEEE" animationDuration=".5s"></p-progressSpinner>
+      </div>
+    </div>
     <div class="p-grid p-nogutter p-justify-right">
-      <button pButton pRipple type="button" label="Ajouter" (click)="add()" icon="pi pi-check"
-        class="p-button-rounded p-button-text " *ngIf="!editing"></button>
-      <button pButton pRipple type="button" label="Modifier" (click)="edit()" icon="pi pi-check"
+      <button pButton pRipple type="button" id="add" label="Ajouter" [disabled]="selected_langues.length==0 || selected_types.length==0 || selected_domaine=='' || offre.nom_emploi==''|| offre.nbre_postes<1" (click)="add()" icon="pi pi-check"
+        class="p-button-rounded p-button-text" *ngIf="!editing"></button>
+      <button pButton pRipple type="button" id="edit" label="Modifier" [disabled]="selected_langues.length==0 || selected_types.length==0 || selected_domaine=='' || offre.nom_emploi==''|| offre.nbre_postes<1" (click)="edit()" icon="pi pi-check"
         class="p-button-rounded p-button-warning p-button-text " *ngIf="editing"></button>
     </div>
   </form>
@@ -105,9 +111,8 @@
     </div>
 
     <p-table #dt [value]="offres" [rows]="2" [paginator]="true" editMode="row"
-      [globalFilterFields]="['nom_emploi','created_at']" [(selection)]="selectedOffre" [rowHover]="true"
-      dataKey="id" styleClass="paging"
-      currentPageReportTemplate="Affichage du {first} au {last} de {totalRecords} offres."
+      [globalFilterFields]="['nom_emploi','created_at']" [(selection)]="selectedOffre" [rowHover]="true" dataKey="id"
+      styleClass="paging" currentPageReportTemplate="Affichage du {first} au {last} de {totalRecords} offres."
       [showCurrentPageReport]="true">
       <ng-template pTemplate="caption">
         <div class="p-d-flex p-ai-center p-jc-between">
@@ -160,6 +165,3 @@
     </p-table>
   </div>
 </div>
-
-
-
